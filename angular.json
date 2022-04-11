@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Viraj-Website:build:production",
+            "firebaseProject": "virajhomes-96e2d",
+            "firebaseHostingSite": "virajhomes-96e2d"
+          }
         }
       }
     }
