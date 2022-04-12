@@ -1,0 +1,48 @@
+#navigation{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+
+    background-color: white;
+    #logo{
+        height: 40px;
+        width:40px;
+        font-size: 30px;
+        font-weight: 900;
+        color: var(--main-color);
+        letter-spacing: 2px;
+    }
+    #nav{
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap:30px;
+        font-size:18px;
+        font-weight: 500;
+        margin-left: 40px;
+        a{
+            color: var(--alt);
+            text-decoration: none;
+            &:hover{
+                color: var(--dark);
+            }
+        }
+    }
+    #login{
+        height: 45px;
+        width: 150px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border:3px solid var(--main-color);
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        font-family: 'Archivo Black';
+        color: var(--alt-color);
+    }
+}
