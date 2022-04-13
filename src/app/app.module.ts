@@ -18,8 +18,9 @@ import { ServicesComponent } from './services/services.component';
 import { HomeComponent } from './home/home.component';
 import { TeamComponent } from './team/team.component';
 import { PromiceComponent } from './promice/promice.component';
-import { LocationComponent } from './location/location.component';
 import { ContactComponent } from './contact/contact.component';
+import { SliderSectionComponent } from './slider-section/slider-section.component';
+import { LocationSectionComponent } from './location-section/location-section.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,9 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     TeamComponent,
     PromiceComponent,
-    LocationComponent,
-    ContactComponent
+    ContactComponent,
+    SliderSectionComponent,
+    LocationSectionComponent
   ],
   imports: [
     BrowserModule,
