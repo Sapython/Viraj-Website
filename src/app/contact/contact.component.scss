@@ -1,0 +1,78 @@
+section{
+    
+    height: 70vh;
+    width: 100vw;
+    background-color:rgb(226, 237, 244);
+    box-sizing: border-box;
+    padding: 30px 50px;
+}
+* {
+    font-family: 'Poppins', sans-serif;
+}
+b{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 400px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-color);
+   margin-bottom: 30px;
+}
+
+
+#top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#contact, #message-form {
+    width: 40%;
+    color: #000;
+}
+
+.contact-item-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#branch-offices {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.branch-office {
+    margin: 0 1.5em .5em 0;
+}
+
+.message-form-input, #message-form-submit {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5em;
+    padding: 1.25em 0em;
+    outline: 0;
+    resize: none;
+    border: 1px solid #bac2bf;
+    &::placeholder{
+        padding: 20px;
+        font-weight: 400;
+        font-size: 18px;
+    }
+   
+    
+}
+
+#message-form-submit {
+    background-color: var(--main-color);
+    color: #f6f7f7;
+    border: 1px solid transparent;
+    &:hover{
+        background-color: #f6f7f7;
+        color: var(--main-color);
+        border: 1px solid var(--main-color);
+    }
+}
+

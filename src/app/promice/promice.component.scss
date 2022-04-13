@@ -3,6 +3,7 @@
   max-height:100% ;
     width: 100vw;
     background-color:rgb(226, 237, 244);
+    
     #container{
         padding-top: 80px;
         width: 90%;
@@ -45,7 +46,7 @@
             color: white;
             background:linear-gradient(var(--main-color),black);
             border: none;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 400px;
             padding: 20px;
             display: flex;
@@ -60,6 +61,38 @@
         
         }
         
+        }
+    }
+    @media (max-width:640) {
+        #container{
+            b{
+                font-size: 30px;
+            }
+            strong{
+                font-size: 50px;
+            }
+            span{
+                font-size: 20px;
+            }
+            #buttons{
+                transform: scale(0.7);
+            }
+        }
+    }
+    @media (max-width:414px) {
+        #container{
+            b{
+                font-size: 20px;
+            }
+            strong{
+                font-size: 30px;
+            }
+            span{
+                font-size: 18px;
+            }
+            #buttons{
+                transform: scale(0.5);
+            }
         }
     }
 }

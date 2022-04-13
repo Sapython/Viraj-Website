@@ -1,6 +1,19 @@
 section {
-    padding: 3.5em 2em;
     background-color: var(--main-color);
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    @media (max-width:600px) {
+        #container{
+            flex-direction: column;
+        }
+        #icon-and-address {
+            font-size: 0.9rem;
+            display: flex;
+            width: 70vw;
+        }
+        
+    }
 }
 
 #heading {
@@ -12,7 +25,8 @@ section {
 
 #container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
 }
 
 #location-on-map {

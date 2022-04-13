@@ -1,5 +1,19 @@
 section {
-    padding: 3.5em 2em;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    @media (max-width:500px){
+        #container {
+            flex-direction: column;
+            gap:30px
+        }
+        .service {
+            width:80%;
+            padding: 2em;
+            border: 1px solid var(--main-color);
+            text-align: center;
+        }
+    }
 }
 
 #heading {
@@ -13,6 +27,7 @@ section {
 #container {
     display: flex;
     justify-content: space-evenly;
+    // flex-direction: column;
 }
 
 .service {

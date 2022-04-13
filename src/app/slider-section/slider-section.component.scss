@@ -21,10 +21,7 @@
     text-align: center;
 }
 
-.slider-item-heading {
-    color: inherit;
-    font-size: 4rem;
-}
+
 
 .slider-item-paragraph {
     font-size: 2rem;
@@ -37,4 +34,32 @@
     padding: 1em;
     text-decoration: none;
     font-size: 1.5rem;
+}
+
+.slider-item-heading {
+  
+    color: inherit;
+    font-size: 100px;
+    font-family: 'Archivo Black';
+    font-weight: 900;
+    @media (max-width:560px){
+        font-size: 4rem;
+        color: red;
+      
+    }
+}
+.slider-item-paragraph{
+    font-size: 30px;
+    font-weight: 400;
+}
+.slider-item-link{
+    display: inline-block;
+    background:linear-gradient(var(--main-color),black);
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 300px;
+
 }

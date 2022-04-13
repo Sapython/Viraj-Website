@@ -5,12 +5,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 50px;
-  @media (max-width:640px){
-      height: 1500px;
-  }
-  @media (max-width:414px){
-    height: 1700px;
-}
+
   #container {
     margin-top: 50px;
     width: 90%;
@@ -63,6 +58,10 @@
 @media (max-width:640px){
     grid-template-columns: 1fr 1fr ;
 }
+@media (max-width:414){
+  grid-template-columns: 1fr ;
+}
+
     gap: 10px;
     .images {
       display: flex;
@@ -89,4 +88,22 @@
       }
     }
   }
+  @media (max-width:640px){
+    height: 1500px;
+}
+@media (max-width:414px){
+  height: 1700px;
+  #container{
+    strong{
+      font-size: 20px;
+    }
+    b{
+      font-size: 30px;
+      width: 100%;
+    }
+    p{
+      font-size: 18px;
+    }
+  }
+}
 }
