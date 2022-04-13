@@ -1,5 +1,46 @@
-#services{
-    height: 100vh;
-    width: 100vw;
-    background-color: aliceblue;
+section {
+    padding: 3.5em 2em;
+}
+
+#heading {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: var(--main-color);
+}
+
+#container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.service {
+    width: 22.5%;
+    padding: 2em;
+    border: 1px solid var(--main-color);
+    text-align: center;
+}
+
+.service-image-container {
+    position: relative;
+}
+
+.service-image-container::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.service-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.service-heading {
+    font-weight: 700;
+    color: var(--main-color);
 }

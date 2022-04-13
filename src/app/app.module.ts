@@ -16,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ServicesComponent } from './services/services.component';
 import { HomeComponent } from './home/home.component';
+import { SliderSectionComponent } from './slider-section/slider-section.component';
+import { LocationSectionComponent } from './location-section/location-section.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     HomePageComponent,
     ServicesComponent,
-    HomeComponent
+    HomeComponent,
+    SliderSectionComponent,
+    LocationSectionComponent
   ],
   imports: [
     BrowserModule,

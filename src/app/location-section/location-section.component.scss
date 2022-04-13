@@ -1,0 +1,34 @@
+section {
+    padding: 3.5em 2em;
+    background-color: var(--main-color);
+}
+
+#heading {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+#container {
+    display: flex;
+    align-items: flex-start;
+}
+
+#location-on-map {
+    width: 70%;
+    height: 400px;
+}
+
+#icon-and-address {
+    display: flex;
+    color: #fff;
+    padding: 2em;
+    width: 30%;
+}
+
+address {
+    font-size: 1.5rem;
+    display: flex;
+    margin: 0 0 0 .5em;
+}

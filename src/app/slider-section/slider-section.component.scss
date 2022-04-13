@@ -1,0 +1,40 @@
+.slider-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.slider-item {
+    position: relative;
+}
+
+.slider-image {
+    filter: brightness(.7);
+}
+
+.slider-item-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+
+.slider-item-heading {
+    color: inherit;
+    font-size: 4rem;
+}
+
+.slider-item-paragraph {
+    font-size: 2rem;
+}
+
+.slider-item-link {
+    display: block;
+    background-color: var(--alt-color);
+    color: #fff;
+    padding: 1em;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
