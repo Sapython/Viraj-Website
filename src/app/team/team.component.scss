@@ -1,0 +1,60 @@
+#team{
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 50px;
+    #container{
+        margin-top: 50px;
+        width: 900px;
+        margin: auto;
+        b{
+            padding-top: 50px;
+            font-size: 40px;
+          color: black;
+        }
+        p{
+            width: 700px;
+            margin: auto ;
+            text-align: center;
+            margin-top: 30px;
+        }
+    }
+    .gallery{
+        margin-top: 30px;
+        width: 900px;
+        height: 500px;
+        // background-color: red;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+//    grid-template-rows: 200px 200px;
+ 
+        gap: 10px;
+        .images{
+            display: flex;
+            flex-direction: column;
+            gap:4px;
+            height: 200px;
+            overflow: hidden;
+          p{
+              color: pink;
+              font-size: 30px;
+              height: 10%;
+          }
+           img{
+            height: 100%;
+            width: 100%;
+transition: transform 1s ease-in-out;
+           }
+            &:hover{
+             
+                img{
+                    transform: scale(1.2);
+                    -webkit-filter: grayscale(100%); 
+                    filter: grayscale(100%);
+                   }
+            }
+         
+        }
+    }
+}

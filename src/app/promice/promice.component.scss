@@ -1,0 +1,61 @@
+#promices{
+    height: 100vh;
+    width: 100vw;
+    background-color:rgb(234, 243, 248);
+    #container{
+        padding-top: 80px;
+        width: 1200px;
+        margin: auto;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        gap:30px;
+        b{
+        font-size: 40px;
+        color: var(--main-color);
+        font-weight: 400;
+        }
+        strong{
+            font-size: 70px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        span{
+            width: 900px;
+            text-align: center;
+            font-size: 30px;
+            // letter-spacing: 1.5px;
+            line-height: 1.5;
+        }
+        #buttons{
+         display: flex;
+         gap:30px;
+        align-items: center;
+        button{
+            margin-top: 50px;
+            height: 65px;
+            width: 180px;
+            border-radius: 30px;
+            color: white;
+            background:linear-gradient(var(--main-color),black);
+            border: none;
+            font-size: 22px;
+            font-weight: 400px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            &:hover{
+                background: white;
+                border: 3px solid var(--main-color);
+                color:var(--main-color);
+            }
+        
+        }
+        
+        }
+    }
+}

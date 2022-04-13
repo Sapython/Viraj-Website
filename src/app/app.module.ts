@@ -16,6 +16,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ServicesComponent } from './services/services.component';
 import { HomeComponent } from './home/home.component';
+import { TeamComponent } from './team/team.component';
+import { PromiceComponent } from './promice/promice.component';
+import { LocationComponent } from './location/location.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     HomePageComponent,
     ServicesComponent,
-    HomeComponent
+    HomeComponent,
+    TeamComponent,
+    PromiceComponent,
+    LocationComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
