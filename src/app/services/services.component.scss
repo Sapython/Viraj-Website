@@ -1,44 +1,30 @@
-section {
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 20px 30px;
-    @media (max-width:500px){
-        #container {
-            flex-direction: column;
-            gap:30px
-        }
-        .service {
-            width:80%;
-            padding: 2em;
-            border: 1px solid var(--main-color);
-            text-align: center;
-        }
-    }
+#services {
+    padding: 3.5em 2em;
 }
 
 #heading {
     text-align: center;
     font-weight: 700;
     margin-bottom: 1em;
-    font-size: 40px;
+    font-size: 2.5rem;
     color: var(--main-color);
 }
 
 #container {
     display: flex;
     justify-content: space-evenly;
-    // flex-direction: column;
 }
 
 .service {
-    width: 22.5%;
-    padding: 2em;
+    width: 25%;
+    padding: 1em;
     border: 1px solid var(--main-color);
     text-align: center;
 }
 
 .service-image-container {
     position: relative;
+    margin-bottom: 1.5em;
 }
 
 .service-image-container::after {
@@ -59,4 +45,56 @@ section {
 .service-heading {
     font-weight: 700;
     color: var(--main-color);
+}
+
+@media (max-width: 800px) {
+    #container {
+        flex-direction: column;
+    }
+
+    .service {
+        width: 90%;
+        margin: 0 auto 1em auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .service:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .service-image-container {
+        width: 30%;
+        margin: 0;
+    }
+
+    .service-content {
+        width: 60%;
+    }
+}
+
+@media (max-width: 500px) {
+    .service {
+        width: 90%;
+        margin: 0 auto 1em auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .service:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .service-image-container {
+        width: 50%;
+        min-width: 150px;
+        margin-bottom: 1em;
+    }
+
+    .service-content {
+        width: 100%;
+    }
 }

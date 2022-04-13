@@ -1,17 +1,33 @@
-
-<header id="navigation">
-  <div id="logo">VIRAJ</div>
-  <div id="nav">
-    <a href="#first-section">Home</a>
-    <a href="#services">services</a>
-    <a href="#promices">promises</a>
-    <a href="#slider"> slider</a>
-    <a href="#team">team</a>
-    <a href="#location">location</a>
-    <a href="#contact"> contact us</a>
-  </div>
-  <div class="menu-btn">
-    <i class="fa fa-bars"></i>
-</div>
-  <button id="login">login</button>
+<header>
+  <nav class="uk-navbar-container" uk-navbar id="navigation">
+    <div class="uk-navbar-left" id="logo">VIRAJ</div>
+    <div class="uk-navbar-center">
+      <ul class="uk-navbar-nav">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#promises" class="nav-link">Promises</a></li>
+        <li><a href="#location" class="nav-link">Location</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="uk-navbar-right">
+      <button id="login">Login</button>
+      <a class="uk-navbar-toggle" uk-navbar-toggle-icon href="" uk-toggle="target: #offcanvas-nav"
+        id="toggle-button"></a>
+    </div>
+    <div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true; mode: slide">
+      <div class="uk-offcanvas-bar" id="offcanvas-bar">
+        <ul class="uk-nav">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#promises" class="nav-link">Promises</a></li>
+          <li><a href="#location" class="nav-link">Location</a></li>
+          <li><a href="#team" class="nav-link">Team</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button id="login2">Login</button>
+      </div>
+    </div>
+  </nav>
 </header>

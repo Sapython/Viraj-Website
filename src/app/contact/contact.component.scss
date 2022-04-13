@@ -1,35 +1,30 @@
-section{
-    
-    height: 70vh;
-    width: 100vw;
-    background-color:rgb(226, 237, 244);
-    box-sizing: border-box;
-    padding: 30px 50px;
+#contact {
+    padding: 3.5em 2em;
 }
-* {
-    font-family: 'Poppins', sans-serif;
-}
-b{
-    font-size: 40px;
+
+#heading {
     text-align: center;
-    font-weight: 400px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 1em;
+    font-size: 2.5rem;
     color: var(--main-color);
-   margin-bottom: 30px;
 }
 
-
-#top {
+#container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    width: 80%;
+    margin: 0 auto;
 }
 
-#contact, #message-form {
+#contact-items {
     width: 40%;
-    color: #000;
+    color: var(--main-color);
+}
+
+#message-form {
+    width: 50%;
 }
 
 .contact-item-heading {
@@ -37,42 +32,59 @@ b{
     font-weight: 700;
 }
 
-#branch-offices {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-}
-
-.branch-office {
-    margin: 0 1.5em .5em 0;
-}
-
-.message-form-input, #message-form-submit {
+.message-form-input,
+#message-form-submit {
     display: block;
     width: 100%;
     margin-bottom: 1.5em;
-    padding: 1.25em 0em;
+    padding: 1.25em 1em;
+    font-size: 16px;
     outline: 0;
     resize: none;
-    border: 1px solid #bac2bf;
-    &::placeholder{
-        padding: 20px;
-        font-weight: 400;
-        font-size: 18px;
-    }
-   
-    
+    border: 1px solid var(--main-color);
 }
 
 #message-form-submit {
     background-color: var(--main-color);
-    color: #f6f7f7;
+    color: #fff;
     border: 1px solid transparent;
-    &:hover{
-        background-color: #f6f7f7;
-        color: var(--main-color);
-        border: 1px solid var(--main-color);
-    }
 }
 
+@media(max-width: 800px) {
+    #contact {
+        padding: 1.5em;
+    }
+    
+    #heading {
+        font-size: 1.5rem;
+    }
+    
+    #container {
+        flex-direction: column;
+        width: 90%;
+    }
+    
+    #contact-items, #message-form {
+        width: 100%;
+    }
+
+    #contact-items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 1em;
+    }
+
+    .contact-item:first-of-type {
+        margin-right: 1em;
+    }
+    
+    .contact-item-heading {
+        font-size: 1rem;
+    }
+    
+    .message-form-input,
+    #message-form-submit {
+        margin-bottom: 1em;
+    }
+}

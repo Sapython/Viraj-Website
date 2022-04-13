@@ -1,19 +1,6 @@
-section {
+#location {
+    padding: 3.5em 2em;
     background-color: var(--main-color);
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 20px 30px;
-    @media (max-width:600px) {
-        #container{
-            flex-direction: column;
-        }
-        #icon-and-address {
-            font-size: 0.9rem;
-            display: flex;
-            width: 70vw;
-        }
-        
-    }
 }
 
 #heading {
@@ -25,8 +12,7 @@ section {
 
 #container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
 }
 
 #location-on-map {
@@ -43,6 +29,33 @@ section {
 
 address {
     font-size: 1.5rem;
-    display: flex;
     margin: 0 0 0 .5em;
+}
+
+@media(max-width:800px) {
+    #location {
+        padding: 1em;
+        background-color: var(--main-color);
+    }
+
+    #heading {
+        margin-bottom: .5em;
+    }
+    
+    #container {
+        flex-direction: column-reverse;
+        font-size: 1.25rem;
+    }
+
+    #location-on-map {
+        width: 100%;
+    }
+
+    #icon-and-address {
+        width: fit-content;
+    }
+
+    address {
+        margin: 0;
+    }
 }

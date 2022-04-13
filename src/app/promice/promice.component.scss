@@ -1,98 +1,54 @@
-#promices{
-  min-height: 100vh;
-  max-height:100% ;
-    width: 100vw;
-    background-color:rgb(226, 237, 244);
+#promises {
+    padding: 3em;
+    background-color: var(--main-color);
+    color: #fff;
+    text-align: center;
+}
+
+#heading {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1em;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+#strong-promise {
+    font-size: 2rem;
+    color: inherit;
+    font-weight: 700;
+}
+
+.promise-paragraph {
+    font-size: 1.25rem;
+}
+
+#promise-link {
+    text-decoration: none;
+    display: block;
+    margin: 1.5em auto 0 auto;
+    font-size: 1.5rem;
+    background-color: #fff;
+    color: var(--main-color);
+    padding: .5em 2em;
+    width: fit-content;
+}
+
+@media(max-width: 600px) {
+    #promises {
+        padding: 1.5em;
+    }
+
+    #heading {
+        margin-bottom: .5em;
+        font-size: 2rem;
+    }
+
+    #strong-promise {
+        font-size: 1.5rem;
+    }
     
-    #container{
-        padding-top: 80px;
-        width: 90%;
-        margin: auto;
-        height: fit-content;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: space-between;
-        gap:30px;
-        b{
-        font-size: 40px;
-        color: var(--main-color);
-        font-weight: 600;
-        text-align: center;
-        }
-        strong{
-            font-size: 70px;
-            font-weight: 600;
-            color: var(--dark);
-            text-align: center;
-        }
-        span{
-            width: 90%;
-            text-align: center;
-            font-size: 30px;
-            // letter-spacing: 1.5px;
-            line-height: 1.5;
-            text-align: center;
-        }
-        #buttons{
-         display: flex;
-         gap:30px;
-        align-items: center;
-        button{
-            margin-top: 50px;
-            height: 65px;
-            width: 180px;
-            border-radius: 30px;
-            color: white;
-            background:linear-gradient(var(--main-color),black);
-            border: none;
-            font-size: 20px;
-            font-weight: 400px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            &:hover{
-                background: white;
-                border: 3px solid var(--main-color);
-                color:var(--main-color);
-            }
-        
-        }
-        
-        }
-    }
-    @media (max-width:640) {
-        #container{
-            b{
-                font-size: 30px;
-            }
-            strong{
-                font-size: 50px;
-            }
-            span{
-                font-size: 20px;
-            }
-            #buttons{
-                transform: scale(0.7);
-            }
-        }
-    }
-    @media (max-width:414px) {
-        #container{
-            b{
-                font-size: 20px;
-            }
-            strong{
-                font-size: 30px;
-            }
-            span{
-                font-size: 18px;
-            }
-            #buttons{
-                transform: scale(0.5);
-            }
-        }
+    .promise-paragraph, #promise-link {
+        font-size: 1rem;
     }
 }

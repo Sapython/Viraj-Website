@@ -1,68 +1,70 @@
-#navigation{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 10vh;
-    font-family: 'Archivo Black';
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
     background-color: white;
-    @media (max-width: 640px){
-        button{
-            display: none;
-        }
-      #nav{
-         a{
-             
+    width: 100%;
+}
+
+#navigation {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80px;
+    padding: 0 2em;
+}
+
+.nav-link {
+    color: var(--main-color);
+    font-size: 1.25rem;
+    text-transform: capitalize;
+}
+
+#logo{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--main-color);
+    letter-spacing: 2px;
+}
+
+#login, #login2 {
+    height: 45px;
+    width: 150px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border:3px solid var(--main-color);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    font-family: 'Archivo Black';
+    color: var(--alt-color);
+}
+
+#login2 {
+    margin-top: 1em;
+}
+
+#toggle-button {
+    display: none;
+    color: var(--main-color);
+}
+
+#offcanvas-bar {
+    background-color: #fff;
+}
+
+@media (max-width: 1050px) {
+    .uk-navbar-center {
         display: none;
-         }
-        
-      }
-      
-      .menu-btn{
-        display:block;
     }
-    }
-    #logo{
-        height: 40px;
-        width:40px;
-        font-size: 30px;
-        font-weight: 900;
-        color: var(--main-color);
-        letter-spacing: 2px;
-       
-    }
-    .menu-btn{
+
+    #login {
         display: none;
     }
-    #nav{
-        width: fit-content;
+
+    #toggle-button {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap:30px;
-        font-size:18px;
-        font-weight: 500;
-        margin-left: 40px;
-        a{
-            
-            color: var(--alt);
-            text-decoration: none;
-            &:hover{
-                color: var(--dark);
-            }
-        }
-    }
-    #login{
-        height: 45px;
-        width: 150px;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border:3px solid var(--main-color);
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        font-family: 'Archivo Black';
-        color: var(--alt-color);
     }
 }
