@@ -6,6 +6,12 @@
   align-items: center;
   justify-content: space-around;
   font-family: 'Archivo Black';
+  @media (max-width: 640px){
+      padding: 30px 0px;
+    flex-direction: column;
+    gap:20px;
+  
+}
   #logo {
     font-size: 40px;
     font-weight: 500;
@@ -14,8 +20,19 @@
   #boxes {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin: auto;
     gap: 50px;
+    @media (max-width: 640px){
+     gap:10px;
+     #box{
+       
+      font-size: 20px;
+       small {
+        font-size: 18px;
+      }
+     }
+}
     #box {
       display: flex;
       flex-direction: column;
@@ -40,6 +57,11 @@
      border-radius: 50%;
      height: 35px;
      width: 35px;
+     @media (max-width: 640px){
+      
+         flex-direction: column;
+       
+    }
  }
 }
 #copyright{

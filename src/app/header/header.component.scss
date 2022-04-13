@@ -6,6 +6,22 @@
     width: 100vw;
     font-family: 'Archivo Black';
     background-color: white;
+    @media (max-width: 640px){
+        button{
+            display: none;
+        }
+      #nav{
+         a{
+             
+        display: none;
+         }
+        
+      }
+      
+      .menu-btn{
+        display:block;
+    }
+    }
     #logo{
         height: 40px;
         width:40px;
@@ -13,6 +29,10 @@
         font-weight: 900;
         color: var(--main-color);
         letter-spacing: 2px;
+       
+    }
+    .menu-btn{
+        display: none;
     }
     #nav{
         width: fit-content;
@@ -24,6 +44,7 @@
         font-weight: 500;
         margin-left: 40px;
         a{
+            
             color: var(--alt);
             text-decoration: none;
             &:hover{

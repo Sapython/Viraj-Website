@@ -14,13 +14,17 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ServicesComponent } from './services/services.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    ServicesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

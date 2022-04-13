@@ -1,0 +1,22 @@
+.home{
+    height: 100vh;
+    width: 100vw;
+    .container{
+    padding-top: 100px;
+    padding-left: 100px;
+    p{
+        font-size: 90px;
+    }
+    b{
+        color: var(--alt-color);
+    }
+    #start{
+        background-color: var(--alt-color);
+        font-size: 30px;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+    }
+    }
+}
