@@ -1,17 +1,24 @@
 #footer {
-  height: 30vh;
+  height: 30%;
   background-color: var(--alt-color);
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: 'Archivo Black';
-  padding: 0px 50px;
+  padding: 30px 50px;
   @media (max-width: 640px){
-      padding: 30px 0px;
+    
     flex-direction: column;
-    gap:20px;
+    gap:40px;
   
+}
+@media (max-width: 414px){
+  padding: 0px 0px;
+  flex-direction: column;
+  gap:40px;
+  width: 100vw;
+
 }
   #logo {
     font-size: 40px;
