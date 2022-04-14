@@ -1,6 +1,6 @@
 #location {
     padding: 3.5em 2em;
-    background-color: var(--main-color);
+    background-color: var(--primary);
 }
 
 #heading {
@@ -35,7 +35,7 @@ address {
 @media(max-width:800px) {
     #location {
         padding: 1em;
-        background-color: var(--main-color);
+        background-color: var(--primary);
     }
 
     #heading {
