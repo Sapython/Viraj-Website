@@ -21,6 +21,8 @@ import { PromiceComponent } from './promice/promice.component';
 import { ContactComponent } from './contact/contact.component';
 import { SliderSectionComponent } from './slider-section/slider-section.component';
 import { LocationSectionComponent } from './location-section/location-section.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GallerySectionComponent } from './gallery-section/gallery-section.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { LocationSectionComponent } from './location-section/location-section.co
     PromiceComponent,
     ContactComponent,
     SliderSectionComponent,
-    LocationSectionComponent
+    LocationSectionComponent,
+    GallerySectionComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { LocationSectionComponent } from './location-section/location-section.co
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    BrowserAnimationsModule
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
