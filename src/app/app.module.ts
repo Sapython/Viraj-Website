@@ -11,33 +11,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { ServicesComponent } from './services/services.component';
-import { HomeComponent } from './home/home.component';
-import { TeamComponent } from './team/team.component';
-import { PromiceComponent } from './promice/promice.component';
-import { ContactComponent } from './contact/contact.component';
-import { SliderSectionComponent } from './slider-section/slider-section.component';
-import { LocationSectionComponent } from './location-section/location-section.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GallerySectionComponent } from './gallery-section/gallery-section.component';
-
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomePageComponent,
-    ServicesComponent,
-    HomeComponent,
-    TeamComponent,
-    PromiceComponent,
-    ContactComponent,
-    SliderSectionComponent,
-    LocationSectionComponent,
-    GallerySectionComponent
   ],
   imports: [
     BrowserModule,
