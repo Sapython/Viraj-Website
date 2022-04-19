@@ -1,27 +1,72 @@
+// Importing these font families from Google: Lato, Roboto
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 :root {
-    --primary: #003566;
-    --secondary: #5EB1FF;
-    --tertiary: #3B8EDB;
-    --complementary-a: #8F5C0A;
-    --complementary-b: #DB9E3B;
-    --primary-contrast: #FFF;
-    --secondary-contrast: #000;
-    --tertiary-contrast: #FFF;
-    --complementary-a-contrast: #FFF;
-    --complementary-b-contrast: #000;
-    --xxsmall: 10px;
-    --xsmall: 13px;
-    --small: 16px;
-    --medium: 19px;
-    --large: 22px;
-    --xlarge: 28px;
-    --xxlarge: 32px;
-    --font-main: 'Poppins', sans-serif;
+  // Color Variables
+  --primary: #000;
+  --primary-translucent: rgba(0, 0, 0, 0.7);
+  --secondary: #f5ba22;
+  --primary-contrast: #fff;
+
+  // Font Variables
+  --font-one: "Lato", sans-serif;
+  --font-two: "Roboto", sans-serif;
+
+  // Size Variables
+  --xxlarge: 36px;
+  --xlarge: 32px;
+  --large: 28px;
+  --medium: 24px;
+  --small: 20px;
+  --xsmall: 16px;
+  --xxsmall: 12px;
+
+  // Box Shadow Variables
+  --more-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  --normal-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --in-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
-    
+
 * {
-    font-family: var(--font-main);
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.logo-img {
+  width: 100px;
+}
+
+.standard-padding {
+  padding: 3em;
+}
+
+.section-heading {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-one);
+  color: var(--primary);
+  font-size: var(--large);
+  font-weight: 700;
+}
+
+.heading-part,
+.heading-part-underlined {
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  margin: 0;
+  padding-bottom: 0.25em;
+}
+
+.heading-part-underlined {
+  border-color: var(--primary);
+}
+
+.heading-part {
+  border-color: transparent;
+}

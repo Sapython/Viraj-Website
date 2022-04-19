@@ -1,0 +1,13 @@
+#gallery {
+    padding-bottom: 9em;
+}
+
+.gallery-image {
+    box-shadow: var(--normal-shadow);
+    transition: all .5s;
+    border-radius: 7px;
+}
+
+.gallery-image:hover {
+    box-shadow: var(--more-shadow);
+}

@@ -1,0 +1,59 @@
+#contact-us {
+  background-color: var(--primary);
+  background-image: url("../../../../assets/img/first-section-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.section-heading {
+  color: var(--secondary);
+}
+
+.heading-part-underlined {
+  border-color: var(--secondary);
+}
+
+form {
+  background-color: var(--primary-translucent);
+  width: 50%;
+  padding: 2em;
+}
+
+input,
+textarea,
+button {
+  display: block;
+  width: 100%;
+  font-family: var(--font-one);
+  padding: 0.5em;
+  font-size: var(--small);
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus,
+button:hover,
+button:focus {
+  box-shadow: var(--more-shadow);
+  opacity: 1;
+}
+
+input,
+textarea {
+  border: 1px solid var(--primary);
+  margin-bottom: 1em;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+button {
+  background-color: var(--secondary);
+  border: none;
+  cursor: pointer;
+}

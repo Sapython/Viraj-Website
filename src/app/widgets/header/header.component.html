@@ -1,1 +1,13 @@
-<p>header works!</p>
+<header>
+  <img src="../../../assets/img/viraj-white.svg" alt="Viraj Logo" class="logo-img">
+  <nav>
+    <ul>
+      <li><a href="#home" class="{{ active == 'home' ? 'active' : '' }}">Home</a></li>
+      <li><a href="#about" class="{{ active == 'about' ? 'active' : '' }}">About</a></li>
+      <li><a href="#our-products" class="{{ active == 'our-products' ? 'active' : '' }}">Our Products</a></li>
+      <li><a href="#gallery" class="{{ active == 'gallery' ? 'active' : '' }}">Gallery</a></li>
+      <li><a href="#our-stores" class="{{ active == 'our-stores' ? 'active' : '' }}">Our Stores</a></li>
+      <li><a href="#contact-us" class="{{ active == 'contact' ? 'active' : '' }}" id="contact-nav-link">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>

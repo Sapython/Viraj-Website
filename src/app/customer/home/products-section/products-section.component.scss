@@ -1,0 +1,33 @@
+#products-cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-card {
+  width: 30%;
+  transition: all 0.5s;
+  text-align: center;
+}
+
+.product-card:hover {
+  padding: 1em;
+  box-sizing: unset;
+  box-shadow: var(--normal-shadow);
+}
+
+.product-heading,
+.product-paragraph {
+  font-family: var(--font-one);
+  color: var(--primary);
+}
+
+.product-heading {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: var(--small);
+  margin: 1em 0 0.5em 0;
+}
+
+.product-paragraph {
+  margin: 0;
+}
