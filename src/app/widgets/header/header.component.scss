@@ -8,43 +8,89 @@ header {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
-ul {
+#horizontal-ul,
+#vertical-ul {
+  list-style: none;
+  font-family: var(--font-two);
+  margin: 0;
+  padding: 0;
+}
+
+#horizontal-ul {
   display: flex;
   align-items: center;
-  list-style: none;
-  font-family: var(--font-one);
-  font-size: var(--small);
 }
 
-a {
+#horizontal-ul a,
+#vertical-ul a {
   color: var(--primary-contrast);
-  transition: all .5s;
-  padding: .5em 1em;
+  transition: all 0.5s;
+  font-size: var(--msmall);
+  padding: 0.5em 1em;
 }
 
-a:hover, a:focus {
+#vertical-ul a {
+  display: block;
+  margin: 5px;
+}
+
+#horizontal-ul a:hover,
+#horizontal-ul a:focus,
+#vertical-ul a:hover,
+#vertical-ul a:focus {
   text-decoration: none;
   color: var(--secondary);
 }
 
-.active {
-  border-bottom: 2px solid var(--secondary);
+#horizontal-ul .active, #vertical-ul .active {
   color: var(--secondary);
 }
 
-#contact-nav-link {
-  background-color: var(--secondary);
-  color: var(--primary);
-  display: block;
-  padding: .25em 1em;
-  margin: .5em 1em;
-  border-radius: 20px;
-  transition: all .5s;
+#horizontal-ul .active {
+  border-bottom: 2px solid var(--secondary);
 }
 
-#contact-nav-link:hover, #contact-nav-link:focus {
+#vertical-ul .active {
+  border-left: 2px solid var(--secondary);
+}
+
+#horizontal-ul .login-button, #vertical-ul .login-button {
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+  display: flex;
+  align-items: center;
+  padding: 0.25em 1em;
+  margin: 0 0.5em;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+#horizontal-ul .login-button:hover,
+#horizontal-ul .login-button:focus,
+#vertical-ul .login-button:hover,
+#vertical-ul .login-button:focus {
+  background-color: var(--secondary);
+  color: var(--secondary-contrast);
   box-shadow: var(--in-shadow);
+}
+
+#horizontal-ul .login-button-icon, #vertical-ul .login-button-icon {
+  margin-right: 0.5em;
+}
+
+#toggle-button {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  #toggle-button {
+    display: block;
+  }
+
+  #horizontal-ul {
+    display: none;
+  }
 }

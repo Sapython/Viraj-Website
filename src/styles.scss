@@ -1,5 +1,13 @@
-// Importing these font families from Google: Lato, Roboto
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+// Importing these font families from Google: Lato, Poppins
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Importing Amsterdam
+@font-face {
+  font-family: "Amsterdam";
+  src: local("Amsterdam"),
+    url('./assets/fonts/AmsterdamOne.woff2') format("woff2");
+  font-display: swap;
+}
 
 :root {
   // Color Variables
@@ -7,10 +15,12 @@
   --primary-translucent: rgba(0, 0, 0, 0.7);
   --secondary: #f5ba22;
   --primary-contrast: #fff;
+  --secondary-contrast: #fff;
 
   // Font Variables
-  --font-one: "Lato", sans-serif;
-  --font-two: "Roboto", sans-serif;
+  --font-one: "Amsterdam";
+  --font-two: "Lato", sans-serif;
+  --font-three: "Poppins", sans-serif;
 
   // Size Variables
   --xxlarge: 36px;
@@ -18,6 +28,7 @@
   --large: 28px;
   --medium: 24px;
   --small: 20px;
+  --msmall: 18px;
   --xsmall: 16px;
   --xxsmall: 12px;
 
@@ -41,15 +52,23 @@
   width: 100px;
 }
 
+.amsterdam {
+  font-family: var(--font-one);
+  color: var(--secondary);
+}
+
 .standard-padding {
   padding: 3em;
+
+  @media (max-width: 550px) {
+    padding: 1.5em;
+  }
 }
 
 .section-heading {
-  text-transform: uppercase;
   display: flex;
   align-items: center;
-  font-family: var(--font-one);
+  font-family: var(--font-two);
   color: var(--primary);
   font-size: var(--large);
   font-weight: 700;
@@ -57,6 +76,7 @@
 
 .heading-part,
 .heading-part-underlined {
+  text-transform: uppercase;
   border-bottom-width: 5px;
   border-bottom-style: solid;
   margin: 0;
@@ -69,4 +89,5 @@
 
 .heading-part {
   border-color: transparent;
+  margin-right: .5em;
 }

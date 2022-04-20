@@ -1,13 +1,107 @@
-<header>
-  <img src="../../../assets/img/viraj-white.svg" alt="Viraj Logo" class="logo-img">
+<header uk-scrollspy="target: .logo-img, li, #toggle-button; cls: uk-animation-fade; delay: 100">
+  <img
+    src="../../../assets/img/viraj-white.svg"
+    alt="Viraj Logo"
+    class="logo-img"
+    class="uk-animation-fade"
+  />
   <nav>
-    <ul>
-      <li><a href="#home" class="{{ active == 'home' ? 'active' : '' }}">Home</a></li>
-      <li><a href="#about" class="{{ active == 'about' ? 'active' : '' }}">About</a></li>
-      <li><a href="#our-products" class="{{ active == 'our-products' ? 'active' : '' }}">Our Products</a></li>
-      <li><a href="#gallery" class="{{ active == 'gallery' ? 'active' : '' }}">Gallery</a></li>
-      <li><a href="#our-stores" class="{{ active == 'our-stores' ? 'active' : '' }}">Our Stores</a></li>
-      <li><a href="#contact-us" class="{{ active == 'contact' ? 'active' : '' }}" id="contact-nav-link">Contact Us</a></li>
+    <ul id="horizontal-ul">
+      <li>
+        <a href="#home" class="{{ active == 'home' ? 'active' : '' }}">Home</a>
+      </li>
+      <li>
+        <a href="#about" class="{{ active == 'about' ? 'active' : '' }}"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          href="#our-outlets"
+          class="{{ active == 'our-outlets' ? 'active' : '' }}"
+          >Our Outlets</a
+        >
+      </li>
+      <li>
+        <a href="#gallery" class="{{ active == 'gallery' ? 'active' : '' }}"
+          >Gallery</a
+        >
+      </li>
+      <li>
+        <a
+          href="#our-stores"
+          class="{{ active == 'our-stores' ? 'active' : '' }}"
+          >Our Stores</a
+        >
+      </li>
+      <li>
+        <a href="#contact-us" class="{{ active == 'contact' ? 'active' : '' }}"
+          >Contact Us</a
+        >
+      </li>
+      <li>
+        <a href="login" class="login-button"
+          ><span uk-icon="user" class="login-button-icon"></span> Login</a
+        >
+      </li>
     </ul>
+    <div id="toggle-button">
+      <a
+        href="#offcanvas-nav"
+        class="uk-navbar-toggle"
+        uk-navbar-toggle-icon
+        uk-toggle="target: #offcanvas-nav"
+      ></a>
+    </div>
   </nav>
+  <div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true; ">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <nav>
+        <ul id="vertical-ul">
+          <li>
+            <a href="#home" class="{{ active == 'home' ? 'active' : '' }}"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="#about" class="{{ active == 'about' ? 'active' : '' }}"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#our-outlets"
+              class="{{ active == 'our-outlets' ? 'active' : '' }}"
+              >Our Outlets</a
+            >
+          </li>
+          <li>
+            <a href="#gallery" class="{{ active == 'gallery' ? 'active' : '' }}"
+              >Gallery</a
+            >
+          </li>
+          <li>
+            <a
+              href="#our-stores"
+              class="{{ active == 'our-stores' ? 'active' : '' }}"
+              >Our Stores</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact-us"
+              class="{{ active == 'contact' ? 'active' : '' }}"
+              >Contact Us</a
+            >
+          </li>
+          <li>
+            <a href="login" class="login-button"
+              ><span uk-icon="user" class="login-button-icon"></span> Login</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
