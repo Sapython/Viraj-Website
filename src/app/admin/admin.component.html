@@ -1,20 +1,43 @@
-<main>
-    <div class="header">
-        <h2>Agent Panel</h2>
-    </div>
-    <div class="sidebar">
-        <ul class="sidebar-ul">
-            <li class="sidebar-li active">Dashboard</li>
-            <li class="sidebar-li">Profile</li>
-            <li class="sidebar-li">Broadcast</li>
-            <li class="sidebar-li">Lead Center</li>
-            <li class="sidebar-li">Customers</li>
-            <li class="sidebar-li">Properties</li>
-            <li class="sidebar-li">Responses</li>
-            <li class="sidebar-li">Visit Log</li>
-        </ul>
-    </div>
-    <div class="content">
-        <router-outlet></router-outlet>
-    </div>
-</main>
+<div id="grid-wrapper">
+  <header>
+    <h2 id="header-heading">Agent Panel</h2>
+  </header>
+  <aside>
+    <ul id="sidebar-ul">
+      <li>
+        <a routerLink="dashboard" class="sidebar-li-a active"
+          ><span uk-icon="icon: thumbnails" class="sidebar-icon"></span>
+          Dashboard</a
+        >
+      </li>
+      <li>
+        <a routerLink="profile" class="sidebar-li-a"
+          ><span uk-icon="icon: bag" class="sidebar-icon"></span> Stock</a
+        >
+      </li>
+      <li>
+        <a routerLink="broadcast" class="sidebar-li-a"
+          ><span uk-icon="icon: list" class="sidebar-icon"></span> Tasks</a
+        >
+      </li>
+      <li>
+        <a routerLink="lead-center" class="sidebar-li-a"
+          ><span uk-icon="icon: heart" class="sidebar-icon"></span> Recipes</a
+        >
+      </li>
+      <li>
+        <a routerLink="customers" class="sidebar-li-a"
+          ><span uk-icon="icon: users" class="sidebar-icon"></span> Employees</a
+        >
+      </li>
+      <li>
+        <a routerLink="properties" class="sidebar-li-a"
+          ><span uk-icon="icon: happy" class="sidebar-icon"></span> Customers</a
+        >
+      </li>
+    </ul>
+  </aside>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
