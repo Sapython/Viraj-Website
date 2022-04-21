@@ -14,7 +14,32 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'dashboard'
+        redirectTo: 'dashboard',
+      },
+      {
+        path: 'stock',
+        loadChildren: () =>
+          import('./stock/stock.module').then((m) => m.StockModule),
+      },
+      {
+        path: 'tasks',
+        loadChildren: () =>
+          import('./tasks/tasks.module').then((m) => m.TasksModule),
+      },
+      {
+        path: 'recipes',
+        loadChildren: () =>
+          import('./recipes/recipes.module').then((m) => m.RecipesModule),
+      },
+      {
+        path: 'employees',
+        loadChildren: () =>
+          import('./employees/employees.module').then((m) => m.EmployeesModule),
+      },
+      {
+        path: 'customers',
+        loadChildren: () =>
+          import('./customers/customers.module').then((m) => m.CustomersModule),
       }
     ],
   },
