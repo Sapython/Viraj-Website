@@ -1,4 +1,6 @@
-<header uk-scrollspy="target: .logo-img, li, #toggle-button; cls: uk-animation-fade; delay: 100">
+<header
+  uk-scrollspy="target: .logo-img, li, #toggle-button; cls: uk-animation-fade; delay: 100"
+>
   <img
     src="../../../assets/img/viraj-white.svg"
     alt="Viraj Logo"
@@ -40,9 +42,9 @@
         >
       </li>
       <li>
-        <a href="login" class="login-button"
-          ><span uk-icon="user" class="login-button-icon"></span> Login</a
-        >
+        <button routerLink="login" class="login-button">
+          <span uk-icon="user" class="login-button-icon"></span> Login
+        </button>
       </li>
     </ul>
     <div id="toggle-button">
@@ -60,45 +62,25 @@
       <nav>
         <ul id="vertical-ul">
           <li>
-            <a href="#home" class="{{ active == 'home' ? 'active' : '' }}"
-              >Home</a
-            >
+            <a href="#home" class="active">Home</a>
           </li>
           <li>
-            <a href="#about" class="{{ active == 'about' ? 'active' : '' }}"
-              >About</a
-            >
+            <a href="#about">About</a>
           </li>
           <li>
-            <a
-              href="#our-outlets"
-              class="{{ active == 'our-outlets' ? 'active' : '' }}"
-              >Our Outlets</a
-            >
+            <a href="#our-outlets">Our Outlets</a>
           </li>
           <li>
-            <a href="#gallery" class="{{ active == 'gallery' ? 'active' : '' }}"
-              >Gallery</a
-            >
+            <a href="#gallery">Gallery</a>
           </li>
           <li>
-            <a
-              href="#our-stores"
-              class="{{ active == 'our-stores' ? 'active' : '' }}"
-              >Our Stores</a
-            >
+            <a href="#our-stores">Our Stores</a>
           </li>
           <li>
-            <a
-              href="#contact-us"
-              class="{{ active == 'contact' ? 'active' : '' }}"
-              >Contact Us</a
-            >
+            <a href="#contact-us">Contact Us</a>
           </li>
           <li>
-            <a href="login" class="login-button"
-              ><span uk-icon="user" class="login-button-icon"></span> Login</a
-            >
+            <button [routerLink]="['/login']" class="login-button"><span uk-icon="user" class="login-button-icon"></span> Login</button>
           </li>
         </ul>
       </nav>

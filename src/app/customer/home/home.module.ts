@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -12,7 +13,15 @@ import { OurStoresSectionComponent } from './our-stores-section/our-stores-secti
 import { ContactUsSectionComponent } from './contact-us-section/contact-us-section.component';
 
 @NgModule({
-  declarations: [HomeComponent, FirstSectionComponent, AboutSectionComponent, ProductsSectionComponent, GallerySectionComponent, OurStoresSectionComponent, ContactUsSectionComponent],
-  imports: [CommonModule, HomeRoutingModule, WidgetsModule],
+  declarations: [
+    HomeComponent,
+    FirstSectionComponent,
+    AboutSectionComponent,
+    ProductsSectionComponent,
+    GallerySectionComponent,
+    OurStoresSectionComponent,
+    ContactUsSectionComponent,
+  ],
+  imports: [CommonModule, RouterModule, HomeRoutingModule, WidgetsModule],
 })
 export class HomeModule {}
