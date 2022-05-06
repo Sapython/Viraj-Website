@@ -1,0 +1,103 @@
+#recipe-card {
+  height: 100%;
+  width: 100%;
+  padding: 40px 30px;
+  font-size: var(--font-one);
+  #recipe-details {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  #recip-img {
+    height: 150px;
+    width: 180px;
+    left: 384px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+  #recipe-desc {
+    width: 300px;
+    b {
+      font-weight: 500;
+      font-size: 26px;
+      color: var(--primary);
+      
+    }
+  }
+
+  #recipe-ingrd-details {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap:150px;
+    padding: 50px 10px;
+    #ingrd-used {
+      display: flex;
+      flex-direction: column;
+      gap:10px;
+      #ingrd {
+        display: flex;
+        justify-content: space-between;
+        gap: 100px;
+        margin: 0;
+        padding: 0;
+        color: var(--primary);
+        b{
+          font-weight: 400;
+        }
+        div {
+          display: flex;
+          gap: 5px;
+        }
+      }
+    }
+    h3 {
+      font-weight: 500;
+      font-size: 25px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    #preparation {
+    
+      h3 {
+        font-weight: 500;
+      font-size: 25px;
+        color: var(--primary);
+      }
+    }
+  }
+
+  #change-buttons {
+    display: flex;
+    gap: 10px;
+    button {
+      margin-top: 40px;
+      width: 150px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+    }
+    #edit {
+      background-color: var(--secondary);
+      transition: transform 0.3s ease;
+      &:hover{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        transform: scale(1.02);
+      }
+    }
+    #delete {
+      border: 2px solid var(--danger);
+      background-color: var(--primary-contrast);
+      transition: transform 0.3s ease;
+      &:hover{
+        box-shadow: var(--danger 0.5) 0px 7px 29px 0px;
+        transform: scale(1.02);
+      }
+    }
+  }
+}

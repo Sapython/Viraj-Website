@@ -1,7 +1,7 @@
 #recipe-card {
   height: 125px;
-  width: 98%;
-  margin: auto;
+  width: 98%; 
+  margin: 10px auto;
   border-radius: 10px;
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 4px;
@@ -10,12 +10,15 @@
   flex: 1;
   gap: 30px;
   box-sizing: border-box;
+  transition: transform 0.3s ease;
   #image {
     height: 124px;
     width: 164px;
+   
     img {
       height: 100%;
       width: 100%;
+      border-radius: 10px;  
     }
   }
   #dish-description {

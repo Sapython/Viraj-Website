@@ -5,12 +5,14 @@ import { RecipesRoutingModule } from './recipes-routing.module';
 import { RecipesComponent } from './recipes.component';
 import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { RecipePageComponent } from './recipe-page/recipe-page.component';
 
 
 @NgModule({
   declarations: [
     RecipesComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RecipePageComponent
   ],
   imports: [
     CommonModule,

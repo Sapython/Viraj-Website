@@ -1,3 +1,11 @@
 <section id="recipe-cards">
-<app-recipe-card></app-recipe-card>
+<app-recipe-card *ngFor="let recipe of recipes"
+[recipeTitle]="recipe.title" 
+[recipeDesc]="recipe.desc" 
+[recipeImage]="recipe.imgSrc"></app-recipe-card>
 </section>
+
+<!-- 
+<app-recipe-page>
+
+</app-recipe-page> -->
