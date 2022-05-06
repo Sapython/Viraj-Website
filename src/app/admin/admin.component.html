@@ -1,43 +1,120 @@
-<div id="grid-wrapper">
-  <header>
-    <h2 id="header-heading">Agent Panel</h2>
-  </header>
-  <aside>
-    <ul id="sidebar-ul">
-      <li>
-        <a routerLink="/admin/dashboard" routerLinkActive="active" class="sidebar-li-a"
-          ><span uk-icon="icon: thumbnails" class="sidebar-icon"></span>
-          Dashboard</a
-        >
-      </li>
-      <li>
-        <a routerLink="/admin/stock" routerLinkActive="active" class="sidebar-li-a"
-          ><span uk-icon="icon: bag" class="sidebar-icon"></span> Stock</a
-        >
-      </li>
-      <li>
-        <a routerLink="/admin/tasks" routerLinkActive="active" class="sidebar-li-a"
-          ><span uk-icon="icon: list" class="sidebar-icon"></span> Tasks</a
-        >
-      </li>
-      <li>
-        <a routerLink="/admin/recipes" routerLinkActive="active" class="sidebar-li-a"
-          ><span uk-icon="icon: heart" class="sidebar-icon"></span> Recipes</a
-        >
-      </li>
-      <li>
-        <a routerLink="/admin/employees" routerLinkActive="active" class="sidebar-li-a"
-          ><span uk-icon="icon: users" class="sidebar-icon"></span> Employees</a
-        >
-      </li>
-      <li>
-        <a routerLink="/admin/customers" routerLinkActive="active" class="sidebar-li-a"
-          ><span uk-icon="icon: happy" class="sidebar-icon"></span> Customers</a
-        >
-      </li>
-    </ul>
-  </aside>
-  <main>
+<header>
+  <button
+    *ngIf="!largeScreen"
+    class="uk-navbar-toggle"
+    uk-navbar-toggle-icon
+    id="toggle-button"
+    (click)="toggleSidebar()"
+  ></button>
+  <h2 id="header-heading">Agent {{ currentPanel }}</h2>
+  <div *ngIf="currentPanel == 'Stock'" id="header-end">
+    <button class="admin-button">
+      <span uk-icon="icon: plus"></span> Add Stock
+    </button>
+    <button class="admin-button">
+      <span uk-icon="icon: plus"></span> Add Item
+    </button>
+  </div>
+  <div *ngIf="currentPanel == 'Tasks'" id="header-end">
+    <button class="admin-button">
+      <span uk-icon="icon: plus"></span> Add Task
+    </button>
+  </div>
+  <div *ngIf="currentPanel == 'Recipes'" id="header-end">
+    <button class="admin-button">
+      <span uk-icon="icon: plus"></span> Add Recipe
+    </button>
+  </div>
+  <div *ngIf="currentPanel == 'Employees'" id="header-end">
+    <div id="search-box">
+      <input type="text" id="admin-search" placeholder="Search" />
+      <span uk-icon="icon: search"></span>
+    </div>
+    <button class="admin-button">
+      <span uk-icon="icon: plus"></span> Add Employee
+    </button>
+  </div>
+  <div *ngIf="currentPanel == 'Customers'" id="header-end">
+    <div id="search-box">
+      <input type="text" id="admin-search" placeholder="Search" />
+      <span uk-icon="icon: search"></span>
+    </div>
+    <button class="admin-button">
+      <span uk-icon="icon: plus"></span> Add Customer
+    </button>
+  </div>
+</header>
+<div id="wrapper" (window:resize)="onWindowResize()">
+  <div
+    [style]="largeScreen || showSidebar ? '' : 'display: none'"
+    id="sidebar-container"
+  >
+    <aside id="sidebar">
+      <ul id="sidebar-ul">
+        <li>
+          <a
+            routerLink="/admin/dashboard"
+            routerLinkActive="active"
+            class="sidebar-li-a"
+            (click)="toggleSidebar()"
+            ><span uk-icon="icon: thumbnails" class="sidebar-icon"></span
+            ><span class="sidebar-text">Dashboard</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/admin/stock"
+            routerLinkActive="active"
+            class="sidebar-li-a"
+            (click)="toggleSidebar()"
+            ><span uk-icon="icon: bag" class="sidebar-icon"></span
+            ><span class="sidebar-text">Stock</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/admin/tasks"
+            routerLinkActive="active"
+            class="sidebar-li-a"
+            (click)="toggleSidebar()"
+            ><span uk-icon="icon: list" class="sidebar-icon"></span
+            ><span class="sidebar-text">Tasks</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/admin/recipes"
+            routerLinkActive="active"
+            class="sidebar-li-a"
+            (click)="toggleSidebar()"
+            ><span uk-icon="icon: heart" class="sidebar-icon"></span
+            ><span class="sidebar-text">Recipes</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/admin/employees"
+            routerLinkActive="active"
+            class="sidebar-li-a"
+            (click)="toggleSidebar()"
+            ><span uk-icon="icon: users" class="sidebar-icon"></span
+            ><span class="sidebar-text">Employees</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/admin/customers"
+            routerLinkActive="active"
+            class="sidebar-li-a"
+            (click)="toggleSidebar()"
+            ><span uk-icon="icon: happy" class="sidebar-icon"></span
+            ><span class="sidebar-text">Customers</span></a
+          >
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <main (click)="showSidebar && toggleSidebar()">
     <router-outlet></router-outlet>
   </main>
 </div>

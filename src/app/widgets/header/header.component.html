@@ -10,36 +10,22 @@
   <nav>
     <ul id="horizontal-ul">
       <li>
-        <a href="#home" class="{{ active == 'home' ? 'active' : '' }}">Home</a>
+        <a href="#home" class="active">Home</a>
       </li>
       <li>
-        <a href="#about" class="{{ active == 'about' ? 'active' : '' }}"
-          >About</a
-        >
+        <a href="#about">About</a>
       </li>
       <li>
-        <a
-          href="#our-outlets"
-          class="{{ active == 'our-outlets' ? 'active' : '' }}"
-          >Our Outlets</a
-        >
+        <a href="#our-outlets">Our Outlets</a>
       </li>
       <li>
-        <a href="#gallery" class="{{ active == 'gallery' ? 'active' : '' }}"
-          >Gallery</a
-        >
+        <a href="#gallery">Gallery</a>
       </li>
       <li>
-        <a
-          href="#our-stores"
-          class="{{ active == 'our-stores' ? 'active' : '' }}"
-          >Our Stores</a
-        >
+        <a href="#our-stores">Our Stores</a>
       </li>
       <li>
-        <a href="#contact-us" class="{{ active == 'contact' ? 'active' : '' }}"
-          >Contact Us</a
-        >
+        <a href="#contact-us">Contact Us</a>
       </li>
       <li>
         <button routerLink="login" class="login-button">
@@ -62,25 +48,27 @@
       <nav>
         <ul id="vertical-ul">
           <li>
-            <a href="#home" class="active">Home</a>
+            <button routerLink="#home" class="active">Home</button>
           </li>
           <li>
-            <a href="#about">About</a>
+            <button routerLink="#about">About</button>
           </li>
           <li>
-            <a href="#our-outlets">Our Outlets</a>
+            <button routerLink="#our-outlets">Our Outlets</button>
           </li>
           <li>
-            <a href="#gallery">Gallery</a>
+            <button routerLink="#gallery">Gallery</button>
           </li>
           <li>
-            <a href="#our-stores">Our Stores</a>
+            <button routerLink="#our-stores">Our Stores</button>
           </li>
           <li>
-            <a href="#contact-us">Contact Us</a>
+            <button routerLink="#contact-us">Contact Us</button>
           </li>
           <li>
-            <button [routerLink]="['/login']" class="login-button"><span uk-icon="user" class="login-button-icon"></span> Login</button>
+            <button [routerLink]="['/login']" class="login-button">
+              <span uk-icon="user" class="login-button-icon"></span> Login
+            </button>
           </li>
         </ul>
       </nav>
