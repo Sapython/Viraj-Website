@@ -1,1 +1,24 @@
-<p>login works!</p>
+<section>
+    <div id="container">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+        <input
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          class="admin-input"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          class="admin-input"
+        />
+        <button type="submit" id="login-btn" [disabled]="!loginForm.valid">Login</button>
+      </form>
+      <button id="sign-in-with-google" (click)="loginWithGoogle()">
+        <span uk-icon="google" id="google-icon"></span>Login With Google
+      </button>
+    </div>
+  </section>
+  

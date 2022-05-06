@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StockRoutingModule } from './stock-routing.module';
 import { StockComponent } from './stock.component';
 import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
   imports: [
     CommonModule,
     StockRoutingModule,
-    AdminWidgetsModule
+    AdminWidgetsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class StockModule { }

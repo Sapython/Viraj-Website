@@ -1,46 +1,53 @@
-<div class="container">
-    <table>
-        <tr>
-          <th width="10%"></th>
-          <th width="30%">Item Name</th>
-          <th width="10%">Quantity</th>
-          <th width="10%">Unit</th>
-          <th width="10%">Rate</th>
-          <th width="30%"></th>
-        </tr>
-        <tr>
-          <td><img src="assets/img/product-2.png" alt=""></td>
-          <td>Rice</td>
-          <td>50</td>
-          <td>Kg</td>
-          <td>₹50</td>
-          <td class="right"><div id="buttons">
-            <button id="edit">
-              <b>Edit</b>
-              <img src="../../../../assets/img/edit.svg" alt="dish" />
-            </button>
-            <button id="remove">
-              <b>Remove</b>
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </div></td>
-        </tr>
-        <tr>
-          <td><img src="assets/img/product-2.png" alt=""></td>
-          <td>Dal</td>
-          <td>60</td>
-          <td>Kg</td>
-          <td>₹60</td>
-          <td class="right"><div id="buttons">
-            <button id="edit">
-              <b>Edit</b>
-              <img src="../../../../assets/img/edit.svg" alt="dish" />
-            </button>
-            <button id="remove">
-              <b>Remove</b>
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </div></td>
-        </tr>
-      </table>
+<section>
+  <table>
+    <tr>
+      <th width="10%"></th>
+      <th width="30%">Item Name</th>
+      <th width="10%">Quantity</th>
+      <th width="10%">Unit</th>
+      <th width="10%">Rate</th>
+      <th width="30%"></th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td><img [src]="item.img" /></td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.unit }}</td>
+      <td>₹{{ item.rate }}</td>
+      <td class="right">
+        <div id="buttons">
+          <button id="edit">
+            <b>Edit</b>
+            <img src="../../../../assets/img/edit.svg" alt="dish" />
+          </button>
+          <button id="remove">
+            <b>Remove</b>
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<div id="add-item-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 class="uk-modal-title">Add New Item</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+
+    <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+      <div
+        id="upload-post-wrapper"
+        (click)="postInput.click()"
+        #uploadPostWrapper
+      >
+        <div id="upload-post-container">
+          <img src="assets/img/ri_image-edit-fill.png" />
+          <p *ngIf="postInput.files?.length != 1">Upload Post</p>
+          <p *ngIf="postInput.files?.length == 1">Change Post</p>
+          <input type="file" (change)="imageSelected()" #postInput />
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

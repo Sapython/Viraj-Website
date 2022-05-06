@@ -30,7 +30,7 @@
   --small: 20px;
   --msmall: 18px;
   --xsmall: 16px;
-  --xxsmall: 12px;
+  --xxsmall: 14px;
 
   // Box Shadow Variables
   --more-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -90,4 +90,16 @@
 .heading-part {
   border-color: transparent;
   margin-right: 0.5em;
+}
+
+.admin-input {
+  display: block;
+  background-color: transparent;
+  font-family: var(--font-two);
+  font-size: var(--medium);
+  padding: 0.5em;
+  border: none;
+  border-bottom: 2px solid var(--secondary);
+  outline: none;
+  resize: none;
 }
