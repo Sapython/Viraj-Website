@@ -1,11 +1,11 @@
 // Importing these font families from Google: Lato, Poppins
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 // Importing Amsterdam
 @font-face {
   font-family: "Amsterdam";
   src: local("Amsterdam"),
-    url('./assets/fonts/AmsterdamOne.woff2') format("woff2");
+    url("./assets/fonts/AmsterdamOne.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -16,7 +16,7 @@
   --secondary: #f5ba22;
   --primary-contrast: #fff;
   --secondary-contrast: #fff;
-
+  --danger: #f95640;
   // Font Variables
   --font-one: "Amsterdam";
   --font-two: "Lato", sans-serif;
@@ -89,5 +89,5 @@
 
 .heading-part {
   border-color: transparent;
-  margin-right: .5em;
+  margin-right: 0.5em;
 }
