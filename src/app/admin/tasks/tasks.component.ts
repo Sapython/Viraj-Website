@@ -120,6 +120,8 @@ export class TasksComponent implements OnInit {
 
   addTask(): void {}
 
+  deleteTask(): void {}
+
   addDetails(detail: any): void {
     const detailsInputs = document.getElementById('details-inputs');
     if (detailsInputs) {

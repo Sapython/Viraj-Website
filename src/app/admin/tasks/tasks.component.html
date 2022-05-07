@@ -20,12 +20,14 @@
           </ul>
         </td>
         <td class="right">
-          <div id="buttons">
-            <button id="edit" (click)="editTask(task)">
+          <div class="buttons">
+            <button class="edit" (click)="editTask(task)">
               <b>Edit</b>
-              <img src="../../../../assets/img/edit.svg" alt="dish" />
             </button>
-            <button id="remove" (click)="task.completed = true">
+            <button class="delete" uk-toggle="target: #confirm-delete-modal">
+              <b>Delete</b>
+            </button>
+            <button class="remove" (click)="task.completed = true">
               <b>Done</b>
               <i class="fa-solid fa-circle-check"></i>
             </button>
@@ -56,8 +58,11 @@
           </ul>
         </td>
         <td class="right">
-          <div id="buttons" (click)="task.completed = false">
-            <button id="mark-incomplete"><b>Mark Incomplete</b></button>
+          <div class="buttons">
+            <button class="delete" uk-toggle="target: #confirm-delete-modal">
+              <b>Delete</b>
+            </button>
+            <button class="mark-incomplete" (click)="task.completed = false"><b>Mark Incomplete</b></button>
           </div>
         </td>
       </tr>
@@ -104,3 +109,7 @@
     </form>
   </div>
 </div>
+
+<app-confirm-delete-modal
+  (confirmDelete)="deleteTask()"
+></app-confirm-delete-modal>
