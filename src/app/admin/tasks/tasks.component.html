@@ -1,1 +1,32 @@
-<app-under-construction></app-under-construction>
+<section>
+    <table>
+      <tr>
+        <th width="15%">Task Name</th>
+        <th width="15%">Employee</th>
+        <th width="40%">Details</th>
+        <th width="30%"></th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td>{{item.task}}<br><span>{{item.status}}</span></td>
+        <td>{{item.name}}</td>
+        <td>
+          <ul>
+            <li><span class="black">{{item.details[0]}}</span></li>
+            <li><span class="black">{{item.details[1]}}</span></li>
+          </ul>
+        </td>
+        <td class="right">
+          <div id="buttons">
+            <button id="edit">
+              <b>Edit</b>
+              <img src="../../../../assets/img/edit.svg" alt="dish" />
+            </button>
+            <button id="remove">
+              <b>Done</b>
+              <i class="fa-solid fa-circle-check"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </section>

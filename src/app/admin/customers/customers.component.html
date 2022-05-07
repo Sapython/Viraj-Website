@@ -1,1 +1,29 @@
-<app-under-construction></app-under-construction>
+<section>
+    <table>
+      <tr>
+        <th width="10%"></th>
+        <th width="30%">Customer Name</th>
+        <th width="15%">Age</th>
+        <th width="15%">Gross Purchase</th>
+        <th width="30%"></th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td><img [src]="item.img" /></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+        <td>₹{{ item.purchase}}</td>
+        <td class="right">
+          <div id="buttons">
+            <button id="edit">
+              <b>Edit</b>
+              <img src="../../../../assets/img/edit.svg" alt="dish" />
+            </button>
+            <button id="remove">
+              <b>Remove</b>
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </section>

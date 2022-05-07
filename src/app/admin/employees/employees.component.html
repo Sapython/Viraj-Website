@@ -1,1 +1,31 @@
-<app-under-construction></app-under-construction>
+<section>
+    <table>
+      <tr>
+        <th width="10%"></th>
+        <th width="30%">Employee Name</th>
+        <th width="15%">Post</th>
+        <th width="10%">Age</th>
+        <th width="10%">Experience</th>
+        <th width="25%"></th>
+      </tr>
+      <tr *ngFor="let item of items">
+        <td><img [src]="item.img" /></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.post }} <br> {{item.post2}}</td>
+        <td>{{ item.age }}</td>
+        <td>{{ item.experience}} <br> Years</td>
+        <td class="right">
+          <div id="buttons">
+            <button id="edit">
+              <b>Edit</b>
+              <img src="../../../../assets/img/edit.svg" alt="dish" />
+            </button>
+            <button id="remove">
+              <b>Remove</b>
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </section>
