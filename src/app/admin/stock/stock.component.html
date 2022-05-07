@@ -16,7 +16,7 @@
       <td>₹{{ item.rate }}</td>
       <td class="right">
         <div id="buttons">
-          <button id="edit">
+          <button id="edit" (click)="editItem(item)">
             <b>Edit</b>
             <img src="../../../../assets/img/edit.svg" alt="dish" />
           </button>
@@ -30,51 +30,108 @@
   </table>
 </section>
 
-<div id="add-item-modal" uk-modal>
+<div id="item-modal" uk-modal>
   <div class="uk-modal-dialog uk-modal-body">
-    <h2 class="uk-modal-title">Add New Item</h2>
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add New Item</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Item</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+    <form [formGroup]="itemForm" (ngSubmit)="addItem()">
       <div id="item-form-content">
-        <div
-          id="upload-photo-wrapper"
-          (click)="photoInput.click()"
-        >
+        <div id="upload-photo-wrapper" (click)="photoInput.click()">
           <div id="upload-photo-container">
             <img src="assets/img/ri_image-edit-fill.png" />
-            <p *ngIf="photoInput.files?.length != 1">Upload Photo</p>
-            <p *ngIf="photoInput.files?.length == 1">Change Photo</p>
+            <p *ngIf="!editMode && photoInput.files?.length != 1">
+              Upload Photo
+            </p>
+            <p *ngIf="editMode || photoInput.files?.length == 1">
+              Change Photo
+            </p>
             <input type="file" (change)="imageSelected()" #photoInput />
           </div>
         </div>
         <div id="item-inputs">
-          <input type="text" placeholder="Name" class="admin-input" />
-          <input type="number" placeholder="Quantity" class="admin-input" />
-          <div id="unit-input-container">
+          <div class="item-form-box">
+            <label class="admin-label" for="name-input">Name</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="name"
+              id="name-input"
+            />
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label" for="quantity-input">Quantity</label>
+            <input
+              type="number"
+              min="0"
+              class="admin-input"
+              formControlName="quantity"
+              id="quantity-input"
+            />
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label" for="rate-input">Rate (₹)</label>
+            <input
+              type="number"
+              min="0"
+              class="admin-input"
+              formControlName="rate"
+              id="rate-input"
+            />
+          </div>
+          <div class="item-form-box">
             <label class="admin-label">Unit</label>
-            <select class="admin-input">
-              <option>Grams (g)</option>
-              <option>Kilograms (kg)</option>
-              <option>Litre (l)</option>
-              <option>Millilitre (ml)</option>
+            <select class="admin-input" formControlName="unit">
+              <option ngValue="g">Grams (g)</option>
+              <option ngValue="kg">Kilograms (kg)</option>
+              <option ngValue="l">Litre (l)</option>
+              <option ngValue="ml">Millilitre (ml)</option>
             </select>
           </div>
         </div>
       </div>
-      <button type="submit">Add Item</button>
+      <button *ngIf="!editMode" (disabled)="(!itemForm.valid)" type="submit">
+        Add Item
+      </button>
+      <button *ngIf="editMode" (disabled)="(!itemForm.valid)" type="submit">
+        Save Changes
+      </button>
     </form>
   </div>
 </div>
 
-<div id="add-stock-modal" uk-modal>
+<div id="update-stock-modal" uk-modal>
   <div class="uk-modal-dialog uk-modal-body">
-    <h2 class="uk-modal-title">Add Stock</h2>
+    <h2 class="uk-modal-title">Update Stock</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
-      
-      <button type="submit">Add Item</button>
+    <div class="search-box">
+      <input
+        type="text"
+        class="admin-search"
+        placeholder="Search"
+        (input)="searchItems()"
+        #itemSearchInput
+      />
+      <span uk-icon="icon: search"></span>
+    </div>
+    <form [formGroup]="updateStockForm" (ngSubmit)="updateStock()">
+      <div id="stock-items">
+        <div class="stock-item" *ngFor="let item of filteredItems">
+          <div class="flex-subcontainer">
+            <img [src]="item.img" />
+            <p>{{ item.name }}</p>
+          </div>
+          <div class="flex-subcontainer">
+            <input type="number" [formControlName]="item.id" min="0" />
+            <p class="stock-item-unit">{{ item.unit }}</p>
+          </div>
+        </div>
+      </div>
+      <button type="submit">Update Stock</button>
     </form>
   </div>
 </div>
 
-<app-confirm-delete-modal (confirmDelete)="deleteItem()"></app-confirm-delete-modal>
+<app-confirm-delete-modal
+  (confirmDelete)="deleteItem()"
+></app-confirm-delete-modal>

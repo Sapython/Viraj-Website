@@ -24,7 +24,7 @@ section {
     }
 
     td {
-      color: #000;
+      color: var(--primary);
       font-size: var(--xxsmall);
 
       img {
@@ -64,7 +64,7 @@ section {
           font-family: "Poppins", sans-serif;
           font-weight: 200;
           cursor: pointer;
-          transition: all .5s;
+          transition: all 0.5s;
 
           &:hover {
             box-shadow: var(--normal-shadow);
@@ -104,6 +104,14 @@ section {
     margin-bottom: 1em;
     padding-bottom: 0.25em;
     border-bottom: 3px solid var(--secondary);
+  }
+
+  .search-box {
+    margin-left: auto;
+
+    .admin-search {
+      border: 2px solid var(--secondary);
+    }
   }
 
   form {
@@ -172,21 +180,71 @@ section {
       #item-inputs {
         width: 60%;
         margin-left: 1.5em;
-
-        input {
-          width: 100%;
-          margin-bottom: 0.5em;
-        }
-
-        #unit-input-container {
+        
+        .item-form-box {  
           margin-top: 1em;
-
+          
           label {
+            color: var(--secondary);
+            font-weight: 500;
             padding-left: 0.5em;
+          }
+
+          input {
+            width: 100%;
           }
 
           select {
             width: 100%;
+          }
+        }
+      }
+    }
+
+    #stock-items {
+      margin-top: 1em;
+
+      .stock-item {
+        background-color: #f9f7e2;
+        margin: 0.5em 0;
+        display: flex;
+        justify-content: space-between;
+        color: var(--primary);
+        font-size: var(--xxsmall);
+        font-family: var(--font-three);
+        padding: 0.75em 1em;
+        border-radius: 10px;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        .flex-subcontainer {
+          display: flex;
+          align-items: center;
+          
+          img {
+            clip-path: circle(40%);
+            width: 50px;
+            margin-right: 1em;
+          }
+
+          input {
+            font-family: var(--font-two);
+            font-size: var(--xsmall);
+            color: var(--primary);
+            width: 80px;
+            height: fit-content;
+            padding: 0.5em;
+            border: 2px solid var(--secondary);
+            border-radius: 7px;
+            background-color: var(--secondary-contrast);
+            margin-right: 1em;
+          }
+
+          .stock-item-unit {
+            width: 30px;
           }
         }
       }

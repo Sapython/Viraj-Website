@@ -26,29 +26,6 @@ header {
   #header-end {
     display: flex;
 
-    #search-box {
-      position: relative;
-
-      #admin-search {
-        border: none;
-        font-family: var(--font-three);
-        font-size: var(--xsmall);
-        padding: 0.25em 1em;
-        border-radius: 20px;
-        width: 250px;
-        outline: none;
-        font-weight: 500;
-      }
-
-      span {
-        position: absolute;
-        top: 50%;
-        right: 1em;
-        color: var(--secondary);
-        transform: translateY(-50%);
-      }
-    }
-
     .admin-button {
       font-family: var(--font-three);
       font-size: var(--xsmall);

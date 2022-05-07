@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+declare const UIkit: any;
 
 @Component({
   selector: 'app-stock',
@@ -53,7 +54,7 @@ export class StockComponent implements OnInit {
       name: 'Carrot',
       img: 'assets/img/product-2.png',
       quantity: 50,
-      unit: 'kg',
+      unit: 'g',
       rate: 50,
     },
     {
@@ -61,7 +62,7 @@ export class StockComponent implements OnInit {
       name: 'Mushroom',
       img: 'assets/img/product-2.png',
       quantity: 50,
-      unit: 'kg',
+      unit: 'ml',
       rate: 50,
     },
     {
@@ -69,36 +70,37 @@ export class StockComponent implements OnInit {
       name: 'Flour',
       img: 'assets/img/product-2.png',
       quantity: 50,
-      unit: 'kg',
+      unit: 'l',
       rate: 50,
     },
   ];
+  filteredItems: Array<any> = this.items;
 
   @ViewChild('photoInput') photoInput: ElementRef;
+  @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
 
-  addItemForm: FormGroup = new FormGroup({
+  editMode: boolean = false;
+  currentEditId: string = '';
+
+  itemForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    bookingDate: new FormControl('', [Validators.required]),
-    projectName: new FormControl('', [Validators.required]),
-    unitNo: new FormControl('', [Validators.required]),
-    propertyType: new FormControl('', [Validators.required]),
-    companySalesValue: new FormControl('', [Validators.required]),
-    salesValue: new FormControl('', [Validators.required]),
-    advanceValue: new FormControl('', [Validators.required]),
-    financeDetails: new FormControl('', [Validators.required]),
-    paymentMode: new FormControl('', [Validators.required]),
-    jobType: new FormControl('', [Validators.required]),
-    companyName: new FormControl('', [Validators.required]),
-    monthlySalary: new FormControl('', [Validators.required]),
-    firmName: new FormControl('', [Validators.required]),
-    yearOfEstablishment: new FormControl('', [Validators.required]),
-    incomeAsPerITR: new FormControl('', [Validators.required]),
-    itrStatus: new FormControl('', [Validators.required]),
+    quantity: new FormControl(0, [Validators.required]),
+    rate: new FormControl(0, [Validators.required]),
+    unit: new FormControl('', [Validators.required]),
   });
 
-  constructor() {}
+  updateStockForm: FormGroup;
+
+  constructor() {
+    // Initialize updateStockForm
+    const group: any = {};
+    this.items.forEach((item) => {
+      group[item.id.toString()] = new FormControl(item.quantity, [
+        Validators.required,
+      ]);
+    });
+    this.updateStockForm = new FormGroup(group);
+  }
 
   imageSelected(): void {
     var selectionIsValid = true;
@@ -130,7 +132,47 @@ export class StockComponent implements OnInit {
 
   addItem(): void {}
 
+  editItem(item: any): void {
+    this.editMode = true;
+    this.currentEditId = item.id;
+    this.itemForm.patchValue(item);
+
+    const itemModal = document.getElementById('item-modal');
+    if (itemModal) {
+      itemModal.addEventListener('hidden', () => {
+        this.editMode = false;
+        this.currentEditId = '';
+        this.itemForm.reset();
+      });
+      UIkit.modal(itemModal).show();
+    }
+  }
+
   deleteItem(): void {}
+
+  searchItems(): void {
+    const query = this.itemSearchInput.nativeElement.value.trim().toLowerCase();
+    this.filteredItems = this.items.filter((item) => {
+      return item.name.toLowerCase().indexOf(query) !== -1;
+    });
+    this.filteredItems.sort((item1, item2) => {
+      const index1 = item1.name.toLowerCase().indexOf(query);
+      const index2 = item2.name.toLowerCase().indexOf(query);
+      return index1 - index2;
+    });
+  }
+
+  updateStock(): void {
+    // Update only those items' stock whose inputs have been changed
+    const toUpdate: any = {};
+    for (const item of this.items) {
+      if (
+        this.updateStockForm.get(item.id.toString())!.value != item.quantity
+      ) {
+        toUpdate[item.id.toString()] = item.quantity;
+      }
+    }
+  }
 
   ngOnInit(): void {}
 }

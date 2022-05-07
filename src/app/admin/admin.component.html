@@ -8,10 +8,10 @@
   ></button>
   <h2 id="header-heading">Agent {{ currentPanel }}</h2>
   <div *ngIf="currentPanel == 'Stock'" id="header-end">
-    <button class="admin-button" uk-toggle="target: #add-stock-modal">
-      <span uk-icon="icon: plus"></span> Add Stock
+    <button class="admin-button" uk-toggle="target: #update-stock-modal">
+      <span uk-icon="icon: plus"></span> Update Stock
     </button>
-    <button class="admin-button" uk-toggle="target: #add-item-modal">
+    <button class="admin-button" uk-toggle="target: #item-modal">
       <span uk-icon="icon: plus"></span> Add Item
     </button>
   </div>
@@ -26,8 +26,8 @@
     </button>
   </div>
   <div *ngIf="currentPanel == 'Employees'" id="header-end">
-    <div id="search-box">
-      <input type="text" id="admin-search" placeholder="Search" />
+    <div class="search-box">
+      <input type="text" class="admin-search" placeholder="Search" />
       <span uk-icon="icon: search"></span>
     </div>
     <button class="admin-button">
@@ -35,8 +35,8 @@
     </button>
   </div>
   <div *ngIf="currentPanel == 'Customers'" id="header-end">
-    <div id="search-box">
-      <input type="text" id="admin-search" placeholder="Search" />
+    <div class="search-box">
+      <input type="text" class="admin-search" placeholder="Search" />
       <span uk-icon="icon: search"></span>
     </div>
     <button class="admin-button">
