@@ -7,6 +7,7 @@ import { RecipesComponent } from './recipes.component';
 import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
     RecipesRoutingModule,
     AdminWidgetsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class RecipesModule { }

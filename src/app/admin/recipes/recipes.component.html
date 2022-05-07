@@ -1,5 +1,6 @@
 <section id="recipe-cards">
 <app-recipe-card *ngFor="let recipe of recipes"
+[recipeId]="recipe.id" 
 [recipeTitle]="recipe.title" 
 [recipeDesc]="recipe.desc" 
 [recipeImage]="recipe.imgSrc"></app-recipe-card>
@@ -75,8 +76,3 @@
   </div>
 
 <app-confirm-delete-modal (confirmDelete)="deleteRecipe()"></app-confirm-delete-modal>
-
-<!-- 
-<app-recipe-page>
-
-</app-recipe-page> -->

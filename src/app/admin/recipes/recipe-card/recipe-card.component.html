@@ -1,23 +1,19 @@
-
-
-<section id="recipe-card">
-
+<div id="recipe-card" [routerLink]="recipeTitle.toLowerCase().replace(' ', '-') + '-' + recipeId">
   <div id="image">
-    <img src='{{recipeImage}}' alt='{{recipeTitle}}' />
-    
+    <img src="{{ recipeImage }}" alt="{{ recipeTitle }}" />
   </div>
   <div id="dish-description">
-    <b> {{recipeTitle}}</b>
-    <p>{{recipeDesc}}</p>
+    <b> {{ recipeTitle }}</b>
+    <p>{{ recipeDesc }}</p>
   </div>
   <div id="buttons">
     <button id="edit">
       <b>Edit</b>
-      <img src="../../../../assets/img/edit.svg" alt="dish" />
+      <img src="../../../../assets/img/edit.svg" />
     </button>
     <button id="remove" uk-toggle="#confirm-delete-modal">
       <b>Remove</b>
       <i class="fa-solid fa-trash"></i>
     </button>
   </div>
-</section>
+</div>

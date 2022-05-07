@@ -15,7 +15,10 @@ export class AdminComponent implements OnInit {
 
   onWindowResize() {
     this.largeScreen = window.innerWidth > this.breakpoint;
-    document.documentElement.style.setProperty('--overlay-width', !this.largeScreen && this.showSidebar ? '100%' : '0%');
+    document.documentElement.style.setProperty(
+      '--overlay-width',
+      !this.largeScreen && this.showSidebar ? '100%' : '0%'
+    );
   }
 
   constructor(private router: Router) {
@@ -23,20 +26,28 @@ export class AdminComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         // Update header heading
         const url = this.router.url;
-        const lastSlashIndex = url.lastIndexOf('/');
-        const panel = url.substring(lastSlashIndex + 1);
-        const panelWords = panel.split('-');
-        panelWords.forEach((word, index) => {
-          panelWords[index] = word.charAt(0).toUpperCase() + word.substring(1);
-        });
-        this.currentPanel = panelWords.join(' ');
+        if (url.indexOf('recipes') !== -1) {
+          this.currentPanel = 'Recipes';
+        } else {
+          const lastSlashIndex = url.lastIndexOf('/');
+          const panel = url.substring(lastSlashIndex + 1);
+          const panelWords = panel.split('-');
+          panelWords.forEach((word, index) => {
+            panelWords[index] =
+              word.charAt(0).toUpperCase() + word.substring(1);
+          });
+          this.currentPanel = panelWords.join(' ');
+        }
       }
     });
   }
 
   toggleSidebar() {
     this.showSidebar = !this.showSidebar;
-    document.documentElement.style.setProperty('--overlay-width', !this.largeScreen && this.showSidebar ? '100%' : '0%');
+    document.documentElement.style.setProperty(
+      '--overlay-width',
+      !this.largeScreen && this.showSidebar ? '100%' : '0%'
+    );
   }
 
   ngOnInit(): void {}
