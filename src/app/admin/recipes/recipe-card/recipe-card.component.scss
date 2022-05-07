@@ -37,49 +37,44 @@
     }
   }
   #buttons {
-    padding-right: 20px;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+
     button {
-      margin-left: 20px;
-      width: 148px;
-      height: 46px;
-      height: 46px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--xxsmall);
+      padding: 06px 15px;
       border: none;
-      gap:10px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      &:hover{
-          transform: scale(1.02);
-      }
-      b {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 27px;
-        color: var(  --primary-contrast);
-      }
-      img{
-        width: 22px;
-        height: 22px;
-          margin-left: 10px;
-          margin-bottom: 5px;
-      }
-     
+      border-radius: 10px;
+      margin-left: 8px;
+      font-family: "Poppins", sans-serif;
+      font-weight: 200;
     }
+
     #edit {
-        background-color: var(--secondary);
+      background-color: var(--secondary);
+      color: #fff;
+      padding: 05px 20px;
+
+      b {
+        margin-right: 5px;
       }
-      #remove{
-          b{
-              color:var(--danger);
-          }
-background: #FFFFFF;
-border: 2px solid var(--danger)
+    }
+
+    #remove {
+      border: 1.5px solid #f95640;
+      color: black;
+
+      i {
+        margin-left: 7px;
+        color: #f95640;
       }
-  }
-  transition: transform 0.3s ease;
-  &:hover{
-      transform: scale(1.005);
-      box-shadow: rgba(0, 0, 0, 0.56) 0px 1px 4px;
+    }
   }
 }
+
+
+

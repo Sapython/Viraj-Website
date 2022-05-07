@@ -4,6 +4,75 @@
 [recipeDesc]="recipe.desc" 
 [recipeImage]="recipe.imgSrc"></app-recipe-card>
 </section>
+<div id="recipe-modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+      <h2 *ngIf="!editMode" class="uk-modal-title">Add New Recipe</h2>
+      <h2 *ngIf="editMode" class="uk-modal-title">Edit Recipe</h2>
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <form [formGroup]="recipeForm" (ngSubmit)="addrecipe()">
+        <div id="recipe-form-content">
+          <div id="upload-photo-wrapper" (click)="photoInput.click()">
+            <div id="upload-photo-container">
+              <img src="assets/img/ri_image-edit-fill.png" />
+              <p *ngIf="!editMode && photoInput.files?.length != 1">
+                Upload Photo
+              </p>
+              <p *ngIf="editMode || photoInput.files?.length == 1">
+                Change Photo
+              </p>
+              <input type="file" (change)="imageSelected()" #photoInput />
+            </div>
+          </div>
+          <div id="recipe-inputs">
+            <div class="recipe-form-box">
+              <label class="admin-label" for="name-input">Name</label>
+              <input
+                type="text"
+                class="admin-input"
+                formControlName="name"
+                id="name-input"
+              />
+            </div>
+            <div class="recipe-form-box">
+              <label class="admin-label" for="quantity-input">Quantity</label>
+              <input
+                type="number"
+                min="0"
+                class="admin-input"
+                formControlName="quantity"
+                id="quantity-input"
+              />
+            </div>
+            <div class="recipe-form-box">
+              <label class="admin-label" for="rate-input">Rate (₹)</label>
+              <input
+                type="number"
+                min="0"
+                class="admin-input"
+                formControlName="rate"
+                id="rate-input"
+              />
+            </div>
+            <div class="recipe-form-box">
+              <label class="admin-label">Unit</label>
+              <select class="admin-input" formControlName="unit">
+                <option ngValue="g">Grams (g)</option>
+                <option ngValue="kg">Kilograms (kg)</option>
+                <option ngValue="l">Litre (l)</option>
+                <option ngValue="ml">Millilitre (ml)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button *ngIf="!editMode" (disabled)="(!recipeForm.valid)" type="submit">
+          Add Recipe
+        </button>
+        <button *ngIf="editMode" (disabled)="(!recipeForm.valid)" type="submit">
+          Save Changes
+        </button>
+      </form>
+    </div>
+  </div>
 
 <app-confirm-delete-modal (confirmDelete)="deleteRecipe()"></app-confirm-delete-modal>
 

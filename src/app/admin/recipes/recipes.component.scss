@@ -5,3 +5,113 @@
     flex-direction: column;
     width: 100%;
 }
+form {
+    #recipe-form-content {
+      display: flex;
+      align-items: flex-start;
+
+      #upload-photo-wrapper {
+        width: 30%;
+        height: 0;
+        padding-bottom: 30%;
+        border-radius: 50%;
+        background-color: #adadad;
+        position: relative;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &:hover {
+          background-color: #888888;
+
+          &::before {
+            filter: brightness(0.4);
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: var(--photo-background);
+          background-size: cover;
+          background-repeat: no-repeat;
+          border-radius: 50%;
+          filter: brightness(0.6);
+          transition: all 0.4s;
+        }
+
+        #upload-photo-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+
+          img {
+            width: 60%;
+          }
+
+          p {
+            color: #fff;
+            font-size: var(--msmall);
+            font-family: var(--font-three);
+            margin: 0.5em 0;
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+
+      #recipe-inputs {
+        width: 60%;
+        margin-left: 1.5em;
+        
+        .recipe-form-box {  
+          margin-top: 1em;
+          
+          label {
+            color: var(--secondary);
+            font-weight: 500;
+            padding-left: 0.5em;
+          }
+
+          input {
+            width: 100%;
+          }
+
+          select {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    button {
+      background-color: var(--secondary);
+      color: var(--secondary-contrast);
+      width: 100%;
+      border: none;
+      border-radius: 7px;
+      padding: 0.5em 1em;
+      font-size: var(--small);
+      font-family: var(--font-three);
+      cursor: pointer;
+      transition: all 0.5s;
+      margin-top: 1em;
+
+      &:hover {
+        box-shadow: var(--normal-shadow);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: no-drop;
+      }
+    }
+  }

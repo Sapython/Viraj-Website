@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +18,9 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
   imports: [
     CommonModule,
     RecipesRoutingModule,
-    AdminWidgetsModule
+    AdminWidgetsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RecipesModule { }
