@@ -29,6 +29,8 @@ export class RecipesComponent implements OnInit {
 
   constructor() { }
 
+  deleteRecipe(): void {}
+
   ngOnInit(): void {
   }
 

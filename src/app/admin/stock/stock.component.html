@@ -20,7 +20,7 @@
             <b>Edit</b>
             <img src="../../../../assets/img/edit.svg" alt="dish" />
           </button>
-          <button id="remove">
+          <button id="remove" uk-toggle="target: #confirm-delete-modal">
             <b>Remove</b>
             <i class="fa-solid fa-trash"></i>
           </button>
@@ -34,20 +34,47 @@
   <div class="uk-modal-dialog uk-modal-body">
     <h2 class="uk-modal-title">Add New Item</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-
     <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
-      <div
-        id="upload-post-wrapper"
-        (click)="postInput.click()"
-        #uploadPostWrapper
-      >
-        <div id="upload-post-container">
-          <img src="assets/img/ri_image-edit-fill.png" />
-          <p *ngIf="postInput.files?.length != 1">Upload Post</p>
-          <p *ngIf="postInput.files?.length == 1">Change Post</p>
-          <input type="file" (change)="imageSelected()" #postInput />
+      <div id="item-form-content">
+        <div
+          id="upload-photo-wrapper"
+          (click)="photoInput.click()"
+        >
+          <div id="upload-photo-container">
+            <img src="assets/img/ri_image-edit-fill.png" />
+            <p *ngIf="photoInput.files?.length != 1">Upload Photo</p>
+            <p *ngIf="photoInput.files?.length == 1">Change Photo</p>
+            <input type="file" (change)="imageSelected()" #photoInput />
+          </div>
+        </div>
+        <div id="item-inputs">
+          <input type="text" placeholder="Name" class="admin-input" />
+          <input type="number" placeholder="Quantity" class="admin-input" />
+          <div id="unit-input-container">
+            <label class="admin-label">Unit</label>
+            <select class="admin-input">
+              <option>Grams (g)</option>
+              <option>Kilograms (kg)</option>
+              <option>Litre (l)</option>
+              <option>Millilitre (ml)</option>
+            </select>
+          </div>
         </div>
       </div>
+      <button type="submit">Add Item</button>
     </form>
   </div>
 </div>
+
+<div id="add-stock-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 class="uk-modal-title">Add Stock</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="addItemForm" (ngSubmit)="addItem()">
+      
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal (confirmDelete)="deleteItem()"></app-confirm-delete-modal>

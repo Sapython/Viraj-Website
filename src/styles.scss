@@ -92,11 +92,17 @@
   margin-right: 0.5em;
 }
 
+.admin-label {
+  font-family: var(--font-three);
+  font-size: var(--small);
+  color: var(--primary);
+}
+
 .admin-input {
   display: block;
   background-color: transparent;
   font-family: var(--font-two);
-  font-size: var(--medium);
+  font-size: var(--small);
   padding: 0.5em;
   border: none;
   border-bottom: 2px solid var(--secondary);

@@ -1,0 +1,13 @@
+<div id="confirm-delete-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <span uk-icon="icon: trash; ratio: 3"></span>
+    </div>
+    <div id="buttons">
+        <button (click)="btnClick(true)">Yes</button>
+        <button (click)="btnClick(false)">No</button>
+    </div>
+  </div>
+</div>

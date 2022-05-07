@@ -74,8 +74,7 @@ export class StockComponent implements OnInit {
     },
   ];
 
-  @ViewChild('uploadPostWrapper') uploadPostWrapper: ElementRef;
-  @ViewChild('postInput') postInput: ElementRef;
+  @ViewChild('photoInput') photoInput: ElementRef;
 
   addItemForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -101,11 +100,11 @@ export class StockComponent implements OnInit {
 
   constructor() {}
 
-  imageSelected() {
+  imageSelected(): void {
     var selectionIsValid = true;
-    const file = this.postInput.nativeElement.files[0];
+    const file = this.photoInput.nativeElement.files[0];
 
-    if (this.postInput.nativeElement.files.length != 1) {
+    if (this.photoInput.nativeElement.files.length != 1) {
       selectionIsValid = false;
     } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
       alert('Your photo should either be in .png or .jpg');
@@ -120,16 +119,18 @@ export class StockComponent implements OnInit {
       fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         document.documentElement.style.setProperty(
-          '--post-background',
+          '--photo-background',
           `url('${fileReader.result}')`
         );
       };
     } else {
-      document.documentElement.style.setProperty('--post-background', '');
+      document.documentElement.style.setProperty('--photo-background', '');
     }
   }
 
-  addItem() {}
+  addItem(): void {}
+
+  deleteItem(): void {}
 
   ngOnInit(): void {}
 }
