@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +13,9 @@ import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
   imports: [
     CommonModule,
     EmployeesRoutingModule,
-    AdminWidgetsModule
+    AdminWidgetsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeesModule { }

@@ -11,6 +11,10 @@
   gap: 30px;
   box-sizing: border-box;
   transition: transform 0.3s ease;
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.009);
+  }
   #image {
     height: 124px;
     width: 164px;

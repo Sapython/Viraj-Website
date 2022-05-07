@@ -1,29 +1,155 @@
 <section>
-    <table>
-      <tr>
-        <th width="10%"></th>
-        <th width="30%">Customer Name</th>
-        <th width="15%">Age</th>
-        <th width="15%">Gross Purchase</th>
-        <th width="30%"></th>
-      </tr>
-      <tr *ngFor="let item of items">
-        <td><img [src]="item.img" /></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.age }}</td>
-        <td>₹{{ item.purchase}}</td>
-        <td class="right">
-          <div id="buttons">
-            <button id="edit">
-              <b>Edit</b>
-              <img src="../../../../assets/img/edit.svg" alt="dish" />
-            </button>
-            <button id="remove">
-              <b>Remove</b>
-              <i class="fa-solid fa-trash"></i>
-            </button>
+  <table>
+    <tr>
+      <th width="10%"></th>
+      <th width="30%">Customer Name</th>
+      <th width="15%">Age</th>
+      <th width="15%">Gross Purchase</th>
+      <th width="30%"></th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td><img [src]="item.img" /></td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.age }}</td>
+      <td>₹{{ item.purchase }}</td>
+      <td class="right">
+        <div id="buttons">
+          <button id="edit" id="edit" (click)="editItem(item)">
+            <b>Edit</b>
+            <img src="../../../../assets/img/edit.svg" alt="dish" />
+          </button>
+          <button id="remove" uk-toggle="target: #confirm-delete-modal">
+            <b>Remove</b>
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<div id="customer-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add New Customer</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Item</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="itemForm" (ngSubmit)="addItem()">
+      <div id="item-form-content">
+        <div id="upload-photo-wrapper" (click)="photoInput.click()">
+          <div id="upload-photo-container">
+            <img src="assets/img/ri_image-edit-fill.png" />
+            <p *ngIf="!editMode && photoInput.files?.length != 1">
+              Upload Photo
+            </p>
+            <p *ngIf="editMode || photoInput.files?.length == 1">
+              Change Photo
+            </p>
+            <input type="file" (change)="imageSelected()" #photoInput />
           </div>
-        </td>
-      </tr>
-    </table>
-  </section>
+        </div>
+        <div id="item-inputs">
+          <div class="item-form-box">
+            <label class="admin-label" for="name-input">Name</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="name"
+              id="name-input"
+            />
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label" for="quantity-input">Age</label>
+            <input
+              type="number"
+              min="0"
+              class="admin-input"
+              formControlName="age"
+              id="quantity-input"
+            />
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label">Gender</label>
+            <select class="admin-input" formControlName="gender">
+              <option >Male</option>
+              <option >Female</option>
+              <option >Others</option>
+            </select>
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label" for="name-input">Address</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="address"
+              id="name-input"
+            />
+          </div>  
+          <div class="item-form-box">
+            <label class="admin-label" for="name-input">Job</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="job"
+              id="name-input"
+            />
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label" for="name-input">Gross</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="gross"
+              id="name-input"
+            />
+            
+          </div>
+          <div class="item-form-box">
+            <label class="admin-label" for="name-input">Purchase</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="purchase"
+              id="name-input"
+            />
+            
+          </div>
+         
+        </div>
+      
+      </div>
+     
+      <div class="item-form-box3">
+        <div class="item-form-box">
+          <label class="admin-label" for="name-input">Phone Number</label>
+          <input
+            type="text"
+            class="admin-input"
+            formControlName="phoneNumber"
+            id="name-input"
+          />
+          
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label" for="name-input">Email</label>
+          <input
+            type="email"
+            class="admin-input"
+            formControlName="email"
+            id="name-input"
+          />
+          
+        </div>
+      </div>
+      <button *ngIf="!editMode" (disabled)="(!itemForm.valid)" type="submit">
+        Add Customer
+      </button>
+      <button *ngIf="editMode" (disabled)="(!itemForm.valid)" type="submit">
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal
+  (confirmDelete)="deleteItem()"
+></app-confirm-delete-modal>

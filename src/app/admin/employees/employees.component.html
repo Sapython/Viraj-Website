@@ -1,31 +1,157 @@
 <section>
-    <table>
-      <tr>
-        <th width="10%"></th>
-        <th width="30%">Employee Name</th>
-        <th width="15%">Post</th>
-        <th width="10%">Age</th>
-        <th width="10%">Experience</th>
-        <th width="25%"></th>
-      </tr>
-      <tr *ngFor="let item of items">
-        <td><img [src]="item.img" /></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.post }} <br> {{item.post2}}</td>
-        <td>{{ item.age }}</td>
-        <td>{{ item.experience}} <br> Years</td>
-        <td class="right">
-          <div id="buttons">
-            <button id="edit">
-              <b>Edit</b>
-              <img src="../../../../assets/img/edit.svg" alt="dish" />
-            </button>
-            <button id="remove">
-              <b>Remove</b>
-              <i class="fa-solid fa-trash"></i>
-            </button>
+  <table>
+    <tr>
+      <th width="10%"></th>
+      <th width="30%">Employee Name</th>
+      <th width="15%">Post</th>
+      <th width="10%">Age</th>
+      <th width="10%">Experience</th>
+      <th width="25%"></th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td><img [src]="item.img" /></td>
+      <td>{{ item.employeeName }}</td>
+      <td>
+        {{ item.post }} <br />
+        {{ item.post2 }}
+      </td>
+      <td>{{ item.age }}</td>
+      <td>
+        {{ item.experience }} <br />
+        Years
+      </td>
+      <td class="right">
+        <div id="buttonss">
+          <button id="edit" id="edits" (click)="editItem(item)">
+            <b>Edit</b>
+            <img src="../../../../assets/img/edit.svg" alt="dish" />
+          </button>
+          <button id="remove" uk-toggle="target: #confirm-delete-modal">
+            <b>Remove</b>
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</section>
+
+<div id="employee-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Edit Employee Info</h2>
+   
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Employee</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="recipeForm" (ngSubmit)="addrecipe()">
+      <div id="employee-form-content">
+        <div id="upload-photo-wrapper" (click)="photoInput.click()">
+          <div id="upload-photo-container">
+            <img src="assets/img/ri_image-edit-fill.png" />
+            <p *ngIf="!editMode && photoInput.files?.length != 1">
+              Upload Photo
+            </p>
+            <p *ngIf="editMode || photoInput.files?.length == 1">
+              Change Photo
+            </p>
+            <input type="file" (change)="imageSelected()" #photoInput />
           </div>
-        </td>
-      </tr>
-    </table>
-  </section>
+        </div>
+        <div id="employee-inputs">
+          <div class="employee-form-box">
+            <label class="adress-label" for="address-input">Employee Name</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="employeeName"
+              id="name-input"
+            />
+          </div>
+          <div class="employee-form-box">
+            <label class="adress-label" for="address-input">Phone Number</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="phoneNumber"
+              id="quantity-input"
+            />
+          </div>
+          <div class="employee-form-box">
+            <label class="adress-label" for="address-input">Post</label>
+            <input
+              type="text"
+              min="0"
+              class="admin-input"
+              formControlName="post"
+              id="quantity-input"
+            />
+          </div>
+            <div class="employee-form-box">
+              <label class="adress-label" for="address-input">Experience</label>
+              <input
+                type="text"
+                min="0"
+                class="admin-input"
+                formControlName="experience"
+                id="quantity-input"
+              />
+            </div>
+            
+            <div class="employee-form-box">
+              <label class="adress-label" for="address-input">Age</label>
+              <input
+                type="text"
+                min="0"
+                class="admin-input"
+                formControlName="age"
+                id="quantity-input"
+              />
+            </div>
+            <div class="employee-form-box">
+              <label class="adress-label" for="address-input">Aadhar Number</label>
+              <input
+                type="text"
+                min="0"
+                class="admin-input"
+                formControlName="aadharNumber"
+                id="quantity-input"
+              />
+            </div>
+          <div class="employee-form-box">
+            <label class="adress-label" for="address-input">Address</label>
+            <textarea  class="admin-input" formControlName="address"> </textarea>
+          </div>
+          <label class="adress-label" for="address-input"
+          >Payment Method</label
+        >
+          <div class="employee-form-box">
+          
+
+            <label class="adress-label" for="address-input">Account Holder Namer</label>
+            <input
+              type="text"
+              formControlName="accountHolderName"
+              class="admin-input"
+              id="quantity-input"
+            />
+            <label class="adress-label" for="address-input">Account Number</label>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="accountNumber"
+              id="quantity-input"
+            />
+          </div>
+        </div>
+      </div>
+      <button *ngIf="!editMode" (disabled)="(!recipeForm.valid)" type="submit">
+        Save
+      </button>
+      <button *ngIf="editMode" (disabled)="(!recipeForm.valid)" type="submit">
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+<app-confirm-delete-modal
+  (confirmDelete)="deleteItem()"
+></app-confirm-delete-modal>

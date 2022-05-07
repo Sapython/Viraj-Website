@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    
 }
 form {
     #recipe-form-content {
@@ -108,7 +109,14 @@ form {
       &:hover {
         box-shadow: var(--normal-shadow);
       }
+      &:hover {
+        box-shadow: var(--normal-shadow);
+      }
 
+      &:disabled {
+        opacity: 0.5;
+        cursor: no-drop;
+      }
       &:disabled {
         opacity: 0.5;
         cursor: no-drop;
