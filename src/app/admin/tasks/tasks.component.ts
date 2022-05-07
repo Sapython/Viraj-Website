@@ -1,81 +1,198 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+declare const UIkit: any;
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
+  styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-  items: Array<any> = [
+  tasks: Array<any> = [
     {
       id: 1,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
+      name: 'Cleaning',
+      status: 'In Progess',
+      employeeId: 'E1',
+      completed: false,
+      details: [
+        'Wipe down and sanitize all surface',
+        'Tuck chairs back into place',
+      ],
     },
     {
       id: 2,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
+      name: 'Food Safety',
+      status: 'Completed',
+      employeeId: 'E2',
+      completed: true,
+      details: [
+        'Disinfect food preparation surfaces',
+        'Put food back in proper storage place',
+      ],
     },
     {
       id: 3,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
+      name: 'Cleaning',
+      status: 'Completed',
+      employeeId: 'E3',
+      completed: true,
+      details: [
+        'Wipe down and sanitize all surface',
+        'Tuck chairs back into place',
+        'Tuck chairs back into place',
+      ],
     },
     {
       id: 4,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
+      name: 'Food Safety',
+      status: 'In Progess',
+      employeeId: 'E4',
+      completed: false,
+      details: [
+        'Disinfect food preparation surfaces',
+        'Put food back in proper storage place',
+      ],
     },
     {
       id: 5,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
+      name: 'Cleaning',
+      status: 'Completed',
+      employeeId: 'E5',
+      completed: true,
+      details: [
+        'Wipe down and sanitize all surface',
+        'Tuck chairs back into place',
+      ],
     },
     {
       id: 6,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
+      name: 'Food Safety',
+      status: 'In Progess',
+      employeeId: 'E6',
+      completed: false,
+      details: [
+        'Disinfect food preparation surfaces',
+        'Put food back in proper storage place',
+      ],
     },
-    {
-      id: 7,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
-    },
-    {
-      id: 8,
-      task:'Cleaning',
-      status: 'In Progress',
-      name: 'Sujeet Singh',
-      age:'28',
-      details:['Wipe down and sanitize all surface','Wipe down and sanitize all surface']
-    },
-  ]
+  ];
 
+  employees: any = [
+    {
+      id: 'E1',
+      name: 'Amit Shah',
+    },
+    {
+      id: 'E2',
+      name: 'Narendra Modi',
+    },
+    {
+      id: 'E3',
+      name: 'Yogi Bhai',
+    },
+    {
+      id: 'E4',
+      name: 'Rahul Gandhi',
+    },
+    {
+      id: 'E5',
+      name: 'Arvind Kejriwal',
+    },
+    {
+      id: 'E6',
+      name: 'Sonia Gandhi',
+    },
+  ];
+
+  editMode: boolean = false;
+  currentEditId: string = '';
+
+  taskForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    employeeId: new FormControl(null, [Validators.required]),
+    details: new FormControl('', [Validators.required]),
+  });
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  addTask(): void {}
+
+  deleteTask(): void {}
+
+  addDetails(detail: any): void {
+    const detailsInputs = document.getElementById('details-inputs');
+    if (detailsInputs) {
+      const detailInputContainer = document.createElement('div');
+      detailInputContainer.classList.add('detail-input-container');
+      detailInputContainer.style.display = 'flex';
+      detailInputContainer.style.alignItems = 'center';
+
+      const detailInput = document.createElement('input');
+      detailInput.type = 'text';
+      detailInput.classList.add('admin-input', 'detail-input');
+      detailInput.style.width = '100%';
+      detailInput.value = detail;
+
+      const deleteIcon = document.createElement('span');
+      deleteIcon.setAttribute('uk-icon', 'trash');
+      deleteIcon.style.marginLeft = '1em';
+      deleteIcon.style.cursor = 'pointer';
+      deleteIcon.style.color = 'var(--secondary)';
+      deleteIcon.addEventListener(
+        'click',
+        () => {
+          if (detailsInputs.contains(detailInputContainer)) {
+            detailsInputs.removeChild(detailInputContainer);
+          }
+        },
+        false
+      );
+
+      detailInputContainer.appendChild(detailInput);
+      detailInputContainer.appendChild(deleteIcon);
+      detailsInputs.appendChild(detailInputContainer);
+    }
+  }
+
+  getEmployeeName(employeeId: any): string {
+    for (const employee of this.employees) {
+      if (employee.id == employeeId) {
+        return employee.name;
+      }
+    }
+    return '';
+  }
+
+  editTask(task: any): void {
+    this.editMode = true;
+    this.currentEditId = task.id;
+
+    // Patch values
+    this.taskForm.patchValue(task);
+    const detailsInputs = document.getElementById('details-inputs');
+    if (detailsInputs) {
+      detailsInputs.innerHTML = '';
+      task.details.forEach((detail: any) => {
+        this.addDetails(detail);
+      });
+    }
+
+    const taskModal = document.getElementById('task-modal');
+    if (taskModal) {
+      taskModal.addEventListener('hidden', () => {
+        this.editMode = false;
+        this.currentEditId = '';
+
+        // Reset the form
+        this.taskForm.reset();
+        if (detailsInputs) {
+          detailsInputs.innerHTML = '';
+        }
+      });
+      UIkit.modal(taskModal).show();
+    }
+  }
 }

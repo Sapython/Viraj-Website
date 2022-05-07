@@ -1,32 +1,115 @@
 <section>
-    <table>
-      <tr>
-        <th width="15%">Task Name</th>
-        <th width="15%">Employee</th>
-        <th width="40%">Details</th>
-        <th width="30%"></th>
-      </tr>
-      <tr *ngFor="let item of items">
-        <td>{{item.task}}<br><span>{{item.status}}</span></td>
-        <td>{{item.name}}</td>
+  <table id="due-tasks">
+    <tr>
+      <th width="15%">Task Name</th>
+      <th width="15%">Employee</th>
+      <th width="40%">Details</th>
+      <th width="30%"></th>
+    </tr>
+    <ng-container *ngFor="let task of tasks">
+      <tr *ngIf="!task.completed">
+        <td>
+          {{ task.name }}<br /><span>{{ task.status }}</span>
+        </td>
+        <td>{{ getEmployeeName(task.employeeId) }}</td>
         <td>
           <ul>
-            <li><span class="black">{{item.details[0]}}</span></li>
-            <li><span class="black">{{item.details[1]}}</span></li>
+            <li *ngFor="let detail of task.details">
+              <span class="black">{{ detail }}</span>
+            </li>
           </ul>
         </td>
         <td class="right">
-          <div id="buttons">
-            <button id="edit">
+          <div class="buttons">
+            <button class="edit" (click)="editTask(task)">
               <b>Edit</b>
-              <img src="../../../../assets/img/edit.svg" alt="dish" />
             </button>
-            <button id="remove">
+            <button class="delete" uk-toggle="target: #confirm-delete-modal">
+              <b>Delete</b>
+            </button>
+            <button class="remove" (click)="task.completed = true">
               <b>Done</b>
               <i class="fa-solid fa-circle-check"></i>
             </button>
           </div>
         </td>
       </tr>
-    </table>
-  </section>
+    </ng-container>
+  </table>
+  <h3>Completed Tasks</h3>
+  <table id="completed-tasks">
+    <tr>
+      <th width="15%">Task Name</th>
+      <th width="15%">Employee</th>
+      <th width="40%">Details</th>
+      <th width="30%"></th>
+    </tr>
+    <ng-container *ngFor="let task of tasks">
+      <tr *ngIf="task.completed">
+        <td>
+          {{ task.name }}
+        </td>
+        <td>{{ getEmployeeName(task.employeeId) }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let detail of task.details">
+              <span class="black">{{ detail }}</span>
+            </li>
+          </ul>
+        </td>
+        <td class="right">
+          <div class="buttons">
+            <button class="delete" uk-toggle="target: #confirm-delete-modal">
+              <b>Delete</b>
+            </button>
+            <button class="mark-incomplete" (click)="task.completed = false"><b>Mark Incomplete</b></button>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+</section>
+
+<div id="task-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add New Task</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Task</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+      <div class="task-form-box">
+        <label class="admin-label" for="name-input">Name</label>
+        <input
+          type="text"
+          class="admin-input"
+          formControlName="name"
+          id="name-input"
+        />
+      </div>
+      <div class="task-form-box">
+        <label class="admin-label">Employee</label>
+        <select class="admin-input" formControlName="employeeId">
+          <option *ngFor="let employee of employees" [ngValue]="employee.id">
+            {{ employee.name }}
+          </option>
+        </select>
+      </div>
+      <div class="task-form-box">
+        <label class="admin-label">Details</label>
+        <div id="details-inputs"></div>
+        <button id="add-detail" (click)="addDetails('')">
+          <span uk-icon="plus"></span> Add Detail
+        </button>
+      </div>
+      <button *ngIf="!editMode" (disabled)="(!taskForm.valid)" type="submit">
+        Add Task
+      </button>
+      <button *ngIf="editMode" (disabled)="(!taskForm.valid)" type="submit">
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal
+  (confirmDelete)="deleteTask()"
+></app-confirm-delete-modal>
