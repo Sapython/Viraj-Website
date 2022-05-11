@@ -159,6 +159,7 @@ export class StockComponent implements OnInit {
         // Reset the form
         this.itemForm.reset();
         document.documentElement.style.setProperty('--photo-background', '');
+        this.photoInput.nativeElement.value = '';
       });
       UIkit.modal(itemModal).show();
     }

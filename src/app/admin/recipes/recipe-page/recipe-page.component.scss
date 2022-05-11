@@ -1,6 +1,11 @@
 section {
   padding: 1.5em;
 
+  #go-back {
+    font-size: var(--msmall);
+    margin-bottom: 1em;
+  }
+
   h2,
   h3,
   p,
@@ -110,10 +115,5 @@ section {
       padding: .5em;
       font-size: var(--msmall);
     }
-  }
-
-  #go-back {
-    font-size: var(--msmall);
-    margin-bottom: 1em;
   }
 }

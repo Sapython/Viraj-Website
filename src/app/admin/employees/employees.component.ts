@@ -8,56 +8,60 @@ declare const UIkit: any;
   styleUrls: ['./employees.component.scss', '../admin.util.scss'],
 })
 export class EmployeesComponent implements OnInit {
-  employees: Array<any> = [
+  employees: any[] = [
     {
-      id: '1',
+      id: 'sujeet-singh',
       image: 'https://picsum.photos/200/?random=1',
       name: 'Sujeet Singh',
       post: 'Manager',
-      dob: '1/27/2002',
-      yearJoined: '2019',
+      dob: '2002-01-27',
+      yearStartedWork: '2019',
       phoneNumber: '+11 121-212-212',
       aadharNumber: '1233 1223 1222',
       address: 'cuttuck',
+      paymentMethod: 'UPI',
       accountHolderName: 'John Doe',
       accountNumber: '1223 1122 383',
     },
     {
-      id: '3',
+      id: 'kumar-yadav',
       image: 'https://picsum.photos/200/?random=1',
       name: 'Kumar Yadav',
       post: 'Manager',
-      dob: '1/27/2002',
-      yearJoined: '2020',
+      dob: '2002-01-27',
+      yearStartedWork: '2020',
       phoneNumber: '+11 121-212-212',
       aadharNumber: '1233 1223 1222',
       address: 'cuttuck',
+      paymentMethod: 'UPI',
       accountHolderName: 'John Doe',
       accountNumber: '1223 1122 383',
     },
     {
-      id: '2',
+      id: 'mohit-bling',
       image: 'https://picsum.photos/200/?random=1',
       name: 'Mohit Bling',
       post: 'Manager',
-      dob: '1/27/2002',
-      yearJoined: '2024',
+      dob: '2002-01-27',
+      yearStartedWork: '2024',
       phoneNumber: '+11 121-212-212',
       aadharNumber: '1233 1223 1222',
       address: 'cuttuck',
+      paymentMethod: 'UPI',
       accountHolderName: 'John Doe',
       accountNumber: '1223 1122 383',
     },
     {
-      id: '4',
+      id: 'jhopdi-goyal',
       image: 'https://picsum.photos/200/?random=1',
       name: 'Jhopdi Goyal',
       post: 'Manager',
-      dob: '1/27/2002',
-      yearJoined: '2022',
+      dob: '2002-01-27',
+      yearStartedWork: '2022',
       phoneNumber: '+11 121-212-212',
       aadharNumber: '1233 1223 1222',
       address: 'cuttuck',
+      paymentMethod: 'UPI',
       accountHolderName: 'John Doe',
       accountNumber: '1223 1122 383',
     },
@@ -73,7 +77,7 @@ export class EmployeesComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     post: new FormControl('', [Validators.required]),
     dob: new FormControl('', [Validators.required]),
-    yearJoined: new FormControl('', [Validators.required]),
+    yearStartedWork: new FormControl('', [Validators.required]),
     phoneNumber: new FormControl('', [Validators.required]),
     aadharNumber: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
@@ -111,7 +115,7 @@ export class EmployeesComponent implements OnInit {
     }
   }
 
-  getAge(dob: any) : any {
+  getAge(dob: any): any {
     const date = new Date(dob);
     if (date) {
       const today = new Date();
@@ -122,9 +126,9 @@ export class EmployeesComponent implements OnInit {
     return '';
   }
 
-  getExperience(yearJoined: any): any {
+  getExperience(yearStartedWork: any): any {
     const currentYear = new Date().getFullYear();
-    const difference = Math.max(currentYear - yearJoined, 0);
+    const difference = Math.max(currentYear - yearStartedWork, 0);
     return difference;
   }
 
@@ -164,16 +168,28 @@ export class EmployeesComponent implements OnInit {
   editEmployee(employee: any): void {
     this.editMode = true;
     this.currentEditId = employee.id;
+
+    // Patch values
     this.employeeForm.patchValue(employee);
+    document.documentElement.style.setProperty(
+      '--photo-background',
+      `url('${employee.image}')`
+    );
 
     const employeeModal = document.getElementById('employee-modal');
     if (employeeModal) {
       employeeModal.addEventListener('hidden', () => {
         this.editMode = false;
         this.currentEditId = '';
+
+        // Reset the form
         this.employeeForm.reset();
+        document.documentElement.style.setProperty('--photo-background', '');
+        this.photoInput.nativeElement.value = '';
       });
       UIkit.modal(employeeModal).show();
     }
   }
+
+  deleteEmployee(): void {}
 }

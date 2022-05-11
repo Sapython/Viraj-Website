@@ -16,10 +16,10 @@
         <td>{{ employee.name }}</td>
         <td>{{ employee.post }}</td>
         <td>{{ getAge(employee.dob) }}</td>
-        <td>{{ getExperience(employee.yearJoined) }} year(s)</td>
+        <td>{{ getExperience(employee.yearStartedWork) }} year(s)</td>
         <td class="right">
           <div class="buttons">
-            <button class="primary-btn" (click)="editEmployee(employee)">
+            <button class="primary-btn" [routerLink]="employee.id">
               <i class="fa-solid fa-eye"></i>View
             </button>
             <button class="primary-btn" (click)="editEmployee(employee)">
@@ -82,11 +82,11 @@
           />
         </div>
         <div class="employee-form-box">
-          <label for="year-joined-input" class="admin-label">Year Joined</label>
+          <label for="year-started-work-input" class="admin-label">Year Started Work</label>
           <input
             type="number"
-            id="year-joined-input"
-            formControlName="yearJoined"
+            id="year-started-work-input"
+            formControlName="yearStartedWork"
             class="admin-input"
           />
         </div>
@@ -179,6 +179,6 @@
   </div>
 </div>
 
-<!-- <app-confirm-delete-modal
+<app-confirm-delete-modal
   (confirmDelete)="deleteEmployee()"
-></app-confirm-delete-modal> -->
+></app-confirm-delete-modal>

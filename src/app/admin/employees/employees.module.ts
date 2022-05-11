@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeesComponent } from './employees.component';
 import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
+import { EmployeePageComponent } from './employee-page/employee-page.component';
 
 @NgModule({
   declarations: [
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeePageComponent
   ],
   imports: [
     CommonModule,

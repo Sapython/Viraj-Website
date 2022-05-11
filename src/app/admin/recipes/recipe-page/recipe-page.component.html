@@ -1,5 +1,7 @@
 <section>
-  <button id="go-back" class="primary-btn" routerLink=".."><i class="fa-solid fa-arrow-left"></i> All Recipes</button>
+  <button id="go-back" class="primary-btn" routerLink="..">
+    <i class="fa-solid fa-arrow-left"></i> All Recipes
+  </button>
   <div id="image-and-details">
     <img [src]="image" [alt]="name" />
     <div id="details">
@@ -31,12 +33,7 @@
     <div id="instructions">
       <h3>Instructions</h3>
       <ul>
-        <li>Add 2spoon of oil.</li>
-        <li>Heat oil in a pan and fry bread pieces till they turn crispy.</li>
-        <li>Add 2spoon of oil.</li>
-        <li>Heat oil in a pan and fry bread pieces till they turn crispy.</li>
-        <li>Add 2spoon of oil.</li>
-        <li>Heat oil in a pan and fry bread pieces till they turn crispy.</li>
+        <li *ngFor="let instruction of instructions">{{ instruction }}</li>
       </ul>
     </div>
   </div>

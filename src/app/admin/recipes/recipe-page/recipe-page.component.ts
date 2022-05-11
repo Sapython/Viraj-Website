@@ -73,7 +73,8 @@ export class RecipePageComponent implements OnInit {
         const url = this.router.url;
         const urlArr = url.split('/');
         const recipeId = urlArr[urlArr.length - 1];
-        if (recipeId != 'veg-noodles') {
+        if (urlArr.length >= 2 && urlArr[urlArr.length - 2] == 'recipes' && recipeId != 'veg-noodles') {
+          this.router.navigate(['/admin/recipes']);
         } else {
           const recipe = {
             id: 'veg-noodles',

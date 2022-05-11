@@ -1,85 +1,66 @@
 section {
   padding: 1em;
+  position: relative;
+  height: 100%;
 
-  table {
+  p {
+    font-size: var(--small);
     font-family: var(--font-three);
-    border-collapse: collapse;
-    width: 100%;
+    color: var(--secondary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 
-    td,
-    th {
-      text-align: left;
-      padding: 8px;
-    }
+.uk-modal-dialog {
+  form {
+    #customer-inputs {
+      width: 100%;
 
-    th {
-      font-size: var(--xsmall);
-      font-weight: 650;
-      text-align: left;
-      color: var(--secondary);
-    }
+      .customer-form-box {
+        margin-top: 1em;
 
-    td {
-      color: #000;
-      font-size: var(--xxsmall);
-
-      img {
-        clip-path: circle(40%);
-        width: 70%;
-      }
-    }
-
-    tr:nth-child(even) {
-      background-color: var(--secondary-light);
-    }
-
-    tr:not(:first-of-type) {
-      transition: all 0.3s;
-      &:hover {
-        background-color: var(--secondary-lighter);
-      }
-    }
-
-    .right {
-      margin-right: -10%;
-
-      #buttons {
-        display: flex;
-        justify-content: center;
-
-        button {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-size: var(--xxsmall);
-          padding: 06px 15px;
-          border: none;
-          border-radius: 10px;
-          margin-left: 8px;
-          font-family: "Poppins", sans-serif;
-          font-weight: 200;
+        label {
+          color: var(--secondary);
+          font-weight: 500;
+          padding-left: 0.5em;
         }
 
-        #edit {
-          background-color: var(--secondary);
-          color: #fff;
-          padding: 05px 20px;
+        input {
+          width: 100%;
+        }
 
-          b {
-            margin-right: 5px;
+        select {
+          width: 100%;
+        }
+
+        #gross-purchase-input-container {
+          position: relative;
+
+          span {
+            position: absolute;
+            top: 50%;
+            left: .5em;
+            transform: translateY(-50%);
+            color: var(--secondary);
+            font-family: var(--font-three);
+            font-size: var(--small);
           }
-        }
 
-        #remove {
-          border: 1.5px solid #f95640;
-          color: black;
-
-          i {
-            margin-left: 7px;
-            color: #f95640;
+          input {
+            padding-left: 1.5em;
           }
         }
       }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.5em 1em;
+      font-size: var(--small);
+      margin-top: 1em;
     }
   }
 }

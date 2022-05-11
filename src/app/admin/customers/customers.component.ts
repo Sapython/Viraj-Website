@@ -5,186 +5,175 @@ declare const UIkit: any;
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss', './customers.modal.scss'],
+  styleUrls: ['./customers.component.scss', './customers.modal.scss', '../admin.util.scss'],
 })
 export class CustomersComponent implements OnInit {
-  items: Array<any> = [
+  customers: any[] = [
     {
-      id: 1,
-      img: 'https://picsum.photos/200/?random=1',
+      id: 'sujeet-singh',
+      image: 'https://picsum.photos/200/?random=1',
       name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
+      dob: '2002-01-27',
+      gender: 'male',
+      grossPurchase: '9000',
+      phoneNumber: '9900099000',
+      email: 'raghav@goel.com',
+      address: 'Amity University, Noida',
+      job: 'Proctor',
     },
     {
-      id: 2,
-      img: 'https://picsum.photos/200/?random=2',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
+      id: 'kumar-singh',
+      image: 'https://picsum.photos/200/?random=1',
+      name: 'Kumar Singh',
+      dob: '2002-01-27',
+      gender: 'male',
+      grossPurchase: '9000',
+      phoneNumber: '9900099000',
+      email: 'raghav@goel.com',
+      address: 'Amity University, Noida',
+      job: 'Proctor',
     },
     {
-      id: 3,
-      img: 'https://picsum.photos/200/?random=3',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
+      id: 'dhoni-singh',
+      image: 'https://picsum.photos/200/?random=1',
+      name: 'Dhoni Singh',
+      dob: '2002-01-27',
+      gender: 'male',
+      grossPurchase: '9000',
+      phoneNumber: '9900099000',
+      email: 'raghav@goel.com',
+      address: 'Amity University, Noida',
+      job: 'Proctor',
     },
     {
-      id: 4,
-      img: 'https://picsum.photos/200/?random=4',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
-    },
-    {
-      id: 5,
-      img: 'https://picsum.photos/200/?random=5',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
-    },
-    {
-      id: 6,
-      img: 'https://picsum.photos/200/?random=6',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
-    },
-    {
-      id: 7,
-      img: 'https://picsum.photos/100/100?random=7',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
-    },
-    {
-      id: 8,
-      img: 'https://picsum.photos/200/?random=3',
-      name: 'Sujeet Singh',
-      age: '28',
-      purchase: '9000',
-      address: 'delhi',
-      job: 'bar tender',
-      gross: '₹2000',
-      phoneNumber: '+91-112-212-221',
-      email: 'test@gmail.com',
+      id: 'sujeet-khan',
+      image: 'https://picsum.photos/200/?random=1',
+      name: 'Sujeet Khan',
+      dob: '2002-01-27',
+      gender: 'male',
+      grossPurchase: '9000',
+      phoneNumber: '9900099000',
+      email: 'raghav@goel.com',
+      address: 'Amity University, Noida',
+      job: 'Proctor',
     },
   ];
-
-  filteredItems: Array<any> = this.items;
+  filteredCustomers: any[] = this.customers;
 
   @ViewChild('photoInput') photoInput: ElementRef;
-  @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
 
   editMode: boolean = false;
   currentEditId: any = '';
 
-  itemForm: FormGroup = new FormGroup({
+  customerForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    age: new FormControl('', [Validators.required]),
+    dob: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
+    grossPurchase: new FormControl('', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', [Validators.required]),
     job: new FormControl('', [Validators.required]),
-    gross: new FormControl('', [Validators.required]),
-    purchase: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
   });
 
-  updateStockForm: FormGroup;
-
-  constructor() {
-    // Initialize updateStockForm
-    const group: any = {};
-    this.items.forEach((item) => {
-      group[item.id.toString()] = new FormControl(item.quantity, [
-        Validators.required,
-      ]);
-    });
-    this.updateStockForm = new FormGroup(group);
-  }
-
-  imageSelected(): void {}
-
-  addItem(): void {}
-
-  editItem(item: any): void {
-    this.editMode = true;
-    this.currentEditId = item.id;
-    this.itemForm.patchValue(item);
-
-    const itemModal = document.getElementById('customer-modal');
-    if (itemModal) {
-      itemModal.addEventListener('hidden', () => {
-        this.editMode = false;
-        this.currentEditId = '';
-        this.itemForm.reset();
-      });
-      UIkit.modal(itemModal).show();
-    }
-  }
-
-  deleteItem(): void {}
-
-  searchItems(): void {
-    const query = this.itemSearchInput.nativeElement.value.trim().toLowerCase();
-    this.filteredItems = this.items.filter((item) => {
-      return item.name.toLowerCase().indexOf(query) !== -1;
-    });
-    this.filteredItems.sort((item1, item2) => {
-      const index1 = item1.name.toLowerCase().indexOf(query);
-      const index2 = item2.name.toLowerCase().indexOf(query);
-      return index1 - index2;
-    });
-  }
-
-  updateStock(): void {
-    // Update only those items' stock whose inputs have been changed
-    const toUpdate: any = {};
-    for (const item of this.items) {
-      if (
-        this.updateStockForm.get(item.id.toString())!.value != item.quantity
-      ) {
-        toUpdate[item.id.toString()] = item.quantity;
-      }
-    }
-  }
+  constructor() {}
 
   ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    // Set up customer search
+    const customerSearchInput = document.getElementById(
+      'customer-search-input'
+    ) as HTMLInputElement;
+
+    if (customerSearchInput) {
+      customerSearchInput.addEventListener(
+        'input',
+        () => {
+          const query = customerSearchInput.value.trim().toLowerCase();
+          this.filteredCustomers = this.customers.filter((customer) => {
+            return customer.name.toLowerCase().indexOf(query) !== -1;
+          });
+          this.filteredCustomers.sort((customer1, customer2) => {
+            const index1 = customer1.name.toLowerCase().indexOf(query);
+            const index2 = customer2.name.toLowerCase().indexOf(query);
+            return index1 - index2;
+          });
+        },
+        false
+      );
+    }
+  }
+
+  getAge(dob: any): any {
+    const date = new Date(dob);
+    if (date) {
+      const today = new Date();
+      const difference = today.getTime() - date.getTime();
+      const years = Math.round(difference / 31_556_952_000);
+      return years;
+    }
+    return '';
+  }
+
+  imageSelected(): void {
+    var selectionIsValid = true;
+    const file = this.photoInput.nativeElement.files[0];
+
+    if (this.photoInput.nativeElement.files.length != 1) {
+      selectionIsValid = false;
+      this.photoInput.nativeElement.value = '';
+    } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
+      alert('Your photo should either be in .png or .jpg');
+      selectionIsValid = false;
+      this.photoInput.nativeElement.value = '';
+    } else if (file.size > 100_000) {
+      alert("Your photo's size should not exceed 100 KB");
+      selectionIsValid = false;
+      this.photoInput.nativeElement.value = '';
+    }
+
+    if (selectionIsValid) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        document.documentElement.style.setProperty(
+          '--photo-background',
+          `url('${fileReader.result}')`
+        );
+      };
+    } else {
+      document.documentElement.style.setProperty('--photo-background', '');
+    }
+  }
+
+  addCustomer(): void {}
+
+  editCustomer(customer: any): void {
+    this.editMode = true;
+    this.currentEditId = customer.id;
+
+    // Patch values
+    this.customerForm.patchValue(customer);
+    document.documentElement.style.setProperty(
+      '--photo-background',
+      `url('${customer.image}')`
+    );
+
+    const customerModal = document.getElementById('customer-modal');
+    if (customerModal) {
+      customerModal.addEventListener('hidden', () => {
+        this.editMode = false;
+        this.currentEditId = '';
+
+        // Reset the form
+        this.customerForm.reset();
+        document.documentElement.style.setProperty('--photo-background', '');
+        this.photoInput.nativeElement.value = '';
+      });
+      UIkit.modal(customerModal).show();
+    }
+  }
+
+  deleteCustomer(): void {}
 }

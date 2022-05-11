@@ -126,13 +126,6 @@ table {
     padding: 8px;
   }
 
-  th {
-    font-size: var(--xsmall);
-    font-weight: 650;
-    text-align: left;
-    color: var(--secondary);
-  }
-
   td {
     color: var(--primary);
     font-size: var(--xxsmall);
@@ -145,6 +138,19 @@ table {
 
   tr:nth-child(even) {
     background-color: var(--secondary-lighter);
+  }
+
+  thead {
+    tr {
+      background-color: var(--secondary);
+    }
+
+    th {
+      font-size: var(--xsmall);
+      font-weight: 650;
+      text-align: left;
+      color: var(--secondary-contrast);
+    }
   }
 
   tbody {

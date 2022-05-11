@@ -1,0 +1,62 @@
+<section>
+  <button id="go-back" class="primary-btn" routerLink="..">
+    <i class="fa-solid fa-arrow-left"></i> All Employees
+  </button>
+  <div id="photos">
+    <img src="assets/img/Rectangle 643.png" alt="" id="cover" />
+    <div id="profile-image-container">
+      <img src="{{ image }}" alt="{{ name }}" referrerpolicy="no-referrer" />
+    </div>
+  </div>
+  <div id="details-container">
+    <h3>{{ name }}</h3>
+    <div id="details">
+      <p class="detail">
+        <span class="key">Post: </span>
+        <span class="value">{{ post }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Date of Birth: </span>
+        <span class="value">{{ getDateName(dob) }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Year Started Work: </span>
+        <span class="value">{{ yearStartedWork }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Phone Number: </span>
+        <span class="value">{{ phoneNumber }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Aadhar Number: </span>
+        <span class="value">{{ aadharNumber }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Address: </span>
+        <span class="value">{{ address }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Payment Method: </span>
+        <span class="value">{{ paymentMethod }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Account Holder Name: </span>
+        <span class="value">{{ accountHolderName }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Account Number: </span>
+        <span class="value">{{ accountNumber }}</span>
+      </p>
+    </div>
+  </div>
+  <div id="buttons">
+    <button class="primary-btn">
+      <i class="fa-solid fa-pen-to-square"></i>Edit
+    </button>
+    <button class="primary-btn" uk-toggle="target: #confirm-delete-modal">
+      <i class="fa-solid fa-trash"></i>Delete
+    </button>
+  </div>
+</section>
+
+<app-confirm-delete-modal></app-confirm-delete-modal>

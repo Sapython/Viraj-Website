@@ -1,0 +1,54 @@
+<section>
+  <button id="go-back" class="primary-btn" routerLink="..">
+    <i class="fa-solid fa-arrow-left"></i> All Customers
+  </button>
+  <div id="photos">
+    <img src="assets/img/Rectangle 643.png" alt="" id="cover" />
+    <div id="profile-image-container">
+      <img src="{{ image }}" alt="{{ name }}" referrerpolicy="no-referrer" />
+    </div>
+  </div>
+  <div id="details-container">
+    <h3>{{ name }}</h3>
+    <div id="details">
+      <p class="detail">
+        <span class="key">Date of Birth: </span>
+        <span class="value">{{ getDateName(dob) }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Gender: </span>
+        <span class="value">{{ gender.charAt(0).toUpperCase() + gender.substring(1) }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Gross Purchase: </span>
+        <span class="value">{{ grossPurchase }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Phone Number: </span>
+        <span class="value">{{ phoneNumber }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Email: </span>
+        <span class="value">{{ email }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Address: </span>
+        <span class="value">{{ address }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Job: </span>
+        <span class="value">{{ job }}</span>
+      </p>
+    </div>
+  </div>
+  <div id="buttons">
+    <button class="primary-btn">
+      <i class="fa-solid fa-pen-to-square"></i>Edit
+    </button>
+    <button class="primary-btn" uk-toggle="target: #confirm-delete-modal">
+      <i class="fa-solid fa-trash"></i>Delete
+    </button>
+  </div>
+</section>
+
+<app-confirm-delete-modal></app-confirm-delete-modal>

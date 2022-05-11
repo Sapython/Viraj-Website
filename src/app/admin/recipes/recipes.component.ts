@@ -34,8 +34,8 @@ export class RecipesComponent implements OnInit {
         'Add nutella',
         'Chop onions',
         'Put 2 eggs',
-        'Add salt for taste'
-      ]
+        'Add salt for taste',
+      ],
     },
     {
       id: 'manchurian',
@@ -63,8 +63,8 @@ export class RecipesComponent implements OnInit {
         'Add nutella',
         'Chop onions',
         'Put 2 eggs',
-        'Add salt for taste'
-      ]
+        'Add salt for taste',
+      ],
     },
   ];
 
@@ -304,10 +304,9 @@ export class RecipesComponent implements OnInit {
 
         // Reset the form
         this.recipeForm.reset();
-        document.documentElement.style.setProperty(
-          '--photo-background',
-          ''
-        );
+        document.documentElement.style.setProperty('--photo-background', '');
+        this.photoInput.nativeElement.value = '';
+
         if (ingredientsInputs) {
           ingredientsInputs.innerHTML = '';
         }
