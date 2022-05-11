@@ -1,10 +1,10 @@
 <header
-  uk-scrollspy="target: .logo-img, li, #toggle-button; cls: uk-animation-fade; delay: 100"
+  uk-scrollspy="target: .logo-image, li, #toggle-button; cls: uk-animation-fade; delay: 100"
 >
   <img
     src="../../../assets/img/viraj-white.svg"
     alt="Viraj Logo"
-    class="logo-img"
+    class="logo-image"
     class="uk-animation-fade"
   />
   <nav>
@@ -28,9 +28,7 @@
         <a href="#contact-us">Contact Us</a>
       </li>
       <li>
-        <button routerLink="login" class="login-button">
-          <span uk-icon="user" class="login-button-icon"></span> Login
-        </button>
+        <button routerLink="login" class="login-button">Login</button>
       </li>
     </ul>
     <div id="toggle-button">
@@ -67,7 +65,7 @@
           </li>
           <li>
             <button [routerLink]="['/login']" class="login-button">
-              <span uk-icon="user" class="login-button-icon"></span> Login
+              Login
             </button>
           </li>
         </ul>

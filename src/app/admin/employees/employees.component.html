@@ -1,157 +1,184 @@
 <section>
-  <table>
-    <tr>
-      <th width="10%"></th>
-      <th width="30%">Employee Name</th>
-      <th width="15%">Post</th>
-      <th width="10%">Age</th>
-      <th width="10%">Experience</th>
-      <th width="25%"></th>
-    </tr>
-    <tr *ngFor="let item of items">
-      <td><img [src]="item.img" /></td>
-      <td>{{ item.employeeName }}</td>
-      <td>
-        {{ item.post }} <br />
-        {{ item.post2 }}
-      </td>
-      <td>{{ item.age }}</td>
-      <td>
-        {{ item.experience }} <br />
-        Years
-      </td>
-      <td class="right">
-        <div id="buttonss">
-          <button id="edit" id="edits" (click)="editItem(item)">
-            <b>Edit</b>
-            <img src="../../../../assets/img/edit.svg" alt="dish" />
-          </button>
-          <button id="remove" uk-toggle="target: #confirm-delete-modal">
-            <b>Remove</b>
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
+  <table *ngIf="filteredEmployees.length > 0">
+    <thead>
+      <tr>
+        <th width="10%"></th>
+        <th width="20%">Employee Name</th>
+        <th width="20%">Post</th>
+        <th width="10%">Age</th>
+        <th width="10%">Experience</th>
+        <th width="30%"></th>
+      </tr>
+    </thead>
+    <tbody id="employee-rows">
+      <tr *ngFor="let employee of filteredEmployees" class="employee-row">
+        <td><img [src]="employee.image" /></td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.post }}</td>
+        <td>{{ getAge(employee.dob) }}</td>
+        <td>{{ getExperience(employee.yearJoined) }} year(s)</td>
+        <td class="right">
+          <div class="buttons">
+            <button class="primary-btn" (click)="editEmployee(employee)">
+              <i class="fa-solid fa-eye"></i>View
+            </button>
+            <button class="primary-btn" (click)="editEmployee(employee)">
+              <i class="fa-solid fa-pen-to-square"></i>Edit
+            </button>
+            <button
+              class="primary-btn"
+              uk-toggle="target: #confirm-delete-modal"
+            >
+              <i class="fa-solid fa-trash"></i>Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
   </table>
+  <p *ngIf="filteredEmployees.length == 0">No Employees :(</p>
 </section>
 
 <div id="employee-modal" uk-modal>
   <div class="uk-modal-dialog uk-modal-body">
-    <h2 *ngIf="!editMode" class="uk-modal-title">Edit Employee Info</h2>
-   
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add Employee</h2>
     <h2 *ngIf="editMode" class="uk-modal-title">Edit Employee</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="recipeForm" (ngSubmit)="addrecipe()">
-      <div id="employee-form-content">
-        <div id="upload-photo-wrapper" (click)="photoInput.click()">
-          <div id="upload-photo-container">
-            <img src="assets/img/ri_image-edit-fill.png" />
-            <p *ngIf="!editMode && photoInput.files?.length != 1">
-              Upload Photo
-            </p>
-            <p *ngIf="editMode || photoInput.files?.length == 1">
-              Change Photo
-            </p>
-            <input type="file" (change)="imageSelected()" #photoInput />
-          </div>
-        </div>
-        <div id="employee-inputs">
-          <div class="employee-form-box">
-            <label class="adress-label" for="address-input">Employee Name</label>
-            <input
-              type="text"
-              class="admin-input"
-              formControlName="employeeName"
-              id="name-input"
-            />
-          </div>
-          <div class="employee-form-box">
-            <label class="adress-label" for="address-input">Phone Number</label>
-            <input
-              type="text"
-              class="admin-input"
-              formControlName="phoneNumber"
-              id="quantity-input"
-            />
-          </div>
-          <div class="employee-form-box">
-            <label class="adress-label" for="address-input">Post</label>
-            <input
-              type="text"
-              min="0"
-              class="admin-input"
-              formControlName="post"
-              id="quantity-input"
-            />
-          </div>
-            <div class="employee-form-box">
-              <label class="adress-label" for="address-input">Experience</label>
-              <input
-                type="text"
-                min="0"
-                class="admin-input"
-                formControlName="experience"
-                id="quantity-input"
-              />
-            </div>
-            
-            <div class="employee-form-box">
-              <label class="adress-label" for="address-input">Age</label>
-              <input
-                type="text"
-                min="0"
-                class="admin-input"
-                formControlName="age"
-                id="quantity-input"
-              />
-            </div>
-            <div class="employee-form-box">
-              <label class="adress-label" for="address-input">Aadhar Number</label>
-              <input
-                type="text"
-                min="0"
-                class="admin-input"
-                formControlName="aadharNumber"
-                id="quantity-input"
-              />
-            </div>
-          <div class="employee-form-box">
-            <label class="adress-label" for="address-input">Address</label>
-            <textarea  class="admin-input" formControlName="address"> </textarea>
-          </div>
-          <label class="adress-label" for="address-input"
-          >Payment Method</label
-        >
-          <div class="employee-form-box">
-          
-
-            <label class="adress-label" for="address-input">Account Holder Namer</label>
-            <input
-              type="text"
-              formControlName="accountHolderName"
-              class="admin-input"
-              id="quantity-input"
-            />
-            <label class="adress-label" for="address-input">Account Number</label>
-            <input
-              type="text"
-              class="admin-input"
-              formControlName="accountNumber"
-              id="quantity-input"
-            />
-          </div>
+    <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+      <div id="upload-photo-wrapper" (click)="photoInput.click()">
+        <div id="upload-photo-container">
+          <img src="assets/img/ri_image-edit-fill.png" />
+          <p *ngIf="!editMode && photoInput.files?.length != 1">Upload Photo</p>
+          <p *ngIf="editMode || photoInput.files?.length == 1">Change Photo</p>
+          <input type="file" (change)="imageSelected()" #photoInput />
         </div>
       </div>
-      <button *ngIf="!editMode" (disabled)="(!recipeForm.valid)" type="submit">
-        Save
+      <div id="employee-inputs">
+        <div class="employee-form-box">
+          <label for="name-input" class="admin-label">Name</label>
+          <input
+            type="text"
+            id="name-input"
+            formControlName="name"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="post-input" class="admin-label">Post</label>
+          <input
+            type="text"
+            id="post-input"
+            formControlName="post"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="dob-input" class="admin-label">Date of Birth</label>
+          <input
+            type="date"
+            id="dob-input"
+            formControlName="dob"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="year-joined-input" class="admin-label">Year Joined</label>
+          <input
+            type="number"
+            id="year-joined-input"
+            formControlName="yearJoined"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="phone-number-input" class="admin-label"
+            >Phone Number</label
+          >
+          <input
+            type="tel"
+            id="phone-number-input"
+            formControlName="phoneNumber"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="aadhar-number-input" class="admin-label"
+            >Aadhar Number</label
+          >
+          <input
+            type="text"
+            id="aadhar-number-input"
+            formControlName="aadharNumber"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="address-input" class="admin-label">Address</label>
+          <input
+            type="text"
+            id="address-input"
+            formControlName="address"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="payment-method-select" class="admin-label"
+            >Payment Method</label
+          >
+          <select
+            id="payment-method-select"
+            formControlName="paymentMethod"
+            class="admin-input"
+          >
+            <option ngValue="Net Banking">Net Banking</option>
+            <option ngValue="Credit Card">Credit Card</option>
+            <option ngValue="Debit Card">Debit Card</option>
+            <option ngValue="UPI">UPI</option>
+          </select>
+        </div>
+        <div class="employee-form-box">
+          <label for="account-holder-name-input" class="admin-label"
+            >Account Holder Name</label
+          >
+          <input
+            type="text"
+            id="account-holder-name-input"
+            formControlName="accountHolderName"
+            class="admin-input"
+          />
+        </div>
+        <div class="employee-form-box">
+          <label for="account-number-input" class="admin-label"
+            >Account Number</label
+          >
+          <input
+            type="text"
+            id="account-number-input"
+            formControlName="accountNumber"
+            class="admin-input"
+          />
+        </div>
+      </div>
+      <button
+        *ngIf="!editMode"
+        (disabled)="(!employeeForm.valid)"
+        type="submit"
+        class="primary-btn"
+      >
+        Add Employee
       </button>
-      <button *ngIf="editMode" (disabled)="(!recipeForm.valid)" type="submit">
+      <button
+        *ngIf="editMode"
+        (disabled)="(!employeeForm.valid)"
+        type="submit"
+        class="primary-btn"
+      >
         Save Changes
       </button>
     </form>
   </div>
 </div>
-<app-confirm-delete-modal
-  (confirmDelete)="deleteItem()"
-></app-confirm-delete-modal>
+
+<!-- <app-confirm-delete-modal
+  (confirmDelete)="deleteEmployee()"
+></app-confirm-delete-modal> -->

@@ -8,13 +8,15 @@ import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { RouterModule } from '@angular/router';
+import { RecipeModalComponent } from './recipe-modal/recipe-modal.component';
 
 
 @NgModule({
   declarations: [
     RecipesComponent,
     RecipeCardComponent,
-    RecipePageComponent
+    RecipePageComponent,
+    RecipeModalComponent
   ],
   imports: [
     CommonModule,

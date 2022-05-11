@@ -1,19 +1,33 @@
-<div id="recipe-card" [routerLink]="recipeTitle.toLowerCase().replace(' ', '-') + '-' + recipeId">
-  <div id="image">
-    <img src="{{ recipeImage }}" alt="{{ recipeTitle }}" />
-  </div>
-  <div id="dish-description">
-    <b> {{ recipeTitle }}</b>
-    <p>{{ recipeDesc }}</p>
-  </div>
-  <div id="buttons">
-    <button id="edit">
-      <b>Edit</b>
-      <img src="../../../../assets/img/edit.svg" />
-    </button>
-    <button id="remove" uk-toggle="#confirm-delete-modal">
-      <b>Remove</b>
-      <i class="fa-solid fa-trash"></i>
-    </button>
+<div id="card">
+  <img src="{{ recipeImage }}" alt="Photo of {{ recipeName }}" loading="lazy" />
+  <div id="card-content">
+    <div id="description">
+      <div>
+        <h3>{{ recipeName }}</h3>
+        <p>{{ recipeType }}</p>
+      </div>
+      <div id="badges">
+        <div class="badge">
+          <span class="key">Price: </span>₹{{ recipePrice }}
+        </div>
+        <div class="badge">
+          <span class="key">Shelf Life: </span>{{ recipeShelfLife }}
+        </div>
+      </div>
+    </div>
+    <div id="buttons">
+      <button
+        class="primary-btn"
+        [routerLink]="recipeId"
+      >
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+      <button class="primary-btn" (click)="requestEdit.emit()">
+        <i class="fa-solid fa-pen-to-square"></i>Edit
+      </button>
+      <button class="primary-btn" uk-toggle="#confirm-delete-modal">
+        <i class="fa-solid fa-trash"></i>Delete
+      </button>
+    </div>
   </div>
 </div>

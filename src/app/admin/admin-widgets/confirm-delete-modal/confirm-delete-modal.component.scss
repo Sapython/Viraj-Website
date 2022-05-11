@@ -4,11 +4,13 @@
   h3 {
     color: var(--primary);
     font-family: var(--font-three);
+    margin: 0;
   }
 
-  span {
+  i {
     color: var(--secondary);
-    margin: 1.5em 0;
+    font-size: 5rem;
+    margin: 0.5em 0;
   }
 
   #buttons {
@@ -16,22 +18,11 @@
     justify-content: center;
 
     button {
-      background-color: var(--secondary);
-      color: var(--secondary-contrast);
       width: 30%;
-      margin: 0 .25em;
-      border: none;
-      border-radius: 7px;
+      margin: 0 0.25em;
       padding: 0.5em 1em;
       font-size: var(--small);
-      font-family: var(--font-three);
-      cursor: pointer;
-      transition: all 0.5s;
       margin-top: 1em;
-
-      &:hover {
-        box-shadow: var(--normal-shadow);
-      }
     }
   }
 }

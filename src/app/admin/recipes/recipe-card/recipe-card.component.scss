@@ -1,96 +1,83 @@
-#recipe-card {
-  height: 125px;
-  width: 98%; 
-  margin: 10px auto;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.26) 0px 1px 4px;
+#card {
   display: flex;
-  align-items: center;
-  flex: 1;
-  gap: 30px;
-  box-sizing: border-box;
-  transition: all 0.5s ease;
-  cursor: pointer;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  box-shadow: var(--normal-shadow);
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: var(--normal-shadow);
+    transform: scale(1.01);
   }
-  
-  #image {
-    height: 124px;
-    width: 164px;
-   
-    img {
-      height: 100%;
-      width: 100%;
-      border-radius: 10px;  
-    }
+
+  img {
+    width: 20%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
   }
-  
-  #dish-description {
-    flex: 1;
-    
-    b {
-      font-size: 22px;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 22px;
-      line-height: 33px;
-      color: var(--primary);
-    }
-    
-    p {
-      font-size: 15px;
-      color: var(--primary);
-    }
-  }
-  
-  #buttons {
+
+  #card-content {
+    padding: 1em;
+    width: 80%;
     display: flex;
-    justify-content: center;
-    margin-right: 20px;
+    justify-content: space-between;
 
-    button {
+    #description {
+      width: 60%;
+      padding-right: 1em;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      font-size: var(--xxsmall);
-      padding: 06px 15px;
-      border: none;
-      border-radius: 10px;
-      margin-left: 8px;
-      font-family: "Poppins", sans-serif;
-      font-weight: 200;
-      cursor: pointer;
-      transition: all .5s;
 
-      &:hover {
-        box-shadow: var(--normal-shadow);
+      h3,
+      p,
+      #badges {
+        margin: 0;
+        font-family: var(--font-three);
+      }
+
+      h3 {
+        font-size: var(--small);
+        color: var(--secondary);
+        font-weight: 700;
+      }
+
+      p {
+        font-size: var(--msmall);
+        color: var(--primary);
+        word-wrap: break-word;
+      }
+
+      #badges {
+        display: flex;
+
+        .badge {
+          font-size: var(--xsmall);
+          background-color: var(--secondary);
+          color: var(--secondary-contrast);
+          padding: 0.25em 0.75em;
+          margin: 0.5em 0.5em 0 0;
+          width: fit-content;
+          border-radius: 10px;
+
+          .key {
+            font-weight: 700;
+          }
+        }
       }
     }
 
-    #edit {
-      background-color: var(--secondary);
-      color: #fff;
-      padding: 05px 20px;
+    #buttons {
+      width: 40%;
+      align-self: center;
 
-      b {
-        margin-right: 5px;
-      }
-    }
+      button {
+        margin-right: 0.5em;
 
-    #remove {
-      border: 1.5px solid #f95640;
-      color: black;
-
-      i {
-        margin-left: 7px;
-        color: #f95640;
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
     }
   }
 }
-
-
-

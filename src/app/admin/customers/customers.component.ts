@@ -5,7 +5,7 @@ declare const UIkit: any;
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss'],
+  styleUrls: ['./customers.component.scss', './customers.modal.scss'],
 })
 export class CustomersComponent implements OnInit {
   items: Array<any> = [
@@ -15,11 +15,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 2,
@@ -27,11 +27,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 3,
@@ -39,11 +39,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 4,
@@ -51,11 +51,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 5,
@@ -63,11 +63,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 6,
@@ -75,11 +75,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 7,
@@ -87,11 +87,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
     {
       id: 8,
@@ -99,11 +99,11 @@ export class CustomersComponent implements OnInit {
       name: 'Sujeet Singh',
       age: '28',
       purchase: '9000',
-      address:'delhi',
-      job:'bar tender',
-      gross:'₹2000',
-      phoneNumber:'+91-112-212-221',
-      email:'test@gmail.com'
+      address: 'delhi',
+      job: 'bar tender',
+      gross: '₹2000',
+      phoneNumber: '+91-112-212-221',
+      email: 'test@gmail.com',
     },
   ];
 
@@ -113,7 +113,7 @@ export class CustomersComponent implements OnInit {
   @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
 
   editMode: boolean = false;
-  currentEditId: string = '';
+  currentEditId: any = '';
 
   itemForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -140,33 +140,7 @@ export class CustomersComponent implements OnInit {
     this.updateStockForm = new FormGroup(group);
   }
 
-  imageSelected(): void {
-    var selectionIsValid = true;
-    const file = this.photoInput.nativeElement.files[0];
-
-    if (this.photoInput.nativeElement.files.length != 1) {
-      selectionIsValid = false;
-    } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
-      alert('Your photo should either be in .png or .jpg');
-      selectionIsValid = false;
-    } else if (file.size > 100_000) {
-      alert("Your photo's size should not exceed 100 KB");
-      selectionIsValid = false;
-    }
-
-    if (selectionIsValid) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        document.documentElement.style.setProperty(
-          '--photo-background',
-          `url('${fileReader.result}')`
-        );
-      };
-    } else {
-      document.documentElement.style.setProperty('--photo-background', '');
-    }
-  }
+  imageSelected(): void {}
 
   addItem(): void {}
 

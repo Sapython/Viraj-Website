@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-card',
@@ -7,9 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RecipeCardComponent implements OnInit {
   @Input() recipeId: any = '';
-  @Input() recipeTitle: string = '';
-  @Input() recipeDesc: string = '';
   @Input() recipeImage: string = '';
+  @Input() recipeName: string = '';
+  @Input() recipeType: string = '';
+  @Input() recipePrice: string = '';
+  @Input() recipeShelfLife: string = '';
+
+  @Output() requestEdit: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 

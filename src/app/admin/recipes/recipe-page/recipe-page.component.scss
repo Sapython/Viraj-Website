@@ -1,103 +1,119 @@
-#recipe-card {
-  height: 100%;
-  width: 100%;
-  padding: 40px 30px;
-  font-size: var(--font-one);
-  #recipe-details {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
+section {
+  padding: 1.5em;
+
+  h2,
+  h3,
+  p,
+  .badge,
+  li {
+    font-family: var(--font-three);
+    margin: 0;
   }
-  #recipe-img {
-    height: 150px;
-    width: 180px;
-    left: 384px;
+
+  h2,
+  h3 {
+    color: var(--secondary);
+    font-weight: 700;
+  }
+
+  p,
+  li {
+    color: var(--primary);
+    font-size: var(--xsmall);
+  }
+
+  #image-and-details {
+    display: flex;
+    width: 80%;
 
     img {
-      height: 100%;
-      width: 100%;
-      border-radius: 10px;
+      width: 40%;
+      height: 200px;
+      object-fit: cover;
     }
-  }
-  #recipe-desc {
-    width: 300px;
-    b {
-      font-weight: 500;
-      font-size: 26px;
-      color: var(--primary);
-      
-    }
-  }
 
-  #recipe-ingrd-details {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    gap:150px;
-    padding: 50px 10px;
-    #ingrd-used {
-      display: flex;
-      flex-direction: column;
-      gap:10px;
-      #ingrd {
+    #details {
+      width: 60%;
+      margin-left: 1.5em;
+
+      h2 {
+        font-size: var(--xlarge);
+      }
+
+      #type {
+        font-style: italic;
+      }
+
+      #description {
+        margin: 1em 0;
+      }
+
+      #badges {
         display: flex;
-        justify-content: space-between;
-        gap: 100px;
-        margin: 0;
-        padding: 0;
-        color: var(--primary);
-        b{
-          font-weight: 400;
-        }
-        div {
-          display: flex;
-          gap: 5px;
-        }
-      }
-    }
-    h3 {
-      font-weight: 500;
-      font-size: 25px;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
 
-    #preparation {
-    
-      h3 {
-        font-weight: 500;
-      font-size: 25px;
-        color: var(--primary);
+        .badge {
+          font-size: var(--xsmall);
+          background-color: var(--secondary);
+          color: var(--secondary-contrast);
+          padding: 0.25em 0.75em;
+          margin: 0.5em 0.5em 0 0;
+          width: fit-content;
+          border-radius: 10px;
+
+          .key {
+            font-weight: 700;
+          }
+        }
       }
     }
   }
 
-  #change-buttons {
+  #ingredients-and-instructions {
     display: flex;
-    gap: 10px;
+    margin-top: 2em;
+
+    h3 {
+      font-size: var(--large);
+    }
+
+    ul,
+    ol {
+      list-style-position: inside;
+      margin: 1em 0 0 1em;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.25em;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #ingredients {
+      width: 40%;
+    }
+
+    #instructions {
+      width: 60%;
+    }
+  }
+
+  #buttons {
+    margin-top: 2em;
+    display: flex;
+
     button {
-      margin-top: 40px;
-      width: 150px;
-      height: 40px;
-      border: none;
-      border-radius: 10px;
+      width: 50%;
+      margin-right: .5em;
+      padding: .5em;
+      font-size: var(--msmall);
     }
-    #edit {
-      background-color: var(--secondary);
-      transition: transform 0.3s ease;
-      &:hover{
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        transform: scale(1.02);
-      }
-    }
-    #delete {
-      border: 2px solid var(--danger);
-      background-color: var(--primary-contrast);
-      transition: transform 0.3s ease;
-      &:hover{
-        box-shadow: var(--danger 0.5) 0px 7px 29px 0px;
-        transform: scale(1.02);
-      }
-    }
+  }
+
+  #go-back {
+    font-size: var(--msmall);
+    margin-bottom: 1em;
   }
 }

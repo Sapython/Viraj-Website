@@ -1,122 +1,55 @@
-<section id="recipe-card">
-  <div id="recipe-details">
-    <div id="recipe-img">
-      <img src="../../../../assets/img/product-1.png" />
-    </div>
-    <div id="recipe-desc">
-      <b>Vag Fride Rice</b>
-      <p>
-        A Delicious treat for a mouth carving fo r flavours. gfghf fhfh fjfjhfh
-        hggsjgjg jgjgj hjsg ghhgkhs
+<section>
+  <button id="go-back" class="primary-btn" routerLink=".."><i class="fa-solid fa-arrow-left"></i> All Recipes</button>
+  <div id="image-and-details">
+    <img [src]="image" [alt]="name" />
+    <div id="details">
+      <div>
+        <h2>{{ name }}</h2>
+        <p id="type">{{ type }}</p>
+      </div>
+      <p id="description">
+        {{ description }}
       </p>
-    </div>
-  </div>
-  <div id="recipe-ingrd-details">
-    <div id="ingrd-used">
-      <h3>Ingredients Used</h3>
-
-      <div id="ingrds">
-        <div id="ingrd">
-          <b>Tomato :</b>
-          <div>
-            40
-            <b>gm</b>
-          </div>
+      <div id="badges">
+        <div class="badge"><span class="key">Price: </span>₹{{ price }}</div>
+        <div class="badge">
+          <span class="key">Shelf Life: </span>{{ shelfLife }}
         </div>
-        <div id="ingrd">
-            <b>Potato :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Oil :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Cream :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Tomato :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Onion :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Tomato :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Tomato :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-          <div id="ingrd">
-            <b>Cream :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
-        <div id="ingrd">
-            <b>Tomato :</b>
-            <div>
-              40
-              <b>gm</b>
-            </div>
-          </div>
       </div>
     </div>
-    <div id="preparation">
-      <h3>Preparation</h3>
+  </div>
+  <div id="ingredients-and-instructions">
+    <div id="ingredients">
+      <h3>Ingredients</h3>
+      <ul>
+        <li *ngFor="let ingredient of ingredients">
+          {{ getIngredient(ingredient.id).name }}: {{ ingredient.quantity }}
+          {{ getIngredient(ingredient.id).unit }}
+        </li>
+      </ul>
+    </div>
+    <div id="instructions">
+      <h3>Instructions</h3>
       <ul>
         <li>Add 2spoon of oil.</li>
         <li>Heat oil in a pan and fry bread pieces till they turn crispy.</li>
-        <li>Add boiled potatoes to it.</li>
-        <li>Cut the potatoes into small cubes.</li>
-        <li>Add chana, dahi, green chutney and imli chutney.</li>
-        <li>Add salt, chaat masala, black pepper powder and red</li>
-        <li>chilli powder.Finally, garnish with some sev and serve.</li>
-        <li>Have the chaat before the fried breads get soggy.</li>
-        <li>You can also add some freshly chopped coriander</li>
-        <li>leaves on the top.</li>
+        <li>Add 2spoon of oil.</li>
+        <li>Heat oil in a pan and fry bread pieces till they turn crispy.</li>
+        <li>Add 2spoon of oil.</li>
+        <li>Heat oil in a pan and fry bread pieces till they turn crispy.</li>
       </ul>
     </div>
   </div>
-  <div id="change-buttons">
-    <button id="edit">Edit</button>
-    <button id="delete">Delete</button>
+  <div id="buttons">
+    <button class="primary-btn">
+      <i class="fa-solid fa-pen-to-square"></i>Edit
+    </button>
+    <button class="primary-btn" uk-toggle="target: #confirm-delete-modal">
+      <i class="fa-solid fa-trash"></i>Delete
+    </button>
   </div>
 </section>
 
-<!-- Tomato :40 gm
-Onion :60 gm
-Potato :100 gm
-Oil :200 ml
-Cream : 40 gm
-Tomato :60 gm
-Onion :100 gm
-Potato :200 ml
-Oil :40 gm
-Cream : 60 gm -->
+<app-confirm-delete-modal
+  (confirmDelete)="deleteRecipe()"
+></app-confirm-delete-modal>

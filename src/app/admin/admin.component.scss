@@ -26,7 +26,7 @@ header {
   #header-end {
     display: flex;
 
-    .admin-button {
+    .secondary-btn {
       font-family: var(--font-three);
       font-size: var(--xsmall);
       font-weight: 500;
@@ -38,14 +38,15 @@ header {
       border-radius: 7px;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       cursor: pointer;
-    }
 
-    .admin-button:last-of-type {
-      margin-left: 1em;
-    }
-    
-    .admin-button:hover, .admin-button:focus {
-      transform: scale(1.05);
+      &:last-of-type {
+        margin-left: 1em;
+      }
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+      }
     }
   }
 }
@@ -85,10 +86,10 @@ header {
           transition: all 0.5s;
           color: var(--secondary);
           text-decoration: none;
-          font-size: var(--small);
+          font-size: var(--msmall);
           font-family: var(--font-three);
 
-          .sidebar-icon {
+          i {
             margin-right: 0.75em;
           }
         }

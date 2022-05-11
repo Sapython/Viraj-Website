@@ -2,52 +2,38 @@ section {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-}
 
-.item {
-  width: 30%;
-  margin: 1em;
-  padding: 1em 1.5em;
-  box-shadow: var(--normal-shadow);
-  background-color: transparent;
-  border-radius: 10px;
-  transition: all 0.5s;
-}
+  .item {
+    width: 30%;
+    margin: 1em;
+    padding: 1em 1.5em;
+    box-shadow: var(--normal-shadow);
+    background-color: transparent;
+    border-radius: 10px;
+    transition: all 0.5s;
 
-.item:hover {
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-}
+    &:hover {
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    }
+  }
 
-h3,
-p,
-a {
-  font-family: var(--font-two);
-  color: var(--primary);
-  margin: 0;
-}
+  h3,
+  p {
+    font-family: var(--font-two);
+    color: var(--primary);
+    margin: 0;
+  }
 
-h3 {
-  font-size: var(--medium);
-  font-weight: 700;
-}
+  h3 {
+    font-size: var(--medium);
+    font-weight: 700;
+  }
 
-p {
-  font-size: var(--small);
-}
+  p {
+    font-size: var(--small);
+  }
 
-a {
-  font-size: var(--msmall);
-  display: inline-block;
-  margin-top: 1em;
-  padding: 0.25em 0.75em;
-  background-color: var(--secondary);
-  color: var(--secondary-contrast);
-  border-radius: 7px;
-  transition: all 0.5s;
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
-  box-shadow: var(--normal-shadow);
+  button {
+    margin-top: 1em;
+  }
 }

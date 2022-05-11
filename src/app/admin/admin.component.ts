@@ -8,6 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
   currentPanel: string = 'Panel';
+  showingRecipe: boolean = false;
 
   breakpoint: number = 1000;
   largeScreen: boolean = window.innerWidth > this.breakpoint;
@@ -26,11 +27,12 @@ export class AdminComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         // Update header heading
         const url = this.router.url;
-        if (url.indexOf('recipes') !== -1) {
+        const urlArr = url.split('/');
+        if (urlArr.includes('recipes')) {
           this.currentPanel = 'Recipes';
+          this.showingRecipe = urlArr.indexOf('recipes') != urlArr.length - 1;
         } else {
-          const lastSlashIndex = url.lastIndexOf('/');
-          const panel = url.substring(lastSlashIndex + 1);
+          const panel = urlArr[urlArr.length - 1];
           const panelWords = panel.split('-');
           panelWords.forEach((word, index) => {
             panelWords[index] =
@@ -42,6 +44,13 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    // Set up employee search
+    const employeeSearchInput = document.getElementById(
+      'employee-search-input'
+    );
+  }
+
   toggleSidebar() {
     this.showSidebar = !this.showSidebar;
     document.documentElement.style.setProperty(
@@ -49,6 +58,4 @@ export class AdminComponent implements OnInit {
       !this.largeScreen && this.showSidebar ? '100%' : '0%'
     );
   }
-
-  ngOnInit(): void {}
 }

@@ -4,16 +4,8 @@ import { UnderConstructionComponent } from './under-construction/under-construct
 import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 
 @NgModule({
-  declarations: [
-    UnderConstructionComponent,
-    ConfirmDeleteModalComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    UnderConstructionComponent,
-    ConfirmDeleteModalComponent
-  ]
+  declarations: [UnderConstructionComponent, ConfirmDeleteModalComponent],
+  imports: [CommonModule],
+  exports: [UnderConstructionComponent, ConfirmDeleteModalComponent],
 })
-export class AdminWidgetsModule { }
+export class AdminWidgetsModule {}

@@ -8,39 +8,39 @@
   ></button>
   <h2 id="header-heading">Agent {{ currentPanel }}</h2>
   <div *ngIf="currentPanel == 'Stock'" id="header-end">
-    <button class="admin-button" uk-toggle="target: #update-stock-modal">
-      <span uk-icon="icon: plus"></span> Update Stock
+    <button class="secondary-btn" uk-toggle="target: #update-stock-modal">
+      <i class="fa-solid fa-plus"></i> Update Stock
     </button>
-    <button class="admin-button" uk-toggle="target: #item-modal">
-      <span uk-icon="icon: plus"></span> Add Item
+    <button class="secondary-btn" uk-toggle="target: #item-modal">
+      <i class="fa-solid fa-plus"></i> Add Item
     </button>
   </div>
   <div *ngIf="currentPanel == 'Tasks'" id="header-end">
-    <button class="admin-button" uk-toggle="target: #task-modal">
-      <span uk-icon="icon: plus"></span> Add Task
+    <button class="secondary-btn" uk-toggle="target: #task-modal">
+      <i class="fa-solid fa-plus"></i> Add Task
     </button>
   </div>
-  <div *ngIf="currentPanel == 'Recipes'" id="header-end">
-    <button class="admin-button"  uk-toggle="target: #recipe-modal">
-      <span uk-icon="icon: plus"></span> Add Recipe
+  <div *ngIf="currentPanel == 'Recipes' && !showingRecipe" id="header-end">
+    <button class="secondary-btn" uk-toggle="target: #recipe-modal">
+      <i class="fa-solid fa-plus"></i> Add Recipe
     </button>
   </div>
   <div *ngIf="currentPanel == 'Employees'" id="header-end">
     <div class="search-box">
-      <input type="text" class="admin-search" placeholder="Search" />
-      <span uk-icon="icon: search"></span>
+      <input type="text" class="admin-search" placeholder="Search" id="employee-search-input" />
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <button class="admin-button" uk-toggle="target: #employee-modal">
-      <span uk-icon="icon: plus"></span> Add Employee
+    <button class="secondary-btn" uk-toggle="target: #employee-modal">
+      <i class="fa-solid fa-plus"></i> Add Employee
     </button>
   </div>
   <div *ngIf="currentPanel == 'Customers'" id="header-end">
     <div class="search-box">
       <input type="text" class="admin-search" placeholder="Search" />
-      <span uk-icon="icon: search"></span>
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <button class="admin-button" uk-toggle="target: #customer-modal">
-      <span uk-icon="icon: plus"></span> Add Customer
+    <button class="secondary-btn" uk-toggle="target: #customer-modal">
+      <i class="fa-solid fa-plus"></i> Add Customer
     </button>
   </div>
 </header>
@@ -57,7 +57,7 @@
             routerLinkActive="active"
             class="sidebar-li-a"
             (click)="toggleSidebar()"
-            ><span uk-icon="icon: thumbnails" class="sidebar-icon"></span
+            ><i class="fa-solid fa-house"></i
             ><span class="sidebar-text">Dashboard</span></a
           >
         </li>
@@ -67,8 +67,7 @@
             routerLinkActive="active"
             class="sidebar-li-a"
             (click)="toggleSidebar()"
-            ><span uk-icon="icon: bag" class="sidebar-icon"></span
-            ><span class="sidebar-text">Stock</span></a
+            ><i class="fa-solid fa-boxes-stacked"></i><span class="sidebar-text">Stock</span></a
           >
         </li>
         <li>
@@ -77,8 +76,7 @@
             routerLinkActive="active"
             class="sidebar-li-a"
             (click)="toggleSidebar()"
-            ><span uk-icon="icon: list" class="sidebar-icon"></span
-            ><span class="sidebar-text">Tasks</span></a
+            ><i class="fa-solid fa-list-check"></i><span class="sidebar-text">Tasks</span></a
           >
         </li>
         <li>
@@ -87,8 +85,7 @@
             routerLinkActive="active"
             class="sidebar-li-a"
             (click)="toggleSidebar()"
-            ><span uk-icon="icon: heart" class="sidebar-icon"></span
-            ><span class="sidebar-text">Recipes</span></a
+            ><i class="fa-solid fa-bowl-food"></i><span class="sidebar-text">Recipes</span></a
           >
         </li>
         <li>
@@ -97,8 +94,7 @@
             routerLinkActive="active"
             class="sidebar-li-a"
             (click)="toggleSidebar()"
-            ><span uk-icon="icon: users" class="sidebar-icon"></span
-            ><span class="sidebar-text">Employees</span></a
+            ><i class="fa-solid fa-user"></i><span class="sidebar-text">Employees</span></a
           >
         </li>
         <li>
@@ -107,8 +103,7 @@
             routerLinkActive="active"
             class="sidebar-li-a"
             (click)="toggleSidebar()"
-            ><span uk-icon="icon: happy" class="sidebar-icon"></span
-            ><span class="sidebar-text">Customers</span></a
+            ><i class="fa-solid fa-users"></i><span class="sidebar-text">Customers</span></a
           >
         </li>
       </ul>

@@ -1,32 +1,37 @@
 <section>
   <table>
-    <tr>
-      <th width="10%"></th>
-      <th width="30%">Item Name</th>
-      <th width="10%">Quantity</th>
-      <th width="10%">Unit</th>
-      <th width="10%">Rate</th>
-      <th width="30%"></th>
-    </tr>
-    <tr *ngFor="let item of items">
-      <td><img [src]="item.img" /></td>
-      <td>{{ item.name }}</td>
-      <td>{{ item.quantity }}</td>
-      <td>{{ item.unit }}</td>
-      <td>₹{{ item.rate }}</td>
-      <td class="right">
-        <div id="buttons">
-          <button id="edit" (click)="editItem(item)">
-            <b>Edit</b>
-            <img src="../../../../assets/img/edit.svg" alt="dish" />
-          </button>
-          <button id="remove" uk-toggle="target: #confirm-delete-modal">
-            <b>Remove</b>
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
-      </td>
-    </tr>
+    <thead>
+      <tr>
+        <th width="10%"></th>
+        <th width="30%">Item Name</th>
+        <th width="10%">Quantity</th>
+        <th width="10%">Unit</th>
+        <th width="10%">Rate</th>
+        <th width="30%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td><img [src]="item.image" /></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.unit }}</td>
+        <td>₹{{ item.rate }}/{{ item.unit }}</td>
+        <td class="right">
+          <div class="buttons">
+            <button class="primary-btn" (click)="editItem(item)">
+              <i class="fa-solid fa-pen-to-square"></i>Edit
+            </button>
+            <button
+              class="primary-btn"
+              uk-toggle="target: #confirm-delete-modal"
+            >
+              <i class="fa-solid fa-trash"></i>Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </section>
 
@@ -84,16 +89,26 @@
             <select class="admin-input" formControlName="unit">
               <option ngValue="g">Grams (g)</option>
               <option ngValue="kg">Kilograms (kg)</option>
-              <option ngValue="l">Litre (l)</option>
-              <option ngValue="ml">Millilitre (ml)</option>
+              <option ngValue="l">Litre (L)</option>
+              <option ngValue="mL">Millilitre (mL)</option>
             </select>
           </div>
         </div>
       </div>
-      <button *ngIf="!editMode" (disabled)="(!itemForm.valid)" type="submit">
+      <button
+        *ngIf="!editMode"
+        (disabled)="(!itemForm.valid)"
+        type="submit"
+        class="primary-btn"
+      >
         Add Item
       </button>
-      <button *ngIf="editMode" (disabled)="(!itemForm.valid)" type="submit">
+      <button
+        *ngIf="editMode"
+        (disabled)="(!itemForm.valid)"
+        type="submit"
+        class="primary-btn"
+      >
         Save Changes
       </button>
     </form>
@@ -112,13 +127,13 @@
         (input)="searchItems()"
         #itemSearchInput
       />
-      <span uk-icon="icon: search"></span>
+      <i class="fa-solid fa-magnifying-glass"></i>
     </div>
     <form [formGroup]="updateStockForm" (ngSubmit)="updateStock()">
       <div id="stock-items">
         <div class="stock-item" *ngFor="let item of filteredItems">
           <div class="flex-subcontainer">
-            <img [src]="item.img" />
+            <img [src]="item.image" />
             <p>{{ item.name }}</p>
           </div>
           <div class="flex-subcontainer">
@@ -127,7 +142,7 @@
           </div>
         </div>
       </div>
-      <button type="submit">Update Stock</button>
+      <button type="submit" class="primary-btn">Update Stock</button>
     </form>
   </div>
 </div>

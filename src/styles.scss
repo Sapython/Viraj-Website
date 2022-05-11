@@ -13,7 +13,9 @@
   // Color Variables
   --primary: #000;
   --primary-translucent: rgba(0, 0, 0, 0.7);
-  --secondary: #f5ba22;
+  --secondary: #d06212;
+  --secondary-lighter: #ffefe3;
+  --secondary-light: #fcd5b7;
   --primary-contrast: #fff;
   --secondary-contrast: #fff;
   --danger: #f95640;
@@ -48,7 +50,7 @@
   box-sizing: border-box;
 }
 
-.logo-img {
+.logo-image {
   width: 100px;
 }
 
@@ -92,44 +94,28 @@
   margin-right: 0.5em;
 }
 
-.admin-label {
+.primary-btn {
+  background-color: var(--secondary);
+  color: var(--secondary-contrast);
   font-family: var(--font-three);
-  font-size: var(--small);
-  color: var(--primary);
-}
-
-.admin-input {
-  display: block;
-  background-color: transparent;
-  font-family: var(--font-two);
-  font-size: var(--small);
-  padding: 0.5em;
+  font-size: var(--xsmall);
+  padding: 0.25em 0.75em;
+  border-radius: 7px;
   border: none;
-  border-bottom: 2px solid var(--secondary);
-  outline: none;
-  resize: none;
-}
+  cursor: pointer;
+  transition: all 0.5s;
 
-.search-box {
-  position: relative;
-  width: fit-content;
-
-  .admin-search {
-    border: none;
-    font-family: var(--font-three);
-    font-size: var(--xsmall);
-    padding: 0.25em 1em;
-    border-radius: 20px;
-    width: 250px;
-    outline: none;
-    font-weight: 500;
+  &:hover,
+  &:focus {
+    box-shadow: var(--normal-shadow);
   }
 
-  span {
-    position: absolute;
-    top: 50%;
-    right: 1em;
-    color: var(--secondary);
-    transform: translateY(-50%);
+  &:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+  }
+
+  i {
+    margin-right: 0.3em;
   }
 }

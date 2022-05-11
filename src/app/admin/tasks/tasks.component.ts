@@ -5,7 +5,7 @@ declare const UIkit: any;
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss'],
+  styleUrls: ['../admin.util.scss', './tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
   tasks: Array<any> = [
@@ -106,7 +106,7 @@ export class TasksComponent implements OnInit {
   ];
 
   editMode: boolean = false;
-  currentEditId: string = '';
+  currentEditId: any = '';
 
   taskForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -126,21 +126,21 @@ export class TasksComponent implements OnInit {
     const detailsInputs = document.getElementById('details-inputs');
     if (detailsInputs) {
       const detailInputContainer = document.createElement('div');
-      detailInputContainer.classList.add('detail-input-container');
       detailInputContainer.style.display = 'flex';
-      detailInputContainer.style.alignItems = 'center';
+      detailInputContainer.style.alignItems = 'baseline';
 
       const detailInput = document.createElement('input');
       detailInput.type = 'text';
-      detailInput.classList.add('admin-input', 'detail-input');
+      detailInput.classList.add('admin-input');
       detailInput.style.width = '100%';
       detailInput.value = detail;
 
-      const deleteIcon = document.createElement('span');
-      deleteIcon.setAttribute('uk-icon', 'trash');
+      const deleteIcon = document.createElement('i');
+      deleteIcon.classList.add('fa-solid', 'fa-trash');
       deleteIcon.style.marginLeft = '1em';
       deleteIcon.style.cursor = 'pointer';
       deleteIcon.style.color = 'var(--secondary)';
+      deleteIcon.style.fontSize = '1.5rem';
       deleteIcon.addEventListener(
         'click',
         () => {

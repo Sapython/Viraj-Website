@@ -1,125 +1,101 @@
-#recipe-cards{
-    padding-top:40px;
-       display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    
+#recipe-cards {
+  padding: 1em;
 }
-form {
-    #recipe-form-content {
-      display: flex;
-      align-items: flex-start;
 
-      #upload-photo-wrapper {
-        width: 30%;
-        height: 0;
-        padding-bottom: 30%;
-        border-radius: 50%;
-        background-color: #adadad;
-        position: relative;
-        align-items: center;
-        cursor: pointer;
-        transition: all 0.4s;
+.uk-modal-dialog {
+  form {
+    #recipe-inputs {
+      width: 100%;
 
-        &:hover {
-          background-color: #888888;
+      .recipe-form-box {
+        margin-top: 1em;
 
-          &::before {
-            filter: brightness(0.4);
-          }
+        label {
+          color: var(--secondary);
+          font-weight: 500;
+          padding-left: 0.5em;
         }
 
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
+        input {
           width: 100%;
-          height: 100%;
-          background-image: var(--photo-background);
-          background-size: cover;
-          background-repeat: no-repeat;
-          border-radius: 50%;
-          filter: brightness(0.6);
-          transition: all 0.4s;
         }
 
-        #upload-photo-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          text-align: center;
-
-          img {
-            width: 60%;
-          }
-
-          p {
-            color: #fff;
-            font-size: var(--msmall);
-            font-family: var(--font-three);
-            margin: 0.5em 0;
-          }
-
-          input {
-            display: none;
-          }
+        select {
+          width: 100%;
         }
-      }
 
-      #recipe-inputs {
-        width: 60%;
-        margin-left: 1.5em;
-        
-        .recipe-form-box {  
-          margin-top: 1em;
-          
-          label {
+        #price-input-container {
+          position: relative;
+
+          span {
+            position: absolute;
+            top: 50%;
+            left: .5em;
+            transform: translateY(-50%);
             color: var(--secondary);
-            font-weight: 500;
-            padding-left: 0.5em;
+            font-family: var(--font-three);
+            font-size: var(--small);
           }
 
           input {
-            width: 100%;
+            padding-left: 1.5em;
           }
+        }
 
-          select {
-            width: 100%;
+        ::ng-deep {
+          .ingredient-input-container {
+            display: flex;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: var(--small);
+            font-family: var(--font-three);
+
+            .ingredient-select {
+              width: 70%;
+            }
+
+            .ingredient-quantity {
+              margin: 0 1em;
+              width: 20%;
+            }
+
+            .ingredient-unit {
+              width: 10%;
+              align-self: center;
+            }
+
+            i {
+              margin-left: 1em;
+              cursor: pointer;
+              color: var(--secondary);
+              font-size: 1.5rem;
+              align-self: center;
+            }
+          }
+        }
+
+        #add-ingredient, #add-instruction {
+          font-size: var(--xsmall);
+          background: transparent;
+          color: var(--secondary);
+          width: fit-content;
+          font-family: var(--font-three);
+          border: none;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: none;
+            opacity: 0.7;
           }
         }
       }
     }
 
     button {
-      background-color: var(--secondary);
-      color: var(--secondary-contrast);
       width: 100%;
-      border: none;
-      border-radius: 7px;
       padding: 0.5em 1em;
       font-size: var(--small);
-      font-family: var(--font-three);
-      cursor: pointer;
-      transition: all 0.5s;
       margin-top: 1em;
-
-      &:hover {
-        box-shadow: var(--normal-shadow);
-      }
-      &:hover {
-        box-shadow: var(--normal-shadow);
-      }
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: no-drop;
-      }
-      &:disabled {
-        opacity: 0.5;
-        cursor: no-drop;
-      }
     }
   }
+}

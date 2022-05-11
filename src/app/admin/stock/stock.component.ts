@@ -5,14 +5,18 @@ declare const UIkit: any;
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.component.html',
-  styleUrls: ['./stock.component.scss'],
+  styleUrls: [
+    '../admin.util.scss',
+    './stock.component.scss',
+    './stock.modal.scss',
+  ],
 })
 export class StockComponent implements OnInit {
-  items: Array<any> = [
+  items: any[] = [
     {
       id: 1,
       name: 'Rice',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
       unit: 'kg',
       rate: 50,
@@ -20,7 +24,7 @@ export class StockComponent implements OnInit {
     {
       id: 2,
       name: 'Onion',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
       unit: 'kg',
       rate: 50,
@@ -28,7 +32,7 @@ export class StockComponent implements OnInit {
     {
       id: 3,
       name: 'Potato',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
       unit: 'kg',
       rate: 50,
@@ -36,7 +40,7 @@ export class StockComponent implements OnInit {
     {
       id: 4,
       name: 'Pumpkin',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
       unit: 'kg',
       rate: 50,
@@ -44,7 +48,7 @@ export class StockComponent implements OnInit {
     {
       id: 5,
       name: 'Beetroot',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
       unit: 'kg',
       rate: 50,
@@ -52,7 +56,7 @@ export class StockComponent implements OnInit {
     {
       id: 6,
       name: 'Carrot',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
       unit: 'g',
       rate: 50,
@@ -60,27 +64,27 @@ export class StockComponent implements OnInit {
     {
       id: 7,
       name: 'Mushroom',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
-      unit: 'ml',
+      unit: 'mL',
       rate: 50,
     },
     {
       id: 8,
       name: 'Flour',
-      img: 'assets/img/product-2.png',
+      image: 'assets/img/product-2.png',
       quantity: 50,
-      unit: 'l',
+      unit: 'L',
       rate: 50,
     },
   ];
-  filteredItems: Array<any> = this.items;
+  filteredItems: any[] = this.items;
 
   @ViewChild('photoInput') photoInput: ElementRef;
   @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
 
   editMode: boolean = false;
-  currentEditId: string = '';
+  currentEditId: any = '';
 
   itemForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -108,12 +112,15 @@ export class StockComponent implements OnInit {
 
     if (this.photoInput.nativeElement.files.length != 1) {
       selectionIsValid = false;
+      this.photoInput.nativeElement.value = '';
     } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
       alert('Your photo should either be in .png or .jpg');
       selectionIsValid = false;
+      this.photoInput.nativeElement.value = '';
     } else if (file.size > 100_000) {
       alert("Your photo's size should not exceed 100 KB");
       selectionIsValid = false;
+      this.photoInput.nativeElement.value = '';
     }
 
     if (selectionIsValid) {
@@ -135,14 +142,23 @@ export class StockComponent implements OnInit {
   editItem(item: any): void {
     this.editMode = true;
     this.currentEditId = item.id;
+
+    // Patch values
     this.itemForm.patchValue(item);
+    document.documentElement.style.setProperty(
+      '--photo-background',
+      `url('${item.image}')`
+    );
 
     const itemModal = document.getElementById('item-modal');
     if (itemModal) {
       itemModal.addEventListener('hidden', () => {
         this.editMode = false;
         this.currentEditId = '';
+
+        // Reset the form
         this.itemForm.reset();
+        document.documentElement.style.setProperty('--photo-background', '');
       });
       UIkit.modal(itemModal).show();
     }
