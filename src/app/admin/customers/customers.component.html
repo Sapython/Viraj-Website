@@ -1,39 +1,41 @@
 <section>
-  <table *ngIf="filteredCustomers.length > 0">
-    <thead>
-      <tr>
-        <th width="10%"></th>
-        <th width="30%">Customer Name</th>
-        <th width="10%">Age</th>
-        <th width="20%">Gross Purchase</th>
-        <th width="30%"></th>
-      </tr>
-    </thead>
-    <tbody id="customer-rows">
-      <tr *ngFor="let customer of filteredCustomers" class="customer-row">
-        <td><img [src]="customer.image" /></td>
-        <td>{{ customer.name }}</td>
-        <td>{{ getAge(customer.dob) }}</td>
-        <td>₹{{ customer.grossPurchase }}</td>
-        <td class="right">
-          <div class="buttons">
-            <button class="primary-btn" [routerLink]="customer.id">
-              <i class="fa-solid fa-eye"></i>View
-            </button>
-            <button class="primary-btn" (click)="editCustomer(customer)">
-              <i class="fa-solid fa-pen-to-square"></i>Edit
-            </button>
-            <button
-              class="primary-btn"
-              uk-toggle="target: #confirm-delete-modal"
-            >
-              <i class="fa-solid fa-trash"></i>Delete
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table *ngIf="filteredCustomers.length > 0">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Customer Name</th>
+          <th>Age</th>
+          <th>Gross Purchase</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="customer-rows">
+        <tr *ngFor="let customer of filteredCustomers" class="customer-row">
+          <td><img [src]="customer.image" /></td>
+          <td>{{ customer.name }}</td>
+          <td>{{ getAge(customer.dob) }}</td>
+          <td>₹{{ customer.grossPurchase }}</td>
+          <td>
+            <div class="buttons">
+              <button class="primary-btn" [routerLink]="customer.id">
+                <i class="fa-solid fa-eye"></i>View
+              </button>
+              <button class="primary-btn" (click)="editCustomer(customer)">
+                <i class="fa-solid fa-pen-to-square"></i>Edit
+              </button>
+              <button
+                class="primary-btn"
+                uk-toggle="target: #confirm-delete-modal"
+              >
+                <i class="fa-solid fa-trash"></i>Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p *ngIf="filteredCustomers.length == 0">No Customers :(</p>
 </section>
 

@@ -1,92 +1,98 @@
 <section>
   <div class="table-container">
     <h3>Due Tasks</h3>
-    <table id="due-tasks">
-      <thead>
-        <tr>
-          <th width="15%">Task Name</th>
-          <th width="15%">Employee</th>
-          <th width="35%">Details</th>
-          <th width="35%"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let task of tasks">
-          <tr *ngIf="!task.completed">
-            <td>
-              {{ task.name }}<br /><span class="status">{{ task.status }}</span>
-            </td>
-            <td>{{ getEmployeeName(task.employeeId) }}</td>
-            <td>
-              <ul>
-                <li *ngFor="let detail of task.details">
-                  <span class="black">{{ detail }}</span>
-                </li>
-              </ul>
-            </td>
-            <td class="right">
-              <div class="buttons">
-                <button class="primary-btn" (click)="editTask(task)">
-                  <i class="fa-solid fa-pen-to-square"></i>Edit
-                </button>
-                <button
-                  class="primary-btn"
-                  uk-toggle="target: #confirm-delete-modal"
-                >
-                  <i class="fa-solid fa-trash"></i>Delete
-                </button>
-                <button class="primary-btn" (click)="task.completed = true">
-                  <i class="fa-solid fa-circle-check"></i>Done
-                </button>
-              </div>
-            </td>
+    <div class="table-container">
+      <table id="due-tasks">
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Employee</th>
+            <th>Details</th>
+            <th></th>
           </tr>
-        </ng-container>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let task of tasks">
+            <tr *ngIf="!task.completed">
+              <td>
+                {{ task.name }}<br /><span class="status">{{
+                  task.status
+                }}</span>
+              </td>
+              <td>{{ getEmployeeName(task.employeeId) }}</td>
+              <td>
+                <ul>
+                  <li *ngFor="let detail of task.details">
+                    <span class="black">{{ detail }}</span>
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <div class="buttons">
+                  <button class="primary-btn" (click)="editTask(task)">
+                    <i class="fa-solid fa-pen-to-square"></i>Edit
+                  </button>
+                  <button
+                    class="primary-btn"
+                    uk-toggle="target: #confirm-delete-modal"
+                  >
+                    <i class="fa-solid fa-trash"></i>Delete
+                  </button>
+                  <button class="primary-btn" (click)="task.completed = true">
+                    <i class="fa-solid fa-circle-check"></i>Done
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="table-container">
     <h3>Completed Tasks</h3>
-    <table id="completed-tasks">
-      <thead>
-        <tr>
-          <th width="15%">Task Name</th>
-          <th width="15%">Employee</th>
-          <th width="35%">Details</th>
-          <th width="35%"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let task of tasks">
-          <tr *ngIf="task.completed">
-            <td>
-              {{ task.name }}
-            </td>
-            <td>{{ getEmployeeName(task.employeeId) }}</td>
-            <td>
-              <ul>
-                <li *ngFor="let detail of task.details">
-                  <span class="black">{{ detail }}</span>
-                </li>
-              </ul>
-            </td>
-            <td class="right">
-              <div class="buttons">
-                <button
-                  class="primary-btn"
-                  uk-toggle="target: #confirm-delete-modal"
-                >
-                  <i class="fa-solid fa-trash"></i>Delete
-                </button>
-                <button class="primary-btn" (click)="task.completed = false">
-                  Mark Incomplete
-                </button>
-              </div>
-            </td>
+    <div class="table-container">
+      <table id="completed-tasks">
+        <thead>
+          <tr>
+            <th>Task Name</th>
+            <th>Employee</th>
+            <th>Details</th>
+            <th></th>
           </tr>
-        </ng-container>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let task of tasks">
+            <tr *ngIf="task.completed">
+              <td>
+                {{ task.name }}
+              </td>
+              <td>{{ getEmployeeName(task.employeeId) }}</td>
+              <td>
+                <ul>
+                  <li *ngFor="let detail of task.details">
+                    <span class="black">{{ detail }}</span>
+                  </li>
+                </ul>
+              </td>
+              <td class="buttons-container">
+                <div class="buttons">
+                  <button
+                    class="primary-btn"
+                    uk-toggle="target: #confirm-delete-modal"
+                  >
+                    <i class="fa-solid fa-trash"></i>Delete
+                  </button>
+                  <button class="primary-btn" (click)="task.completed = false">
+                    Mark Incomplete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 

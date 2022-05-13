@@ -1,5 +1,6 @@
 section {
   padding: 1.5em;
+  max-width: 1000px;
 
   #go-back {
     font-size: var(--msmall);
@@ -29,11 +30,10 @@ section {
 
   #image-and-details {
     display: flex;
-    width: 80%;
 
     img {
       width: 40%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
     }
 
@@ -71,11 +71,24 @@ section {
         }
       }
     }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+
+      img, #details {
+        width: 100%;
+      }
+
+      #details {
+        margin-left: 0;
+        margin-top: 1em;
+      }
+    }
   }
 
   #ingredients-and-instructions {
     display: flex;
-    margin-top: 2em;
+    margin-top: 1.5em;
 
     h3 {
       font-size: var(--large);
@@ -103,6 +116,19 @@ section {
     #instructions {
       width: 60%;
     }
+
+    @media (max-width: 600px) {
+      display: block;
+
+      #ingredients,
+      #instructions {
+        width: 100%;
+      }
+
+      #instructions {
+        margin-top: 1em;
+      }
+    }
   }
 
   #buttons {
@@ -111,8 +137,8 @@ section {
 
     button {
       width: 50%;
-      margin-right: .5em;
-      padding: .5em;
+      margin-right: 0.5em;
+      padding: 0.5em;
       font-size: var(--msmall);
     }
   }

@@ -1,38 +1,40 @@
 <section>
-  <table>
-    <thead>
-      <tr>
-        <th width="10%"></th>
-        <th width="30%">Item Name</th>
-        <th width="10%">Quantity</th>
-        <th width="10%">Unit</th>
-        <th width="10%">Rate</th>
-        <th width="30%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items">
-        <td><img [src]="item.image" /></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>{{ item.unit }}</td>
-        <td>₹{{ item.rate }}/{{ item.unit }}</td>
-        <td class="right">
-          <div class="buttons">
-            <button class="primary-btn" (click)="editItem(item)">
-              <i class="fa-solid fa-pen-to-square"></i>Edit
-            </button>
-            <button
-              class="primary-btn"
-              uk-toggle="target: #confirm-delete-modal"
-            >
-              <i class="fa-solid fa-trash"></i>Delete
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Rate</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td><img [src]="item.image" /></td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.unit }}</td>
+          <td>₹{{ item.rate }}/{{ item.unit }}</td>
+          <td>
+            <div class="buttons">
+              <button class="primary-btn" (click)="editItem(item)">
+                <i class="fa-solid fa-pen-to-square"></i>Edit
+              </button>
+              <button
+                class="primary-btn"
+                uk-toggle="target: #confirm-delete-modal"
+              >
+                <i class="fa-solid fa-trash"></i>Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <div id="item-modal" uk-modal>
@@ -41,57 +43,59 @@
     <h2 *ngIf="editMode" class="uk-modal-title">Edit Item</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
     <form [formGroup]="itemForm" (ngSubmit)="addItem()">
-      <div id="item-form-content">
-        <div id="upload-photo-wrapper" (click)="photoInput.click()">
-          <div id="upload-photo-container">
-            <img src="assets/img/ri_image-edit-fill.png" />
-            <p *ngIf="!editMode && photoInput.files?.length != 1">
-              Upload Photo
-            </p>
-            <p *ngIf="editMode || photoInput.files?.length == 1">
-              Change Photo
-            </p>
-            <input type="file" (change)="imageSelected()" #photoInput />
-          </div>
+      <div id="upload-photo-wrapper" (click)="photoInput.click()">
+        <div id="upload-photo-container">
+          <img src="assets/img/ri_image-edit-fill.png" />
+          <p *ngIf="!editMode && photoInput.files?.length != 1">Upload Photo</p>
+          <p *ngIf="editMode || photoInput.files?.length == 1">Change Photo</p>
+          <input type="file" (change)="imageSelected()" #photoInput />
         </div>
-        <div id="item-inputs">
-          <div class="item-form-box">
-            <label class="admin-label" for="name-input">Name</label>
+      </div>
+      <div id="item-inputs">
+        <div class="item-form-box">
+          <label class="admin-label" for="name-input">Name</label>
+          <input
+            type="text"
+            class="admin-input"
+            formControlName="name"
+            id="name-input"
+          />
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label" for="quantity-input">Quantity</label>
+          <input
+            type="number"
+            min="0"
+            class="admin-input"
+            formControlName="quantity"
+            id="quantity-input"
+          />
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label">Unit</label>
+          <select class="admin-input" formControlName="unit" #unitInput>
+            <option ngValue="g">Grams (g)</option>
+            <option ngValue="kg">Kilograms (kg)</option>
+            <option ngValue="L">Litre (L)</option>
+            <option ngValue="mL">Millilitre (mL)</option>
+          </select>
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label" for="rate-input">Rate</label>
+          <div id="rate-input-container">
+            <span id="currency-symbol">₹</span>
             <input
               type="text"
-              class="admin-input"
-              formControlName="name"
-              id="name-input"
-            />
-          </div>
-          <div class="item-form-box">
-            <label class="admin-label" for="quantity-input">Quantity</label>
-            <input
-              type="number"
-              min="0"
-              class="admin-input"
-              formControlName="quantity"
-              id="quantity-input"
-            />
-          </div>
-          <div class="item-form-box">
-            <label class="admin-label" for="rate-input">Rate (₹)</label>
-            <input
-              type="number"
-              min="0"
               class="admin-input"
               formControlName="rate"
               id="rate-input"
             />
-          </div>
-          <div class="item-form-box">
-            <label class="admin-label">Unit</label>
-            <select class="admin-input" formControlName="unit">
-              <option ngValue="g">Grams (g)</option>
-              <option ngValue="kg">Kilograms (kg)</option>
-              <option ngValue="l">Litre (L)</option>
-              <option ngValue="mL">Millilitre (mL)</option>
-            </select>
+            <span id="per-unit"
+              >/{{
+                unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||
+                  "unit"
+              }}</span
+            >
           </div>
         </div>
       </div>
@@ -119,15 +123,17 @@
   <div class="uk-modal-dialog uk-modal-body">
     <h2 class="uk-modal-title">Update Stock</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <div class="search-box">
-      <input
-        type="text"
-        class="admin-search"
-        placeholder="Search"
-        (input)="searchItems()"
-        #itemSearchInput
-      />
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <div id="search-and-mic">
+      <div class="search-box">
+        <input
+          type="text"
+          class="admin-search"
+          (input)="searchItems()"
+          #itemSearchInput
+        />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <button id="mic-button"><i class="fa-solid fa-microphone"></i></button>
     </div>
     <form [formGroup]="updateStockForm" (ngSubmit)="updateStock()">
       <div id="stock-items">

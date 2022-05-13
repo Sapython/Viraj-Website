@@ -11,7 +11,6 @@ export class RecipeCardComponent implements OnInit {
   @Input() recipeName: string = '';
   @Input() recipeType: string = '';
   @Input() recipePrice: string = '';
-  @Input() recipeShelfLife: string = '';
 
   @Output() requestEdit: EventEmitter<any> = new EventEmitter<any>();
 

@@ -1,15 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 declare const UIkit: any;
+import Fuse from 'fuse.js';
 
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.component.html',
-  styleUrls: [
-    '../admin.util.scss',
-    './stock.component.scss',
-    './stock.modal.scss',
-  ],
+  styleUrls: ['../admin.util.scss', './stock.component.scss'],
 })
 export class StockComponent implements OnInit {
   items: any[] = [
@@ -168,15 +165,18 @@ export class StockComponent implements OnInit {
   deleteItem(): void {}
 
   searchItems(): void {
-    const query = this.itemSearchInput.nativeElement.value.trim().toLowerCase();
-    this.filteredItems = this.items.filter((item) => {
-      return item.name.toLowerCase().indexOf(query) !== -1;
-    });
-    this.filteredItems.sort((item1, item2) => {
-      const index1 = item1.name.toLowerCase().indexOf(query);
-      const index2 = item2.name.toLowerCase().indexOf(query);
-      return index1 - index2;
-    });
+    const query = this.itemSearchInput.nativeElement.value.trim();
+    if (query.length > 0) {
+      const options = { keys: ['name'] };
+      const fuse = new Fuse(this.items, options);
+      const results = fuse.search(query);
+      this.filteredItems = [];
+      results.forEach((result) => {
+        this.filteredItems.push(result.item);
+      });
+    } else {
+      this.filteredItems = this.items;
+    }
   }
 
   updateStock(): void {

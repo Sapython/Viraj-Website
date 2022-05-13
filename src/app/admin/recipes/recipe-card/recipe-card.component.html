@@ -1,33 +1,15 @@
 <div id="card">
   <img src="{{ recipeImage }}" alt="Photo of {{ recipeName }}" loading="lazy" />
   <div id="card-content">
-    <div id="description">
-      <div>
-        <h3>{{ recipeName }}</h3>
-        <p>{{ recipeType }}</p>
-      </div>
-      <div id="badges">
-        <div class="badge">
-          <span class="key">Price: </span>₹{{ recipePrice }}
-        </div>
-        <div class="badge">
-          <span class="key">Shelf Life: </span>{{ recipeShelfLife }}
-        </div>
-      </div>
+    <div>
+      <h3>{{ recipeName }}</h3>
+      <p>{{ recipeType }}</p>
     </div>
+    <div id="price">₹{{ recipePrice }}</div>
     <div id="buttons">
-      <button
-        class="primary-btn"
-        [routerLink]="recipeId"
-      >
-        <i class="fa-solid fa-eye"></i>View
-      </button>
-      <button class="primary-btn" (click)="requestEdit.emit()">
-        <i class="fa-solid fa-pen-to-square"></i>Edit
-      </button>
-      <button class="primary-btn" uk-toggle="#confirm-delete-modal">
-        <i class="fa-solid fa-trash"></i>Delete
-      </button>
+      <button class="primary-btn" [routerLink]="recipeId">View</button>
+      <button class="primary-btn" (click)="requestEdit.emit()">Edit</button>
+      <button class="primary-btn" uk-toggle="#confirm-delete-modal">Delete</button>
     </div>
   </div>
 </div>

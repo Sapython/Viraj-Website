@@ -2,10 +2,11 @@ section {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  padding: 1em;
 
   .item {
     width: 30%;
-    margin: 1em;
+    margin: .5em;
     padding: 1em 1.5em;
     box-shadow: var(--normal-shadow);
     background-color: transparent;
@@ -15,25 +16,33 @@ section {
     &:hover {
       box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     }
-  }
 
-  h3,
-  p {
-    font-family: var(--font-two);
-    color: var(--primary);
-    margin: 0;
-  }
+    @media (max-width: 850px) {
+      width: 45%;
+    }
 
-  h3 {
-    font-size: var(--medium);
-    font-weight: 700;
-  }
+    @media (max-width: 600px) {
+      width: 100%;
+    }
 
-  p {
-    font-size: var(--small);
-  }
+    h3,
+    p {
+      font-family: var(--font-two);
+      color: var(--primary);
+      margin: 0;
+    }
 
-  button {
-    margin-top: 1em;
+    h3 {
+      font-size: var(--medium);
+      font-weight: 700;
+    }
+
+    p {
+      font-size: var(--small);
+    }
+
+    button {
+      margin-top: 1em;
+    }
   }
 }

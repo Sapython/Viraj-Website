@@ -5,7 +5,15 @@
     [recipeImage]="recipe.image"
     [recipeName]="recipe.name"
     [recipeType]="getRecipeType(recipe.typeId)"
-    [recipeShelfLife]="recipe.shelfLife"
+    [recipePrice]="recipe.price"
+    (requestEdit)="editRecipe(recipe)"
+  ></app-recipe-card>
+  <app-recipe-card
+    *ngFor="let recipe of recipes"
+    [recipeId]="recipe.id"
+    [recipeImage]="recipe.image"
+    [recipeName]="recipe.name"
+    [recipeType]="getRecipeType(recipe.typeId)"
     [recipePrice]="recipe.price"
     (requestEdit)="editRecipe(recipe)"
   ></app-recipe-card>

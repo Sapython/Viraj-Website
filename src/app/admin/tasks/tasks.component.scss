@@ -1,13 +1,13 @@
 section {
-  padding: 2em;
+  padding: 1em;
 
   .table-container {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 
     h3 {
       font-family: var(--font-three);
       color: var(--secondary);
-      font-size: var(--medium);
+      font-size: var(--small);
       font-weight: 500;
       margin: 0 0 .5em 0;
     }
@@ -17,7 +17,7 @@ section {
     }
 
     #completed-tasks {
-      td:not(.right) {
+      td:not(.buttons-container) {
         text-decoration: line-through;
         opacity: 0.6;
       }

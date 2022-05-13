@@ -44,12 +44,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // Set up employee search
-    const employeeSearchInput = document.getElementById(
-      'employee-search-input'
-    );
-  }
+  ngOnInit(): void {}
 
   toggleSidebar() {
     this.showSidebar = !this.showSidebar;

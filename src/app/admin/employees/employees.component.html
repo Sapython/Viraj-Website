@@ -1,41 +1,43 @@
 <section>
-  <table *ngIf="filteredEmployees.length > 0">
-    <thead>
-      <tr>
-        <th width="10%"></th>
-        <th width="20%">Employee Name</th>
-        <th width="20%">Post</th>
-        <th width="10%">Age</th>
-        <th width="10%">Experience</th>
-        <th width="30%"></th>
-      </tr>
-    </thead>
-    <tbody id="employee-rows">
-      <tr *ngFor="let employee of filteredEmployees" class="employee-row">
-        <td><img [src]="employee.image" /></td>
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.post }}</td>
-        <td>{{ getAge(employee.dob) }}</td>
-        <td>{{ getExperience(employee.yearStartedWork) }} year(s)</td>
-        <td class="right">
-          <div class="buttons">
-            <button class="primary-btn" [routerLink]="employee.id">
-              <i class="fa-solid fa-eye"></i>View
-            </button>
-            <button class="primary-btn" (click)="editEmployee(employee)">
-              <i class="fa-solid fa-pen-to-square"></i>Edit
-            </button>
-            <button
-              class="primary-btn"
-              uk-toggle="target: #confirm-delete-modal"
-            >
-              <i class="fa-solid fa-trash"></i>Delete
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table *ngIf="filteredEmployees.length > 0">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Employee Name</th>
+          <th>Post</th>
+          <th>Age</th>
+          <th>Experience</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="employee-rows">
+        <tr *ngFor="let employee of filteredEmployees" class="employee-row">
+          <td><img [src]="employee.image" /></td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.post }}</td>
+          <td>{{ getAge(employee.dob) }}</td>
+          <td>{{ getExperience(employee.yearStartedWork) }} year(s)</td>
+          <td>
+            <div class="buttons">
+              <button class="primary-btn" [routerLink]="employee.id">
+                <i class="fa-solid fa-eye"></i>View
+              </button>
+              <button class="primary-btn" (click)="editEmployee(employee)">
+                <i class="fa-solid fa-pen-to-square"></i>Edit
+              </button>
+              <button
+                class="primary-btn"
+                uk-toggle="target: #confirm-delete-modal"
+              >
+                <i class="fa-solid fa-trash"></i>Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p *ngIf="filteredEmployees.length == 0">No Employees :(</p>
 </section>
 
