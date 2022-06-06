@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
+import { BlurSiteService } from 'src/app/services/blur-site.service';
+import { DatabaseService } from 'src/app/services/database.service';
 declare const UIkit: any;
 
 @Component({
@@ -8,121 +11,47 @@ declare const UIkit: any;
   styleUrls: ['../admin.util.scss', './tasks.component.scss'],
 })
 export class TasksComponent implements OnInit {
-  tasks: Array<any> = [
-    {
-      id: 1,
-      name: 'Cleaning',
-      status: 'In Progess',
-      employeeId: 'E1',
-      completed: false,
-      details: [
-        'Wipe down and sanitize all surface',
-        'Tuck chairs back into place',
-      ],
-    },
-    {
-      id: 2,
-      name: 'Food Safety',
-      status: 'Completed',
-      employeeId: 'E2',
-      completed: true,
-      details: [
-        'Disinfect food preparation surfaces',
-        'Put food back in proper storage place',
-      ],
-    },
-    {
-      id: 3,
-      name: 'Cleaning',
-      status: 'Completed',
-      employeeId: 'E3',
-      completed: true,
-      details: [
-        'Wipe down and sanitize all surface',
-        'Tuck chairs back into place',
-        'Tuck chairs back into place',
-      ],
-    },
-    {
-      id: 4,
-      name: 'Food Safety',
-      status: 'In Progess',
-      employeeId: 'E4',
-      completed: false,
-      details: [
-        'Disinfect food preparation surfaces',
-        'Put food back in proper storage place',
-      ],
-    },
-    {
-      id: 5,
-      name: 'Cleaning',
-      status: 'Completed',
-      employeeId: 'E5',
-      completed: true,
-      details: [
-        'Wipe down and sanitize all surface',
-        'Tuck chairs back into place',
-      ],
-    },
-    {
-      id: 6,
-      name: 'Food Safety',
-      status: 'In Progess',
-      employeeId: 'E6',
-      completed: false,
-      details: [
-        'Disinfect food preparation surfaces',
-        'Put food back in proper storage place',
-      ],
-    },
-  ];
-
-  employees: any = [
-    {
-      id: 'E1',
-      name: 'Amit Shah',
-    },
-    {
-      id: 'E2',
-      name: 'Narendra Modi',
-    },
-    {
-      id: 'E3',
-      name: 'Yogi Bhai',
-    },
-    {
-      id: 'E4',
-      name: 'Rahul Gandhi',
-    },
-    {
-      id: 'E5',
-      name: 'Arvind Kejriwal',
-    },
-    {
-      id: 'E6',
-      name: 'Sonia Gandhi',
-    },
-  ];
+  tasks: any[];
+  employees: any;
 
   editMode: boolean = false;
-  currentEditId: any = '';
+  currentEditId: string = '';
+  currentDeleteId: string = '';
 
   taskForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    employeeId: new FormControl(null, [Validators.required]),
-    details: new FormControl('', [Validators.required]),
+    employee: new FormControl('', [Validators.required]),
+    details: new FormControl([]),
   });
 
-  constructor() {}
+  constructor(
+    private databaseService: DatabaseService,
+    private blurSiteService: BlurSiteService,
+    private alertService: AlertService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tasks = [];
+    this.databaseService.getTasks().then((docs) => {
+      docs.forEach((doc) => {
+        this.tasks.push({ id: doc.id, ...doc.data() });
+      });
+    });
 
-  addTask(): void {}
+    this.employees = {};
+    this.databaseService.getEmployees().then((docs) => {
+      docs.forEach((doc) => {
+        this.employees[doc.id] = doc.data();
+      });
+    });
+  }
 
-  deleteTask(): void {}
+  getEmployeeName(employee: any): string {
+    return employee.name;
+  }
 
-  addDetails(detail: any): void {
+  addDetails(event: Event | null, detail: any): void {
+    event?.preventDefault();
     const detailsInputs = document.getElementById('details-inputs');
     if (detailsInputs) {
       const detailInputContainer = document.createElement('div');
@@ -157,13 +86,49 @@ export class TasksComponent implements OnInit {
     }
   }
 
-  getEmployeeName(employeeId: any): string {
-    for (const employee of this.employees) {
-      if (employee.id == employeeId) {
-        return employee.name;
+  submitTaskForm(): void {
+    if (this.taskForm.valid) {
+      this.blurSiteService.startBlur();
+
+      // Set 'details' form control
+      this.taskForm.value.details = [];
+      const detailsInputs = document.getElementById('details-inputs');
+      if (detailsInputs) {
+        const detailInputs = detailsInputs.querySelectorAll('input');
+        if (detailInputs) {
+          detailInputs.forEach((input: any) => {
+            this.taskForm.value.details.push(input.value);
+          });
+        }
       }
+
+      if (this.editMode) {
+        this.databaseService
+          .editTask(this.currentEditId, this.taskForm.value)
+          .then(() => {
+            UIkit.modal(document.getElementById('task-modal')).hide();
+            this.ngOnInit();
+            this.blurSiteService.stopBlur();
+            this.alertService.presentToast('Task edited successfully', 'info');
+          });
+      } else {
+        this.databaseService.addTask(this.taskForm.value).then(() => {
+          UIkit.modal(document.getElementById('task-modal')).hide();
+          this.taskForm.reset();
+          if (detailsInputs) {
+            detailsInputs.innerHTML = '';
+          }
+          this.ngOnInit();
+          this.blurSiteService.stopBlur();
+          this.alertService.presentToast('Task added successfully', 'info');
+        });
+      }
+    } else {
+      this.alertService.presentToast(
+        'Please fill all the required fields.',
+        'error'
+      );
     }
-    return '';
   }
 
   editTask(task: any): void {
@@ -176,7 +141,7 @@ export class TasksComponent implements OnInit {
     if (detailsInputs) {
       detailsInputs.innerHTML = '';
       task.details.forEach((detail: any) => {
-        this.addDetails(detail);
+        this.addDetails(null, detail);
       });
     }
 
@@ -194,5 +159,19 @@ export class TasksComponent implements OnInit {
       });
       UIkit.modal(taskModal).show();
     }
+  }
+
+  deleteTask(): void {
+    this.blurSiteService.startBlur();
+    this.databaseService.deleteTask(this.currentDeleteId).then(() => {
+      this.ngOnInit();
+      this.blurSiteService.stopBlur();
+      this.alertService.presentToast('Task deleted successfully', 'info');
+    });
+  }
+
+  toggleTaskCompletion(taskId: string, task: any): void {
+    task.completed = !task.completed;
+    this.databaseService.editTask(taskId, task);
   }
 }

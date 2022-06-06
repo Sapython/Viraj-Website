@@ -8,6 +8,7 @@ declare const UIkit: any;
 })
 export class ConfirmDeleteModalComponent implements OnInit {
   @Output() confirmDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() hidden: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 

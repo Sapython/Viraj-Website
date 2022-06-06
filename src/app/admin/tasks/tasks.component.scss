@@ -16,6 +16,11 @@ section {
       color: #3fc229;
     }
 
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
     #completed-tasks {
       td:not(.buttons-container) {
         text-decoration: line-through;

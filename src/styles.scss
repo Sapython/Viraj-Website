@@ -119,3 +119,15 @@
     margin-right: 0.3em;
   }
 }
+
+.uk-modal {
+  z-index: 999;
+}
+
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--secondary);
+}

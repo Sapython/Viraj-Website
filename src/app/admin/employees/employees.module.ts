@@ -8,16 +8,13 @@ import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { EmployeePageComponent } from './employee-page/employee-page.component';
 
 @NgModule({
-  declarations: [
-    EmployeesComponent,
-    EmployeePageComponent
-  ],
+  declarations: [EmployeesComponent, EmployeePageComponent],
   imports: [
     CommonModule,
     EmployeesRoutingModule,
     AdminWidgetsModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class EmployeesModule { }
+export class EmployeesModule {}

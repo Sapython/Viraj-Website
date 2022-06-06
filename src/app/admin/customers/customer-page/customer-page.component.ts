@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-customer-page',
@@ -7,81 +9,36 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['../../employee-customer-page.scss'],
 })
 export class CustomerPageComponent implements OnInit {
-  image: string = '';
-  name: string = '';
-  dob: string = '';
-  gender: string = '';
-  grossPurchase: string = '';
-  phoneNumber: string = '';
-  email: string = '';
-  address: string = '';
-  job: string = '';
+  customer: any;
 
-  constructor(private router: Router) {
-    router.events.forEach((event) => {
+  constructor(
+    private router: Router,
+    private databaseService: DatabaseService,
+    public dateService: DateService
+  ) {
+    this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         const url = this.router.url;
         const urlArr = url.split('/');
         const customerId = urlArr[urlArr.length - 1];
+
         if (
           urlArr.length >= 2 &&
-          urlArr[urlArr.length - 2] == 'customers' &&
-          customerId != 'kumar-singh'
+          urlArr[urlArr.length - 2] == 'customers'
         ) {
-          this.router.navigate(['/admin/customers']);
-        } else {
-          const customer = {
-            id: 'kumar-singh',
-            image: 'https://picsum.photos/200/?random=1',
-            name: 'Kumar Singh',
-            dob: '2002-01-27',
-            gender: 'male',
-            grossPurchase: '9000',
-            phoneNumber: '9900099000',
-            email: 'raghav@goel.com',
-            address: 'Amity University, Noida',
-            job: 'Proctor',
-          };
-          this.image = customer.image;
-          this.name = customer.name;
-          this.dob = customer.dob;
-          this.gender = customer.gender;
-          this.grossPurchase = customer.grossPurchase;
-          this.phoneNumber = customer.phoneNumber;
-          this.email = customer.email;
-          this.address = customer.address;
-          this.job = customer.job;
+          this.databaseService.getCustomer(customerId).then((doc) => {
+            const customerData = doc.data();
+            if (customerData) {
+              this.customer = customerData;
+            } else {
+              this.router.navigate(['/admin/customers']);
+              return;
+            }
+          });
         }
       }
     });
   }
 
-  ngOnInit(): void {}
-
-  getDateName(dateStr: string): string {
-    const dateObj = new Date(dateStr);
-    if (dateObj) {
-      return (
-        [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December',
-        ][dateObj.getMonth()] +
-        ' ' +
-        dateObj.getDate() +
-        ', ' +
-        dateObj.getFullYear()
-      );
-    }
-    return '';
-  }
+  ngOnInit() {}
 }

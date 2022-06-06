@@ -1,4 +1,4 @@
-<div id="confirm-delete-modal" uk-modal>
+<div id="confirm-delete-modal" uk-modal (hidden)="hidden.emit()">
   <div class="uk-modal-dialog uk-modal-body">
     <button class="uk-modal-close-default" type="button" uk-close></button>
     <h3>Are you sure you want to delete this?</h3>

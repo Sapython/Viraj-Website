@@ -1,7 +1,3 @@
-:root {
-  --photo-background: "";
-}
-
 ::ng-deep {
   .admin-label {
     font-family: var(--font-three);
@@ -12,6 +8,7 @@
   .admin-input {
     display: block;
     background-color: transparent;
+    color: #000;
     font-family: var(--font-two);
     font-size: var(--small);
     padding: 0.5em;
@@ -54,65 +51,6 @@
     padding-bottom: 0.25em;
     border-bottom: 3px solid var(--secondary);
   }
-
-  #upload-photo-wrapper {
-    width: max(50%, 200px);
-    height: 0;
-    padding-bottom: max(50%, 200px);
-    margin: 0.5em auto;
-    border-radius: 10px;
-    background-color: #adadad;
-    position: relative;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.4s;
-
-    &:hover {
-      background-color: #888888;
-
-      &::before {
-        filter: brightness(0.4);
-      }
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: var(--photo-background);
-      background-size: cover;
-      background-repeat: no-repeat;
-      border-radius: 10px;
-      filter: brightness(0.6);
-      transition: all 0.4s;
-    }
-
-    #upload-photo-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-
-      img {
-        width: 60%;
-      }
-
-      p {
-        color: #fff;
-        font-size: var(--msmall);
-        font-family: var(--font-three);
-        margin: 0.5em 0;
-      }
-
-      input {
-        display: none;
-      }
-    }
-  }
 }
 
 .table-container {
@@ -137,6 +75,7 @@
       img {
         width: 50px;
         height: 50px;
+        object-fit: cover;
         border-radius: 50%;
       }
 

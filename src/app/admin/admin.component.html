@@ -26,7 +26,7 @@
         <i class="fa-solid fa-plus"></i> Add Recipe
       </button>
     </div>
-    <div *ngIf="currentPanel == 'Employees'" id="header-end">
+    <div *ngIf="currentPanel == 'Employees' && !showingEmployee" id="header-end">
       <div class="search-box">
         <input
           type="text"
@@ -39,7 +39,7 @@
         <i class="fa-solid fa-plus"></i> Add Employee
       </button>
     </div>
-    <div *ngIf="currentPanel == 'Customers'" id="header-end">
+    <div *ngIf="currentPanel == 'Customers' && !showingCustomer" id="header-end">
       <div class="search-box">
         <input
           type="text"

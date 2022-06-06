@@ -5,6 +5,7 @@ import { StockRoutingModule } from './stock-routing.module';
 import { StockComponent } from './stock.component';
 import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminWidgetsModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    DatabaseService
   ]
 })
 export class StockModule { }

@@ -1,5 +1,10 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatabaseService } from 'src/app/services/database.service';
+import Fuse from 'fuse.js';
+import { AlertService } from 'src/app/services/alert.service';
+import { BlurSiteService } from 'src/app/services/blur-site.service';
+import { DateService } from 'src/app/services/date.service';
 declare const UIkit: any;
 
 @Component({
@@ -8,162 +13,152 @@ declare const UIkit: any;
   styleUrls: ['./employees.component.scss', '../admin.util.scss'],
 })
 export class EmployeesComponent implements OnInit {
-  employees: any[] = [
-    {
-      id: 'sujeet-singh',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Sujeet Singh',
-      post: 'Manager',
-      dob: '2002-01-27',
-      yearStartedWork: '2019',
-      phoneNumber: '+11 121-212-212',
-      aadharNumber: '1233 1223 1222',
-      address: 'cuttuck',
-      paymentMethod: 'UPI',
-      accountHolderName: 'John Doe',
-      accountNumber: '1223 1122 383',
-    },
-    {
-      id: 'kumar-yadav',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Kumar Yadav',
-      post: 'Manager',
-      dob: '2002-01-27',
-      yearStartedWork: '2020',
-      phoneNumber: '+11 121-212-212',
-      aadharNumber: '1233 1223 1222',
-      address: 'cuttuck',
-      paymentMethod: 'UPI',
-      accountHolderName: 'John Doe',
-      accountNumber: '1223 1122 383',
-    },
-    {
-      id: 'mohit-bling',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Mohit Bling',
-      post: 'Manager',
-      dob: '2002-01-27',
-      yearStartedWork: '2024',
-      phoneNumber: '+11 121-212-212',
-      aadharNumber: '1233 1223 1222',
-      address: 'cuttuck',
-      paymentMethod: 'UPI',
-      accountHolderName: 'John Doe',
-      accountNumber: '1223 1122 383',
-    },
-    {
-      id: 'jhopdi-goyal',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Jhopdi Goyal',
-      post: 'Manager',
-      dob: '2002-01-27',
-      yearStartedWork: '2022',
-      phoneNumber: '+11 121-212-212',
-      aadharNumber: '1233 1223 1222',
-      address: 'cuttuck',
-      paymentMethod: 'UPI',
-      accountHolderName: 'John Doe',
-      accountNumber: '1223 1122 383',
-    },
-  ];
-  filteredEmployees: any[] = this.employees;
-
-  @ViewChild('photoInput') photoInput: ElementRef;
-
+  employees: any[];
+  filteredEmployees: any[];
   editMode: boolean = false;
+  file: File | null;
   currentEditId: any = '';
+  currentDeleteId: string = '';
 
   employeeForm: FormGroup = new FormGroup({
+    image: new FormControl(''),
     name: new FormControl('', [Validators.required]),
-    post: new FormControl('', [Validators.required]),
-    dob: new FormControl('', [Validators.required]),
-    yearStartedWork: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required]),
-    aadharNumber: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
-    paymentMethod: new FormControl('', [Validators.required]),
-    accountHolderName: new FormControl('', [Validators.required]),
-    accountNumber: new FormControl('', [Validators.required]),
+    post: new FormControl(''),
+    dob: new FormControl(''),
+    yearStartedWork: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    aadharNumber: new FormControl(''),
+    address: new FormControl(''),
+    paymentMethod: new FormControl(''),
+    accountHolderName: new FormControl(''),
+    accountNumber: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(
+    private databaseService: DatabaseService,
+    private alertService: AlertService,
+    private blurSiteService: BlurSiteService,
+    public dateService: DateService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.employees = [];
+    this.databaseService.getEmployees().then((docs) => {
+      docs.forEach((doc) => {
+        this.employees.push({ id: doc.id, ...doc.data() });
+      });
+      this.filteredEmployees = this.employees;
+    });
+  }
 
   ngAfterViewInit(): void {
     // Set up employee search
     const employeeSearchInput = document.getElementById(
       'employee-search-input'
     ) as HTMLInputElement;
-
     if (employeeSearchInput) {
       employeeSearchInput.addEventListener(
         'input',
         () => {
-          const query = employeeSearchInput.value.trim().toLowerCase();
-          this.filteredEmployees = this.employees.filter((employee) => {
-            return employee.name.toLowerCase().indexOf(query) !== -1;
-          });
-          this.filteredEmployees.sort((employee1, employee2) => {
-            const index1 = employee1.name.toLowerCase().indexOf(query);
-            const index2 = employee2.name.toLowerCase().indexOf(query);
-            return index1 - index2;
-          });
+          const query = employeeSearchInput.value.trim();
+          if (query.length > 0) {
+            const options = { keys: ['name'] };
+            const fuse = new Fuse(this.employees, options);
+            const results = fuse.search(query);
+            this.filteredEmployees = [];
+            results.forEach((result: any) => {
+              this.filteredEmployees.push(result.item);
+            });
+          } else {
+            this.filteredEmployees = this.employees;
+          }
         },
         false
       );
     }
   }
 
-  getAge(dob: any): any {
-    const date = new Date(dob);
-    if (date) {
-      const today = new Date();
-      const difference = today.getTime() - date.getTime();
-      const years = Math.round(difference / 31_556_952_000);
-      return years;
-    }
-    return '';
-  }
 
   getExperience(yearStartedWork: any): any {
-    const currentYear = new Date().getFullYear();
-    const difference = Math.max(currentYear - yearStartedWork, 0);
-    return difference;
+    if (yearStartedWork) {
+      const currentYear = new Date().getFullYear();
+      const difference = Math.max(currentYear - yearStartedWork, 0);
+      if (difference === 1) {
+        return difference + ' year';
+      }
+      return difference + ' years';
+    }
   }
 
-  imageSelected(): void {
-    var selectionIsValid = true;
-    const file = this.photoInput.nativeElement.files[0];
-
-    if (this.photoInput.nativeElement.files.length != 1) {
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
-      alert('Your photo should either be in .png or .jpg');
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (file.size > 100_000) {
-      alert("Your photo's size should not exceed 100 KB");
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    }
-
-    if (selectionIsValid) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        document.documentElement.style.setProperty(
-          '--photo-background',
-          `url('${fileReader.result}')`
+  validatePhoto(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const files = target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      var fileIsValid = false;
+      if (!['image/png', 'image/jpeg', 'image/jpg'].includes(file.type)) {
+        this.alertService.presentToast(
+          'Only png, jpeg and jpg image is allowed',
+          'error'
         );
-      };
-    } else {
-      document.documentElement.style.setProperty('--photo-background', '');
+      } else if (file.size >= 100_000) {
+        this.alertService.presentToast(
+          "The image's size must be less than 100 Kb",
+          'error'
+        );
+      } else {
+        fileIsValid = true;
+        this.file = file;
+      }
+      if (!fileIsValid) {
+        target.value = '';
+      }
     }
   }
 
-  addEmployee(): void {}
+  async submit(): Promise<void> {
+    if (this.employeeForm.valid) {
+      this.blurSiteService.startBlur();
+
+      // Upload image if it's selected
+      if (this.file) {
+        await this.databaseService
+          .upload('employees/' + new Date().getTime(), this.file)
+          .then((url) => {
+            this.employeeForm.value.image = url;
+          });
+      }
+      
+      if (this.editMode) {
+        this.databaseService
+          .editEmployee(this.currentEditId, this.employeeForm.value)
+          .then(() => {
+            UIkit.modal(document.getElementById('employee-modal')).hide();
+            this.ngOnInit();
+            this.blurSiteService.stopBlur();
+            this.alertService.presentToast(
+              'Employee edited successfully',
+              'info'
+            );
+          });
+      } else {
+        this.databaseService.addEmployee(this.employeeForm.value).then(() => {
+          UIkit.modal(document.getElementById('employee-modal')).hide();
+          this.employeeForm.reset();
+          (document.getElementById('photo-input') as HTMLInputElement).value = '';
+          this.file = null;
+          this.ngOnInit();
+          this.blurSiteService.stopBlur();
+          this.alertService.presentToast('Employee added successfully', 'info');
+        });
+      }
+    } else {
+      this.alertService.presentToast(
+        'Please fill all the required fields.',
+        'error'
+      );
+    }
+  }
 
   editEmployee(employee: any): void {
     this.editMode = true;
@@ -171,10 +166,6 @@ export class EmployeesComponent implements OnInit {
 
     // Patch values
     this.employeeForm.patchValue(employee);
-    document.documentElement.style.setProperty(
-      '--photo-background',
-      `url('${employee.image}')`
-    );
 
     const employeeModal = document.getElementById('employee-modal');
     if (employeeModal) {
@@ -184,12 +175,19 @@ export class EmployeesComponent implements OnInit {
 
         // Reset the form
         this.employeeForm.reset();
-        document.documentElement.style.setProperty('--photo-background', '');
-        this.photoInput.nativeElement.value = '';
+        (document.getElementById('photo-input') as HTMLInputElement).value = '';
+        this.file = null;
       });
       UIkit.modal(employeeModal).show();
     }
   }
 
-  deleteEmployee(): void {}
+  deleteEmployee(): void {
+    this.blurSiteService.startBlur();
+    this.databaseService.deleteEmployee(this.currentDeleteId).then(() => {
+      this.ngOnInit();
+      this.blurSiteService.stopBlur();
+      this.alertService.presentToast('Employee deleted successfully', 'info');
+    });
+  }
 }

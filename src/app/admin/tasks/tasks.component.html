@@ -5,21 +5,20 @@
       <table id="due-tasks">
         <thead>
           <tr>
-            <th>Task Name</th>
-            <th>Employee</th>
-            <th>Details</th>
-            <th></th>
+            <th width="20%">Task Name</th>
+            <th width="20%">Employee</th>
+            <th width="30%">Details</th>
+            <th width="30%"></th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let task of tasks">
             <tr *ngIf="!task.completed">
               <td>
-                {{ task.name }}<br /><span class="status">{{
-                  task.status
-                }}</span>
+                {{ task.name }}<br />
+                <span class="status">In Progress</span>
               </td>
-              <td>{{ getEmployeeName(task.employeeId) }}</td>
+              <td>{{ employees[task.employee]?.name }}</td>
               <td>
                 <ul>
                   <li *ngFor="let detail of task.details">
@@ -35,10 +34,11 @@
                   <button
                     class="primary-btn"
                     uk-toggle="target: #confirm-delete-modal"
+                    (click)="currentDeleteId = task.id"
                   >
                     <i class="fa-solid fa-trash"></i>Delete
                   </button>
-                  <button class="primary-btn" (click)="task.completed = true">
+                  <button class="primary-btn" (click)="toggleTaskCompletion(task.id, task)">
                     <i class="fa-solid fa-circle-check"></i>Done
                   </button>
                 </div>
@@ -55,10 +55,10 @@
       <table id="completed-tasks">
         <thead>
           <tr>
-            <th>Task Name</th>
-            <th>Employee</th>
-            <th>Details</th>
-            <th></th>
+            <th width="20%">Task Name</th>
+            <th width="20%">Employee</th>
+            <th width="30%">Details</th>
+            <th width="30%"></th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +67,7 @@
               <td>
                 {{ task.name }}
               </td>
-              <td>{{ getEmployeeName(task.employeeId) }}</td>
+              <td>{{ employees[task.employee]?.name }}</td>
               <td>
                 <ul>
                   <li *ngFor="let detail of task.details">
@@ -80,10 +80,11 @@
                   <button
                     class="primary-btn"
                     uk-toggle="target: #confirm-delete-modal"
+                    (click)="currentDeleteId = task.id"
                   >
                     <i class="fa-solid fa-trash"></i>Delete
                   </button>
-                  <button class="primary-btn" (click)="task.completed = false">
+                  <button class="primary-btn" (click)="toggleTaskCompletion(task.id, task)">
                     Mark Incomplete
                   </button>
                 </div>
@@ -101,9 +102,9 @@
     <h2 *ngIf="!editMode" class="uk-modal-title">Add New Task</h2>
     <h2 *ngIf="editMode" class="uk-modal-title">Edit Task</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <form [formGroup]="taskForm" (ngSubmit)="submitTaskForm()">
       <div class="task-form-box">
-        <label class="admin-label" for="name-input">Name</label>
+        <label class="admin-label" for="name-input">Name *</label>
         <input
           type="text"
           class="admin-input"
@@ -112,23 +113,24 @@
         />
       </div>
       <div class="task-form-box">
-        <label class="admin-label">Employee</label>
-        <select class="admin-input" formControlName="employeeId">
-          <option *ngFor="let employee of employees" [ngValue]="employee.id">
-            {{ employee.name }}
+        <label class="admin-label">Employee *</label>
+        <select class="admin-input" formControlName="employee">
+          <option ngValue="" disabled>Choose Employee</option>
+          <option *ngFor="let employee of employees | keyvalue" [ngValue]="employee.key">
+            {{ getEmployeeName(employee.value) }}
           </option>
         </select>
       </div>
       <div class="task-form-box">
         <label class="admin-label">Details</label>
         <div id="details-inputs"></div>
-        <button id="add-detail" (click)="addDetails('')">
+        <button id="add-detail" (click)="addDetails($event, '')">
           <i class="fa-solid fa-plus"></i> Add Detail
         </button>
       </div>
       <button
         *ngIf="!editMode"
-        (disabled)="(!taskForm.valid)"
+        [disabled]="(!taskForm.valid)"
         type="submit"
         class="primary-btn"
       >
@@ -136,7 +138,7 @@
       </button>
       <button
         *ngIf="editMode"
-        (disabled)="(!taskForm.valid)"
+        [disabled]="(!taskForm.valid)"
         type="submit"
         class="primary-btn"
       >
@@ -148,4 +150,5 @@
 
 <app-confirm-delete-modal
   (confirmDelete)="deleteTask()"
+  (hidden)="currentDeleteId = ''"
 ></app-confirm-delete-modal>

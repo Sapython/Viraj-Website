@@ -1,40 +1,45 @@
 <section>
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>Item Name</th>
-          <th>Quantity</th>
-          <th>Unit</th>
-          <th>Rate</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items">
-          <td><img [src]="item.image" /></td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>{{ item.unit }}</td>
-          <td>₹{{ item.rate }}/{{ item.unit }}</td>
-          <td>
-            <div class="buttons">
-              <button class="primary-btn" (click)="editItem(item)">
-                <i class="fa-solid fa-pen-to-square"></i>Edit
-              </button>
-              <button
-                class="primary-btn"
-                uk-toggle="target: #confirm-delete-modal"
-              >
-                <i class="fa-solid fa-trash"></i>Delete
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div *ngIf="!items" uk-spinner="ratio: 3" id="loading"></div>
+  <ng-container *ngIf="items">
+    <div *ngIf="items.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Rate</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{ i + 1 }}.</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.unit }}</td>
+            <td>₹{{ item.rate }}/{{ item.unit }}</td>
+            <td>
+              <div class="buttons">
+                <button class="primary-btn" (click)="editItem(item)">
+                  <i class="fa-solid fa-pen-to-square"></i>Edit
+                </button>
+                <button
+                  class="primary-btn"
+                  uk-toggle="target: #confirm-delete-modal"
+                  (click)="currentDeleteId = item.id"
+                >
+                  <i class="fa-solid fa-trash"></i>Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p *ngIf="items.length == 0">No Stock Items :(</p>
+  </ng-container>
 </section>
 
 <div id="item-modal" uk-modal>
@@ -42,18 +47,10 @@
     <h2 *ngIf="!editMode" class="uk-modal-title">Add New Item</h2>
     <h2 *ngIf="editMode" class="uk-modal-title">Edit Item</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="itemForm" (ngSubmit)="addItem()">
-      <div id="upload-photo-wrapper" (click)="photoInput.click()">
-        <div id="upload-photo-container">
-          <img src="assets/img/ri_image-edit-fill.png" />
-          <p *ngIf="!editMode && photoInput.files?.length != 1">Upload Photo</p>
-          <p *ngIf="editMode || photoInput.files?.length == 1">Change Photo</p>
-          <input type="file" (change)="imageSelected()" #photoInput />
-        </div>
-      </div>
+    <form [formGroup]="itemForm" (ngSubmit)="submit()">
       <div id="item-inputs">
         <div class="item-form-box">
-          <label class="admin-label" for="name-input">Name</label>
+          <label class="admin-label" for="name-input">Name *</label>
           <input
             type="text"
             class="admin-input"
@@ -62,26 +59,25 @@
           />
         </div>
         <div class="item-form-box">
-          <label class="admin-label" for="quantity-input">Quantity</label>
+          <label class="admin-label">Unit *</label>
+          <select class="admin-input" formControlName="unit" #unitInput>
+            <option ngValue="" disabled>Choose unit</option>
+            <option *ngFor="let unit of units" [ngValue]="unit.id">{{ unit.description }} ({{ unit.name }})</option>
+          </select>
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label" for="quantity-input">Quantity *</label>
           <input
             type="number"
             min="0"
             class="admin-input"
             formControlName="quantity"
             id="quantity-input"
+            (input)="calculateCurrentValue()"
           />
         </div>
         <div class="item-form-box">
-          <label class="admin-label">Unit</label>
-          <select class="admin-input" formControlName="unit" #unitInput>
-            <option ngValue="g">Grams (g)</option>
-            <option ngValue="kg">Kilograms (kg)</option>
-            <option ngValue="L">Litre (L)</option>
-            <option ngValue="mL">Millilitre (mL)</option>
-          </select>
-        </div>
-        <div class="item-form-box">
-          <label class="admin-label" for="rate-input">Rate</label>
+          <label class="admin-label" for="rate-input">Rate *</label>
           <div id="rate-input-container">
             <span id="currency-symbol">₹</span>
             <input
@@ -89,6 +85,7 @@
               class="admin-input"
               formControlName="rate"
               id="rate-input"
+              (input)="calculateCurrentValue()"
             />
             <span id="per-unit"
               >/{{
@@ -98,10 +95,14 @@
             >
           </div>
         </div>
+        <div class="item-form-box">
+          <label class="admin-label">Current Value (Calculated)</label>
+          <span class="admin-input"><span style="color: var(--secondary)">₹</span> {{ currentValue }}</span>
+        </div>
       </div>
       <button
         *ngIf="!editMode"
-        (disabled)="(!itemForm.valid)"
+        [disabled]="!itemForm.valid"
         type="submit"
         class="primary-btn"
       >
@@ -109,7 +110,7 @@
       </button>
       <button
         *ngIf="editMode"
-        (disabled)="(!itemForm.valid)"
+        [disabled]="!itemForm.valid"
         type="submit"
         class="primary-btn"
       >
@@ -139,7 +140,7 @@
       <div id="stock-items">
         <div class="stock-item" *ngFor="let item of filteredItems">
           <div class="flex-subcontainer">
-            <img [src]="item.image" />
+            <!-- <img [src]="item.image" /> -->
             <p>{{ item.name }}</p>
           </div>
           <div class="flex-subcontainer">
@@ -155,4 +156,5 @@
 
 <app-confirm-delete-modal
   (confirmDelete)="deleteItem()"
+  (hidden)="currentDeleteId = ''"
 ></app-confirm-delete-modal>

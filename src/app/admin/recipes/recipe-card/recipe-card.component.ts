@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -6,15 +7,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./recipe-card.component.scss'],
 })
 export class RecipeCardComponent implements OnInit {
-  @Input() recipeId: any = '';
-  @Input() recipeImage: string = '';
-  @Input() recipeName: string = '';
-  @Input() recipeType: string = '';
-  @Input() recipePrice: string = '';
-
+  @Input() recipe: any;
   @Output() requestEdit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() requestDelete: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {}
+  constructor(private databaseService: DatabaseService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

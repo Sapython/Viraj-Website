@@ -1,5 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
+import { BlurSiteService } from 'src/app/services/blur-site.service';
+import { DatabaseService } from 'src/app/services/database.service';
 declare const UIkit: any;
 
 @Component({
@@ -8,169 +11,178 @@ declare const UIkit: any;
   styleUrls: ['../admin.util.scss', './recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit {
-  recipes: any[] = [
-    {
-      id: 'veg-noodles',
-      name: 'Veg Noodles',
-      typeId: '4',
-      description: 'A Delicious treat for a mouth carving for flavours.',
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStUT3jiReO7gl1UOeVnY1xQESP_yYxn28WoQ&usqp=CAU',
-      shelfLife: '4 days',
-      price: '420',
-      ingredients: [
-        {
-          id: 1,
-          quantity: 2,
-        },
-        {
-          id: 2,
-          quantity: '4',
-        },
-      ],
-      instructions: [
-        'Put some ketchup in a bowl',
-        'Mix with mustard',
-        'Add nutella',
-        'Chop onions',
-        'Put 2 eggs',
-        'Add salt for taste',
-      ],
-    },
-    {
-      id: 'manchurian',
-      name: 'Manchurian',
-      typeId: '2',
-      description:
-        'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM',
-      image:
-        'https://www.cookshideout.com/wp-content/uploads/2014/11/Veg-Manchurian-Low-Fat2S.jpg',
-      shelfLife: '4 days',
-      price: '420',
-      ingredients: [
-        {
-          id: '1',
-          quantity: '2',
-        },
-        {
-          id: '2',
-          quantity: '4',
-        },
-      ],
-      instructions: [
-        'Put some ketchup in a bowl',
-        'Mix with mustard',
-        'Add nutella',
-        'Chop onions',
-        'Put 2 eggs',
-        'Add salt for taste',
-      ],
-    },
-  ];
+  recipes: any[];
+  recipeTypes: any[];
+  ingredients: any;
 
-  recipeTypes: any[] = [
-    { id: '1', name: 'Chinese Cuisine' },
-    { id: '2', name: 'South Indian Cuisine' },
-    { id: '3', name: 'Dessert' },
-    { id: '4', name: 'Italian Cuisine' },
-    { id: '5', name: 'Beverage' },
-  ];
+  files: FileList | null;
 
-  ingredients: any[] = [
-    {
-      id: '1',
-      name: 'Rice',
-      unit: 'kg',
-    },
-    {
-      id: '2',
-      name: 'Onion',
-      unit: 'kg',
-    },
-    {
-      id: '3',
-      name: 'Potato',
-      unit: 'kg',
-    },
-    {
-      id: '4',
-      name: 'Pumpkin',
-      unit: 'kg',
-    },
-    {
-      id: '5',
-      name: 'Beetroot',
-      unit: 'kg',
-    },
-    {
-      id: '6',
-      name: 'Carrot',
-      unit: 'g',
-    },
-    {
-      id: '7',
-      name: 'Mushroom',
-      unit: 'mL',
-    },
-    {
-      id: '8',
-      name: 'Flour',
-      unit: 'L',
-    },
+  cookingCost: string = '0.00';
+  sellingPrice: string = '0.00';
+
+  months: string[] = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
 
   editMode: boolean = false;
-  currentEditId: any = '';
-  @ViewChild('photoInput') photoInput: ElementRef;
+  currentEditId: string = '';
+  currentDeleteId: string = '';
 
   recipeForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    typeId: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-    price: new FormControl(0, [Validators.required]),
-    shelfLife: new FormControl('', [Validators.required]),
+    name: new FormControl(''),
+    photos: new FormControl([]),
+    type: new FormControl(''),
+    flavourPalette: new FormControl(''),
+    bestSeasonFrom: new FormControl(''),
+    bestSeasonTo: new FormControl(''),
+    description: new FormControl(''),
+    ingredients: new FormControl([]),
+    cookingInstructions: new FormControl([]),
+    servingInstructions: new FormControl([]),
+    preparationTimeValue: new FormControl(0),
+    preparationTimeUnit: new FormControl('minute(s)'),
+    cookingTimeValue: new FormControl(0),
+    cookingTimeUnit: new FormControl('minute(s)'),
+    servingTimeValue: new FormControl(0),
+    servingTimeUnit: new FormControl('minute(s)'),
+    shelfLifeValue: new FormControl(0),
+    shelfLifeUnit: new FormControl('minute(s)'),
+    energyConsumptionPerPreparation: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(
+    private databaseService: DatabaseService,
+    private alertService: AlertService,
+    private blurSiteService: BlurSiteService
+  ) {}
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<any> {
+    // Get ingredients
+    await this.databaseService.getStock().then((stock: any) => {
+      this.ingredients = {};
+      stock.forEach((stockItem: any) => {
+        this.ingredients[stockItem.id] = stockItem.data();
+      });
+    });
 
-  getRecipeType(typeId: any): string {
-    return this.recipeTypes.find((recipeType) => recipeType.id == typeId).name;
+    // Get recipe types
+    await this.databaseService.getRecipeTypes().then((recipeTypes: any) => {
+      this.recipeTypes = [];
+      recipeTypes.forEach((recipeType: any) => {
+        this.recipeTypes.push({
+          id: recipeType.id,
+          ...recipeType.data(),
+        });
+      });
+    });
+
+    // Get recipes
+    await this.databaseService.getRecipes().then((recipes: any) => {
+      this.recipes = [];
+      recipes.forEach((recipe: any) => {
+        const recipeData = recipe.data();
+
+        // calculate cooking price & selling price for each recipe
+        var cookingPrice = 0;
+        recipeData['ingredients'].forEach((ingredient: any) => {
+          cookingPrice +=
+            this.ingredients[ingredient.id].rate * ingredient.quantity;
+        });
+        const sellingPrice = (cookingPrice / 0.3).toFixed(2);
+
+        this.recipes.push({
+          id: recipe.id,
+          cookingPrice: cookingPrice,
+          sellingPrice: sellingPrice,
+          ...recipeData,
+        });
+      });
+    });
   }
 
-  imageSelected(): void {
-    var selectionIsValid = true;
-    const file = this.photoInput.nativeElement.files[0];
+  ngAfterViewInit(): void {
+    const ingredientInputContainers = document.getElementsByClassName(
+      'ingredient-input-container'
+    );
 
-    if (this.photoInput.nativeElement.files.length != 1) {
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
-      alert('Your photo should either be in .png or .jpg');
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (file.size > 100_000) {
-      alert("Your photo's size should not exceed 100 KB");
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    }
+    // Calculate cooking cost & selling price in add recipe modal
+    const onEvent = () => {
+      var cookingCost = 0;
+      for (var i = 0; i < ingredientInputContainers.length; i++) {
+        const ingredientInputContainer = ingredientInputContainers[i];
+        const ingredientSelect = ingredientInputContainer.querySelector(
+          '.ingredient-select'
+        ) as HTMLSelectElement;
+        const ingredientQuantityInput = ingredientInputContainer.querySelector(
+          '.ingredient-quantity'
+        ) as HTMLInputElement;
+        if (
+          ingredientSelect.value !== '' &&
+          ingredientQuantityInput.value != '0'
+        ) {
+          cookingCost +=
+            parseFloat(this.ingredients[ingredientSelect.value].rate) *
+            parseFloat(ingredientQuantityInput.value);
+        }
+      }
 
-    if (selectionIsValid) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        document.documentElement.style.setProperty(
-          '--photo-background',
-          `url('${fileReader.result}')`
-        );
-      };
-    } else {
-      document.documentElement.style.setProperty('--photo-background', '');
+      this.cookingCost = cookingCost.toFixed(2);
+      this.sellingPrice = (cookingCost / 0.3).toFixed(2);
+    };
+
+    const ingredientsInputs = document.getElementById('ingredients-inputs');
+    ingredientsInputs?.addEventListener('change', onEvent, false);
+    ingredientsInputs?.addEventListener('input', onEvent, false);
+    ingredientsInputs?.addEventListener('click', onEvent, false);
+  }
+
+  validateImages(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const files = target.files;
+    if (files != null) {
+      for (var i = 0; i < files!.length; i++) {
+        const file = files![i];
+        var fileIsValid = false;
+        if (!['image/png', 'image/jpeg', 'image/jpg'].includes(file.type)) {
+          this.alertService.presentToast(
+            'Only png, jpeg and jpg images are allowed',
+            'error'
+          );
+        } else if (file.size >= 100_000) {
+          this.alertService.presentToast(
+            "Each image's size must be less than 100Kb",
+            'error'
+          );
+        } else {
+          fileIsValid = true;
+          this.files = files;
+        }
+        if (!fileIsValid) {
+          target.value = '';
+        }
+      }
     }
   }
 
-  addIngredient(ingredientId: any, ingredientQuantity: any): void {
+  addIngredient(
+    event: Event | null,
+    ingredientId: any,
+    ingredientQuantity: any
+  ): void {
+    if (event) {
+      event.preventDefault();
+    }
     const ingredientsInputs = document.getElementById('ingredients-inputs');
     if (ingredientsInputs) {
       const ingredientInputContainer = document.createElement('div');
@@ -178,8 +190,9 @@ export class RecipesComponent implements OnInit {
 
       const ingredientSelect = document.createElement('select');
       ingredientSelect.classList.add('admin-input', 'ingredient-select');
-      for (const ingredient of this.ingredients) {
-        ingredientSelect.innerHTML += `<option value="${ingredient.id}">${ingredient.name}</option>`;
+      ingredientSelect.innerHTML = `<option value="" disabled>Choose ingredient</option>`;
+      for (const ingredientId of Object.keys(this.ingredients)) {
+        ingredientSelect.innerHTML += `<option value="${ingredientId}">${this.ingredients[ingredientId].name}</option>`;
       }
       ingredientSelect.value = ingredientId;
 
@@ -196,9 +209,7 @@ export class RecipesComponent implements OnInit {
       ingredientUnit.classList.add('ingredient-unit');
       ingredientUnit.textContent = (() => {
         if (ingredientId) {
-          const ingredient = this.ingredients.find((ingredient) => {
-            return ingredient.id === ingredientId;
-          });
+          const ingredient = this.ingredients[ingredientId];
           if (ingredient) {
             return ingredient.unit;
           }
@@ -207,11 +218,8 @@ export class RecipesComponent implements OnInit {
       })();
 
       ingredientSelect.addEventListener('change', () => {
-        for (const ingredient of this.ingredients) {
-          if (ingredientSelect.value == ingredient.id) {
-            ingredientUnit.textContent = ingredient.unit;
-          }
-        }
+        ingredientUnit.textContent =
+          this.ingredients[ingredientSelect.value].unit;
       });
 
       const deleteIcon = document.createElement('i');
@@ -234,8 +242,17 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  addInstruction(instruction: any): void {
-    const instructionsInputs = document.getElementById('instructions-inputs');
+  addInstruction(
+    event: Event | null,
+    type: 'cooking' | 'serving',
+    instruction: any
+  ): void {
+    if (event) {
+      event.preventDefault();
+    }
+    const instructionsInputs = document.getElementById(
+      type + '-instructions-inputs'
+    );
     if (instructionsInputs) {
       const instructionInputContainer = document.createElement('div');
       instructionInputContainer.style.display = 'flex';
@@ -243,7 +260,7 @@ export class RecipesComponent implements OnInit {
 
       const instructionInput = document.createElement('input');
       instructionInput.type = 'text';
-      instructionInput.classList.add('admin-input');
+      instructionInput.classList.add('admin-input', type + '-instruction');
       instructionInput.style.width = '100%';
       instructionInput.value = instruction;
 
@@ -269,7 +286,106 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  addRecipe(): void {}
+  async submit(): Promise<any> {
+    // Set ingredients form control
+    this.recipeForm.value.ingredients = [];
+    const ingredientInputContainers = document.getElementsByClassName(
+      'ingredient-input-container'
+    );
+    for (var i = 0; i < ingredientInputContainers.length; i++) {
+      const ingredientInputContainer = ingredientInputContainers[i];
+      const ingredientSelect = ingredientInputContainer.querySelector(
+        '.ingredient-select'
+      ) as HTMLSelectElement;
+      const ingredientQuantityInput = ingredientInputContainer.querySelector(
+        '.ingredient-quantity'
+      ) as HTMLInputElement;
+      if (
+        ingredientSelect.value !== '' &&
+        ingredientQuantityInput.value != '0'
+      ) {
+        this.recipeForm.value.ingredients.push({
+          id: ingredientSelect.value,
+          quantity: ingredientQuantityInput.value,
+        });
+      }
+    }
+
+    // Set cookingInstructions form control
+    this.recipeForm.value.cookingInstructions = [];
+    const cookingInstructions = document.getElementsByClassName(
+      'cooking-instruction'
+    );
+    for (var i = 0; i < cookingInstructions.length; i++) {
+      this.recipeForm.value.cookingInstructions.push(
+        (cookingInstructions[i] as HTMLInputElement).value
+      );
+    }
+
+    // Set servingInstructions form control
+    this.recipeForm.value.servingInstructions = [];
+    const servingInstructions = document.getElementsByClassName(
+      'serving-instruction'
+    );
+    for (var i = 0; i < servingInstructions.length; i++) {
+      this.recipeForm.value.servingInstructions.push(
+        (servingInstructions[i] as HTMLInputElement).value
+      );
+    }
+
+    if (
+      this.recipeForm.value.name.trim() !== '' &&
+      this.recipeForm.value.ingredients.length > 0
+    ) {
+      this.blurSiteService.startBlur();
+
+      // Upload images if they're selected
+      this.recipeForm.value.photos = [];
+      if (this.files) {
+        const urls: string[] = [];
+        for (var i = 0; i < this.files.length; i++) {
+          const file = this.files[i];
+          await this.databaseService
+            .upload('recipes/' + new Date().getTime(), file)
+            .then((url) => {
+              this.recipeForm.value.photos.push(url);
+            });
+        }
+      }
+
+      if (this.editMode) {
+        this.databaseService
+          .editRecipe(this.currentEditId, this.recipeForm.value)
+          .then(() => {
+            UIkit.modal(document.getElementById('recipe-modal')).hide();
+            this.ngOnInit();
+            this.blurSiteService.stopBlur();
+            this.alertService.presentToast(
+              'Recipe edited successfully',
+              'info'
+            );
+          });
+      } else {
+        this.databaseService.addRecipe(this.recipeForm.value).then(() => {
+          UIkit.modal(document.getElementById('recipe-modal')).hide();
+          this.ngOnInit();
+          this.recipeForm.reset();
+          (document.getElementById('photos-input') as HTMLInputElement).value = '';
+          this.files = null;
+          document.getElementById('ingredients-inputs')!.innerHTML = '';
+          document.getElementById('cooking-instructions-inputs')!.innerHTML = '';
+          document.getElementById('serving-instructions-inputs')!.innerHTML = '';
+          this.blurSiteService.stopBlur();
+          this.alertService.presentToast('Recipe added successfully!');
+        });
+      }      
+    } else {
+      this.alertService.presentToast(
+        'Please fill all the required fields',
+        'error'
+      );
+    }
+  }
 
   editRecipe(recipe: any): void {
     this.editMode = true;
@@ -277,22 +393,18 @@ export class RecipesComponent implements OnInit {
 
     // Patch values
     this.recipeForm.patchValue(recipe);
-    document.documentElement.style.setProperty(
-      '--photo-background',
-      `url('${recipe.image}')`
-    );
     const ingredientsInputs = document.getElementById('ingredients-inputs');
     if (ingredientsInputs) {
       ingredientsInputs.innerHTML = '';
       recipe.ingredients.forEach((ingredient: any) => {
-        this.addIngredient(ingredient.id, ingredient.quantity);
+        this.addIngredient(null, ingredient.id, ingredient.quantity);
       });
     }
     const instructionsInputs = document.getElementById('instructions-inputs');
     if (instructionsInputs) {
       instructionsInputs.innerHTML = '';
       recipe.instructions.forEach((instruction: any) => {
-        this.addInstruction(instruction);
+        this.addInstruction(null, 'cooking', instruction);
       });
     }
 
@@ -304,8 +416,7 @@ export class RecipesComponent implements OnInit {
 
         // Reset the form
         this.recipeForm.reset();
-        document.documentElement.style.setProperty('--photo-background', '');
-        this.photoInput.nativeElement.value = '';
+        (document.getElementById('photos-input') as HTMLInputElement).value = '';
 
         if (ingredientsInputs) {
           ingredientsInputs.innerHTML = '';
@@ -318,5 +429,17 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  deleteRecipe(): void {}
+  requestDelete(recipeId: string): void {
+    UIkit.modal(document.getElementById('confirm-delete-modal')).show();
+    this.currentDeleteId = recipeId;
+  }
+
+  deleteRecipe(): void {
+    this.blurSiteService.startBlur();
+    this.databaseService.deleteRecipe(this.currentDeleteId).then(() => {
+      this.ngOnInit();
+      this.blurSiteService.stopBlur();
+      this.alertService.presentToast('Recipe deleted successfully', 'info');
+    });
+  }
 }

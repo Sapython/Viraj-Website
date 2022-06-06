@@ -9,6 +9,8 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AdminComponent implements OnInit {
   currentPanel: string = 'Panel';
   showingRecipe: boolean = false;
+  showingEmployee: boolean = false;
+  showingCustomer: boolean = false;
 
   breakpoint: number = 1000;
   largeScreen: boolean = window.innerWidth > this.breakpoint;
@@ -31,6 +33,14 @@ export class AdminComponent implements OnInit {
         if (urlArr.includes('recipes')) {
           this.currentPanel = 'Recipes';
           this.showingRecipe = urlArr.indexOf('recipes') != urlArr.length - 1;
+        } else if (urlArr.includes('employees')) {
+          this.currentPanel = 'Employees';
+          this.showingEmployee =
+            urlArr.indexOf('employees') != urlArr.length - 1;
+        } else if (urlArr.includes('customers')) {
+          this.currentPanel = 'Customers';
+          this.showingCustomer =
+            urlArr.indexOf('customers') != urlArr.length - 1;
         } else {
           const panel = urlArr[urlArr.length - 1];
           const panelWords = panel.split('-');

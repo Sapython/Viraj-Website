@@ -2,6 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 declare const UIkit: any;
 import Fuse from 'fuse.js';
+import { AlertService } from 'src/app/services/alert.service';
+import { BlurSiteService } from 'src/app/services/blur-site.service';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-stock',
@@ -9,75 +12,12 @@ import Fuse from 'fuse.js';
   styleUrls: ['../admin.util.scss', './stock.component.scss'],
 })
 export class StockComponent implements OnInit {
-  items: any[] = [
-    {
-      id: 1,
-      name: 'Rice',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'kg',
-      rate: 50,
-    },
-    {
-      id: 2,
-      name: 'Onion',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'kg',
-      rate: 50,
-    },
-    {
-      id: 3,
-      name: 'Potato',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'kg',
-      rate: 50,
-    },
-    {
-      id: 4,
-      name: 'Pumpkin',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'kg',
-      rate: 50,
-    },
-    {
-      id: 5,
-      name: 'Beetroot',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'kg',
-      rate: 50,
-    },
-    {
-      id: 6,
-      name: 'Carrot',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'g',
-      rate: 50,
-    },
-    {
-      id: 7,
-      name: 'Mushroom',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'mL',
-      rate: 50,
-    },
-    {
-      id: 8,
-      name: 'Flour',
-      image: 'assets/img/product-2.png',
-      quantity: 50,
-      unit: 'L',
-      rate: 50,
-    },
-  ];
-  filteredItems: any[] = this.items;
+  items: any[];
+  filteredItems: any[];
+  units: any[];
+  currentValue: string = '0.00';
+  currentDeleteId: string = '';
 
-  @ViewChild('photoInput') photoInput: ElementRef;
   @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
 
   editMode: boolean = false;
@@ -85,56 +25,85 @@ export class StockComponent implements OnInit {
 
   itemForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
+    unit: new FormControl('', [Validators.required]),
     quantity: new FormControl(0, [Validators.required]),
     rate: new FormControl(0, [Validators.required]),
-    unit: new FormControl('', [Validators.required]),
   });
 
-  updateStockForm: FormGroup;
+  updateStockFormControls: any = {};
+  updateStockForm: FormGroup = new FormGroup(this.updateStockFormControls);
 
-  constructor() {
-    // Initialize updateStockForm
-    const group: any = {};
-    this.items.forEach((item) => {
-      group[item.id.toString()] = new FormControl(item.quantity, [
-        Validators.required,
-      ]);
-    });
-    this.updateStockForm = new FormGroup(group);
-  }
+  constructor(private databaseService: DatabaseService, private blurSiteService: BlurSiteService, private alertService: AlertService) {}
 
-  imageSelected(): void {
-    var selectionIsValid = true;
-    const file = this.photoInput.nativeElement.files[0];
+  ngOnInit(): void {
+    // Get stock items
+    this.databaseService.getStock().then((docs: any) => {
+      this.items = [];
+      docs.forEach((doc: any) => {
+        this.items.push({ id: doc.id, ...doc.data() });
+      });
+      this.filteredItems = this.items;
 
-    if (this.photoInput.nativeElement.files.length != 1) {
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
-      alert('Your photo should either be in .png or .jpg');
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (file.size > 100_000) {
-      alert("Your photo's size should not exceed 100 KB");
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    }
-
-    if (selectionIsValid) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        document.documentElement.style.setProperty(
-          '--photo-background',
-          `url('${fileReader.result}')`
+      // Initialize updateStockForm
+      this.items.forEach((item) => {
+        this.updateStockFormControls[item.id.toString()] = new FormControl(
+          item.quantity,
+          [Validators.required]
         );
-      };
-    } else {
-      document.documentElement.style.setProperty('--photo-background', '');
-    }
+      });
+    });
+
+    // Get units
+    this.databaseService.getUnits().then((docs: any) => {
+      this.units = [];
+      docs.forEach((doc: any) => {
+        this.units.push({ id: doc.id, ...doc.data() });
+      });
+    });
   }
 
-  addItem(): void {}
+  calculateCurrentValue() {
+    const quantityInput = document.getElementById('quantity-input') as HTMLInputElement;
+    const quantity = parseFloat(quantityInput.value);
+    const rateInput = document.getElementById('rate-input') as HTMLInputElement;
+    const rate = parseFloat(rateInput.value);
+    const currentValue = quantity * rate;
+    this.currentValue = currentValue.toFixed(2);
+  }
+
+  submit(): void {
+    if (this.itemForm.valid) {
+      this.blurSiteService.startBlur();
+      
+      if (this.editMode) {
+        this.databaseService
+          .editStockItem(this.currentEditId, this.itemForm.value)
+          .then(() => {
+            UIkit.modal(document.getElementById('item-modal')).hide();
+            this.ngOnInit();
+            this.blurSiteService.stopBlur();
+            this.alertService.presentToast(
+              'Item edited successfully',
+              'info'
+            );
+          });
+      } else {
+        this.databaseService.addStockItem(this.itemForm.value).then(() => {
+          UIkit.modal(document.getElementById('item-modal')).hide();
+          this.itemForm.reset();
+          this.ngOnInit();
+          this.blurSiteService.stopBlur();
+          this.alertService.presentToast('Item added successfully', 'info');
+        });
+      }
+    } else {
+      this.alertService.presentToast(
+        'Please fill all the required fields.',
+        'error'
+      );
+    }
+  }
+  
 
   editItem(item: any): void {
     this.editMode = true;
@@ -142,10 +111,6 @@ export class StockComponent implements OnInit {
 
     // Patch values
     this.itemForm.patchValue(item);
-    document.documentElement.style.setProperty(
-      '--photo-background',
-      `url('${item.image}')`
-    );
 
     const itemModal = document.getElementById('item-modal');
     if (itemModal) {
@@ -155,14 +120,19 @@ export class StockComponent implements OnInit {
 
         // Reset the form
         this.itemForm.reset();
-        document.documentElement.style.setProperty('--photo-background', '');
-        this.photoInput.nativeElement.value = '';
       });
       UIkit.modal(itemModal).show();
     }
   }
 
-  deleteItem(): void {}
+  deleteItem(): void {
+    this.blurSiteService.startBlur();
+    this.databaseService.deleteStockItem(this.currentDeleteId).then(() => {
+      this.ngOnInit();
+      this.blurSiteService.stopBlur();
+      this.alertService.presentToast('Item deleted successfully', 'info');
+    });
+  }
 
   searchItems(): void {
     const query = this.itemSearchInput.nativeElement.value.trim();
@@ -181,15 +151,12 @@ export class StockComponent implements OnInit {
 
   updateStock(): void {
     // Update only those items' stock whose inputs have been changed
-    const toUpdate: any = {};
     for (const item of this.items) {
-      if (
-        this.updateStockForm.get(item.id.toString())!.value != item.quantity
-      ) {
-        toUpdate[item.id.toString()] = item.quantity;
+      const newQuantity = this.updateStockForm.get(item.id.toString())!.value;
+      if (newQuantity != item.quantity) {
+        item.quantity = newQuantity;
+        this.databaseService.editStockItem(item.id, item);
       }
     }
   }
-
-  ngOnInit(): void {}
 }

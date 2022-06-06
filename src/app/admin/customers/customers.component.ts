@@ -1,5 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert.service';
+import { BlurSiteService } from 'src/app/services/blur-site.service';
+import { DatabaseService } from 'src/app/services/database.service';
+import Fuse from 'fuse.js';
+import { DateService } from 'src/app/services/date.service';
 declare const UIkit: any;
 
 @Component({
@@ -8,146 +13,137 @@ declare const UIkit: any;
   styleUrls: ['./customers.component.scss', '../admin.util.scss'],
 })
 export class CustomersComponent implements OnInit {
-  customers: any[] = [
-    {
-      id: 'sujeet-singh',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Sujeet Singh',
-      dob: '2002-01-27',
-      gender: 'male',
-      grossPurchase: '9000',
-      phoneNumber: '9900099000',
-      email: 'raghav@goel.com',
-      address: 'Amity University, Noida',
-      job: 'Proctor',
-    },
-    {
-      id: 'kumar-singh',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Kumar Singh',
-      dob: '2002-01-27',
-      gender: 'male',
-      grossPurchase: '9000',
-      phoneNumber: '9900099000',
-      email: 'raghav@goel.com',
-      address: 'Amity University, Noida',
-      job: 'Proctor',
-    },
-    {
-      id: 'dhoni-singh',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Dhoni Singh',
-      dob: '2002-01-27',
-      gender: 'male',
-      grossPurchase: '9000',
-      phoneNumber: '9900099000',
-      email: 'raghav@goel.com',
-      address: 'Amity University, Noida',
-      job: 'Proctor',
-    },
-    {
-      id: 'sujeet-khan',
-      image: 'https://picsum.photos/200/?random=1',
-      name: 'Sujeet Khan',
-      dob: '2002-01-27',
-      gender: 'male',
-      grossPurchase: '9000',
-      phoneNumber: '9900099000',
-      email: 'raghav@goel.com',
-      address: 'Amity University, Noida',
-      job: 'Proctor',
-    },
-  ];
-  filteredCustomers: any[] = this.customers;
-
-  @ViewChild('photoInput') photoInput: ElementRef;
-
+  customers: any[];
+  filteredCustomers: any[];
   editMode: boolean = false;
+  file: File | null;
   currentEditId: any = '';
+  currentDeleteId: string = '';
 
   customerForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    dob: new FormControl('', [Validators.required]),
-    gender: new FormControl('', [Validators.required]),
-    grossPurchase: new FormControl('', [Validators.required]),
+    dob: new FormControl(''),
+    gender: new FormControl(''),
+    grossPurchase: new FormControl(0),
     phoneNumber: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    address: new FormControl('', [Validators.required]),
-    job: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.email]),
+    address: new FormControl(''),
+    job: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(
+    private databaseService: DatabaseService,
+    private alertService: AlertService,
+    private blurSiteService: BlurSiteService,
+    public dateService: DateService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.customers = [];
+    this.databaseService.getCustomers().then((docs) => {
+      docs.forEach((doc) => {
+        this.customers.push({ id: doc.id, ...doc.data() });
+      });
+      this.filteredCustomers = this.customers;
+    });
+  }
 
   ngAfterViewInit(): void {
     // Set up customer search
     const customerSearchInput = document.getElementById(
       'customer-search-input'
     ) as HTMLInputElement;
-
     if (customerSearchInput) {
       customerSearchInput.addEventListener(
         'input',
         () => {
-          const query = customerSearchInput.value.trim().toLowerCase();
-          this.filteredCustomers = this.customers.filter((customer) => {
-            return customer.name.toLowerCase().indexOf(query) !== -1;
-          });
-          this.filteredCustomers.sort((customer1, customer2) => {
-            const index1 = customer1.name.toLowerCase().indexOf(query);
-            const index2 = customer2.name.toLowerCase().indexOf(query);
-            return index1 - index2;
-          });
+          const query = customerSearchInput.value.trim();
+          if (query.length > 0) {
+            const options = { keys: ['name'] };
+            const fuse = new Fuse(this.customers, options);
+            const results = fuse.search(query);
+            this.filteredCustomers = [];
+            results.forEach((result: any) => {
+              this.filteredCustomers.push(result.item);
+            });
+          } else {
+            this.filteredCustomers = this.customers;
+          }
         },
         false
       );
     }
   }
 
-  getAge(dob: any): any {
-    const date = new Date(dob);
-    if (date) {
-      const today = new Date();
-      const difference = today.getTime() - date.getTime();
-      const years = Math.round(difference / 31_556_952_000);
-      return years;
-    }
-    return '';
-  }
-
-  imageSelected(): void {
-    var selectionIsValid = true;
-    const file = this.photoInput.nativeElement.files[0];
-
-    if (this.photoInput.nativeElement.files.length != 1) {
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)) {
-      alert('Your photo should either be in .png or .jpg');
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    } else if (file.size > 100_000) {
-      alert("Your photo's size should not exceed 100 KB");
-      selectionIsValid = false;
-      this.photoInput.nativeElement.value = '';
-    }
-
-    if (selectionIsValid) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        document.documentElement.style.setProperty(
-          '--photo-background',
-          `url('${fileReader.result}')`
+  validatePhoto(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const files = target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      var fileIsValid = false;
+      if (!['image/png', 'image/jpeg', 'image/jpg'].includes(file.type)) {
+        this.alertService.presentToast(
+          'Only png, jpeg and jpg image is allowed',
+          'error'
         );
-      };
-    } else {
-      document.documentElement.style.setProperty('--photo-background', '');
+      } else if (file.size >= 100_000) {
+        this.alertService.presentToast(
+          "The image's size must be less than 100 Kb",
+          'error'
+        );
+      } else {
+        fileIsValid = true;
+        this.file = file;
+      }
+      if (!fileIsValid) {
+        target.value = '';
+      }
     }
   }
 
-  addCustomer(): void {}
+  async submit(): Promise<void> {
+    if (this.customerForm.valid) {
+      this.blurSiteService.startBlur();
+
+      // Upload image if it's selected
+      if (this.file) {
+        await this.databaseService
+          .upload('customers/' + new Date().getTime(), this.file)
+          .then((url) => {
+            this.customerForm.value.image = url;
+          });
+      }
+      
+      if (this.editMode) {
+        this.databaseService
+          .editCustomer(this.currentEditId, this.customerForm.value)
+          .then(() => {
+            UIkit.modal(document.getElementById('customer-modal')).hide();
+            this.ngOnInit();
+            this.blurSiteService.stopBlur();
+            this.alertService.presentToast(
+              'Customer edited successfully',
+              'info'
+            );
+          });
+      } else {
+        this.databaseService.addCustomer(this.customerForm.value).then(() => {
+          UIkit.modal(document.getElementById('customer-modal')).hide();
+          this.customerForm.reset();
+          (document.getElementById('photo-input') as HTMLInputElement).value = '';
+          this.file = null;
+          this.ngOnInit();
+          this.blurSiteService.stopBlur();
+          this.alertService.presentToast('Customer added successfully', 'info');
+        });
+      }
+    } else {
+      this.alertService.presentToast(
+        'Please fill all the required fields.',
+        'error'
+      );
+    }
+  }
 
   editCustomer(customer: any): void {
     this.editMode = true;
@@ -155,10 +151,6 @@ export class CustomersComponent implements OnInit {
 
     // Patch values
     this.customerForm.patchValue(customer);
-    document.documentElement.style.setProperty(
-      '--photo-background',
-      `url('${customer.image}')`
-    );
 
     const customerModal = document.getElementById('customer-modal');
     if (customerModal) {
@@ -168,12 +160,19 @@ export class CustomersComponent implements OnInit {
 
         // Reset the form
         this.customerForm.reset();
-        document.documentElement.style.setProperty('--photo-background', '');
-        this.photoInput.nativeElement.value = '';
+        (document.getElementById('photo-input') as HTMLInputElement).value = '';
+        this.file = null;
       });
       UIkit.modal(customerModal).show();
     }
   }
 
-  deleteCustomer(): void {}
+  deleteCustomer(): void {
+    this.blurSiteService.startBlur();
+    this.databaseService.deleteCustomer(this.currentDeleteId).then(() => {
+      this.ngOnInit();
+      this.blurSiteService.stopBlur();
+      this.alertService.presentToast('Customer deleted successfully', 'info');
+    });
+  }
 }

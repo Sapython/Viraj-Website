@@ -1,15 +1,26 @@
 <div id="card">
-  <img src="{{ recipeImage }}" alt="Photo of {{ recipeName }}" loading="lazy" />
+  <img
+    *ngIf="recipe.images && recipe.images.length > 0"
+    [src]="recipe.images[0]"
+    loading="lazy"
+  />
+  <img
+    *ngIf="!recipe.images || recipe.images.length == 0"
+    src="assets/img/pexels-photo-1640777.jpeg"
+    loading="lazy"
+  />
   <div id="card-content">
     <div>
-      <h3>{{ recipeName }}</h3>
-      <p>{{ recipeType }}</p>
+      <h3 [attr.uk-tooltip]="recipe.name">{{ recipe.name }}</h3>
+      <p>{{ recipe.type }}</p>
     </div>
-    <div id="price">₹{{ recipePrice }}</div>
+    <div id="price">₹{{ recipe.sellingPrice }}</div>
     <div id="buttons">
-      <button class="primary-btn" [routerLink]="recipeId">View</button>
+      <button class="primary-btn" [routerLink]="recipe.id">View</button>
       <button class="primary-btn" (click)="requestEdit.emit()">Edit</button>
-      <button class="primary-btn" uk-toggle="#confirm-delete-modal">Delete</button>
+      <button class="primary-btn" (click)="requestDelete.emit()">
+        Delete
+      </button>
     </div>
   </div>
 </div>
