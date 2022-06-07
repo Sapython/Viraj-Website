@@ -66,6 +66,4 @@ export class RecipePageComponent implements OnInit {
     this.recipe['cookingCost'] = cookingCost.toFixed(2);
     this.recipe['sellingPrice'] = (cookingCost / 0.3).toFixed(2);
   }
-
-  deleteRecipe(): void {}
 }
