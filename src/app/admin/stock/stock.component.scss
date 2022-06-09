@@ -2,6 +2,57 @@ section {
   padding: 1em;
   height: 100%;
   position: relative;
+  div.topBar{
+    display: flex;
+    margin-bottom: 20px;
+    .search-box {
+      .admin-search {
+        border: 2px solid var(--secondary);
+      }
+    }
+    button{
+      padding:10px;
+      border:none;
+      background:var(--secondary);
+      color:white;
+      font-size:1.2em;
+      margin-left: 40px;
+      border-radius: 7px;
+    }
+  }
+  .table-container{
+    td{
+      // width: min-content;
+      // padding: 10px 20px;
+      input{
+        width:70px;
+        border-radius:6px;
+        font-size: 20px;
+        // height: 50px;
+        border: none;
+        padding:10px 5px;
+        background-color: var(--secondary);
+        color:white;
+      }
+      #mic-button {
+        min-width: 35px;
+        min-height: 35px;
+        background-color: var(--secondary);
+        color: var(--secondary-contrast);
+        border: none;
+        border-radius: 50%;
+        font-size: var(--small);
+        margin-left: .5em;
+        cursor: pointer;
+        transition: all .5s;
+  
+        &:hover {
+          box-shadow: var(--normal-shadow);
+        }
+      }
+    }
+  }
+
 }
 
 .uk-modal-dialog {
@@ -10,7 +61,7 @@ section {
     align-items: center;
     width: fit-content;
     margin-left: auto;
-    
+
     .search-box {
       .admin-search {
         border: 2px solid var(--secondary);
@@ -25,16 +76,15 @@ section {
       border: none;
       border-radius: 50%;
       font-size: var(--small);
-      margin-left: .5em;
+      margin-left: 0.5em;
       cursor: pointer;
-      transition: all .5s;
+      transition: all 0.5s;
 
       &:hover {
         box-shadow: var(--normal-shadow);
       }
     }
   }
-
   form {
     #item-inputs {
       .item-form-box {

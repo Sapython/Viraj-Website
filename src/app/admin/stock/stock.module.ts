@@ -6,7 +6,7 @@ import { StockComponent } from './stock.component';
 import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
-
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 @NgModule({
   declarations: [
     StockComponent
@@ -16,7 +16,8 @@ import { DatabaseService } from 'src/app/services/database.service';
     StockRoutingModule,
     AdminWidgetsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule,
   ],
   providers: [
     DatabaseService

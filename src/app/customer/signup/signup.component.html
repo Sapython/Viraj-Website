@@ -1,0 +1,19 @@
+<app-header></app-header>
+<section>
+    <div id="container">
+        <h2>Login</h2>
+        <form [formGroup]="signupForm" (ngSubmit)="submitLoginForm()">
+            <input type="password" placeholder="Full Name" formControlName="displayName" class="admin-input" />
+            <input type="email" placeholder="Email" formControlName="email" class="admin-input" />
+            <input type="password" placeholder="Password" formControlName="password" class="admin-input" />
+            <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+                class="admin-input" />
+
+            <button type="submit" id="login-btn" [disabled]="!signupForm.valid">Login</button>
+        </form>
+        <button id="sign-in-with-google" (click)="loginWithGoogle()">
+            <i class="fa-brands fa-google"></i>Login With Google
+        </button>
+        <h3>If you already have an account, <a routerLink="/login">login now</a></h3>
+    </div>
+</section>

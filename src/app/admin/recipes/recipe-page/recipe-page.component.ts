@@ -51,11 +51,11 @@ export class RecipePageComponent implements OnInit {
     }
 
     this.ingredients = {};
-    await this.databaseService.getStock().then((stock: any) => {
-      stock.forEach((stockItem: any) => {
-        this.ingredients[stockItem.id] = stockItem.data();
-      });
-    });
+    // await this.databaseService.getStock().then((stock: any) => {
+    //   stock.forEach((stockItem: any) => {
+    //     this.ingredients[stockItem.id] = stockItem.data();
+    //   });
+    // });
 
     // calculate cooking cost & selling price
     var cookingCost = 0;

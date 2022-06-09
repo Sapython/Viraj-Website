@@ -8,6 +8,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class RecipeCardComponent implements OnInit {
   @Input() recipe: any;
+  @Input() serialNumber: number;
   @Output() requestEdit: EventEmitter<any> = new EventEmitter<any>();
   @Output() requestDelete: EventEmitter<any> = new EventEmitter<any>();
 

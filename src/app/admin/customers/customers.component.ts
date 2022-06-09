@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/services/alert.service';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import Fuse from 'fuse.js';
 import { DateService } from 'src/app/services/date.service';
+import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 declare const UIkit: any;
 
 @Component({
@@ -33,7 +33,7 @@ export class CustomersComponent implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private alertService: AlertService,
+    private alertService: AlertsAndNotificationsService,
     private blurSiteService: BlurSiteService,
     public dateService: DateService
   ) {}
@@ -45,6 +45,7 @@ export class CustomersComponent implements OnInit {
         this.customers.push({ id: doc.id, ...doc.data() });
       });
       this.filteredCustomers = this.customers;
+      // alert(this.customers.length);
     });
   }
 
@@ -135,6 +136,8 @@ export class CustomersComponent implements OnInit {
           this.ngOnInit();
           this.blurSiteService.stopBlur();
           this.alertService.presentToast('Customer added successfully', 'info');
+        }).catch((error)=>{
+          this.alertService.presentToast(error, 'error');
         });
       }
     } else {

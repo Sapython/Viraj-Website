@@ -1,49 +1,38 @@
+
 <section>
+  <div>
+    <button (click)="openAddRecipeModal()">Add Recipe</button>
+  </div>
   <div *ngIf="!recipes || recipes.length == 0" uk-spinner="ratio: 3" id="loading"></div>
+  <mat-paginator *ngIf="recipeLength>0" [length]="recipeLength" [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 30, 40, 50, 100, 500]" (page)="getNextRecipes($event)" aria-label="Select page">
+  </mat-paginator>
   <div id="recipe-cards" *ngIf="recipes && recipes.length > 0">
-    <app-recipe-card
-    *ngFor="let recipe of recipes"
-    [recipe]="recipe"
-    (requestEdit)="editRecipe(recipe)"
-    (requestDelete)="requestDelete(recipe.id)"
-  ></app-recipe-card>
+    <app-recipe-card *ngFor="let recipe of recipes; let i = index;" [serialNumber]="i + 1 + serialNumberAdditionalCounter" [recipe]="recipe" (requestEdit)="editRecipe(recipe)"
+      (requestDelete)="requestDelete(recipe.id)"></app-recipe-card>
   </div>
 </section>
 
 <div id="recipe-modal" uk-modal>
-  <div class="uk-modal-dialog uk-modal-body">
+  <div class="uk-modal-dialog uk-modal-body" >
     <h2 *ngIf="!editMode" class="uk-modal-title">Add New Recipe</h2>
     <h2 *ngIf="editMode" class="uk-modal-title">Edit Recipe</h2>
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="recipeForm" (ngSubmit)="submit()">
+    <form [formGroup]="recipeForm" (ngSubmit)="submit()" *ngIf="recipeDataLoaded">
       <div class="recipe-form-box">
         <label class="admin-label" for="name-input">Name *</label>
-        <input
-          type="text"
-          class="admin-input"
-          formControlName="name"
-          id="name-input"
-        />
+        <input type="text" class="admin-input" formControlName="name" id="name-input" />
       </div>
       <div class="recipe-form-box">
         <label class="admin-label" for="photos-input">Photos</label>
-        <input
-          type="file"
-          class="admin-input"
-          id="photos-input"
-          accept="image/png, image/jpeg, image/jpg"
-          (change)="validateImages($event)"
-          multiple
-        />
+        <input type="file" class="admin-input" id="photos-input" accept="image/png, image/jpeg, image/jpg"
+          (change)="validateImages($event)" multiple />
       </div>
       <div class="recipe-form-box">
         <label class="admin-label">Type</label>
         <select class="admin-input" formControlName="type">
           <option [ngValue]="''" disabled>Choose type</option>
-          <option
-            *ngFor="let recipeType of recipeTypes"
-            [ngValue]="recipeType.id"
-          >
+          <option *ngFor="let recipeType of recipeTypes" [ngValue]="recipeType.id">
             {{ recipeType.name }}
           </option>
         </select>
@@ -80,12 +69,7 @@
       </div>
       <div class="recipe-form-box">
         <label class="admin-label" for="description-input">Description</label>
-        <input
-          type="text"
-          class="admin-input"
-          formControlName="description"
-          id="description-input"
-        />
+        <input type="text" class="admin-input" formControlName="description" id="description-input" />
       </div>
       <div class="recipe-form-box">
         <label class="admin-label">Ingredients *</label>
@@ -105,37 +89,22 @@
       <div class="recipe-form-box">
         <label class="admin-label">Cooking Instructions</label>
         <div id="cooking-instructions-inputs"></div>
-        <button
-          id="add-cooking-instruction"
-          class="add-instruction"
-          (click)="addInstruction($event, 'cooking', '')"
-        >
+        <button id="add-cooking-instruction" class="add-instruction" (click)="addInstruction($event, 'cooking', '')">
           <i class="fa-solid fa-plus"></i> Add Instruction
         </button>
       </div>
       <div class="recipe-form-box">
         <label class="admin-label">Serving Instructions</label>
         <div id="serving-instructions-inputs"></div>
-        <button
-          id="add-serving-instruction"
-          class="add-instruction"
-          (click)="addInstruction($event, 'serving', '')"
-        >
+        <button id="add-serving-instruction" class="add-instruction" (click)="addInstruction($event, 'serving', '')">
           <i class="fa-solid fa-plus"></i> Add Instruction
         </button>
       </div>
       <div class="recipe-form-box">
-        <label class="admin-label" for="preparation-time-input"
-          >Preparation Time</label
-        >
+        <label class="admin-label" for="preparation-time-input">Preparation Time</label>
         <div class="time-input-box">
-          <input
-            type="number"
-            min="0"
-            class="admin-input"
-            id="preparation-time-input"
-            formControlName="preparationTimeValue"
-          />
+          <input type="number" min="0" class="admin-input" id="preparation-time-input"
+            formControlName="preparationTimeValue" />
           <select class="admin-input" formControlName="preparationTimeUnit">
             <option ngValue="minute(s)">Minute(s)</option>
             <option ngValue="hour(s)">Hour(s)</option>
@@ -146,13 +115,7 @@
       <div class="recipe-form-box">
         <label class="admin-label" for="cooking-time-input">Cooking Time</label>
         <div class="time-input-box">
-          <input
-            type="number"
-            min="0"
-            class="admin-input"
-            id="cooking-time-input"
-            formControlName="cookingTimeValue"
-          />
+          <input type="number" min="0" class="admin-input" id="cooking-time-input" formControlName="cookingTimeValue" />
           <select class="admin-input" formControlName="cookingTimeUnit">
             <option ngValue="minutes">Minutes</option>
             <option ngValue="hours">Hours</option>
@@ -163,13 +126,7 @@
       <div class="recipe-form-box">
         <label class="admin-label" for="serving-time-input">Serving Time</label>
         <div class="time-input-box">
-          <input
-            type="number"
-            min="0"
-            class="admin-input"
-            id="serving-time-input"
-            formControlName="servingTimeValue"
-          />
+          <input type="number" min="0" class="admin-input" id="serving-time-input" formControlName="servingTimeValue" />
           <select class="admin-input" formControlName="servingTimeUnit">
             <option ngValue="minutes">Minutes</option>
             <option ngValue="hours">Hours</option>
@@ -180,13 +137,7 @@
       <div class="recipe-form-box">
         <label class="admin-label" for="shelf-life-input">Shelf Life</label>
         <div class="time-input-box">
-          <input
-            type="number"
-            min="0"
-            class="admin-input"
-            id="shelf-life-input"
-            formControlName="shelfLifeValue"
-          />
+          <input type="number" min="0" class="admin-input" id="shelf-life-input" formControlName="shelfLifeValue" />
           <select class="admin-input" formControlName="shelfLifeUnit">
             <option ngValue="minutes">Minutes</option>
             <option ngValue="hours">Hours</option>
@@ -195,34 +146,18 @@
         </div>
       </div>
       <div class="recipe-form-box">
-        <label class="admin-label" for="energy-consumption-per-preparation"
-          >Energy Consumption Per Preparation</label
-        >
-        <input
-          type="text"
-          class="admin-input"
-          formControlName="energyConsumptionPerPreparation"
-          id="energy-consumption-per-preparation"
-        />
+        <label class="admin-label" for="energy-consumption-per-preparation">Energy Consumption Per Preparation</label>
+        <input type="text" class="admin-input" formControlName="energyConsumptionPerPreparation"
+          id="energy-consumption-per-preparation" />
       </div>
-      <button
-        *ngIf="!editMode"
-        type="submit"
-        class="primary-btn"
-      >
+      <button *ngIf="!editMode" type="submit" class="primary-btn">
         Add Recipe
       </button>
-      <button
-        *ngIf="editMode"
-        type="submit"
-        class="primary-btn"
-      >
+      <button *ngIf="editMode" type="submit" class="primary-btn">
         Save Changes
       </button>
     </form>
   </div>
 </div>
 
-<app-confirm-delete-modal
-  (confirmDelete)="deleteRecipe()"
-></app-confirm-delete-modal>
+<app-confirm-delete-modal (confirmDelete)="deleteRecipe()"></app-confirm-delete-modal>

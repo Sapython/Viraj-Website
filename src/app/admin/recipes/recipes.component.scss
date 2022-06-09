@@ -23,6 +23,36 @@ section {
       }
     }
   }
+  div { 
+    button{
+      font-family: var(--font-three);
+        font-size: var(--xsmall);
+        font-weight: 500;
+        padding: 0.25em 0.5em;
+        background-color: var(--secondary-contrast);
+        color: var(--secondary);
+        border: none;
+        transition: all 0.5s;
+        border-radius: 7px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        width: fit-content;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:last-of-type {
+          margin-left: 1em;
+        }
+
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: 720px) {
+          font-size: var(--xxsmall);
+        }
+    }
+  }
 }
 
 .uk-modal-dialog {

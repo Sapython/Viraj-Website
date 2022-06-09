@@ -1,17 +1,9 @@
 <header>
-  <button
-    *ngIf="!largeScreen"
-    class="uk-navbar-toggle"
-    uk-navbar-toggle-icon
-    id="toggle-button"
-    (click)="toggleSidebar()"
-  ></button>
+  <button *ngIf="!largeScreen" class="uk-navbar-toggle" uk-navbar-toggle-icon id="toggle-button"
+    (click)="toggleSidebar()"></button>
   <div id="header-content">
     <h2 id="header-heading">Agent {{ currentPanel }}</h2>
-    <div *ngIf="currentPanel == 'Stock'" id="header-end">
-      <button class="secondary-btn" uk-toggle="target: #update-stock-modal">
-        <i class="fa-solid fa-plus"></i> Update Stock
-      </button>
+    <div *ngIf="currentPanel == 'Stock'" id="header-end"> 
       <button class="secondary-btn" uk-toggle="target: #item-modal">
         <i class="fa-solid fa-plus"></i> Add Item
       </button>
@@ -21,18 +13,14 @@
         <i class="fa-solid fa-plus"></i> Add Task
       </button>
     </div>
-    <div *ngIf="currentPanel == 'Recipes' && !showingRecipe" id="header-end">
+    <!-- <div *ngIf="currentPanel == 'Recipes' && !showingRecipe" id="header-end">
       <button class="secondary-btn" uk-toggle="target: #recipe-modal">
         <i class="fa-solid fa-plus"></i> Add Recipe
       </button>
-    </div>
+    </div> -->
     <div *ngIf="currentPanel == 'Employees' && !showingEmployee" id="header-end">
       <div class="search-box">
-        <input
-          type="text"
-          class="admin-search"
-          id="employee-search-input"
-        />
+        <input type="text" class="admin-search" id="employee-search-input" />
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <button class="secondary-btn" uk-toggle="target: #employee-modal">
@@ -41,11 +29,7 @@
     </div>
     <div *ngIf="currentPanel == 'Customers' && !showingCustomer" id="header-end">
       <div class="search-box">
-        <input
-          type="text"
-          class="admin-search"
-          id="customer-search-input"
-        />
+        <input type="text" class="admin-search" id="customer-search-input" />
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <button class="secondary-btn" uk-toggle="target: #customer-modal">
@@ -55,71 +39,32 @@
   </div>
 </header>
 <div id="wrapper" (window:resize)="onWindowResize()">
-  <div
-    [style]="largeScreen || showSidebar ? '' : 'display: none'"
-    id="sidebar-container"
-  >
+  <div [style]="largeScreen || showSidebar ? '' : 'display: none'" id="sidebar-container">
     <aside id="sidebar">
       <ul id="sidebar-ul">
         <li>
-          <a
-            routerLink="/admin/dashboard"
-            routerLinkActive="active"
-            class="sidebar-li-a"
-            (click)="toggleSidebar()"
-            ><i class="fa-solid fa-house"></i
-            ><span class="sidebar-text">Dashboard</span></a
-          >
+          <a routerLink="/admin/dashboard" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
+              class="fa-solid fa-house"></i><span class="sidebar-text">Dashboard</span></a>
         </li>
         <li>
-          <a
-            routerLink="/admin/stock"
-            routerLinkActive="active"
-            class="sidebar-li-a"
-            (click)="toggleSidebar()"
-            ><i class="fa-solid fa-boxes-stacked"></i
-            ><span class="sidebar-text">Stock</span></a
-          >
+          <a routerLink="/admin/stock" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
+              class="fa-solid fa-boxes-stacked"></i><span class="sidebar-text">Stock</span></a>
         </li>
         <li>
-          <a
-            routerLink="/admin/tasks"
-            routerLinkActive="active"
-            class="sidebar-li-a"
-            (click)="toggleSidebar()"
-            ><i class="fa-solid fa-list-check"></i
-            ><span class="sidebar-text">Tasks</span></a
-          >
+          <a routerLink="/admin/tasks" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
+              class="fa-solid fa-list-check"></i><span class="sidebar-text">Tasks</span></a>
         </li>
         <li>
-          <a
-            routerLink="/admin/recipes"
-            routerLinkActive="active"
-            class="sidebar-li-a"
-            (click)="toggleSidebar()"
-            ><i class="fa-solid fa-bowl-food"></i
-            ><span class="sidebar-text">Recipes</span></a
-          >
+          <a routerLink="/admin/recipes" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
+              class="fa-solid fa-bowl-food"></i><span class="sidebar-text">Recipes</span></a>
         </li>
         <li>
-          <a
-            routerLink="/admin/employees"
-            routerLinkActive="active"
-            class="sidebar-li-a"
-            (click)="toggleSidebar()"
-            ><i class="fa-solid fa-user"></i
-            ><span class="sidebar-text">Employees</span></a
-          >
+          <a routerLink="/admin/employees" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
+              class="fa-solid fa-user"></i><span class="sidebar-text">Employees</span></a>
         </li>
         <li>
-          <a
-            routerLink="/admin/customers"
-            routerLinkActive="active"
-            class="sidebar-li-a"
-            (click)="toggleSidebar()"
-            ><i class="fa-solid fa-users"></i
-            ><span class="sidebar-text">Customers</span></a
-          >
+          <a routerLink="/admin/customers" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
+              class="fa-solid fa-users"></i><span class="sidebar-text">Customers</span></a>
         </li>
       </ul>
     </aside>

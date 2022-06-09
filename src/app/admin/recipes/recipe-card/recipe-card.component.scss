@@ -13,7 +13,20 @@
     object-fit: cover;
     border-radius: 10px 10px 0 0;
   }
-
+  .badge{
+    width:40px;
+    height:40px;
+    position: relative;
+    top:0px;
+    left:0px;
+    background-color: var(--secondary-contrast);
+    border-radius: 50%;
+    text-align: center;
+    color: var(--secondary);
+    font-size: 20px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+  }
   #card-content {
     padding: 1em;
 

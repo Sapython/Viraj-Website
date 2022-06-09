@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from 'src/app/services/alert.service';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 declare const UIkit: any;
 
 @Component({
@@ -27,7 +27,7 @@ export class TasksComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private blurSiteService: BlurSiteService,
-    private alertService: AlertService
+    private alertService: AlertsAndNotificationsService
   ) {}
 
   ngOnInit(): void {

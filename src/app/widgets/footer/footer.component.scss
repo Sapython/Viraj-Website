@@ -1,7 +1,8 @@
 footer {
   display: flex;
   background-color: var(--primary);
-  background-image: url("../../../assets/img/footer-background.png");
+  // background-image: url("../../../assets/img/footer-background.png");
+  background-image: linear-gradient(120deg, #161616,#080808);
   background-size: cover;
   background-repeat: no-repeat;
 }

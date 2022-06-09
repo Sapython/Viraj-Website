@@ -17,9 +17,13 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertService } from './services/alert.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { connectFirestoreEmulator } from '@firebase/firestore';
+import { AuthenticationService } from './services/authentication.service';
+import { DatabaseService } from './services/database.service';
+import { DataProvider } from './providers/data.provider';
+import { UserDataService } from './services/user-data.service';
+import { AlertsAndNotificationsService } from './services/uiService/alerts-and-notifications.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -35,7 +39,15 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     BrowserAnimationsModule,
     MatSnackBarModule,
   ],
-  providers: [ScreenTrackingService, UserTrackingService, AlertService],
+  providers: [
+    ScreenTrackingService,
+    UserTrackingService,
+    AuthenticationService,
+    DatabaseService,
+    DataProvider,
+    UserDataService,
+    AlertsAndNotificationsService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

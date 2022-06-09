@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { DocumentReference } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 declare const UIkit: any;
 import Fuse from 'fuse.js';
-import { AlertService } from 'src/app/services/alert.service';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 
 @Component({
   selector: 'app-stock',
@@ -17,53 +18,87 @@ export class StockComponent implements OnInit {
   units: any[];
   currentValue: string = '0.00';
   currentDeleteId: string = '';
-
+  allStocks: any[] = [];
   @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
-
   editMode: boolean = false;
   currentEditId: any = '';
-
+  updateStockEnabled: boolean = false;
+  serialNumberAdditionalCounter: number = 0;
   itemForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     unit: new FormControl('', [Validators.required]),
     quantity: new FormControl(0, [Validators.required]),
     rate: new FormControl(0, [Validators.required]),
   });
-
+  stockLength: number = 0;
   updateStockFormControls: any = {};
   updateStockForm: FormGroup = new FormGroup(this.updateStockFormControls);
-
-  constructor(private databaseService: DatabaseService, private blurSiteService: BlurSiteService, private alertService: AlertService) {}
+  lastDocReference: any;
+  firstDocReference: any;
+  editedItem: any = {};
+  constructor(
+    private databaseService: DatabaseService,
+    private blurSiteService: BlurSiteService,
+    private alertService: AlertsAndNotificationsService
+  ) {}
 
   ngOnInit(): void {
     // Get stock items
-    this.databaseService.getStock().then((docs: any) => {
-      this.items = [];
-      docs.forEach((doc: any) => {
-        this.items.push({ id: doc.id, ...doc.data() });
-      });
-      this.filteredItems = this.items;
+    this.getInitialStock();
+    this.getMeasuringUnits();
+  }
 
-      // Initialize updateStockForm
-      this.items.forEach((item) => {
-        this.updateStockFormControls[item.id.toString()] = new FormControl(
-          item.quantity,
-          [Validators.required]
-        );
+  getInitialStock() {
+    this.serialNumberAdditionalCounter = 0;
+    this.databaseService
+      .getSiteData()
+      .then((data) => {
+        if (data.exists()) {
+          const siteData = data.data();
+          this.stockLength = siteData['stockLength'];
+        } else {
+          this.stockLength = 0;
+        }
+      })
+      .finally(() => {
+        this.databaseService.getFirstStock(10).then((docs: any) => {
+          this.setCurrentViewData(docs);
+          // this.allStocks.push(...docs)
+        });
+      })
+      .catch((error) => {
+        this.alertService.presentToast(error, 'error');
       });
-    });
+  }
 
-    // Get units
-    this.databaseService.getUnits().then((docs: any) => {
-      this.units = [];
-      docs.forEach((doc: any) => {
-        this.units.push({ id: doc.id, ...doc.data() });
+  getMeasuringUnits() {
+    this.databaseService
+      .getUnits()
+      .then((units: any) => {
+        this.units = units;
+      })
+      .catch((error) => {
+        this.alertService.presentToast(error, 'error');
       });
+  }
+
+  setCurrentViewData(docs: DocumentReference[]) {
+    this.items = [];
+    let setFirstDoc = true;
+    docs.forEach((doc: any) => {
+      if (setFirstDoc) {
+        this.firstDocReference = doc;
+        setFirstDoc = false;
+      }
+      this.items.push({ id: doc.id, ...doc.data() });
+      this.lastDocReference = doc;
     });
   }
 
   calculateCurrentValue() {
-    const quantityInput = document.getElementById('quantity-input') as HTMLInputElement;
+    const quantityInput = document.getElementById(
+      'quantity-input'
+    ) as HTMLInputElement;
     const quantity = parseFloat(quantityInput.value);
     const rateInput = document.getElementById('rate-input') as HTMLInputElement;
     const rate = parseFloat(rateInput.value);
@@ -71,30 +106,73 @@ export class StockComponent implements OnInit {
     this.currentValue = currentValue.toFixed(2);
   }
 
+  getNextStocks(event: any) {
+    // const lastDoc =
+    console.log(event);
+    if (event.previousPageIndex < event.pageIndex) {
+      console.log('Moved next');
+      const lastDoc = this.lastDocReference;
+      const length = event.pageSize;
+      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.databaseService.getNextStock(length, lastDoc).then((docs: any) => {
+        // this.allStocks.push(...docs)
+        this.setCurrentViewData(docs);
+      });
+    } else if (event.previousPageIndex > event.pageIndex) {
+      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.databaseService.getPreviousStock(event.pageSize, this.firstDocReference).then((docs: any) => {
+        // this.allStocks.push(...docs)
+        this.setCurrentViewData(docs);
+      })
+    } else if (event.previousPageIndex === event.pageIndex && event.pageIndex === 0) {
+      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.databaseService.getFirstStock(event.pageSize).then((docs: any) => {
+        this.setCurrentViewData(docs);
+        // this.allStocks.push(...docs)
+      });
+    }
+    console.log(
+      event.previousPageIndex,
+      (event.pageIndex + 1) * event.pageSize
+    );
+  }
+
+  changeStock(stock: any,event:any) {
+    // console.log(event);
+    this.items.forEach((item: any) => {
+      if (item.id == stock.id){
+        stock['quantity'] = event.target.value;
+        this.editedItem[stock.id] =stock;
+      }
+    })
+  }
+
+  // Form Management
   submit(): void {
     if (this.itemForm.valid) {
       this.blurSiteService.startBlur();
-      
       if (this.editMode) {
         this.databaseService
-          .editStockItem(this.currentEditId, this.itemForm.value)
+          .updateStockItem(this.currentEditId, this.itemForm.value)
           .then(() => {
             UIkit.modal(document.getElementById('item-modal')).hide();
             this.ngOnInit();
             this.blurSiteService.stopBlur();
-            this.alertService.presentToast(
-              'Item edited successfully',
-              'info'
-            );
+            this.alertService.presentToast('Item edited successfully', 'info');
           });
       } else {
-        this.databaseService.addStockItem(this.itemForm.value).then(() => {
-          UIkit.modal(document.getElementById('item-modal')).hide();
-          this.itemForm.reset();
-          this.ngOnInit();
-          this.blurSiteService.stopBlur();
-          this.alertService.presentToast('Item added successfully', 'info');
-        });
+        this.databaseService
+          .addStockItem(this.itemForm.value)
+          .then(() => {
+            UIkit.modal(document.getElementById('item-modal')).hide();
+            this.itemForm.reset();
+            this.ngOnInit();
+            this.blurSiteService.stopBlur();
+            this.alertService.presentToast('Item added successfully', 'info');
+          })
+          .catch((error) => {
+            this.alertService.presentToast(error.message, 'error');
+          });
       }
     } else {
       this.alertService.presentToast(
@@ -103,8 +181,7 @@ export class StockComponent implements OnInit {
       );
     }
   }
-  
-
+  // Item actions
   editItem(item: any): void {
     this.editMode = true;
     this.currentEditId = item.id;
@@ -134,6 +211,26 @@ export class StockComponent implements OnInit {
     });
   }
 
+  async updateStock(): Promise<void> {
+    // Update only those items' stock whose inputs have been changed
+    this.updateStockEnabled = false;
+    for (const key in this.editedItem) {
+      if (Object.prototype.hasOwnProperty.call(this.editedItem, key)) {
+        const item = this.editedItem[key];
+        if (item.quantity != item.oldQuantity) {
+          try{
+            await this.databaseService.updateStockItem(item.id, item)
+          } catch(error:any){
+            this.alertService.presentToast(error, 'error');
+            return
+          }
+        }
+      }
+    }
+    this.alertService.presentToast('Stock updated successfully', 'info');
+  }
+
+  // Search management
   searchItems(): void {
     const query = this.itemSearchInput.nativeElement.value.trim();
     if (query.length > 0) {
@@ -146,17 +243,6 @@ export class StockComponent implements OnInit {
       });
     } else {
       this.filteredItems = this.items;
-    }
-  }
-
-  updateStock(): void {
-    // Update only those items' stock whose inputs have been changed
-    for (const item of this.items) {
-      const newQuantity = this.updateStockForm.get(item.id.toString())!.value;
-      if (newQuantity != item.quantity) {
-        item.quantity = newQuantity;
-        this.databaseService.editStockItem(item.id, item);
-      }
     }
   }
 }

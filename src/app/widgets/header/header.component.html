@@ -10,25 +10,37 @@
   <nav>
     <ul id="horizontal-ul">
       <li>
-        <a href="#home" class="active">Home</a>
+        <a href="#home" [class]="hash==='#home' || path==='' ? 'active' : ''">Home</a>
       </li>
       <li>
-        <a href="#about">About</a>
+        <a href="#about" [class]="hash==='#about' ? 'active' : ''">About</a>
       </li>
       <li>
-        <a href="#our-outlets">Our Outlets</a>
+        <a href="#our-outlets" [class]="hash==='#our-outlets' ? 'active' : ''">Our Outlets</a>
       </li>
       <li>
-        <a href="#gallery">Gallery</a>
+        <a href="#gallery" [class]="hash==='#gallery' ? 'active' : ''">Gallery</a>
       </li>
       <li>
-        <a href="#our-stores">Our Stores</a>
+        <a href="#our-stores" [class]="hash==='#our-stores' ? 'active' : ''">Our Stores</a>
       </li>
       <li>
-        <a href="#contact-us">Contact Us</a>
+        <a href="#contact-us" [class]="hash==='#contact-us' ? 'active' : ''">Contact Us</a>
       </li>
-      <li>
-        <button routerLink="login" class="login-button">Login</button>
+      <li *ngIf="!dataProvider.loggedIn">
+        <button [routerLink]="['/login']" class="login-button">
+          Login
+        </button>
+      </li>
+      <li *ngIf="dataProvider.loggedIn">
+        <button (click)="authService.logout()" class="login-button">
+          Logout
+        </button>
+      </li>
+      <li *ngIf="dataProvider.loggedIn && dataProvider.userData?.access?.access==='admin'">
+        <button [routerLink]="['/admin']" class="login-button">
+          Admin
+        </button>
       </li>
     </ul>
     <div id="toggle-button">
@@ -63,9 +75,19 @@
           <li>
             <button routerLink="#contact-us">Contact Us</button>
           </li>
-          <li>
+          <li *ngIf="!dataProvider.loggedIn">
             <button [routerLink]="['/login']" class="login-button">
               Login
+            </button>
+          </li>
+          <li *ngIf="dataProvider.loggedIn">
+            <button (click)="authService.logout()" class="login-button">
+              Logout
+            </button>
+          </li>
+          <li *ngIf="dataProvider.loggedIn && dataProvider.userData?.access?.access==='admin'">
+            <button [routerLink]="['/admin']" class="login-button">
+              Admin
             </button>
           </li>
         </ul>

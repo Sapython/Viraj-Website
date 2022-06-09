@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentReference } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AlertService } from 'src/app/services/alert.service';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 declare const UIkit: any;
-
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
@@ -14,9 +14,9 @@ export class RecipesComponent implements OnInit {
   recipes: any[];
   recipeTypes: any[];
   ingredients: any;
-
+  recipeLength: number = 0;
   files: FileList | null;
-
+  serialNumberAdditionalCounter: number = 0;
   cookingCost: string = '0.00';
   sellingPrice: string = '0.00';
 
@@ -38,7 +38,9 @@ export class RecipesComponent implements OnInit {
   editMode: boolean = false;
   currentEditId: string = '';
   currentDeleteId: string = '';
-
+  lastDocReference: any;
+  firstDocReference: any;
+  recipeDataLoaded:boolean = false;
   recipeForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     photos: new FormControl([]),
@@ -63,21 +65,28 @@ export class RecipesComponent implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private alertService: AlertService,
+    private alertService: AlertsAndNotificationsService,
     private blurSiteService: BlurSiteService
   ) {}
 
-  async ngOnInit(): Promise<any> {
+  async ngOnInit(): Promise<void> {
     // Get ingredients
-    await this.databaseService.getStock().then((stock: any) => {
-      this.ingredients = {};
-      stock.forEach((stockItem: any) => {
-        this.ingredients[stockItem.id] = stockItem.data();
-      });
-    });
-
-    // Get recipe types
-    await this.databaseService.getRecipeTypes().then((recipeTypes: any) => {
+    await this.getSiteData();
+    await this.getRecipes();
+  }
+  async getStocks(){
+    this.databaseService
+      .getFirstStock(500)
+      .then((stock: any) => {
+        this.ingredients = {};
+        stock.forEach((stockItem: any) => {
+          this.ingredients[stockItem.id] = stockItem.data();
+        });
+        alert('Ingredients loaded');
+      })
+  }
+  async getRecipeTypes(){
+    this.databaseService.getRecipeTypes().then((recipeTypes: any) => {
       this.recipeTypes = [];
       recipeTypes.forEach((recipeType: any) => {
         this.recipeTypes.push({
@@ -85,39 +94,90 @@ export class RecipesComponent implements OnInit {
           ...recipeType.data(),
         });
       });
-    });
-
-    // Get recipes
-    await this.databaseService.getRecipes().then((recipes: any) => {
-      this.recipes = [];
-      recipes.forEach((recipe: any) => {
-        const recipeData = recipe.data();
-
-        // calculate cooking price & selling price for each recipe
-        var cookingPrice = 0;
-        recipeData['ingredients'].forEach((ingredient: any) => {
-          cookingPrice +=
-            this.ingredients[ingredient.id].rate * ingredient.quantity;
-        });
-        const sellingPrice = (cookingPrice / 0.3).toFixed(2);
-
-        this.recipes.push({
-          id: recipe.id,
-          cookingPrice: cookingPrice,
-          sellingPrice: sellingPrice,
-          ...recipeData,
-        });
-      });
+    }).catch((error) => {
+      this.alertService.presentToast('Cannot get recipe types.', 'error');
     });
   }
-
+  async getRecipes(){
+    await this.databaseService.getFirstRecipes(10).then((recipes: any) => {
+      this.setCurrentViewData(recipes);
+      this.blurSiteService.stopBlur();
+    }).catch(() => {
+      this.alertService.presentToast('Cannot get recipes.', 'error');
+    })
+  }
+  async getNextRecipes(event:any){
+    console.log(event);
+    if (event.previousPageIndex < event.pageIndex) {
+      console.log('Moved next');
+      const lastDoc = this.lastDocReference;
+      const length = event.pageSize;
+      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.databaseService.getNextRecipes(length, lastDoc).then((docs: any) => {
+        // this.allStocks.push(...docs)
+        this.setCurrentViewData(docs);
+      });
+    } else if (event.previousPageIndex > event.pageIndex) {
+      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.databaseService.getPreviousRecipes(event.pageSize, this.firstDocReference).then((docs: any) => {
+        // this.allStocks.push(...docs)
+        this.setCurrentViewData(docs);
+      })
+    } else if (event.previousPageIndex === event.pageIndex && event.pageIndex === 0) {
+      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.databaseService.getFirstRecipes(event.pageSize).then((docs: any) => {
+        this.setCurrentViewData(docs);
+        // this.allStocks.push(...docs)
+      });
+    }
+    console.log(
+      event.previousPageIndex,
+      (event.pageIndex + 1) * event.pageSize
+    );
+  }
+  setCurrentViewData(docs: DocumentReference[]) {
+    this.recipes = [];
+    let setFirstDoc = true;
+    docs.forEach((doc: any) => {
+      if (setFirstDoc) {
+        this.firstDocReference = doc;
+        setFirstDoc = false;
+      }
+      this.recipes.push(doc.data());
+      this.lastDocReference = doc;
+    });
+  }
+  async getSiteData(){
+    await this.databaseService
+      .getSiteData()
+      .then((data) => {
+        if (data.exists()) {
+          const siteData = data.data();
+          this.recipeLength = siteData['recipeLength'];
+        } else {
+          this.recipeLength = 0;
+        }
+      }).catch((error) => {
+        this.alertService.presentToast('Cannot get site data.', 'error');
+      });
+  }
+  async openAddRecipeModal(){
+    this.editMode = false;
+    this.recipeForm.reset();
+    this.files = null;
+    this.recipeDataLoaded = false;
+    await this.getRecipeTypes();
+    await this.getStocks();
+    this.recipeDataLoaded = true;
+    UIkit.modal('#recipe-modal').show();
+  }
   ngAfterViewInit(): void {
     const ingredientInputContainers = document.getElementsByClassName(
       'ingredient-input-container'
     );
 
     // Calculate cooking cost & selling price in add recipe modal
-    const onEvent = () => {
+    const onEvent = () => { 
       var cookingCost = 0;
       for (var i = 0; i < ingredientInputContainers.length; i++) {
         const ingredientInputContainer = ingredientInputContainers[i];
@@ -370,15 +430,18 @@ export class RecipesComponent implements OnInit {
           UIkit.modal(document.getElementById('recipe-modal')).hide();
           this.ngOnInit();
           this.recipeForm.reset();
-          (document.getElementById('photos-input') as HTMLInputElement).value = '';
+          (document.getElementById('photos-input') as HTMLInputElement).value =
+            '';
           this.files = null;
           document.getElementById('ingredients-inputs')!.innerHTML = '';
-          document.getElementById('cooking-instructions-inputs')!.innerHTML = '';
-          document.getElementById('serving-instructions-inputs')!.innerHTML = '';
+          document.getElementById('cooking-instructions-inputs')!.innerHTML =
+            '';
+          document.getElementById('serving-instructions-inputs')!.innerHTML =
+            '';
           this.blurSiteService.stopBlur();
           this.alertService.presentToast('Recipe added successfully!');
         });
-      }      
+      }
     } else {
       this.alertService.presentToast(
         'Please fill all the required fields',
@@ -416,7 +479,8 @@ export class RecipesComponent implements OnInit {
 
         // Reset the form
         this.recipeForm.reset();
-        (document.getElementById('photos-input') as HTMLInputElement).value = '';
+        (document.getElementById('photos-input') as HTMLInputElement).value =
+          '';
 
         if (ingredientsInputs) {
           ingredientsInputs.innerHTML = '';

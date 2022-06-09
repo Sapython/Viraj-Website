@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import Fuse from 'fuse.js';
-import { AlertService } from 'src/app/services/alert.service';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DateService } from 'src/app/services/date.service';
+import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 declare const UIkit: any;
 
 @Component({
@@ -36,7 +36,7 @@ export class EmployeesComponent implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private alertService: AlertService,
+    private alertService: AlertsAndNotificationsService,
     private blurSiteService: BlurSiteService,
     public dateService: DateService
   ) {}
@@ -48,6 +48,8 @@ export class EmployeesComponent implements OnInit {
         this.employees.push({ id: doc.id, ...doc.data() });
       });
       this.filteredEmployees = this.employees;
+    }).catch((error)=>{
+      this.alertService.presentToast(error, 'error');
     });
   }
 

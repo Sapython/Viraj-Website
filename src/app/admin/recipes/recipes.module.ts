@@ -9,6 +9,7 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { RouterModule } from '@angular/router';
 import { RecipeModalComponent } from './recipe-modal/recipe-modal.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RecipeModalComponent } from './recipe-modal/recipe-modal.component';
     AdminWidgetsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatPaginatorModule,
   ]
 })
 export class RecipesModule { }

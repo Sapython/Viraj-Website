@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataProvider } from 'src/app/providers/data.provider';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  hash:string = window.location.hash;
+  path:string = window.location.pathname;
+  constructor(public dataProvider:DataProvider,public authService:AuthenticationService ) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // alert(this.dataProvider.loggedIn);
+  }
 }
