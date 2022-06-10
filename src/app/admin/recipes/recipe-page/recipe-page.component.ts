@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentData } from '@angular/fire/firestore';
 import { NavigationEnd, Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -28,42 +29,36 @@ export class RecipePageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.databaseService.getFirstStock(500).then(async(stocks) => {
+    //   const allIngredients: DocumentData[] = []
+    //   stocks.forEach((data)=>{
+    //     allIngredients.push({ id:data.id,...data.data()})
+    //   })
+    //   // console.log(allIngredients)
+    //   await this.databaseService.getFirstRecipes(500).then((recipes) => {
+    //     recipes.forEach(async (recipe) => {
+    //       const recipeData = recipe.data();
+    //       let recipeIngredients: any[] = [];
+    //       recipeData['ingredients'].forEach((ingredient:any) => {
+    //         allIngredients.filter((ingredientData:any) => {
+    //           // console.log(ingredientData.id,ingredient.id)
+    //           if (ingredientData.id == ingredient.id) {
+    //             ingredient['unit'] = ingredientData['unit'];
+    //           }
+    //         })
+    //         recipeIngredients.push(ingredient);
+    //       })
+    //       console.log(recipeIngredients);
+    //       await this.databaseService.editRecipe(recipe.id, { ingredients: recipeIngredients });
+    //     })
+    //   })
+    // })
+  }
 
   async getRecipe(recipeId: string) {
-    const recipeTypes: any = {};
-    await this.databaseService.getRecipeTypes().then((docs: any) => {
-      docs.forEach((recipeType: any) => {
-        docs[recipeType.id] = recipeType.data();
-      });
-    });
-
     await this.databaseService.getRecipe(recipeId).then((doc) => {
-      const recipeData = doc.data();
-      if (recipeData) {
-        this.recipe = recipeData;
-      }
+      this.recipe = doc.data();
     });
-
-    if (!this.recipe) {
-      this.router.navigate(['/admin/recipes']);
-      return;
-    }
-
-    this.ingredients = {};
-    // await this.databaseService.getStock().then((stock: any) => {
-    //   stock.forEach((stockItem: any) => {
-    //     this.ingredients[stockItem.id] = stockItem.data();
-    //   });
-    // });
-
-    // calculate cooking cost & selling price
-    var cookingCost = 0;
-    this.recipe['ingredients'].forEach((ingredient: any) => {
-      cookingCost += this.ingredients[ingredient.id].rate * ingredient.quantity;
-    });
-
-    this.recipe['cookingCost'] = cookingCost.toFixed(2);
-    this.recipe['sellingPrice'] = (cookingCost / 0.3).toFixed(2);
   }
 }

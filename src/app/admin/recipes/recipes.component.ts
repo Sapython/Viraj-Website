@@ -19,7 +19,8 @@ export class RecipesComponent implements OnInit {
   serialNumberAdditionalCounter: number = 0;
   cookingCost: string = '0.00';
   sellingPrice: string = '0.00';
-
+  recipeTypeDataLoaded: boolean = false;
+  stocksDataLoaded: boolean = false;
   months: string[] = [
     'January',
     'February',
@@ -40,7 +41,7 @@ export class RecipesComponent implements OnInit {
   currentDeleteId: string = '';
   lastDocReference: any;
   firstDocReference: any;
-  recipeDataLoaded:boolean = false;
+  recipeDataLoaded: boolean = false;
   recipeForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     photos: new FormControl([]),
@@ -74,57 +75,68 @@ export class RecipesComponent implements OnInit {
     await this.getSiteData();
     await this.getRecipes();
   }
-  async getStocks(){
-    this.databaseService
-      .getFirstStock(500)
-      .then((stock: any) => {
-        this.ingredients = {};
-        stock.forEach((stockItem: any) => {
-          this.ingredients[stockItem.id] = stockItem.data();
-        });
-        alert('Ingredients loaded');
-      })
-  }
-  async getRecipeTypes(){
-    this.databaseService.getRecipeTypes().then((recipeTypes: any) => {
-      this.recipeTypes = [];
-      recipeTypes.forEach((recipeType: any) => {
-        this.recipeTypes.push({
-          id: recipeType.id,
-          ...recipeType.data(),
-        });
+  async getStocks() {
+    this.databaseService.getFirstStock(500).then((stock: any) => {
+      this.ingredients = {};
+      this.stocksDataLoaded = true;
+      stock.forEach((stockItem: any) => {
+        this.ingredients[stockItem.id] = stockItem.data();
       });
-    }).catch((error) => {
-      this.alertService.presentToast('Cannot get recipe types.', 'error');
+      // alert('Ingredients loaded');
     });
   }
-  async getRecipes(){
-    await this.databaseService.getFirstRecipes(10).then((recipes: any) => {
-      this.setCurrentViewData(recipes);
-      this.blurSiteService.stopBlur();
-    }).catch(() => {
-      this.alertService.presentToast('Cannot get recipes.', 'error');
-    })
+  async getRecipeTypes() {
+    this.databaseService
+      .getRecipeTypes()
+      .then((recipeTypes: any) => {
+        this.recipeTypes = [];
+        this.recipeDataLoaded = true;
+        recipeTypes.forEach((recipeType: any) => {
+          this.recipeTypes.push({
+            id: recipeType.id,
+            ...recipeType.data(),
+          });
+        });
+      })
+      .catch((error) => {
+        this.alertService.presentToast('Cannot get recipe types.', 'error');
+      });
   }
-  async getNextRecipes(event:any){
+  async getRecipes() {
+    await this.databaseService
+      .getFirstRecipes(10)
+      .then((recipes: any) => {
+        this.setCurrentViewData(recipes);
+        this.blurSiteService.stopBlur();
+      })
+      .catch(() => {
+        this.alertService.presentToast('Cannot get recipes.', 'error');
+      });
+  }
+  async getNextRecipes(event: any) {
     console.log(event);
     if (event.previousPageIndex < event.pageIndex) {
       console.log('Moved next');
       const lastDoc = this.lastDocReference;
       const length = event.pageSize;
-      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.serialNumberAdditionalCounter = event.pageIndex * event.pageSize;
       this.databaseService.getNextRecipes(length, lastDoc).then((docs: any) => {
         // this.allStocks.push(...docs)
         this.setCurrentViewData(docs);
       });
     } else if (event.previousPageIndex > event.pageIndex) {
-      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
-      this.databaseService.getPreviousRecipes(event.pageSize, this.firstDocReference).then((docs: any) => {
-        // this.allStocks.push(...docs)
-        this.setCurrentViewData(docs);
-      })
-    } else if (event.previousPageIndex === event.pageIndex && event.pageIndex === 0) {
-      this.serialNumberAdditionalCounter = (event.pageIndex) * event.pageSize
+      this.serialNumberAdditionalCounter = event.pageIndex * event.pageSize;
+      this.databaseService
+        .getPreviousRecipes(event.pageSize, this.firstDocReference)
+        .then((docs: any) => {
+          // this.allStocks.push(...docs)
+          this.setCurrentViewData(docs);
+        });
+    } else if (
+      event.previousPageIndex === event.pageIndex &&
+      event.pageIndex === 0
+    ) {
+      this.serialNumberAdditionalCounter = event.pageIndex * event.pageSize;
       this.databaseService.getFirstRecipes(event.pageSize).then((docs: any) => {
         this.setCurrentViewData(docs);
         // this.allStocks.push(...docs)
@@ -147,7 +159,7 @@ export class RecipesComponent implements OnInit {
       this.lastDocReference = doc;
     });
   }
-  async getSiteData(){
+  async getSiteData() {
     await this.databaseService
       .getSiteData()
       .then((data) => {
@@ -157,18 +169,25 @@ export class RecipesComponent implements OnInit {
         } else {
           this.recipeLength = 0;
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         this.alertService.presentToast('Cannot get site data.', 'error');
       });
   }
-  async openAddRecipeModal(){
+  async openAddRecipeModal() {
+    
     this.editMode = false;
     this.recipeForm.reset();
     this.files = null;
-    this.recipeDataLoaded = false;
-    await this.getRecipeTypes();
-    await this.getStocks();
-    this.recipeDataLoaded = true;
+    if (!this.recipeDataLoaded || !this.stocksDataLoaded){
+      this.blurSiteService.startBlur()
+      await this.getStocks();
+      await this.getRecipeTypes();
+      this.recipeDataLoaded = true;
+      this.blurSiteService.stopBlur()
+    } else {
+      this.recipeDataLoaded = true;
+    }
     UIkit.modal('#recipe-modal').show();
   }
   ngAfterViewInit(): void {
@@ -177,7 +196,7 @@ export class RecipesComponent implements OnInit {
     );
 
     // Calculate cooking cost & selling price in add recipe modal
-    const onEvent = () => { 
+    const onEvent = () => {
       var cookingCost = 0;
       for (var i = 0; i < ingredientInputContainers.length; i++) {
         const ingredientInputContainer = ingredientInputContainers[i];
@@ -360,6 +379,9 @@ export class RecipesComponent implements OnInit {
       const ingredientQuantityInput = ingredientInputContainer.querySelector(
         '.ingredient-quantity'
       ) as HTMLInputElement;
+      const ingredientUnit = ingredientInputContainer.querySelector(
+        '.ingredient-unit'
+      ) as HTMLSpanElement;
       if (
         ingredientSelect.value !== '' &&
         ingredientQuantityInput.value != '0'
@@ -367,6 +389,7 @@ export class RecipesComponent implements OnInit {
         this.recipeForm.value.ingredients.push({
           id: ingredientSelect.value,
           quantity: ingredientQuantityInput.value,
+          unit: ingredientUnit.textContent
         });
       }
     }
@@ -450,10 +473,18 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  editRecipe(recipe: any): void {
+  async editRecipe(recipe: any): Promise<void> {
+    if (!this.recipeDataLoaded || !this.stocksDataLoaded){
+      this.blurSiteService.startBlur()
+      await this.getStocks();
+      await this.getRecipeTypes();
+      this.recipeDataLoaded = true;
+      this.blurSiteService.stopBlur()
+    } else {
+      this.recipeDataLoaded = true;
+    }
     this.editMode = true;
     this.currentEditId = recipe.id;
-
     // Patch values
     this.recipeForm.patchValue(recipe);
     const ingredientsInputs = document.getElementById('ingredients-inputs');
