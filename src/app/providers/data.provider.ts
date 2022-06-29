@@ -14,6 +14,7 @@ export class DataProvider{
     };
     public userData:UserData | undefined;
     public loggedIn:boolean = false;
+    public ingredientsCopy:any;
     public gettingUserData:boolean = true;
     public userID:string | undefined;
     public verifyEmail:boolean | undefined;

@@ -1,7 +1,7 @@
 
 <section>
   <div>
-    <button (click)="openAddRecipeModal()">Add Recipe</button>
+    <button (click)="addRecipe()">Add Recipe</button>
   </div>
   <div *ngIf="!recipes || recipes.length == 0" uk-spinner="ratio: 3" id="loading"></div>
   <mat-paginator *ngIf="recipeLength>0" [length]="recipeLength" [pageSize]="10"
@@ -9,155 +9,8 @@
   </mat-paginator>
   <div id="recipe-cards" *ngIf="recipes && recipes.length > 0">
     <app-recipe-card *ngFor="let recipe of recipes; let i = index;" [serialNumber]="i + 1 + serialNumberAdditionalCounter" [recipe]="recipe" (requestEdit)="editRecipe(recipe)"
-      (requestDelete)="requestDelete(recipe.id)"></app-recipe-card>
+      (requestDelete)="deleteRecipe(recipe.id)" (viewRecipe)="viewRecipe(recipe)"></app-recipe-card>
   </div>
 </section>
 
-<div id="recipe-modal" uk-modal>
-  <div class="uk-modal-dialog uk-modal-body" >
-    <h2 *ngIf="!editMode" class="uk-modal-title">Add New Recipe</h2>
-    <h2 *ngIf="editMode" class="uk-modal-title">Edit Recipe</h2>
-    <button class="uk-modal-close-default" type="button" uk-close></button>
-    <form [formGroup]="recipeForm" (ngSubmit)="submit()" *ngIf="recipeDataLoaded">
-      <div class="recipe-form-box">
-        <label class="admin-label" for="name-input">Name *</label>
-        <input type="text" class="admin-input" formControlName="name" id="name-input" />
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="photos-input">Photos</label>
-        <input type="file" class="admin-input" id="photos-input" accept="image/png, image/jpeg, image/jpg"
-          (change)="validateImages($event)" multiple />
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Type</label>
-        <select class="admin-input" formControlName="type">
-          <option [ngValue]="''" disabled>Choose type</option>
-          <option *ngFor="let recipeType of recipeTypes" [ngValue]="recipeType.id">
-            {{ recipeType.name }}
-          </option>
-        </select>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Flavour Palette</label>
-        <select class="admin-input" formControlName="flavourPalette">
-          <option [ngValue]="''" disabled>Choose palette</option>
-          <option ngValue="Salty">Salty</option>
-          <option ngValue="Spicy">Spicy</option>
-          <option ngValue="Sweet">Sweet</option>
-          <option ngValue="Sour">Sour</option>
-          <option ngValue="Bitter">Bitter</option>
-        </select>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Best Season</label>
-        <div id="season-box">
-          <span class="from-to">From</span>
-          <select class="admin-input" formControlName="bestSeasonFrom">
-            <option [ngValue]="''" disabled>Choose month</option>
-            <option *ngFor="let month of months" [ngValue]="month">
-              {{ month }}
-            </option>
-          </select>
-          <span class="from-to">to</span>
-          <select class="admin-input" formControlName="bestSeasonTo">
-            <option [ngValue]="''" disabled>Choose month</option>
-            <option *ngFor="let month of months" [ngValue]="month">
-              {{ month }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="description-input">Description</label>
-        <input type="text" class="admin-input" formControlName="description" id="description-input" />
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Ingredients *</label>
-        <div id="ingredients-inputs"></div>
-        <button id="add-ingredient" (click)="addIngredient($event, '', '0')">
-          <i class="fa-solid fa-plus"></i> Add Ingredient
-        </button>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Cooking Cost (Calculated)</label>
-        <span class="admin-input">₹ {{ cookingCost }}</span>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Selling Price (Calculated)</label>
-        <span class="admin-input">₹ {{ sellingPrice }}</span>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Cooking Instructions</label>
-        <div id="cooking-instructions-inputs"></div>
-        <button id="add-cooking-instruction" class="add-instruction" (click)="addInstruction($event, 'cooking', '')">
-          <i class="fa-solid fa-plus"></i> Add Instruction
-        </button>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label">Serving Instructions</label>
-        <div id="serving-instructions-inputs"></div>
-        <button id="add-serving-instruction" class="add-instruction" (click)="addInstruction($event, 'serving', '')">
-          <i class="fa-solid fa-plus"></i> Add Instruction
-        </button>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="preparation-time-input">Preparation Time</label>
-        <div class="time-input-box">
-          <input type="number" min="0" class="admin-input" id="preparation-time-input"
-            formControlName="preparationTimeValue" />
-          <select class="admin-input" formControlName="preparationTimeUnit">
-            <option ngValue="minute(s)">Minute(s)</option>
-            <option ngValue="hour(s)">Hour(s)</option>
-            <option ngValue="day(s)">Day(s)</option>
-          </select>
-        </div>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="cooking-time-input">Cooking Time</label>
-        <div class="time-input-box">
-          <input type="number" min="0" class="admin-input" id="cooking-time-input" formControlName="cookingTimeValue" />
-          <select class="admin-input" formControlName="cookingTimeUnit">
-            <option ngValue="minutes">Minutes</option>
-            <option ngValue="hours">Hours</option>
-            <option ngValue="days">Days</option>
-          </select>
-        </div>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="serving-time-input">Serving Time</label>
-        <div class="time-input-box">
-          <input type="number" min="0" class="admin-input" id="serving-time-input" formControlName="servingTimeValue" />
-          <select class="admin-input" formControlName="servingTimeUnit">
-            <option ngValue="minutes">Minutes</option>
-            <option ngValue="hours">Hours</option>
-            <option ngValue="days">Days</option>
-          </select>
-        </div>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="shelf-life-input">Shelf Life</label>
-        <div class="time-input-box">
-          <input type="number" min="0" class="admin-input" id="shelf-life-input" formControlName="shelfLifeValue" />
-          <select class="admin-input" formControlName="shelfLifeUnit">
-            <option ngValue="minutes">Minutes</option>
-            <option ngValue="hours">Hours</option>
-            <option ngValue="days">Days</option>
-          </select>
-        </div>
-      </div>
-      <div class="recipe-form-box">
-        <label class="admin-label" for="energy-consumption-per-preparation">Energy Consumption Per Preparation</label>
-        <input type="text" class="admin-input" formControlName="energyConsumptionPerPreparation"
-          id="energy-consumption-per-preparation" />
-      </div>
-      <button *ngIf="!editMode" type="submit" class="primary-btn">
-        Add Recipe
-      </button>
-      <button *ngIf="editMode" type="submit" class="primary-btn">
-        Save Changes
-      </button>
-    </form>
-  </div>
-</div>
-
-<app-confirm-delete-modal (confirmDelete)="deleteRecipe()"></app-confirm-delete-modal>
+<!-- <app-confirm-delete-modal (confirmDelete)="deleteRecipe()"></app-confirm-delete-modal> -->

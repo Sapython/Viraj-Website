@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { DocumentData } from '@angular/fire/firestore';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -9,27 +10,28 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./recipe-page.component.scss'],
 })
 export class RecipePageComponent implements OnInit {
-  recipe: any;
+  // @Input() recipeId: string;
+  // recipe: any;
   ingredients: any;
-
   constructor(
-    private router: Router,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    @Inject(MAT_DIALOG_DATA) public recipe: any, 
   ) {
-    this.router.events.forEach((event) => {
-      if (event instanceof NavigationEnd) {
-        const url = this.router.url;
-        const urlArr = url.split('/');
-        const recipeId = urlArr[urlArr.length - 1];
+    // this.router.events.forEach((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     const url = this.router.url;
+    //     const urlArr = url.split('/');
+    //     const recipeId = urlArr[urlArr.length - 1];
 
-        if (urlArr.length >= 2 && urlArr[urlArr.length - 2] == 'recipes') {
-          this.getRecipe(recipeId);
-        }
-      }
-    });
+    //     if (urlArr.length >= 2 && urlArr[urlArr.length - 2] == 'recipes') {
+    //       this.getRecipe(recipeId);
+    //     }
+    //   }
+    // });
   }
 
   ngOnInit() {
+    // this.getRecipe(this.recipeId);
     // this.databaseService.getFirstStock(500).then(async(stocks) => {
     //   const allIngredients: DocumentData[] = []
     //   stocks.forEach((data)=>{
@@ -56,9 +58,11 @@ export class RecipePageComponent implements OnInit {
     // })
   }
 
-  async getRecipe(recipeId: string) {
-    await this.databaseService.getRecipe(recipeId).then((doc) => {
+  async getRecipe(recipeId: any) {
+    console.log("recipeId",recipeId.recipeId);
+    await this.databaseService.getRecipe(recipeId.recipeId).then((doc) => {
       this.recipe = doc.data();
+      console.log(this.recipe);
     });
   }
 }

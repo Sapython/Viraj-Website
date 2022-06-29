@@ -10,14 +10,20 @@ import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { RouterModule } from '@angular/router';
 import { RecipeModalComponent } from './recipe-modal/recipe-modal.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { LoaderComponent } from './loader/loader.component'; 
 
 @NgModule({
   declarations: [
     RecipesComponent,
     RecipeCardComponent,
     RecipePageComponent,
-    RecipeModalComponent
+    RecipeModalComponent,
+    AddRecipeComponent,
+    EditRecipeComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +33,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule,
     RouterModule,
     MatPaginatorModule,
+    MatDialogModule
   ]
 })
 export class RecipesModule { }

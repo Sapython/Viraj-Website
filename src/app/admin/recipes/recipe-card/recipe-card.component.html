@@ -8,7 +8,7 @@
     </div>
     <div id="price">₹{{ recipe.sellingPrice }}</div>
     <div id="buttons">
-      <button class="primary-btn" [routerLink]="recipe.id">View</button>
+      <button class="primary-btn" (click)="viewRecipe.emit()">View</button>
       <button class="primary-btn" (click)="requestEdit.emit()">Edit</button>
       <button class="primary-btn" (click)="requestDelete.emit()">
         Delete

@@ -11,7 +11,7 @@ export class RecipeCardComponent implements OnInit {
   @Input() serialNumber: number;
   @Output() requestEdit: EventEmitter<any> = new EventEmitter<any>();
   @Output() requestDelete: EventEmitter<any> = new EventEmitter<any>();
-
+  @Output() viewRecipe: EventEmitter<any> = new EventEmitter<any>();
   constructor(private databaseService: DatabaseService) {}
 
   ngOnInit(): void {

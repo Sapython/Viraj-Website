@@ -3,7 +3,7 @@ section {
   max-width: 1000px;
   height: 100%;
   position: relative;
-
+  overflow: auto;
   #go-back {
     font-size: var(--msmall);
     margin-bottom: 1em;
