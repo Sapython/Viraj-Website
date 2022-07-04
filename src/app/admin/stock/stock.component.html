@@ -20,7 +20,9 @@
             <th>Quantity</th>
             <th>Unit</th>
             <th>Rate</th>
-            <th *ngIf="updateStockEnabled"></th>
+            <th *ngIf="updateStockEnabled">Quantity</th>
+            <th *ngIf="updateStockEnabled">Rate</th>
+            <th *ngIf="updateStockEnabled">Mic Update</th>
             <th></th>
           </tr>
         </thead>
@@ -33,6 +35,7 @@
             <td>₹{{ item.rate }}/{{ item.unit }}</td>
             <td *ngIf="updateStockEnabled">
               <input min="0" [value]="item.quantity" type="number" name="stock" (change)="changeStock(item,$event)">
+              <input min="0" [value]="item.rate" type="number" name="rate" (change)="changeRate(item,$event)">
               <button id="mic-button"><i class="fa-solid fa-microphone"></i></button>
             </td>
             <td>

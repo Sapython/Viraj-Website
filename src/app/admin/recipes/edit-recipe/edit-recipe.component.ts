@@ -67,7 +67,7 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
     this.recipeIngredients.forEach((control: any) => {
       console.log("Contrl",control);
     });
-    this.calculateCost();
+    setTimeout(() => {this.calculateCost();},3000)
   }
   ngOnInit(): void {
     console.log(this.recipe, this.recipe.recipeTypes);
@@ -96,15 +96,16 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
         instruction: new FormControl(instruction,[Validators.required]),
       });
     });
-
   }
   calculateCost(){
+    console.log("Calculating cost");
     this.cookingCost = 0;
     this.recipeIngredients.forEach((control: any) => {
-      // console.log(this.recipe.ingredients,control['ingredientSelector'].value,this.recipe.ingredients[control['ingredientSelector'].value],control['ingredientValue'].value,parseFloat(this.recipe.ingredients[control['ingredientSelector'].value].rate) * parseFloat(control.ingredientValue.value))
+      console.log("Control",control);
       this.cookingCost += parseFloat(this.recipe.ingredients[control['ingredientSelector'].value].rate) * parseFloat(control['ingredientValue'].value);
     });
     this.sellingPrice = Math.ceil(this.cookingCost / 0.3);
+    console.log("Calculated cost");
   }
   async submit() {
     if (this.recipeForm.valid) {

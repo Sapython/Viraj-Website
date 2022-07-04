@@ -94,8 +94,8 @@ export class AddRecipeComponent implements OnInit {
           id: data.id,
           unit: data.unit,
           quantity: control.ingredientValue.value,
-          // ingredientSelector: control.ingredientSelector.value,
-          // ingredientValue: control.ingredientValue.value,
+          ingredientSelector: control.ingredientSelector.value,
+          ingredientValue: control.ingredientValue.value,
         });
         console.log('recipeIngredients',data.id,data.unit,control.ingredientValue.value);
           cookingCost += parseFloat(this.recipe.ingredients[this.getObject(control.ingredientSelector.value).id].rate) * parseFloat(control.ingredientValue.value);

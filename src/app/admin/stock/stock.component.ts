@@ -146,7 +146,14 @@ export class StockComponent implements OnInit {
       }
     })
   }
-
+  changeRate(stock: any,event:any){
+    this.items.forEach((item: any) => {
+      if (item.id == stock.id){
+        stock['rate'] = event.target.value;
+        this.editedItem[stock.id] = stock;
+      }
+    })
+  }
   // Form Management
   submit(): void {
     if (this.itemForm.valid) {
