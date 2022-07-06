@@ -32,6 +32,8 @@ export class EmployeesComponent implements OnInit {
     paymentMethod: new FormControl(''),
     accountHolderName: new FormControl(''),
     accountNumber: new FormControl(''),
+    ifscCode: new FormControl(''),
+    panNo: new FormControl(''),
   });
 
   constructor(
