@@ -34,6 +34,7 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
   ];
 
   // Variables
+  utilities:any[] = [];
   files: FileList;
   cookingCost: number = 0;
   sellingPrice: number = 0;
@@ -61,19 +62,21 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
     servingTimeUnit: new FormControl(this.recipe.recipeData.servingTimeUnit || '',[Validators.required]),
     shelfLifeValue: new FormControl(this.recipe.recipeData.shelfLifeValue || '',[Validators.required]),
     shelfLifeUnit: new FormControl(this.recipe.recipeData.shelfLifeUnit || '',[Validators.required]),
+    flameThrow:new FormControl(this.recipe.recipeData.flameThrow,[]),
     energyConsumptionPerPreparation: new FormControl(this.recipe.recipeData.energyConsumptionPerPreparation || ''),
   });
   ngAfterViewInit() {
-    this.recipeIngredients.forEach((control: any) => {
-      console.log("Contrl",control);
-    });
-    setTimeout(() => {this.calculateCost();},3000)
+    setTimeout(() => {this.calculateCost();this.checkForCalculation()},3000)
   }
   ngOnInit(): void {
     console.log(this.recipe, this.recipe.recipeTypes);
     this.recipeIngredients = [];
+    this.databaseService.getUtilities().then((docs:any)=>{
+      docs.forEach((element:any) => {
+        this.utilities.push(element.data());
+      });
+    })
     this.recipe.recipeData.ingredients.forEach((ingredient: any) => {
-      console.log('Yeeahh',ingredient);
       const sel = new FormControl(JSON.stringify(ingredient.id),[Validators.required]);
       const val =  new FormControl(ingredient.quantity || 0,[Validators.required]);
       this.recipeIngredients.push({
@@ -99,15 +102,47 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
     this.cookingCost = this.recipe.recipeData.cookingCost
     this.sellingPrice = this.recipe.recipeData.sellingPrice
   }
+  getIngredient(ingredient: any) {
+    return this.recipe.ingredients[JSON.parse(ingredient.ingredientSelector.value)];
+  }
   calculateCost(){
     console.log("Calculating cost");
     this.cookingCost = 0;
     this.recipeIngredients.forEach((control: any) => {
-      console.log("Control",control);
-      this.cookingCost += parseFloat(this.recipe.ingredients[control['ingredientSelector'].value].rate) * parseFloat(control['ingredientValue'].value);
+      this.cookingCost += parseFloat(this.getIngredient(control).rate) * parseFloat(control['ingredientValue'].value);
     });
     this.sellingPrice = Math.ceil(this.cookingCost / 0.3);
     console.log("Calculated cost");
+  }
+  checkForCalculation(){
+    if (this.recipeForm.value.cookingTimeUnit && this.recipeForm.value.cookingTimeValue && this.recipeForm.value.flameThrow){
+      this.calculateEnergyConsumption();
+    }
+  }
+  getLpgData():any{
+    const data = this.utilities.find((value:any,index:number)=>{if (value.name==='LPG'){return true} else {return false}});
+    return data;
+  }
+  calculateEnergyConsumption(){
+    function getCookingTime(recipeForm:any):number{
+      if(recipeForm.get('cookingTimeUnit').value=='minutes'){
+        return recipeForm.get('cookingTimeValue').value*60;
+      } else if (recipeForm.get('cookingTimeUnit').value=='hours'){
+        return recipeForm.get('cookingTimeValue').value*60*60;
+      } else if (recipeForm.get('cookingTimeUnit').value=='days'){
+        return recipeForm.get('cookingTimeValue').value*60*60*24;
+      } else {
+        return 0;
+      }
+    }
+    if (this.recipeForm.value.cookingTimeValue){
+      const offset = -2;
+      this.recipeForm.controls['energyConsumptionPerPreparation'].setValue(Math.ceil(( getCookingTime(this.recipeForm)) * (2/parseFloat(this.recipeForm.value.flameThrow))) + offset);
+      console.log('Value',this.recipeForm.value.energyConsumptionPerPreparation);
+      return this.recipeForm.value.energyConsumptionPerPreparation;
+    } else {
+      return 0;
+    }
   }
   async submit() {
     if (this.recipeForm.valid) {

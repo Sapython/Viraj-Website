@@ -8,13 +8,13 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'dashboard',
+      },
+      {
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-      },
-      {
-        path: '',
-        redirectTo: 'dashboard',
       },
       {
         path: 'stock',

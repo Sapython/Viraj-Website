@@ -144,7 +144,7 @@ export class StockComponent implements OnInit {
     // console.log(event);
     this.items.forEach((item: any) => {
       if (item.id == stock.id){
-        stock['quantity'] = event.target.value;
+        stock['quantity'] = parseFloat(event.target.value);
         this.editedItem[stock.id] =stock;
       }
     })
@@ -152,7 +152,7 @@ export class StockComponent implements OnInit {
   changeRate(stock: any,event:any){
     this.items.forEach((item: any) => {
       if (item.id == stock.id){
-        stock['rate'] = event.target.value;
+        stock['rate'] = parseFloat(event.target.value);
         this.editedItem[stock.id] = stock;
       }
     })
@@ -162,6 +162,7 @@ export class StockComponent implements OnInit {
     if (this.itemForm.valid) {
       this.blurSiteService.startBlur();
       if (this.editMode) {
+        this.itemForm.value['rate'] = parseFloat(this.itemForm.value['rate']);
         this.databaseService
           .updateStockItem(this.currentEditId, this.itemForm.value)
           .then(() => {
@@ -171,6 +172,7 @@ export class StockComponent implements OnInit {
             this.alertService.presentToast('Item edited successfully', 'info');
           });
       } else {
+        this.itemForm.value['rate'] = parseFloat(this.itemForm.value['rate']);
         this.databaseService
           .addStockItem(this.itemForm.value)
           .then(() => {
@@ -211,7 +213,9 @@ export class StockComponent implements OnInit {
       UIkit.modal(itemModal).show();
     }
   }
-
+  get currentUnit(){
+    return this.itemForm.get('unit');
+  }
   deleteItem(): void {
     this.blurSiteService.startBlur();
     this.databaseService.deleteStockItem(this.currentDeleteId).then(() => {

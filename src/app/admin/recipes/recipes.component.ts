@@ -117,6 +117,7 @@ export class RecipesComponent implements OnInit {
   }
 
   async getRecipes() {
+    this.recipes= [];
     await this.databaseService
       .getFirstRecipes(10)
       .then((recipes: any) => {
@@ -171,7 +172,7 @@ export class RecipesComponent implements OnInit {
         this.firstDocReference = doc;
         setFirstDoc = false;
       }
-      this.recipes.push(doc.data());
+      this.recipes.push({...doc.data(), id: doc.id});
       this.lastDocReference = doc;
     });
   }
@@ -218,6 +219,17 @@ export class RecipesComponent implements OnInit {
     })
   }
   deleteRecipe(recipeId:string){
+    if (confirm(`Are you sure you want to delete recipe with id ${recipeId}?`)) {
+      this.dataProvider.pageSetting.blur = true;
+      this.databaseService.deleteRecipe(recipeId).then(() => {
+        this.alertService.presentToast('Recipe deleted.');
+        this.getRecipes();
+      }).catch(() => {
+        this.alertService.presentToast('Cannot delete recipe.', 'error');
+      }).finally(()=>{
+        this.dataProvider.pageSetting.blur = false;
+      })
+    }
   }
   async editRecipe(recipeData:any){
     const loaderRef = this.dialog.open(LoaderComponent)

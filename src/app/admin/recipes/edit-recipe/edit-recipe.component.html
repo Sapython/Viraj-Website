@@ -133,8 +133,8 @@
             <label class="admin-label" for="cooking-time-input">Cooking Time</label>
             <div class="time-input-box">
                 <input type="number" min="0" class="admin-input" id="cooking-time-input"
-                    formControlName="cookingTimeValue" />
-                <select class="admin-input" formControlName="cookingTimeUnit">
+                    formControlName="cookingTimeValue"  (change)="checkForCalculation()"/>
+                <select class="admin-input" formControlName="cookingTimeUnit" (change)="checkForCalculation()">
                     <option ngValue="minutes">Minutes</option>
                     <option ngValue="hours">Hours</option>
                     <option ngValue="days">Days</option>
@@ -162,6 +162,16 @@
                     <option ngValue="minutes">Minutes</option>
                     <option ngValue="hours">Hours</option>
                     <option ngValue="days">Days</option>
+                </select>
+            </div>
+        </div>
+        <div class="recipe-form-box">
+            <label class="admin-label">Average Flame Throw</label>
+            <div class="time-input-box">
+                <select class="admin-input" formControlName="flameThrow" (change)="checkForCalculation()">
+                    <option [value]="1.7">Minimum</option>
+                    <option [value]="1.3">Medium</option>
+                    <option [value]="1">Maximum</option>
                 </select>
             </div>
         </div>

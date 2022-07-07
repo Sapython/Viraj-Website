@@ -34,6 +34,7 @@ export class AddRecipeComponent implements OnInit {
 
   // Variables
   files: FileList;
+  utilities:any[] = [];
   cookingCost: number = 0;
   sellingPrice: number = 0;
   recipeIngredients: any[] = [];
@@ -60,18 +61,78 @@ export class AddRecipeComponent implements OnInit {
     servingTimeUnit: new FormControl('minute(s)',[Validators.required]),
     shelfLifeValue: new FormControl(0,[Validators.required]),
     shelfLifeUnit: new FormControl('minute(s)',[Validators.required]),
+    flameThrow:new FormControl('',[]),
     energyConsumptionPerPreparation: new FormControl(''),
   });
 
   ngOnInit(): void {
     console.log(this.recipe.ingredients, this.recipe.recipeTypes);
+    this.databaseService.getUtilities().then((docs:any)=>{
+      docs.forEach((element:any) => {
+        this.utilities.push(element.data());
+      });
+    })
   }
   calculateCost(){
     this.cookingCost = 0;
     this.recipeIngredients.forEach((control: any) => {
       this.cookingCost += parseFloat(this.recipe.ingredients[this.getObject(control.ingredientSelector.value).id].rate) * parseFloat(control.ingredientValue.value);
     });
+    this.cookingCost = Math.ceil(this.cookingCost);
     this.sellingPrice = Math.ceil(this.cookingCost / 0.3);
+  }
+  getLpgData():any{
+    const data = this.utilities.find((value:any,index:number)=>{if (value.name==='LPG'){return true} else {return false}});
+    return data;
+    if (this.recipe.ingredients){
+      const data = Object.keys(this.recipe.ingredients).filter((data: any) => {
+        data = this.recipe.ingredients[data];
+        if(data.name=='LPG Gas'){
+          // console.log(data);
+          return true;
+        } else {
+          return false;
+        }
+      })
+      return this.recipe.ingredients[data.toString()];
+    } else {
+      return {rate:0};
+    }
+  }
+  get energyPerSecond(){
+    return 10;
+  }
+  get totalAvailableEnergy(){
+    const lpg = this.getLpgData();
+    var totalGas = lpg.unitCost*lpg.quantity;
+    var totalEnergy = 46452 * totalGas;
+    return totalEnergy
+  }
+  calculateEnergyConsumption(){
+    function getCookingTime(recipeForm:any):number{
+      if(recipeForm.get('cookingTimeUnit').value=='minutes'){
+        return recipeForm.get('cookingTimeValue').value*60;
+      } else if (recipeForm.get('cookingTimeUnit').value=='hours'){
+        return recipeForm.get('cookingTimeValue').value*60*60;
+      } else if (recipeForm.get('cookingTimeUnit').value=='days'){
+        return recipeForm.get('cookingTimeValue').value*60*60*24;
+      } else {
+        return 0;
+      }
+    }
+    // console.log(this.getLpgData().rate,getCookingTime(this.recipeForm),this.recipeForm.value.cookingTimeUnit,parseFloat(this.recipeForm.value.flameThrow));
+    if (this.recipeForm.value.cookingTimeValue){
+      this.recipeForm.value.energyConsumptionPerPreparation = Math.ceil((( getCookingTime(this.recipeForm)) * (this.energyPerSecond/parseFloat(this.recipeForm.value.flameThrow))));
+      console.log('Value',this.recipeForm.value.energyConsumptionPerPreparation);
+      return this.recipeForm.value.energyConsumptionPerPreparation;
+    } else {
+      return 0;
+    }
+  }
+  checkForCalculation(){
+    if (this.recipeForm.value.cookingTimeUnit && this.recipeForm.value.cookingTimeValue && this.recipeForm.value.flameThrow){
+      this.calculateEnergyConsumption();
+    }
   }
   async submit() {
     console.log(this.recipeForm);
