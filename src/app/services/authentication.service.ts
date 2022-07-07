@@ -220,8 +220,10 @@ export class AuthenticationService {
   // Sign in functions end
   // Sign out functions start
   public async logout() {
-    this.alertify.presentToast('You have been logged out.')
-    return await signOut(this.auth);
+    if (confirm('Are you sure you want to logout?')){
+      this.alertify.presentToast('You have been logged out.')
+      return await signOut(this.auth);
+    }
   }
   private setDataObserver(user: Observable<User | null>) {
     // console.log('Starting data observer')

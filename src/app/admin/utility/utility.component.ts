@@ -27,6 +27,8 @@ export class UtilityComponent implements OnInit {
   utilityForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
+    unitCost:new FormControl('', [Validators.required]),
+    numberOfUnits:new FormControl('', [Validators.required]),
     unit: new FormControl('', [Validators.required]),
     quantity: new FormControl(0, [Validators.required]),
     rate: new FormControl(0, [Validators.required]),

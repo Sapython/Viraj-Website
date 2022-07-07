@@ -96,6 +96,8 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
         instruction: new FormControl(instruction,[Validators.required]),
       });
     });
+    this.cookingCost = this.recipe.recipeData.cookingCost
+    this.sellingPrice = this.recipe.recipeData.sellingPrice
   }
   calculateCost(){
     console.log("Calculating cost");

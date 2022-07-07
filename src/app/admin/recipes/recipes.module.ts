@@ -13,7 +13,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
-import { LoaderComponent } from './loader/loader.component'; 
+import { LoaderComponent } from './loader/loader.component';
+import { UtilityComponent } from './utility/utility.component'; 
+import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input'; 
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { LoaderComponent } from './loader/loader.component';
     RecipeModalComponent,
     AddRecipeComponent,
     EditRecipeComponent,
-    LoaderComponent
+    LoaderComponent,
+    UtilityComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +38,10 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     RouterModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class RecipesModule { }

@@ -6,6 +6,8 @@ import Fuse from 'fuse.js';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
+import {MatDialog} from '@angular/material/dialog';
+import { UtilityComponent } from '../recipes/utility/utility.component';
 
 @Component({
   selector: 'app-stock',
@@ -39,7 +41,8 @@ export class StockComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private blurSiteService: BlurSiteService,
-    private alertService: AlertsAndNotificationsService
+    private alertService: AlertsAndNotificationsService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -251,5 +254,12 @@ export class StockComponent implements OnInit {
     } else {
       this.filteredItems = this.items;
     }
+  }
+  openUtilityManagementModal(){
+    const dialogRef = this.dialog.open(UtilityComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

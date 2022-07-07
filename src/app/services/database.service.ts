@@ -373,4 +373,10 @@ export class DatabaseService {
       throw new Error(e.toString());
     }
   }
+  // Utility management starts
+  getUtilities(){
+    return getDocs(collection(this.fs,'stockUtilities'));
+  }
+  // Utility management ends
+
 }

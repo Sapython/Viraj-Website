@@ -1,6 +1,44 @@
+@use '@angular/material' as mat;
 // Importing these font families from Google: Lato, Poppins
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+$viraj-palette: (
+ 50: #fff5ee,
+ 100: #fff3ea,
+ 200: #ffecde,
+ 300: #ffe5d2,
+ 400:#ffdcc4,
+ 500:#ffd5b8,
+ 600:#ffcba7,
+ 700:#ffc59c,
+ 800:#ffac70,
+ 900:#d06212,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+$my-primary: mat.define-palette($viraj-palette, 700);
+$my-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
 
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent:$my-accent,
+   foreground: $viraj-palette,
+ )
+));
+
+@include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.tabs-theme($my-theme);
 // Importing Amsterdam
 @font-face {
   font-family: "Amsterdam";

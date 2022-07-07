@@ -16,6 +16,9 @@
       <!-- <i [class]="'fa-solid ' + (updateStockEnabled ? 'fa-check' : 'fa-xmark')"></i> -->
       {{ updateStockEnabled ? "Save" : "Update" }} Stock
     </button>
+    <!-- <button (click)="openUtilityManagementModal()">
+      Utility Management
+    </button> -->
   </div>
   <div *ngIf="!items" uk-spinner="ratio: 3" id="loading"></div>
   <ng-container *ngIf="items">

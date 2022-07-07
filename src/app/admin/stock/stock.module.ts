@@ -7,6 +7,7 @@ import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
 @NgModule({
   declarations: [
     StockComponent
@@ -18,6 +19,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [
     DatabaseService
