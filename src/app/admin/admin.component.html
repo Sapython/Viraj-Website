@@ -8,6 +8,11 @@
         <i class="fa-solid fa-plus"></i> Add Item
       </button>
     </div>
+    <div *ngIf="currentPanel == 'Utilities'" id="header-end"> 
+      <button class="secondary-btn" uk-toggle="target: #utility-modal">
+        <i class="fa-solid fa-plus"></i> Add Utility
+      </button>
+    </div>
     <div *ngIf="currentPanel == 'Tasks'" id="header-end">
       <button class="secondary-btn" uk-toggle="target: #task-modal">
         <i class="fa-solid fa-plus"></i> Add Task
@@ -49,6 +54,9 @@
         <li>
           <a routerLink="/admin/stock" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i
               class="fa-solid fa-boxes-stacked"></i><span class="sidebar-text">Stock</span></a>
+        </li>
+        <li>
+          <a routerLink="/admin/utilities" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i class="fa-solid fa-fire-flame-simple"></i><span class="sidebar-text">Utilities</span></a>
         </li>
         <li>
           <a routerLink="/admin/tasks" routerLinkActive="active" class="sidebar-li-a" (click)="toggleSidebar()"><i

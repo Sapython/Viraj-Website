@@ -130,6 +130,67 @@ export class DatabaseService {
     }
   }
 
+  getFirstUtilities(length: number) {
+    // alert('Getting first utility')
+    return getDocs(
+      query(collection(this.fs, 'utilities'), orderBy('name'), limit(length))
+    );
+  }
+
+  getNextUtilities(length: number, lastDocument: DocumentSnapshot) {
+    // alert('Getting next utilities')
+    return getDocs(
+      query(
+        collection(this.fs, 'utilities'),
+        orderBy('name'),
+        limit(length),
+        startAfter(lastDocument)
+      )
+    );
+  }
+
+  getPreviousUtilities(length: number, firstDocument: DocumentSnapshot) {
+    // alert('Getting previous utilities')
+    return getDocs(
+      query(
+        collection(this.fs, 'utilities'),
+        orderBy('name'),
+        limitToLast(length),
+        endAt(firstDocument)
+      )
+    );
+  }
+
+  async addUtility(utility: any) {
+    // alert('Adding utility')
+    try {
+      await addDoc(collection(this.fs, 'utilities'), utility);
+      return updateDoc(doc(this.fs, 'siteData/counters'), {
+        utilityLength: increment(1),
+      });
+    } catch (e: any) {
+      // console.error(e);
+      throw new Error(e.toString());
+    }
+  }
+
+  updateUtility(utilityId: string, utility: any) {
+    // alert('Updating utility')
+    return updateDoc(doc(this.fs, 'utilities/' + utilityId), utility);
+  }
+
+  async deleteUtility(utilityId: string) {
+    // alert('Deleting utility')
+    try {
+      await deleteDoc(doc(this.fs, 'utilities/' + utilityId));
+      return updateDoc(doc(this.fs, 'siteData/counters'), {
+        utilityLength: increment(-1),
+      });
+    } catch (e: any) {
+      throw new Error(e.toString());
+    }
+  }
+
   getRecipe(recipeId: any) {
     // alert('Getting recipe')
     return getDoc(doc(this.fs, 'recipes/' + recipeId));

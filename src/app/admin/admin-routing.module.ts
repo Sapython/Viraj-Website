@@ -22,6 +22,11 @@ const routes: Routes = [
           import('./stock/stock.module').then((m) => m.StockModule),
       },
       {
+        path: 'utilities',
+        loadChildren: () =>
+          import('./utility/utility.module').then((m) => m.UtilityModule),
+      },
+      {
         path: 'tasks',
         loadChildren: () =>
           import('./tasks/tasks.module').then((m) => m.TasksModule),
@@ -40,7 +45,7 @@ const routes: Routes = [
         path: 'customers',
         loadChildren: () =>
           import('./customers/customers.module').then((m) => m.CustomersModule),
-      }
+      },
     ],
   },
 ];
