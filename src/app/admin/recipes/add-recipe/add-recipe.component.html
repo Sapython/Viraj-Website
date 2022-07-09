@@ -65,7 +65,7 @@
                     <select class="admin-input ingredient-select"
                         [formControl]="ingredientSelection['ingredientSelector']"
                         (change)="log(ingredientSelection['ingredientSelector'])">
-                        <option [value]="getString(this.recipe.ingredients[ingredient])"
+                        <option [ngValue]="getString(this.recipe.ingredients[ingredient])"
                             *ngFor="let ingredient of recipe.ingredientsKeys">
                             {{this.recipe.ingredients[ingredient].name}}
                         </option>
@@ -80,6 +80,10 @@
             <button type="button" id="add-ingredient" (click)="addIngredient()">
                 <i class="fa-solid fa-plus"></i> Add Ingredient
             </button>
+        </div>
+        <div class="recipe-form-box">
+            <label class="admin-label">Selling Cost Percentage</label>
+            <input class="admin-input" type="number" (change)="costPercentage = cost.value; calculateCost()" [value]="costPercentage" #cost>
         </div>
         <div class="recipe-form-box">
             <label class="admin-label">Cooking Cost (Calculated)</label>

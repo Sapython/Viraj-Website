@@ -249,7 +249,7 @@ export class RecipesComponent implements OnInit {
     });
     loaderRef.close()
     dialogRef.afterClosed().subscribe(result => {
-      console.log("result",result);
+      this.getRecipes();
     })
   }
   viewRecipe(recipe:any){

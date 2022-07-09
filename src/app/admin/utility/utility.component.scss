@@ -92,7 +92,7 @@ section {
       #utility-inputs {
         .utility-form-box {
           margin-top: 1em;
-  
+          // display: flex;
           label {
             color: var(--secondary);
             padding-left: 0.5em;
@@ -108,7 +108,7 @@ section {
   
           #rate-input-container {
             position: relative;
-  
+            display: flex;
             input {
               padding-left: 1.5em;
               padding-right: 3em;
@@ -129,6 +129,24 @@ section {
   
             #per-unit {
               right: 0.5em;
+            }
+          }
+        }
+        .totalQuantity{
+          display: flex;
+          flex-direction: column;
+          div{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--secondary);
+            span{
+              border: none;
+            }
+            p{
+              color: var(--secondary);
+              font-family: var(--font-three);
+              font-size: var(--small);
             }
           }
         }

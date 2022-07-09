@@ -27,9 +27,9 @@ export class UtilityComponent implements OnInit {
   utilityForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
-    unitCost:new FormControl('', [Validators.required]),
     unit: new FormControl('', [Validators.required]),
-    quantity: new FormControl(0, [Validators.required]),
+    totalItems: new FormControl('', [Validators.required]),
+    quantityPerItem: new FormControl(0, [Validators.required]),
     rate: new FormControl(0, [Validators.required]),
   });
   utilityLength: number = 0;
@@ -38,6 +38,7 @@ export class UtilityComponent implements OnInit {
   lastDocReference: any;
   firstDocReference: any;
   editedUtility: any = {};
+  totalPrice:number = 0;
   constructor(
     private databaseService: DatabaseService,
     private blurSiteService: BlurSiteService,
@@ -98,14 +99,11 @@ export class UtilityComponent implements OnInit {
   }
 
   calculateCurrentValue() {
-    const quantityInput = document.getElementById(
-      'quantity-input'
-    ) as HTMLInputElement;
-    const quantity = parseFloat(quantityInput.value);
-    const rateInput = document.getElementById('rate-input') as HTMLInputElement;
-    const rate = parseFloat(rateInput.value);
-    const currentValue = quantity * rate;
-    this.currentValue = currentValue.toFixed(2);
+    const rate = parseFloat(this.utilityForm.controls['rate'].value)
+    const quantity = parseFloat(this.utilityForm.controls['quantityPerItem'].value)
+    const totalItems = parseFloat(this.utilityForm.controls['totalItems'].value)
+    this.currentValue = ((quantity * totalItems)).toString();
+    this.totalPrice = (rate * totalItems);
   }
 
   getNextUtilities(event: any) {
@@ -169,6 +167,8 @@ export class UtilityComponent implements OnInit {
 
   // Form Management
   submit(): void {
+    this.utilityForm.value['totalQuantity'] = parseFloat(this.currentValue);
+    this.utilityForm.value['totalPrice'] = this.totalPrice;
     console.log(this.utilityForm.value);
     if (this.utilityForm.valid) {
       this.blurSiteService.startBlur();
@@ -226,6 +226,7 @@ export class UtilityComponent implements OnInit {
         this.utilityForm.reset();
       });
       UIkit.modal(utilityModal).show();
+      this.calculateCurrentValue();
     }
   }
 

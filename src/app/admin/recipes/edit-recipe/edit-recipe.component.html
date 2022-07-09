@@ -67,7 +67,7 @@
                     <select class="admin-input ingredient-select"
                         [value]="ingredientSelection['ingredientSelector'].value"
                         [formControl]="ingredientSelection['ingredientSelector']"
-                        (change)="log(ingredientSelection['ingredientSelector'])">
+                        (change)="log(getObject(ingredientSelection['ingredientSelector'].value))">
                         <option [value]="getString(this.recipe.ingredients[ingredient].id)"
                             *ngFor="let ingredient of recipe.ingredientsKeys">{{this.recipe.ingredients[ingredient].name}}
                         </option>
@@ -75,13 +75,17 @@
                     <input (change)="calculateCost()" type="number" min="0" class="admin-input ingredient-quantity"
                         [formControl]="ingredientSelection['ingredientValue']">
                     <span class="ingredient-unit"
-                        *ngIf="ingredientSelection['ingredientSelector'].value">{{ingredientSelection['unit']}}</span>
+                        *ngIf="ingredientSelection['ingredientSelector'].value">{{getIngredient(ingredientSelection).unit}}</span>
                     <i class="fa-solid fa-trash" (click)="deleteIngredient(i)"></i>
                 </div>
             </div>
             <button type="button" id="add-ingredient" (click)="addIngredient()">
                 <i class="fa-solid fa-plus"></i> Add Ingredient
             </button>
+        </div>
+        <div class="recipe-form-box">
+            <label class="admin-label">Selling Cost Percentage</label>
+            <input class="admin-input" type="number" (change)="costPercentage = cost.value; calculateCost()" [value]="costPercentage" #cost>
         </div>
         <div class="recipe-form-box">
             <label class="admin-label">Cooking Cost (Calculated)</label>
@@ -181,7 +185,7 @@
             <input type="text" class="admin-input" formControlName="energyConsumptionPerPreparation"
                 id="energy-consumption-per-preparation" />
         </div>
-        <button type="submit" class="primary-btn">Add Recipe</button>
+        <button type="submit" class="primary-btn">Update Recipe</button>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

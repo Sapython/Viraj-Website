@@ -11,7 +11,7 @@ import {
   ScreenTrackingService,
   UserTrackingService,
 } from '@angular/fire/analytics';
-import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth, setPersistence, browserLocalPersistence } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { providePerformance, getPerformance } from '@angular/fire/performance';
@@ -24,6 +24,8 @@ import { DatabaseService } from './services/database.service';
 import { DataProvider } from './providers/data.provider';
 import { UserDataService } from './services/user-data.service';
 import { AlertsAndNotificationsService } from './services/uiService/alerts-and-notifications.service';
+import { BlurSiteService } from './services/blur-site.service';
+import { DateService } from './services/date.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,8 +33,12 @@ import { AlertsAndNotificationsService } from './services/uiService/alerts-and-n
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => {
+      const auth = getAuth();
+      setPersistence(auth, browserLocalPersistence);
+      return auth;
+    }),
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
@@ -46,7 +52,10 @@ import { AlertsAndNotificationsService } from './services/uiService/alerts-and-n
     DatabaseService,
     DataProvider,
     UserDataService,
-    AlertsAndNotificationsService
+    AlertsAndNotificationsService,
+    BlurSiteService,
+    DateService,
+    
   ],
   bootstrap: [AppComponent],
 })

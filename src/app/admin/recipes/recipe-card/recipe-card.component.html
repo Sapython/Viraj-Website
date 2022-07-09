@@ -1,6 +1,5 @@
 <div id="card">
-  <img *ngIf="recipe.images && recipe.images.length > 0" [src]="recipe.images[0]" loading="lazy" />
-  <img *ngIf="!recipe.images || recipe.images.length == 0" src="assets/img/pexels-photo-1640777.jpeg" loading="lazy" />
+  <img [src]="recipe.photos ? recipe.photos[0] : 'assets/img/pexels-photo-1640777.jpeg'" loading="lazy" />
   <div id="card-content">
     <div>
       <h3 [attr.uk-tooltip]="recipe.name">{{serialNumber}}.&nbsp;&nbsp;&nbsp;{{ recipe.name }}</h3>

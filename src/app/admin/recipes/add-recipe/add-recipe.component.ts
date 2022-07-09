@@ -37,6 +37,7 @@ export class AddRecipeComponent implements OnInit {
   utilities:any[] = [];
   cookingCost: number = 0;
   sellingPrice: number = 0;
+  costPercentage: string = '1';
   recipeIngredients: any[] = [];
   servingInstructions: any[] = [];
   cookingInstructions: any[] = [];
@@ -66,7 +67,7 @@ export class AddRecipeComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.recipe.ingredients, this.recipe.recipeTypes);
+    // console.log(this.recipe.ingredients, this.recipe.recipeTypes);
     this.databaseService.getUtilities().then((docs:any)=>{
       docs.forEach((element:any) => {
         this.utilities.push(element.data());
@@ -79,32 +80,17 @@ export class AddRecipeComponent implements OnInit {
       this.cookingCost += parseFloat(this.recipe.ingredients[this.getObject(control.ingredientSelector.value).id].rate) * parseFloat(control.ingredientValue.value);
     });
     this.cookingCost = Math.ceil(this.cookingCost);
-    this.sellingPrice = Math.ceil(this.cookingCost / 0.3);
+    this.sellingPrice = Math.ceil(this.cookingCost+((this.cookingCost / 100)*parseInt(this.costPercentage)));
   }
   getLpgData():any{
-    const data = this.utilities.find((value:any,index:number)=>{if (value.name==='LPG'){return true} else {return false}});
-    return data;
-    if (this.recipe.ingredients){
-      const data = Object.keys(this.recipe.ingredients).filter((data: any) => {
-        data = this.recipe.ingredients[data];
-        if(data.name=='LPG Gas'){
-          // console.log(data);
-          return true;
-        } else {
-          return false;
-        }
-      })
-      return this.recipe.ingredients[data.toString()];
-    } else {
-      return {rate:0};
-    }
+    return this.utilities.find((value:any,index:number)=>{if (value.name==='LPG'){return true} else {return false}});
   }
   get energyPerSecond(){
     return 10;
   }
   get totalAvailableEnergy(){
     const lpg = this.getLpgData();
-    var totalGas = lpg.unitCost*lpg.quantity;
+    var totalGas = lpg.totalItems*lpg.quantityPerItem;
     var totalEnergy = 46452 * totalGas;
     return totalEnergy
   }
@@ -148,7 +134,6 @@ export class AddRecipeComponent implements OnInit {
         console.log('CookingInstructions',control.value);
       });
       let recipeIngredients: any[] = [];
-      var cookingCost = 0;
       this.recipeIngredients.forEach((control: any) => {
         const data = this.getObject(control.ingredientSelector.value)
         recipeIngredients.push({
@@ -158,11 +143,8 @@ export class AddRecipeComponent implements OnInit {
           ingredientSelector: control.ingredientSelector.value,
           ingredientValue: control.ingredientValue.value,
         });
-        console.log('recipeIngredients',data.id,data.unit,control.ingredientValue.value);
-          cookingCost += parseFloat(this.recipe.ingredients[this.getObject(control.ingredientSelector.value).id].rate) * parseFloat(control.ingredientValue.value);
       });
-      this.cookingCost = cookingCost;
-      this.sellingPrice = (this.cookingCost / 0.3);
+      this.calculateCost();
       let photos = [];
       if(this.files){
         for (let index = 0; index < this.files.length; index++) {

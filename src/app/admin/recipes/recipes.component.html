@@ -1,4 +1,3 @@
-
 <section>
   <div>
     <button (click)="addRecipe()">Add Recipe</button>
@@ -8,7 +7,8 @@
     [pageSizeOptions]="[10, 20, 30, 40, 50, 100, 500]" (page)="getNextRecipes($event)" aria-label="Select page">
   </mat-paginator>
   <div id="recipe-cards" *ngIf="recipes && recipes.length > 0">
-    <app-recipe-card *ngFor="let recipe of recipes; let i = index;" [serialNumber]="i + 1 + serialNumberAdditionalCounter" [recipe]="recipe" (requestEdit)="editRecipe(recipe)"
+    <app-recipe-card *ngFor="let recipe of recipes; let i = index;"
+      [serialNumber]="i + 1 + serialNumberAdditionalCounter" [recipe]="recipe" (requestEdit)="editRecipe(recipe)"
       (requestDelete)="deleteRecipe(recipe.id)" (viewRecipe)="viewRecipe(recipe)"></app-recipe-card>
   </div>
 </section>

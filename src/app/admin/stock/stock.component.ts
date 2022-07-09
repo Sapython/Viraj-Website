@@ -259,11 +259,5 @@ export class StockComponent implements OnInit {
       this.filteredItems = this.items;
     }
   }
-  openUtilityManagementModal(){
-    const dialogRef = this.dialog.open(UtilityComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  
 }

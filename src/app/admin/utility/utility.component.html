@@ -19,7 +19,8 @@
             <th>S. No.</th>
             <th>Name</th>
             <th>Quantity</th>
-            <th>Unit</th>
+            <th>Total Price</th>
+            <th>Total Items</th>
             <th>Rate</th>
             <th *ngIf="updateUtilityEnabled">Quantity</th>
             <th *ngIf="updateUtilityEnabled">Rate</th>
@@ -36,8 +37,9 @@
             ">
             <td>{{ i + 1 + serialNumberAdditionalCounter }}.</td>
             <td>{{ utility.name }} ({{ utility.type }})</td>
-            <td>{{ utility.quantity }}</td>
-            <td>{{ utility.unit }}</td>
+            <td>{{ utility.quantityPerItem }}</td>
+            <td>{{ utility.totalPrice }}</td>
+            <td>{{ utility.totalQuantity }}-{{ utility.unit }}</td>
             <td>₹{{ utility.rate }}/{{ utility.unit }}</td>
             <td *ngIf="updateUtilityEnabled">
               <input min="0" [value]="utility.quantity" type="number" name="utility"
@@ -96,30 +98,37 @@
           </select>
         </div>
         <div class="utility-form-box">
-          <label>Single Unit Amount</label>
-          <input type="number" formControlName="unitCost" class="admin-input">
-        </div>
-        <div class="utility-form-box">
-          <label class="admin-label" for="quantity-input">Quantity *</label>
-          <input type="number" min="0" class="admin-input" formControlName="quantity" id="quantity-input"
+          <label class="admin-label" for="quantity-input">Total Items *</label>
+          <input type="number" min="0" class="admin-input" formControlName="totalItems" id="quantity-input"
             (input)="calculateCurrentValue()" />
         </div>
         <div class="utility-form-box">
-          <label class="admin-label" for="rate-input">Rate *</label>
+          <label class="admin-label" for="quantity-input">Quantity of 1 Item *</label>
           <div id="rate-input-container">
-            <span id="currency-symbol">₹</span>
-            <input type="text" class="admin-input" formControlName="rate" id="rate-input"
+            <input type="number" min="0" class="admin-input" formControlName="quantityPerItem" id="quantity-input"
               (input)="calculateCurrentValue()" />
-            <span id="per-unit">/{{
-              unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||
-              "unit"
-              }}</span>
+            <span id="per-unit">{{unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||"unit"}}</span>
           </div>
         </div>
         <div class="utility-form-box">
-          <label class="admin-label">Current Value (Calculated)</label>
-          <span class="admin-input"><span style="color: var(--secondary)">₹</span>
-            {{ currentValue }}</span>
+          <label class="admin-label" for="rate-input">Price Of 1 Item *</label>
+          <div id="rate-input-container">
+            <span id="currency-symbol">₹</span>
+            <input type="number" class="admin-input" formControlName="rate" id="rate-input"
+              (input)="calculateCurrentValue()" />
+          </div>
+        </div>
+        <div class="utility-form-box totalQuantity">
+          <label class="admin-label">Total Quantity (Calculated)</label>
+          <div>
+            <span class="admin-input"><span style="color: var(--color-two)"></span>{{ currentValue }}</span>
+              <p>{{unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||"unit"}}</p>
+          </div>
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label">Total Price (Calculated)</label>
+          <span class="admin-input"><span style="color: var(--color-two)">₹</span>
+            {{ totalPrice }}</span>
         </div>
       </div>
       <button *ngIf="!editMode" [disabled]="!utilityForm.valid" type="submit" class="primary-btn">

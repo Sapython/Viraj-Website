@@ -4,9 +4,9 @@
       <input type="text" class="admin-search" placeholder="Search..." (input)="searchItems()" #itemSearchInput />
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <!-- <button (click)="updateStockEnabled ? updateStock() : (updateStockEnabled = true)">
+    <button (click)="updateStockEnabled ? updateStock() : (updateStockEnabled = true)">
       {{ updateStockEnabled ? "Save" : "Update" }} Stock
-    </button> -->
+    </button>
   </div>
   <div *ngIf="!items" uk-spinner="ratio: 3" id="loading"></div>
   <ng-container *ngIf="items">
