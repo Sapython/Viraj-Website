@@ -80,7 +80,7 @@ export class AddRecipeComponent implements OnInit {
       this.cookingCost += parseFloat(this.recipe.ingredients[this.getObject(control.ingredientSelector.value).id].rate) * parseFloat(control.ingredientValue.value);
     });
     this.cookingCost = Math.ceil(this.cookingCost);
-    this.sellingPrice = Math.ceil(this.cookingCost+((this.cookingCost / 100)*parseInt(this.costPercentage)));
+    this.sellingPrice = Math.ceil(((this.cookingCost* 100)/parseInt(this.costPercentage)));
   }
   getLpgData():any{
     return this.utilities.find((value:any,index:number)=>{if (value.name==='LPG'){return true} else {return false}});

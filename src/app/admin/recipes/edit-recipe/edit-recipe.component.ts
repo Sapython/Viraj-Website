@@ -119,7 +119,7 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
       }
     });
     // console.log('1 Percent:',(this.cookingCost / 100),'CPercent:',this.costPercentage,this.cookingCost+((this.cookingCost / 100)*parseInt(this.costPercentage)));
-    this.sellingPrice = Math.ceil(this.cookingCost+((this.cookingCost / 100)*parseInt(this.costPercentage)));
+    this.sellingPrice = Math.ceil(((this.cookingCost* 100)/parseInt(this.costPercentage)));
     // console.log("Calculated cost");
   }
   checkForCalculation(){

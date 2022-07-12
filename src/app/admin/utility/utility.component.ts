@@ -3,6 +3,7 @@ import { DocumentReference } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 declare const UIkit: any;
 import Fuse from 'fuse.js';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
@@ -41,7 +42,7 @@ export class UtilityComponent implements OnInit {
   totalPrice:number = 0;
   constructor(
     private databaseService: DatabaseService,
-    private blurSiteService: BlurSiteService,
+    private dataProvider: DataProvider,
     private alertService: AlertsAndNotificationsService
   ) {}
 
@@ -171,14 +172,14 @@ export class UtilityComponent implements OnInit {
     this.utilityForm.value['totalPrice'] = this.totalPrice;
     console.log(this.utilityForm.value);
     if (this.utilityForm.valid) {
-      this.blurSiteService.startBlur();
+      this.dataProvider.pageSetting.blur = true;
       if (this.editMode) {
         this.databaseService
           .updateUtility(this.currentEditId, this.utilityForm.value)
           .then(() => {
             UIkit.modal(document.getElementById('utility-modal')).hide();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Utility edited successfully',
               'info'
@@ -191,7 +192,7 @@ export class UtilityComponent implements OnInit {
             UIkit.modal(document.getElementById('utility-modal')).hide();
             this.utilityForm.reset();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Utility added successfully',
               'info'
@@ -231,10 +232,10 @@ export class UtilityComponent implements OnInit {
   }
 
   deleteUtility(): void {
-    this.blurSiteService.startBlur();
+    this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteUtility(this.currentDeleteId).then(() => {
       this.ngOnInit();
-      this.blurSiteService.stopBlur();
+      this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Utility deleted successfully', 'info');
     });
   }

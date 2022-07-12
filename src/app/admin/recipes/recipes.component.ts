@@ -73,8 +73,7 @@ export class RecipesComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private alertService: AlertsAndNotificationsService,
-    private blurSiteService: BlurSiteService,
-    private dataProvider:DataProvider,
+    private dataProvider: DataProvider,
     public dialog: MatDialog
   ) {}
 
@@ -122,7 +121,7 @@ export class RecipesComponent implements OnInit {
       .getFirstRecipes(10)
       .then((recipes: any) => {
         this.setCurrentViewData(recipes);
-        this.blurSiteService.stopBlur();
+        this.dataProvider.pageSetting.blur = false;;
       })
       .catch(() => {
         this.alertService.presentToast('Cannot get recipes.', 'error');
@@ -508,7 +507,7 @@ export class RecipesComponent implements OnInit {
   //     this.recipeForm.value.name.trim() !== '' &&
   //     this.recipeForm.value.ingredients.length > 0
   //   ) {
-  //     this.blurSiteService.startBlur();
+  //     this.dataProvider.pageSetting.blur = true;
 
   //     // Upload images if they're selected
   //     this.recipeForm.value.photos = [];
@@ -530,7 +529,7 @@ export class RecipesComponent implements OnInit {
   //         .then(() => {
   //           UIkit.modal(document.getElementById('recipe-modal')).hide();
   //           this.ngOnInit();
-  //           this.blurSiteService.stopBlur();
+  //           this.dataProvider.pageSetting.blur = false;;
   //           this.alertService.presentToast(
   //             'Recipe edited successfully',
   //             'info'
@@ -549,7 +548,7 @@ export class RecipesComponent implements OnInit {
   //           '';
   //         document.getElementById('serving-instructions-inputs')!.innerHTML =
   //           '';
-  //         this.blurSiteService.stopBlur();
+  //         this.dataProvider.pageSetting.blur = false;;
   //         this.alertService.presentToast('Recipe added successfully!');
   //       });
   //     }
@@ -612,10 +611,10 @@ export class RecipesComponent implements OnInit {
   // }
 
   // deleteRecipe(): void {
-  //   this.blurSiteService.startBlur();
+  //   this.dataProvider.pageSetting.blur = true;
   //   this.databaseService.deleteRecipe(this.currentDeleteId).then(() => {
   //     this.ngOnInit();
-  //     this.blurSiteService.stopBlur();
+  //     this.dataProvider.pageSetting.blur = false;;
   //     this.alertService.presentToast('Recipe deleted successfully', 'info');
   //   });
   // }

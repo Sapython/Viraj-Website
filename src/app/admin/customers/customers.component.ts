@@ -5,6 +5,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 import Fuse from 'fuse.js';
 import { DateService } from 'src/app/services/date.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
+import { DataProvider } from 'src/app/providers/data.provider';
 declare const UIkit: any;
 
 @Component({
@@ -34,7 +35,7 @@ export class CustomersComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private alertService: AlertsAndNotificationsService,
-    private blurSiteService: BlurSiteService,
+    private dataProvider: DataProvider,
     public dateService: DateService
   ) {}
 
@@ -104,7 +105,7 @@ export class CustomersComponent implements OnInit {
 
   async submit(): Promise<void> {
     if (this.customerForm.valid) {
-      this.blurSiteService.startBlur();
+      this.dataProvider.pageSetting.blur = true;
 
       // Upload image if it's selected
       if (this.file) {
@@ -121,7 +122,7 @@ export class CustomersComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('customer-modal')).hide();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Customer edited successfully',
               'info'
@@ -134,7 +135,7 @@ export class CustomersComponent implements OnInit {
           (document.getElementById('photo-input') as HTMLInputElement).value = '';
           this.file = null;
           this.ngOnInit();
-          this.blurSiteService.stopBlur();
+          this.dataProvider.pageSetting.blur = false;;
           this.alertService.presentToast('Customer added successfully', 'info');
         }).catch((error)=>{
           this.alertService.presentToast(error, 'error');
@@ -171,10 +172,10 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomer(): void {
-    this.blurSiteService.startBlur();
+    this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteCustomer(this.currentDeleteId).then(() => {
       this.ngOnInit();
-      this.blurSiteService.stopBlur();
+      this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Customer deleted successfully', 'info');
     });
   }

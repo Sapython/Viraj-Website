@@ -5,6 +5,7 @@ import Fuse from 'fuse.js';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DateService } from 'src/app/services/date.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
+import { DataProvider } from 'src/app/providers/data.provider';
 declare const UIkit: any;
 
 @Component({
@@ -40,7 +41,7 @@ export class EmployeesComponent implements OnInit {
   constructor(
     private databaseService: DatabaseService,
     private alertService: AlertsAndNotificationsService,
-    private blurSiteService: BlurSiteService,
+    private dataProvider: DataProvider,
     public dateService: DateService
   ) {}
 
@@ -123,7 +124,7 @@ export class EmployeesComponent implements OnInit {
 
   async submit(): Promise<void> {
     if (this.employeeForm.valid) {
-      this.blurSiteService.startBlur();
+      this.dataProvider.pageSetting.blur = true;
 
       // Upload image if it's selected
       if (this.file) {
@@ -140,7 +141,7 @@ export class EmployeesComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('employee-modal')).hide();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Employee edited successfully',
               'info'
@@ -153,7 +154,7 @@ export class EmployeesComponent implements OnInit {
           (document.getElementById('photo-input') as HTMLInputElement).value = '';
           this.file = null;
           this.ngOnInit();
-          this.blurSiteService.stopBlur();
+          this.dataProvider.pageSetting.blur = false;;
           this.alertService.presentToast('Employee added successfully', 'info');
         });
       }
@@ -188,10 +189,10 @@ export class EmployeesComponent implements OnInit {
   }
 
   deleteEmployee(): void {
-    this.blurSiteService.startBlur();
+    this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteEmployee(this.currentDeleteId).then(() => {
       this.ngOnInit();
-      this.blurSiteService.stopBlur();
+      this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Employee deleted successfully', 'info');
     });
   }

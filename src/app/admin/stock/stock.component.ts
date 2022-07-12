@@ -8,6 +8,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 import {MatDialog} from '@angular/material/dialog';
 import { UtilityComponent } from '../recipes/utility/utility.component';
+import { DataProvider } from 'src/app/providers/data.provider';
 
 @Component({
   selector: 'app-stock',
@@ -40,7 +41,7 @@ export class StockComponent implements OnInit {
   editedItem: any = {};
   constructor(
     private databaseService: DatabaseService,
-    private blurSiteService: BlurSiteService,
+    private dataProvider: DataProvider,
     private alertService: AlertsAndNotificationsService,
     public dialog: MatDialog
   ) {}
@@ -160,7 +161,7 @@ export class StockComponent implements OnInit {
   // Form Management
   submit(): void {
     if (this.itemForm.valid) {
-      this.blurSiteService.startBlur();
+      this.dataProvider.pageSetting.blur = true;
       if (this.editMode) {
         this.itemForm.value['rate'] = parseFloat(this.itemForm.value['rate']);
         this.databaseService
@@ -168,7 +169,7 @@ export class StockComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('item-modal')).hide();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast('Item edited successfully', 'info');
           });
       } else {
@@ -179,7 +180,7 @@ export class StockComponent implements OnInit {
             UIkit.modal(document.getElementById('item-modal')).hide();
             this.itemForm.reset();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast('Item added successfully', 'info');
           })
           .catch((error) => {
@@ -211,16 +212,17 @@ export class StockComponent implements OnInit {
         this.itemForm.reset();
       });
       UIkit.modal(itemModal).show();
+      this.calculateCurrentValue();
     }
   }
   get currentUnit(){
     return this.itemForm.get('unit');
   }
   deleteItem(): void {
-    this.blurSiteService.startBlur();
+    this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteStockItem(this.currentDeleteId).then(() => {
       this.ngOnInit();
-      this.blurSiteService.stopBlur();
+      this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Item deleted successfully', 'info');
     });
   }

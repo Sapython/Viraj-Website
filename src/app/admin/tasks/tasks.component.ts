@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { BlurSiteService } from 'src/app/services/blur-site.service';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
@@ -26,7 +27,7 @@ export class TasksComponent implements OnInit {
 
   constructor(
     private databaseService: DatabaseService,
-    private blurSiteService: BlurSiteService,
+    private dataProvider: DataProvider,
     private alertService: AlertsAndNotificationsService
   ) {}
 
@@ -88,7 +89,7 @@ export class TasksComponent implements OnInit {
 
   submitTaskForm(): void {
     if (this.taskForm.valid) {
-      this.blurSiteService.startBlur();
+      this.dataProvider.pageSetting.blur = true;
 
       // Set 'details' form control
       this.taskForm.value.details = [];
@@ -108,7 +109,7 @@ export class TasksComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('task-modal')).hide();
             this.ngOnInit();
-            this.blurSiteService.stopBlur();
+            this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast('Task edited successfully', 'info');
           });
       } else {
@@ -119,7 +120,7 @@ export class TasksComponent implements OnInit {
             detailsInputs.innerHTML = '';
           }
           this.ngOnInit();
-          this.blurSiteService.stopBlur();
+          this.dataProvider.pageSetting.blur = false;;
           this.alertService.presentToast('Task added successfully', 'info');
         });
       }
@@ -162,10 +163,10 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(): void {
-    this.blurSiteService.startBlur();
+    this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteTask(this.currentDeleteId).then(() => {
       this.ngOnInit();
-      this.blurSiteService.stopBlur();
+      this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Task deleted successfully', 'info');
     });
   }
