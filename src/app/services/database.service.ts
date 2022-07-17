@@ -21,6 +21,7 @@ import {
   getDoc,
   increment,
   endAt,
+  setDoc,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -196,6 +197,10 @@ export class DatabaseService {
     return getDoc(doc(this.fs, 'recipes/' + recipeId));
   }
 
+  getAllRecipes() {
+    return getDocs(query(collection(this.fs, 'recipes'), orderBy('name')));
+  }
+
   getFirstRecipes(length: number) {
     // alert('Getting first recipes')
     return getDocs(
@@ -235,6 +240,7 @@ export class DatabaseService {
     // alert('Adding recipe')
     try {
       await addDoc(collection(this.fs, 'recipes'), recipe);
+      await this.updateRecipeAnalytics('added');
       return updateDoc(doc(this.fs, 'siteData/counters'), {
         recipeLength: increment(1),
       });
@@ -252,12 +258,25 @@ export class DatabaseService {
     // alert('Deleting recipe')
     try {
       await deleteDoc(doc(this.fs, 'recipes/' + recipeId));
+      await this.updateRecipeAnalytics('deleted');
       return updateDoc(doc(this.fs, 'siteData/counters'), {
         recipeLength: increment(-1),
       });
     } catch (e: any) {
       throw new Error(e.toString());
     }
+  }
+
+  updateRecipeAnalytics(action: 'added' | 'deleted') {
+    const today = new Date();
+    const docId = today.getMonth().toString() + today.getFullYear().toString();
+    return setDoc(
+      doc(this.fs, 'analytics/' + docId),
+      {
+        recipesAdded: increment(action == 'added' ? 1 : -1),
+      },
+      { merge: true }
+    );
   }
 
   getTasks() {
@@ -374,9 +393,14 @@ export class DatabaseService {
     }
   }
   // Utility management starts
-  getUtilities(){
-    return getDocs(collection(this.fs,'stockUtilities'));
+  getUtilities() {
+    return getDocs(collection(this.fs, 'stockUtilities'));
   }
   // Utility management ends
 
+  getAnalytics(month: number, year: number) {
+    return getDoc(
+      doc(this.fs, 'analytics/' + month.toString() + year.toString())
+    );
+  }
 }

@@ -1,48 +1,112 @@
 section {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
   padding: 1em;
 
-  .item {
-    width: 30%;
-    margin: .5em;
-    padding: 1em 1.5em;
+  #quick-links {
+    background-color: var(--secondary);
+    padding: 0.75em;
+    border-radius: 7px;
     box-shadow: var(--normal-shadow);
-    background-color: transparent;
-    border-radius: 10px;
-    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    &:hover {
-      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    }
-
-    @media (max-width: 850px) {
-      width: 45%;
-    }
-
-    @media (max-width: 600px) {
-      width: 100%;
-    }
-
-    h3,
-    p {
-      font-family: var(--font-two);
-      color: var(--primary);
+    h3 {
+      color: var(--secondary-contrast);
+      font-family: var(--font-three);
+      font-size: var(--small);
       margin: 0;
     }
 
-    h3 {
-      font-size: var(--medium);
-      font-weight: 700;
-    }
-
-    p {
-      font-size: var(--small);
-    }
-
     button {
-      margin-top: 1em;
+      color: var(--secondary);
+      background-color: var(--secondary-contrast);
+      border: none;
+      outline: none;
+      font-family: var(--font-three);
+      font-size: var(--xsmall);
+      padding: 0.25em 0.4em;
+      border-radius: 7px;
+      margin-left: 0.25em;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover,
+      &:focus {
+        filter: brightness(0.9);
+      }
+    }
+
+    #buttons {
+      button {
+        color: var(--secondary-contrast);
+        background: transparent;
+      }
+    }
+  }
+
+  #charts {
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+
+    #recipe-graph {
+      width: 70% !important;
+      height: unset !important;
+    }
+
+    #stock-pie {
+      width: 30% !important;
+      height: unset !important;
+    }
+  }
+
+  #panels {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .panel {
+      width: 30%;
+      margin: 0.5em;
+      padding: 1em 1.5em;
+      box-shadow: var(--normal-shadow);
+      background-color: var(--secondary);
+      border-radius: 10px;
+      transition: all 0.5s;
+
+      &:hover {
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      }
+
+      @media (max-width: 850px) {
+        width: 45%;
+      }
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
+
+      h3,
+      p {
+        font-family: var(--font-two);
+        color: var(--secondary-contrast);
+        margin: 0;
+      }
+
+      h3 {
+        font-size: var(--medium);
+        font-weight: 700;
+      }
+
+      p {
+        font-size: var(--small);
+      }
+
+      button {
+        margin-top: 1em;
+        color: var(--secondary);
+        background-color: var(--secondary-contrast);
+      }
     }
   }
 }

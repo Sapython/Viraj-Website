@@ -1,27 +1,55 @@
 <section>
-  <div class="item">
-    <h3>Stock</h3>
-    <p>Edit or view stock</p>
-    <button class="primary-btn" routerLink="/admin/stock"><i class="fa-solid fa-eye"></i>View</button>
+  <div id="quick-links">
+    <h3>Quick Links</h3>
+    <div id="buttons">
+      <button routerLink="../stock">Stock</button>
+      <button routerLink="../utilities">Utilities</button>
+      <button routerLink="../tasks">Tasks</button>
+      <button routerLink="./recipes">Recipes</button>
+      <button routerLink="./employees">Employees</button>
+      <button routerLink="./customers">Customers</button>
+    </div>
+    <button id="logout">Logout</button>
   </div>
-  <div class="item">
-    <h3>Tasks</h3>
-    <p>Edit or view tasks</p>
-    <button class="primary-btn" routerLink="/admin/tasks"><i class="fa-solid fa-eye"></i>View</button>
+  <div id="charts">
+    <canvas id="recipe-graph"></canvas>
+    <canvas id="stock-pie"></canvas>
   </div>
-  <div class="item">
-    <h3>Recipes</h3>
-    <p>Edit or view recipes</p>
-    <button class="primary-btn" routerLink="/admin/recipes"><i class="fa-solid fa-eye"></i>View</button>
-  </div>
-  <div class="item">
-    <h3>Employees</h3>
-    <p>Edit or view employees</p>
-    <button class="primary-btn" routerLink="/admin/employees"><i class="fa-solid fa-eye"></i>View</button>
-  </div>
-  <div class="item">
-    <h3>Customers</h3>
-    <p>Edit or view customers</p>
-    <button class="primary-btn" routerLink="/admin/customers"><i class="fa-solid fa-eye"></i>View</button>
+  <div id="panels">
+    <div class="panel">
+      <h3>Stock</h3>
+      <p>Edit or view stock</p>
+      <button class="primary-btn" routerLink="/admin/stock">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h3>Tasks</h3>
+      <p>Edit or view tasks</p>
+      <button class="primary-btn" routerLink="/admin/tasks">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h3>Recipes</h3>
+      <p>Edit or view recipes</p>
+      <button class="primary-btn" routerLink="/admin/recipes">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h3>Employees</h3>
+      <p>Edit or view employees</p>
+      <button class="primary-btn" routerLink="/admin/employees">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h3>Customers</h3>
+      <p>Edit or view customers</p>
+      <button class="primary-btn" routerLink="/admin/customers">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
   </div>
 </section>

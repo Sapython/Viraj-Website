@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from './services/authentication.service';
+import { DataProvider } from './providers/data.provider';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'Viraj-Website';
-  constructor(private authService:AuthenticationService){}
+
+  constructor(public dataProvider: DataProvider) {}
 }
