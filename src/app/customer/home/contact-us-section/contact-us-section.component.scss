@@ -132,7 +132,8 @@
 section {
   width: 100vw;
   display: flex;
-  div.contactBox,div.contactBranding {
+  div.contactBox,
+  div.contactBranding {
     flex: 2;
     width: 50vw;
     height: 100vh;
@@ -170,6 +171,7 @@ section {
           background: #272626;
           box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.495);
           border-radius: 5px;
+          font-family: var(--font-two);
         }
         button {
           margin-top: 20px;
@@ -187,11 +189,15 @@ section {
       content: "";
       display: block;
       position: relative;
-      top:0px;
+      top: 0px;
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.371);
       z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 }
