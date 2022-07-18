@@ -8,7 +8,7 @@ section {
   background-image: url(../../../assets/img/first-section-background.png);
   background-size: cover;
   background-repeat: no-repeat;
-  &::after{
+  &::after {
     content: "";
     position: absolute;
     top: 0;
@@ -22,9 +22,10 @@ section {
   }
   #container {
     z-index: 2;
-    padding: 3em;
-    width: 60%;
-    max-width: 600px;
+    padding: 1.5em;
+    min-width: 300px;
+    width: 50%;
+    max-width: 700px;
     background-color: rgba($color: #000, $alpha: 0.5);
     flex-direction: column;
     justify-content: center;
@@ -37,7 +38,7 @@ section {
       width: 100%;
       margin: 0;
       margin-bottom: 1em;
-      font-size: var(--medium);
+      font-size: var(--small);
     }
 
     form {
@@ -46,23 +47,20 @@ section {
       width: 100%;
 
       input {
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
         font-family: var(--font-three);
-        font-size: var(--small);
-      }
-
-      input,
-      input::placeholder {
-        color: var(--secondary-contrast);
+        font-size: var(--xsmall);
+        outline: none;
+        padding: 0.25em 0.5em;
       }
     }
 
     button {
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
       font-family: var(--font-three);
-      font-size: var(--small);
+      font-size: var(--xsmall);
       display: block;
-      padding: 0.5em 1em;
+      padding: 0.25em 0.5em;
       background-color: var(--secondary);
       color: var(--secondary-contrast);
       border: none;
@@ -84,11 +82,20 @@ section {
     i {
       margin-right: 0.5em;
     }
-    h3{
-      color:white;
+
+    #sign-in-with-google {
+      margin-top: 1em;
+    }
+
+    h3 {
+      color: white;
       text-transform: capitalize;
-      a{
-        color:var(--secondary)
+      font-family: var(--font-three);
+      font-size: var(--xsmall);
+      text-align: center;
+
+      a {
+        color: var(--secondary);
       }
     }
   }
