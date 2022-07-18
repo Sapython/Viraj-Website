@@ -4,7 +4,7 @@
       <input type="text" class="admin-search" placeholder="Search..." (input)="searchItems()" #itemSearchInput />
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-    <button (click)="updateStockEnabled ? updateStock() : (updateStockEnabled = true)">
+    <button (click)="updateStockEnabled ? updateStock() : (updateStockEnabled = true)" class="primary-btn">
       {{ updateStockEnabled ? "Save" : "Update" }} Stock
     </button>
   </div>

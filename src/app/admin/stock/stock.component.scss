@@ -3,41 +3,35 @@ section {
   height: 100%;
   position: relative;
   margin-bottom: 70px;
-  div.topBar{
+  div.topBar {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     margin-bottom: 20px;
     .search-box {
+      margin-right: 10px;
       .admin-search {
         border: 2px solid var(--secondary);
       }
     }
-    button{
-      padding:10px;
-      border:none;
-      background:var(--secondary);
-      color:white;
-      font-size:1.2em;
-      margin-left: 40px;
-      border-radius: 7px;
-    }
   }
-  .table-container{
-    td{
+  .table-container {
+    td {
       // width: min-content;
       // padding: 10px 20px;
-      input[name="rate"]{
-        margin-left:20px;
+      input[name="rate"] {
+        margin-left: 20px;
       }
-      input{
-        width:70px;
+      input {
+        width: 70px;
         // border-radius:6px;
         font-size: 15px;
         // height: 50px;
         border: none;
-        padding:10px 5px;
+        padding: 10px 5px;
         background-color: transparent;
         border-bottom: 2px solid var(--secondary);
-        color:var(--secondary);
+        color: var(--secondary);
         font-weight: 600;
       }
       #mic-button {
@@ -48,17 +42,16 @@ section {
         border: none;
         border-radius: 50%;
         font-size: var(--small);
-        margin-left: .5em;
+        margin-left: 0.5em;
         cursor: pointer;
-        transition: all .5s;
-  
+        transition: all 0.5s;
+
         &:hover {
           box-shadow: var(--normal-shadow);
         }
       }
     }
   }
-
 }
 
 .uk-modal-dialog {
@@ -208,5 +201,4 @@ section {
   top: 0px;
   left: 0px;
   z-index: 999999;
-  
 }
