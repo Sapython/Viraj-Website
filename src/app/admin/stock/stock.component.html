@@ -43,7 +43,7 @@
               <input min="0" [value]="item.rate" type="number" name="rate" (change)="changeRate(item,$event)">
             </td>
             <td *ngIf="updateStockEnabled">
-              <button id="mic-button"><i class="fa-solid fa-microphone"></i></button>
+              <button id="mic-button" (click)="startRecognition(item.id)"><i class="fa-solid fa-microphone"></i></button>
             </td>
             <td>
               <div class="buttons">
@@ -146,3 +146,7 @@
 </div>
 
 <app-confirm-delete-modal (confirmDelete)="deleteItem()" (hidden)="currentDeleteId = ''"></app-confirm-delete-modal>
+
+<div id="speechRecognizer"  *ngIf="recognitionActive">
+  <app-recognizer @fadeSlideInOut *ngIf="recognitionActive" [recognizedText]="recognizedText" (stopRecognition)="stopRecognition()"></app-recognizer>
+</div>

@@ -30,6 +30,7 @@ export class EmployeesComponent implements OnInit {
     phoneNumber: new FormControl(''),
     aadharNumber: new FormControl(''),
     address: new FormControl(''),
+    upiAddress: new FormControl(''),
     paymentMethod: new FormControl(''),
     accountHolderName: new FormControl(''),
     bankName: new FormControl(''),
@@ -196,4 +197,9 @@ export class EmployeesComponent implements OnInit {
       this.alertService.presentToast('Employee deleted successfully', 'info');
     });
   }
+
+  log(paymentType: any): void {
+    console.log(paymentType);
+  }
+  
 }

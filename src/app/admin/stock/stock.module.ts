@@ -7,10 +7,12 @@ import { AdminWidgetsModule } from '../admin-widgets/admin-widgets.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
-import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import { RecognizerComponent } from './recognizer/recognizer.component'; 
 @NgModule({
   declarations: [
-    StockComponent
+    StockComponent,
+    RecognizerComponent
   ],
   imports: [
     CommonModule,

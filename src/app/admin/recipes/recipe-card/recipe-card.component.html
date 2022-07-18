@@ -9,7 +9,7 @@
     <div id="buttons">
       <button class="primary-btn" (click)="viewRecipe.emit()">View</button>
       <button class="primary-btn" (click)="requestEdit.emit()">Edit</button>
-      <button class="primary-btn" (click)="requestDelete.emit()">
+      <button class="primary-btn" (click)="requestDelete.emit(recipe.id)">
         Delete
       </button>
     </div>

@@ -403,4 +403,16 @@ export class DatabaseService {
       doc(this.fs, 'analytics/' + month.toString() + year.toString())
     );
   }
+
+  addPieAnalytics(data:any,pieData:any){
+    setDoc(doc(this.fs, 'analytics/graphs'), {pieLabels:data,pieData:pieData}, {merge: true});
+  }
+
+  getGraphAnalytics(){
+    return getDoc(doc(this.fs, 'analytics/graphs'));
+  }
+
+  addBarAnalytics(data:any,barData:any){
+    setDoc(doc(this.fs, 'analytics/graphs'), {barLabels:data,barData:barData}, {merge: true});
+  }
 }

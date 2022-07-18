@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DocumentReference } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 declare const UIkit: any;
@@ -9,19 +9,25 @@ import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts
 import {MatDialog} from '@angular/material/dialog';
 import { UtilityComponent } from '../recipes/utility/utility.component';
 import { DataProvider } from 'src/app/providers/data.provider';
+import { VoiceRecognitionService } from 'src/app/services/voice-recognition.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-stock',
   templateUrl: './stock.component.html',
   styleUrls: ['../admin.util.scss', './stock.component.scss'],
 })
-export class StockComponent implements OnInit {
+export class StockComponent implements OnInit, OnDestroy {
   items: any[];
   filteredItems: any[];
   units: any[];
   currentValue: string = '0.00';
   currentDeleteId: string = '';
   allStocks: any[] = [];
+  lastPaginatorEvent:any;
+  recognizedText: string = '';
+  currentRecognizedId:string = '';
+  recognitionActive: boolean = false;
   @ViewChild('itemSearchInput') itemSearchInput: ElementRef;
   editMode: boolean = false;
   currentEditId: any = '';
@@ -39,11 +45,13 @@ export class StockComponent implements OnInit {
   lastDocReference: any;
   firstDocReference: any;
   editedItem: any = {};
+  recognizerSubscription:Subscription = new Subscription();
   constructor(
     private databaseService: DatabaseService,
     private dataProvider: DataProvider,
     private alertService: AlertsAndNotificationsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private voiceRecognitionService: VoiceRecognitionService
   ) {}
 
   ngOnInit(): void {
@@ -112,6 +120,7 @@ export class StockComponent implements OnInit {
 
   getNextStocks(event: any) {
     // const lastDoc =
+    this.lastPaginatorEvent = event;
     console.log(event);
     if (event.previousPageIndex < event.pageIndex) {
       console.log('Moved next');
@@ -168,7 +177,12 @@ export class StockComponent implements OnInit {
           .updateStockItem(this.currentEditId, this.itemForm.value)
           .then(() => {
             UIkit.modal(document.getElementById('item-modal')).hide();
-            this.ngOnInit();
+            // this.ngOnInit();
+            if(this.lastPaginatorEvent){
+              this.getNextStocks(this.lastPaginatorEvent);
+            } else {
+              this.getInitialStock();
+            }
             this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast('Item edited successfully', 'info');
           });
@@ -179,7 +193,11 @@ export class StockComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('item-modal')).hide();
             this.itemForm.reset();
-            this.ngOnInit();
+            if(this.lastPaginatorEvent){
+              this.getNextStocks(this.lastPaginatorEvent);
+            } else {
+              this.getInitialStock();
+            }
             this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast('Item added successfully', 'info');
           })
@@ -221,7 +239,11 @@ export class StockComponent implements OnInit {
   deleteItem(): void {
     this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteStockItem(this.currentDeleteId).then(() => {
-      this.ngOnInit();
+      if(this.lastPaginatorEvent){
+        this.getNextStocks(this.lastPaginatorEvent);
+      } else {
+        this.getInitialStock();
+      }
       this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Item deleted successfully', 'info');
     });
@@ -235,7 +257,10 @@ export class StockComponent implements OnInit {
         const item = this.editedItem[key];
         if (item.quantity != item.oldQuantity) {
           try{
-            await this.databaseService.updateStockItem(item.id, item)
+            this.databaseService.updateStockItem(item.id, item).then(()=>{
+              console.log('Updated',this.lastPaginatorEvent);
+              this.alertService.presentToast('Stock updated successfully', 'info');
+            })
           } catch(error:any){
             this.alertService.presentToast(error, 'error');
             return
@@ -243,7 +268,11 @@ export class StockComponent implements OnInit {
         }
       }
     }
-    this.alertService.presentToast('Stock updated successfully', 'info');
+    if(this.lastPaginatorEvent){
+      this.getNextStocks(this.lastPaginatorEvent);
+    } else {
+      this.getInitialStock();
+    }
   }
 
   // Search management
@@ -262,4 +291,40 @@ export class StockComponent implements OnInit {
     }
   }
   
+  stopRecognition(){
+    this.items.forEach((item: any) => {
+      if(item['id'] == this.currentRecognizedId){
+        item['quantity'] = parseFloat(this.recognizedText);
+        this.editedItem[item.id] = item;
+      }
+    })
+    this.voiceRecognitionService.stop();
+    this.recognizerSubscription.unsubscribe();
+    this.recognitionActive = false;
+  }
+
+  startRecognition(itemId:string){
+    if (this.voiceRecognitionService.supported){
+      this.currentRecognizedId = itemId;
+      this.voiceRecognitionService.init();
+      this.voiceRecognitionService.start();
+      this.recognitionActive = true;
+      this.recognizerSubscription = this.voiceRecognitionService.words.subscribe((data)=>{
+        this.recognizedText = data;
+      })
+      this.alertService.presentToast('Listening...', 'info');    
+      // setTimeout(()=>{
+      //   this.voiceRecognitionService.stop();
+      //   this.alertService.presentToast('Stopped Listening', 'info');    
+      // },5000)
+    }  else {
+      this.alertService.presentToast(
+        'Speech recognition is not supported in your browser','error'
+      );
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.recognizerSubscription.unsubscribe();
+  }
 }

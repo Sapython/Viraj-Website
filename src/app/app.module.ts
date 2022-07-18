@@ -26,6 +26,7 @@ import { UserDataService } from './services/user-data.service';
 import { AlertsAndNotificationsService } from './services/uiService/alerts-and-notifications.service';
 import { BlurSiteService } from './services/blur-site.service';
 import { DateService } from './services/date.service';
+import { VoiceRecognitionService } from './services/voice-recognition.service';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -55,7 +56,7 @@ import { DateService } from './services/date.service';
     AlertsAndNotificationsService,
     BlurSiteService,
     DateService,
-    
+    VoiceRecognitionService
   ],
   bootstrap: [AppComponent],
 })

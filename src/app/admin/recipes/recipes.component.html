@@ -9,7 +9,7 @@
   <div id="recipe-cards" *ngIf="recipes && recipes.length > 0">
     <app-recipe-card *ngFor="let recipe of recipes; let i = index;"
       [serialNumber]="i + 1 + serialNumberAdditionalCounter" [recipe]="recipe" (requestEdit)="editRecipe(recipe)"
-      (requestDelete)="deleteRecipe(recipe.id)" (viewRecipe)="viewRecipe(recipe)"></app-recipe-card>
+      (requestDelete)="deleteRecipe($event)" (viewRecipe)="viewRecipe(recipe)"></app-recipe-card>
   </div>
 </section>
 

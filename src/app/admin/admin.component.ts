@@ -26,10 +26,10 @@ export class AdminComponent implements OnInit {
 
   constructor(private router: Router) {
     router.events.forEach((event) => {
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) { 
         // Update header heading
-        const url = this.router.url;
-        const urlArr = url.split('/');
+        // const url = this.router.url;
+        const urlArr = window.location.pathname.split('/');
         if (urlArr.includes('recipes')) {
           this.currentPanel = 'Recipes';
           this.showingRecipe = urlArr.indexOf('recipes') != urlArr.length - 1;

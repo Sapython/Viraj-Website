@@ -20,6 +20,7 @@ export class UtilityComponent implements OnInit {
   currentValue: string = '0.00';
   currentDeleteId: string = '';
   allUtilities: any[] = [];
+  lastPaginatorEvent:any;
   @ViewChild('utilitySearchInput') utilitySearchInput: ElementRef;
   editMode: boolean = false;
   currentEditId: any = '';
@@ -109,6 +110,7 @@ export class UtilityComponent implements OnInit {
 
   getNextUtilities(event: any) {
     // const lastDoc =
+    this.lastPaginatorEvent = event;
     console.log(event);
     if (event.previousPageIndex < event.pageIndex) {
       console.log('Moved next');
@@ -178,7 +180,8 @@ export class UtilityComponent implements OnInit {
           .updateUtility(this.currentEditId, this.utilityForm.value)
           .then(() => {
             UIkit.modal(document.getElementById('utility-modal')).hide();
-            this.ngOnInit();
+            // this.ngOnInit();
+            this.getNextUtilities(this.lastPaginatorEvent);
             this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Utility edited successfully',

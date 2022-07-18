@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataProvider } from './providers/data.provider';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,5 @@ import { DataProvider } from './providers/data.provider';
 })
 export class AppComponent {
   title = 'Viraj-Website';
-
-  constructor(public dataProvider: DataProvider) {}
+  constructor(private authService:AuthenticationService,public dataProvider:DataProvider){}
 }

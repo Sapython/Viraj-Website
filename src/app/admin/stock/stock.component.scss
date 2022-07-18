@@ -2,6 +2,7 @@ section {
   padding: 1em;
   height: 100%;
   position: relative;
+  margin-bottom: 70px;
   div.topBar{
     display: flex;
     margin-bottom: 20px;
@@ -29,13 +30,15 @@ section {
       }
       input{
         width:70px;
-        border-radius:6px;
-        font-size: 20px;
+        // border-radius:6px;
+        font-size: 15px;
         // height: 50px;
         border: none;
         padding:10px 5px;
-        background-color: var(--secondary);
-        color:white;
+        background-color: transparent;
+        border-bottom: 2px solid var(--secondary);
+        color:var(--secondary);
+        font-weight: 600;
       }
       #mic-button {
         min-width: 35px;
@@ -195,4 +198,15 @@ section {
       margin-top: 1em;
     }
   }
+}
+
+#speechRecognizer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.474);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999999;
+  
 }
