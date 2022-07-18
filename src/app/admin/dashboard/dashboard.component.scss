@@ -1,6 +1,14 @@
 section {
   padding: 1em;
 
+  h3 {
+    font-family: var(--font-three);
+    color: var(--secondary);
+    font-weight: 500;
+    font-size: var(--medium);
+    margin-bottom: 0.5em;
+  }
+
   #quick-links {
     background-color: var(--secondary);
     padding: 0.75em;
@@ -10,11 +18,11 @@ section {
     align-items: center;
     justify-content: space-between;
 
-    h3 {
+    h4 {
       color: var(--secondary-contrast);
       font-family: var(--font-three);
-      font-size: var(--small);
-      margin: 0;
+      font-size: var(--xsmall);
+      margin: 0 0.5em 0 0;
     }
 
     button {
@@ -26,7 +34,6 @@ section {
       font-size: var(--xsmall);
       padding: 0.25em 0.4em;
       border-radius: 7px;
-      margin-left: 0.25em;
       cursor: pointer;
       transition: all 0.3s;
 
@@ -37,9 +44,13 @@ section {
     }
 
     #buttons {
+      display: flex;
+      margin: 0 0.5em 0 0;
+
       button {
         color: var(--secondary-contrast);
         background: transparent;
+        margin-left: 0.25em;
       }
     }
   }
@@ -57,6 +68,37 @@ section {
     #stock-pie {
       width: 30% !important;
       height: unset !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #quick-links {
+      display: none;
+    }
+
+    #charts {
+      flex-direction: column;
+
+      #recipe-graph {
+        width: 80% !important;
+        margin-bottom: 0.5em;
+      }
+
+      #stock-pie {
+        width: 60% !important;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    #charts {
+      #recipe-graph {
+        height: 150px !important;
+      }
+
+      #stock-pie {
+        width: 80% !important;
+      }
     }
   }
 
@@ -86,24 +128,25 @@ section {
         width: 100%;
       }
 
-      h3,
+      h4,
       p {
         font-family: var(--font-two);
         color: var(--secondary-contrast);
         margin: 0;
       }
 
-      h3 {
-        font-size: var(--medium);
+      h4 {
+        font-size: var(--small);
         font-weight: 700;
       }
 
       p {
-        font-size: var(--small);
+        font-size: var(--xsmall);
       }
 
       button {
         margin-top: 1em;
+        font-size: var(--xxsmall);
         color: var(--secondary);
         background-color: var(--secondary-contrast);
       }

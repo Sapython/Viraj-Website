@@ -10,7 +10,7 @@ import { DataProvider } from 'src/app/providers/data.provider';
 })
 export class DashboardComponent implements OnInit {
   constructor(
-    private dataProvider: DataProvider,
+    public dataProvider: DataProvider,
     private databaseService: DatabaseService
   ) {
     Chart.register(...registerables);
@@ -67,13 +67,13 @@ export class DashboardComponent implements OnInit {
             ],
           },
           options: {
-            responsive: true,
+            responsive: false,
             plugins: {
               legend: {
                 position: 'top',
                 labels: {
                   font: {
-                    size: 32,
+                    size: 12,
                   },
                 },
               },
@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit {
                 display: true,
                 text: 'Stock Distribution',
                 font: {
-                  size: 32,
+                  size: 12,
                 },
               },
             },
