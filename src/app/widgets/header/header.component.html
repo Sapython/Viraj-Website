@@ -4,43 +4,43 @@
   <img
     src="../../../assets/img/viraj-white.svg"
     alt="Viraj Logo"
-    class="logo-image"
-    class="uk-animation-fade"
+    class="logo-image uk-animation-fade"
   />
   <nav>
     <ul id="horizontal-ul">
       <li>
-        <a href="#home" [class]="hash==='#home' || path==='' ? 'active' : ''">Home</a>
+        <a href="#home" class="active">Home</a>
       </li>
       <li>
-        <a href="#about" [class]="hash==='#about' ? 'active' : ''">About</a>
+        <a href="#about">About</a>
       </li>
       <li>
-        <a href="#our-outlets" [class]="hash==='#our-outlets' ? 'active' : ''">Our Outlets</a>
+        <a href="#our-outlets">Our Outlets</a>
       </li>
       <li>
-        <a href="#gallery" [class]="hash==='#gallery' ? 'active' : ''">Gallery</a>
+        <a href="#gallery">Gallery</a>
       </li>
       <li>
-        <a href="#our-stores" [class]="hash==='#our-stores' ? 'active' : ''">Our Stores</a>
+        <a href="#our-stores">Our Stores</a>
       </li>
       <li>
-        <a href="#contact-us" [class]="hash==='#contact-us' ? 'active' : ''">Contact Us</a>
+        <a href="#contact-us">Contact Us</a>
       </li>
       <li *ngIf="!dataProvider.loggedIn">
-        <button [routerLink]="['/login']" class="login-button">
-          Login
-        </button>
+        <button [routerLink]="['/login']" class="login-button">Login</button>
       </li>
       <li *ngIf="dataProvider.loggedIn">
         <button (click)="authService.logout()" class="login-button">
           Logout
         </button>
       </li>
-      <li *ngIf="dataProvider.loggedIn && dataProvider.userData?.access?.access==='admin'">
-        <button [routerLink]="['/admin']" class="login-button">
-          Admin
-        </button>
+      <li
+        *ngIf="
+          dataProvider.loggedIn &&
+          dataProvider.userData?.access?.access === 'admin'
+        "
+      >
+        <button [routerLink]="['/admin']" class="login-button">Admin</button>
       </li>
     </ul>
     <div id="toggle-button">
@@ -58,22 +58,22 @@
       <nav>
         <ul id="vertical-ul">
           <li>
-            <button routerLink="#home" class="active">Home</button>
+            <a href="#home" class="active">Home</a>
           </li>
           <li>
-            <button routerLink="#about">About</button>
+            <a href="#about">About</a>
           </li>
           <li>
-            <button routerLink="#our-outlets">Our Outlets</button>
+            <a href="#our-outlets">Our Outlets</a>
           </li>
           <li>
-            <button routerLink="#gallery">Gallery</button>
+            <a href="#gallery">Gallery</a>
           </li>
           <li>
-            <button routerLink="#our-stores">Our Stores</button>
+            <a href="#our-stores">Our Stores</a>
           </li>
           <li>
-            <button routerLink="#contact-us">Contact Us</button>
+            <a href="#contact-us">Contact Us</a>
           </li>
           <li *ngIf="!dataProvider.loggedIn">
             <button [routerLink]="['/login']" class="login-button">
@@ -85,7 +85,12 @@
               Logout
             </button>
           </li>
-          <li *ngIf="dataProvider.loggedIn && dataProvider.userData?.access?.access==='admin'">
+          <li
+            *ngIf="
+              dataProvider.loggedIn &&
+              dataProvider.userData?.access?.access === 'admin'
+            "
+          >
             <button [routerLink]="['/admin']" class="login-button">
               Admin
             </button>

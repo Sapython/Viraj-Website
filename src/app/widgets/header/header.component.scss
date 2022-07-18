@@ -72,6 +72,11 @@ header {
         margin: 5px;
       }
 
+      .login-button {
+        display: block;
+        margin: .5em 1em;
+      }
+
       .active {
         border-left: 2px solid var(--secondary);
       }
@@ -81,7 +86,7 @@ header {
       display: none;
     }
 
-    @media (max-width: 950px) {
+    @media (max-width: 1110px) {
       #horizontal-ul {
         display: none;
       }
