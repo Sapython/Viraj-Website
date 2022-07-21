@@ -5,13 +5,34 @@ section {
   margin-bottom: 70px;
   div.topBar {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
     margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      row-gap: 10px;
+    }
     .search-box {
-      margin-right: 10px;
+      display: flex;
+      align-items: center;
       .admin-search {
         border: 2px solid var(--secondary);
+      }
+    }
+    button {
+      padding: 10px;
+      border: none;
+      background: var(--secondary);
+      color: white;
+      font-size: 1.2em;
+      margin-left: 10px;
+      border-radius: 7px;
+      @media (max-width: 600px) {
+        font-size: 0.7em; 
       }
     }
   }

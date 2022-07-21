@@ -3,7 +3,39 @@ section {
   width: 100%;
   height: 100%;
   position: relative;
-
+  div.topBar {
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      row-gap: 10px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      .admin-search {
+        border: 2px solid var(--secondary);
+      }
+    }
+    button {
+      padding: 10px;
+      border: none;
+      background: var(--secondary);
+      color: white;
+      font-size: 1.2em;
+      margin-left: 10px;
+      border-radius: 7px;
+      @media (max-width: 600px) {
+        font-size: 0.7em; 
+      }
+    }
+  }
   #recipe-cards {
     display: flex;
     flex-wrap: wrap;

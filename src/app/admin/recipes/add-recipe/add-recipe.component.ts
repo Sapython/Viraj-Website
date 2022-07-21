@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
+import { AddCategoriesComponent } from './add-categories/add-categories.component';
 
 @Component({
   selector: 'app-add-recipe',
@@ -14,9 +15,11 @@ export class AddRecipeComponent implements OnInit {
     private alertService: AlertsAndNotificationsService,
     @Inject(MAT_DIALOG_DATA) public recipe: any,
     private matDialogRef: MatDialogRef<AddRecipeComponent>,
-    private databaseService:DatabaseService
+    private databaseService:DatabaseService,
+    private dialog:MatDialog
   ) {}
   // Constants
+  selectedCategories = [];
   months: string[] = [
     'January',
     'February',
@@ -160,11 +163,14 @@ export class AddRecipeComponent implements OnInit {
       this.recipeForm.value.photos = photos;
       const recipe = {
         ...this.recipeForm.value,
+        photos:photos,
         cookingCost: this.cookingCost,
         sellingPrice: this.sellingPrice,
         ingredients: recipeIngredients,
+        costPercentage:this.costPercentage,
         cookingInstructions: cookingInstructions,
         servingInstructions: servingInstructions,
+        selectedCategories:this.selectedCategories
       };
       console.log('Recipe final data ',recipe);
       this.databaseService.addRecipe(recipe).then(() => {
@@ -245,5 +251,14 @@ export class AddRecipeComponent implements OnInit {
     } else {
       this.cookingInstructions.splice(index, 1);
     }
+  }
+
+  addCategories() {
+    const dialogRef = this.dialog.open(AddCategoriesComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('result', result);
+      this.selectedCategories = result;
+      this.alertService.presentToast('Categories added successfully','info');
+    });
   }
 }

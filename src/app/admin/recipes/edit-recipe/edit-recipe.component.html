@@ -1,7 +1,5 @@
 <h2 mat-dialog-title>Add Recipe</h2>
-
 <mat-dialog-content>
-
     <form [formGroup]="recipeForm" (ngSubmit)="submit()" *ngIf="recipe">
         <div class="recipe-form-box">
             <label class="admin-label" for="name-input">Name *</label>
@@ -25,6 +23,9 @@
                     {{ recipeType.name }}
                 </option>
             </select>
+        </div>
+        <div class="recipe-form-box">
+            <button class="primary-btn" type="button" (click)="manageCategories()">Manage Categories</button>
         </div>
         <div class="recipe-form-box">
             <label class="admin-label">Flavour Palette</label>
@@ -69,7 +70,8 @@
                         [formControl]="ingredientSelection['ingredientSelector']"
                         (change)="log(getObject(ingredientSelection['ingredientSelector'].value))">
                         <option [value]="getString(this.recipe.ingredients[ingredient].id)"
-                            *ngFor="let ingredient of recipe.ingredientsKeys">{{this.recipe.ingredients[ingredient].name}}
+                            *ngFor="let ingredient of recipe.ingredientsKeys">
+                            {{this.recipe.ingredients[ingredient].name}}
                         </option>
                     </select>
                     <input (change)="calculateCost()" type="number" min="0" class="admin-input ingredient-quantity"
@@ -85,7 +87,8 @@
         </div>
         <div class="recipe-form-box">
             <label class="admin-label">Selling Cost Percentage</label>
-            <input class="admin-input" type="number" (change)="costPercentage = cost.value; calculateCost()" [value]="costPercentage" #cost>
+            <input class="admin-input" type="number" (change)="costPercentage = cost.value; calculateCost()"
+                [value]="costPercentage" #cost>
         </div>
         <div class="recipe-form-box">
             <label class="admin-label">Cooking Cost (Calculated)</label>
@@ -98,8 +101,10 @@
         <div class="recipe-form-box">
             <label class="admin-label">Cooking Instructions</label>
             <div id="cooking-instructions-inputs">
-                <div style="display: flex; align-items: baseline;" *ngFor="let instructionControl of cookingInstructions; let i = index;">
-                    <input type="text" class="admin-input serving-instruction" [formControl]="instructionControl.instruction" style="width: 100%;">
+                <div style="display: flex; align-items: baseline;"
+                    *ngFor="let instructionControl of cookingInstructions; let i = index;">
+                    <input type="text" class="admin-input serving-instruction"
+                        [formControl]="instructionControl.instruction" style="width: 100%;">
                     <i class="fa-solid fa-trash" (click)="deleteInstruction('cooking',i)"></i>
                 </div>
             </div>
@@ -111,8 +116,10 @@
         <div class="recipe-form-box">
             <label class="admin-label">Serving Instructions</label>
             <div id="serving-instructions-inputs">
-                <div style="display: flex; align-items: baseline;" *ngFor="let instructionControl of servingInstructions; let i = index;">
-                    <input type="text" class="admin-input serving-instruction" [formControl]="instructionControl.instruction" style="width: 100%;">
+                <div style="display: flex; align-items: baseline;"
+                    *ngFor="let instructionControl of servingInstructions; let i = index;">
+                    <input type="text" class="admin-input serving-instruction"
+                        [formControl]="instructionControl.instruction" style="width: 100%;">
                     <i class="fa-solid fa-trash" (click)="deleteInstruction('serving',i)"></i>
                 </div>
             </div>
@@ -137,7 +144,7 @@
             <label class="admin-label" for="cooking-time-input">Cooking Time</label>
             <div class="time-input-box">
                 <input type="number" min="0" class="admin-input" id="cooking-time-input"
-                    formControlName="cookingTimeValue"  (change)="checkForCalculation()"/>
+                    formControlName="cookingTimeValue" (change)="checkForCalculation()" />
                 <select class="admin-input" formControlName="cookingTimeUnit" (change)="checkForCalculation()">
                     <option ngValue="minutes">Minutes</option>
                     <option ngValue="hours">Hours</option>

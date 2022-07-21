@@ -25,6 +25,9 @@
             </select>
         </div>
         <div class="recipe-form-box">
+            <button class="primary-btn" type="button" (click)="addCategories()">Add Categories</button>
+        </div>
+        <div class="recipe-form-box">
             <label class="admin-label">Flavour Palette</label>
             <select class="admin-input" formControlName="flavourPalette">
                 <option [ngValue]="''" disabled>Choose palette</option>

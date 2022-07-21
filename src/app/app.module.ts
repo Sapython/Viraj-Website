@@ -28,7 +28,7 @@ import { BlurSiteService } from './services/blur-site.service';
 import { DateService } from './services/date.service';
 import { VoiceRecognitionService } from './services/voice-recognition.service';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,

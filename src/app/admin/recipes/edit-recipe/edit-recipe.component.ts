@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DataProvider } from 'src/app/providers/data.provider';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AlertsAndNotificationsService } from 'src/app/services/uiService/alerts-and-notifications.service';
 import { AddRecipeComponent } from '../add-recipe/add-recipe.component';
+import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 
 @Component({
   selector: 'app-edit-recipe',
@@ -15,8 +17,11 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
     private alertService: AlertsAndNotificationsService,
     @Inject(MAT_DIALOG_DATA) public recipe: any,
     private matDialogRef: MatDialogRef<AddRecipeComponent>,
-    private databaseService:DatabaseService
+    private databaseService:DatabaseService,
+    private dialog:MatDialog,
+    private dataProvider:DataProvider
   ) {}
+  selectedCategories:any[] = []
   // Constants
   months: string[] = [
     'January',
@@ -102,6 +107,12 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
     });
     this.cookingCost = this.recipe.recipeData.cookingCost
     this.sellingPrice = this.recipe.recipeData.sellingPrice
+    if (this.recipe.recipeData.costPercentage !== undefined){
+      this.costPercentage = this.recipe.recipeData.costPercentage; 
+    } else {
+      this.alertService.presentToast('Cost percentage is not defined. Defaulting to 1');
+      this.costPercentage = '1';
+    }
   }
   getIngredient(ingredient: any) {
     // console.log('ingredient',ingredient);
@@ -156,6 +167,7 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
     this.calculateCost();
     console.log(this.recipeForm.value);
     if (this.recipeForm.valid) {
+      this.dataProvider.pageSetting.blur = true;
       console.log("Valid",this.servingInstructions,this.cookingInstructions);
       let servingInstructions: string[] = [];
       this.servingInstructions.forEach((control:{instruction:FormControl}) => {
@@ -201,14 +213,18 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
         cookingCost: this.cookingCost,
         sellingPrice: this.sellingPrice,
         ingredients: recipeIngredients,
+        costPercentage:this.costPercentage,
         cookingInstructions: cookingInstructions,
         servingInstructions: servingInstructions,
+        selectedCategories:this.selectedCategories
       };
       console.log('Recipe final data ',recipe);
       this.databaseService.editRecipe(this.recipe.recipeData.id,recipe).then(() => {
         this.alertService.presentToast('Recipe updated successfully','info');
         this.matDialogRef.close();
+        this.dataProvider.pageSetting.blur = false;
       }).catch((error) => {
+        this.dataProvider.pageSetting.blur = false;
         this.alertService.presentToast('Error adding recipe: '+error.message,'error');
       });
     } else {
@@ -281,5 +297,17 @@ export class EditRecipeComponent implements OnInit, AfterViewInit {
       this.cookingInstructions.splice(index, 1);
       this.cookingInstructionsForm.removeControl(index+'cookingInstruction');
     }
+  }
+  
+  manageCategories() {
+    console.log("this.recipe.recipeData",this.recipe.recipeData)
+    const dialogRef = this.dialog.open(ManageCategoriesComponent,{
+      data:this.recipe.recipeData.selectedCategories
+    });
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log('result', result);
+      this.selectedCategories = result;
+      this.alertService.presentToast('Categories updated successfully','info');
+    });
   }
 }

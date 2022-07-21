@@ -18,6 +18,11 @@ import { UtilityComponent } from './utility/utility.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatSelectModule} from '@angular/material/select';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
+import { AddCategoriesComponent } from './add-recipe/add-categories/add-categories.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ManageCategoriesComponent } from './edit-recipe/manage-categories/manage-categories.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +34,9 @@ import {MatSelectModule} from '@angular/material/select';
     EditRecipeComponent,
     LoaderComponent,
     UtilityComponent,
+    ManageCategoryComponent,
+    AddCategoriesComponent,
+    ManageCategoriesComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +49,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ]
 })
 export class RecipesModule { }

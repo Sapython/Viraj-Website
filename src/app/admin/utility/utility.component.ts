@@ -181,7 +181,11 @@ export class UtilityComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('utility-modal')).hide();
             // this.ngOnInit();
-            this.getNextUtilities(this.lastPaginatorEvent);
+            if (this.lastPaginatorEvent){
+              this.getNextUtilities(this.lastPaginatorEvent);
+            } else {
+              this.getInitialUtility();
+            }
             this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Utility edited successfully',
@@ -194,7 +198,11 @@ export class UtilityComponent implements OnInit {
           .then(() => {
             UIkit.modal(document.getElementById('utility-modal')).hide();
             this.utilityForm.reset();
-            this.ngOnInit();
+            if (this.lastPaginatorEvent){
+              this.getNextUtilities(this.lastPaginatorEvent);
+            } else {
+              this.getInitialUtility();
+            }
             this.dataProvider.pageSetting.blur = false;;
             this.alertService.presentToast(
               'Utility added successfully',
@@ -225,7 +233,6 @@ export class UtilityComponent implements OnInit {
       utilityModal.addEventListener('hidden', () => {
         this.editMode = false;
         this.currentEditId = '';
-
         // Reset the form
         this.utilityForm.reset();
       });
@@ -237,7 +244,11 @@ export class UtilityComponent implements OnInit {
   deleteUtility(): void {
     this.dataProvider.pageSetting.blur = true;
     this.databaseService.deleteUtility(this.currentDeleteId).then(() => {
-      this.ngOnInit();
+      if (this.lastPaginatorEvent){
+        this.getNextUtilities(this.lastPaginatorEvent);
+      } else {
+        this.getInitialUtility();
+      }
       this.dataProvider.pageSetting.blur = false;;
       this.alertService.presentToast('Utility deleted successfully', 'info');
     });

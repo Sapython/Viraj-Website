@@ -22,6 +22,8 @@ import {
   increment,
   endAt,
   setDoc,
+  arrayUnion,
+  arrayRemove,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,
@@ -414,5 +416,21 @@ export class DatabaseService {
 
   addBarAnalytics(data:any,barData:any){
     setDoc(doc(this.fs, 'analytics/graphs'), {barLabels:data,barData:barData}, {merge: true});
+  }
+  // categories
+  getNewCategories() {
+    return collectionSnapshots(collection(this.fs, 'categories'));
+  }
+  addNewCategory(category: any) {
+    return addDoc(collection(this.fs, 'categories'), category);
+  }
+  deleteNewCategory(categoryId: string) {
+    return deleteDoc(doc(this.fs, 'categories/' + categoryId));
+  }
+  addNewSubcategory(subcategory: any,categoryId:string) {
+    return updateDoc(doc(this.fs, 'categories/'+categoryId), {subcategories: arrayUnion(subcategory)});
+  }
+  deleteNewSubcategory(subcategory: string,categoryId:string) {
+    return updateDoc(doc(this.fs, 'categories/'+categoryId), {subcategories: arrayRemove(subcategory)});
   }
 }

@@ -10,6 +10,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { LoaderComponent } from './loader/loader.component';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
 
 @Component({
   selector: 'app-recipes',
@@ -232,5 +233,11 @@ export class RecipesComponent implements OnInit {
       console.log("result",result);
     })
   }
-
+  
+  manageCategory() {
+    const dialogRef = this.dialog.open(ManageCategoryComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('result', result);
+    });
+  }
 }
