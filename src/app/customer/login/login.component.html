@@ -1,0 +1,30 @@
+<section>
+  <div id="container">
+    <h2>Login into Viraj</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+      <input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        class="admin-input"
+        placeholder="Email Address"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        class="admin-input"
+        placeholder="Password"
+      />
+      <button type="submit" id="login-btn" [disabled]="!loginForm.valid">
+        Login
+      </button>
+    </form>
+    <button type="button" id="sign-in-with-google" (click)="loginWithGoogle()">
+      <i class="fa-brands fa-google"></i>Login With Google
+    </button>
+    <h3>
+      If you don't have an account, <a routerLink="/signup">signup now</a>
+    </h3>
+  </div>
+</section>

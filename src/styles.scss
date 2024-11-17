@@ -1,0 +1,171 @@
+@use '@angular/material' as mat;
+// Importing these font families from Google: Lato, Poppins
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+$viraj-palette: (
+ 50: #fff5ee,
+ 100: #fff3ea,
+ 200: #ffecde,
+ 300: #ffe5d2,
+ 400:#ffdcc4,
+ 500:#ffd5b8,
+ 600:#ffcba7,
+ 700:#ffc59c,
+ 800:#ffac70,
+ 900:#d06212,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+$my-primary: mat.define-palette($viraj-palette, 700);
+$my-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent:$my-accent,
+   foreground: $viraj-palette,
+ )
+));
+
+@include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.tabs-theme($my-theme);
+// Importing Amsterdam
+@font-face {
+  font-family: "Amsterdam";
+  src: local("Amsterdam"),
+    url("./assets/fonts/AmsterdamOne.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  // Color Variables
+  --primary: #000;
+  --primary-translucent: rgba(0, 0, 0, 0.7);
+  --secondary: #d06212;
+  --secondary-lighter: #ffefe3;
+  --secondary-light: #fcd5b7;
+  --primary-contrast: #fff;
+  --secondary-contrast: #fff;
+  --danger: #f95640;
+  // Font Variables
+  --font-one: "Amsterdam";
+  --font-two: "Lato", sans-serif;
+  --font-three: "Poppins", sans-serif;
+
+  // Size Variables
+  --xxlarge: 36px;
+  --xlarge: 32px;
+  --large: 28px;
+  --medium: 24px;
+  --small: 20px;
+  --msmall: 18px;
+  --xsmall: 16px;
+  --xxsmall: 14px;
+
+  // Box Shadow Variables
+  --more-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  --normal-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --in-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo-image {
+  width: 100px;
+}
+
+.amsterdam {
+  font-family: var(--font-one);
+  color: var(--secondary);
+}
+
+.standard-padding {
+  padding: 3em;
+
+  @media (max-width: 550px) {
+    padding: 1.5em;
+  }
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-two);
+  color: var(--primary);
+  font-size: var(--large);
+  font-weight: 700;
+}
+
+.heading-part,
+.heading-part-underlined {
+  text-transform: uppercase;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  margin: 0;
+  padding-bottom: 0.25em;
+}
+
+.heading-part-underlined {
+  border-color: var(--primary);
+}
+
+.heading-part {
+  border-color: transparent;
+  margin-right: 0.5em;
+}
+
+.primary-btn {
+  background-color: var(--secondary);
+  color: var(--secondary-contrast);
+  font-family: var(--font-three);
+  font-size: var(--xsmall);
+  padding: 0.25em 0.75em;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    box-shadow: var(--normal-shadow);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+  }
+
+  i {
+    margin-right: 0.3em;
+  }
+}
+
+.uk-modal {
+  z-index: 999;
+}
+
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--secondary);
+}

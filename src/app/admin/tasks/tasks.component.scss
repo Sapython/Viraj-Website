@@ -1,0 +1,74 @@
+section {
+  padding: 1em;
+
+  .table-container {
+    margin-bottom: 1em;
+
+    h3 {
+      font-family: var(--font-three);
+      color: var(--secondary);
+      font-size: var(--small);
+      font-weight: 500;
+      margin: 0 0 .5em 0;
+    }
+
+    .status {
+      color: #3fc229;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    #completed-tasks {
+      td:not(.buttons-container) {
+        text-decoration: line-through;
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.uk-modal-dialog {
+  form {
+    .task-form-box {
+      margin-top: 1em;
+
+      label {
+        color: var(--secondary);
+        padding-left: 0.5em;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      select {
+        width: 100%;
+      }
+
+      #add-detail {
+        font-size: var(--xsmall);
+        background: transparent;
+        color: var(--secondary);
+        width: fit-content;
+        font-family: var(--font-three);
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: none;
+          opacity: 0.7;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.5em 1em;
+      font-size: var(--small);
+      margin-top: 1em;
+    }
+  }
+}

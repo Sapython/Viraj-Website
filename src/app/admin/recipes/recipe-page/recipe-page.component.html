@@ -1,0 +1,109 @@
+<h2 mat-dialog-title>Add Recipe</h2>
+<mat-dialog-content>
+  <section>
+    <div *ngIf="!recipe" uk-spinner="ratio: 3" id="loading"></div>
+    <ng-container *ngIf="recipe">
+      <!-- <button id="go-back" class="primary-btn" routerLink="..">
+        <i class="fa-solid fa-arrow-left"></i> All Recipes
+      </button> -->
+      <div id="images-and-details">
+        <div id="images" class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+          <ul class="uk-slider-items">
+            <ng-container *ngIf="recipe.photos && recipe.photos.length > 0">
+              <li *ngFor="let image of recipe.photos">
+                <img [src]="image" />
+              </li>
+            </ng-container>
+            <li *ngIf="!recipe.photos || recipe.photos.length === 0">
+              <img src="assets/img/pexels-photo-1640777.jpeg" />
+            </li>
+          </ul>
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+            uk-slider-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+            uk-slider-item="next"></a>
+        </div>
+        <div id="details" #details>
+          <div>
+            <h2>{{ recipe.name }}</h2>
+            <p *ngIf="recipe.type || recipe.flavourPalette" id="type">
+              <span *ngIf="recipe.type">{{ recipe.type }}</span>
+              <span *ngIf="recipe.type && recipe.flavourPalette"> - </span>
+              <span *ngIf="recipe.flavourPalette">{{ recipe.flavourPalette }}</span>
+            </p>
+          </div>
+          <div id="costs">
+            <p><span class="key">Cooking Cost: </span>₹{{ recipe.cookingPrice }}</p>
+            <p>
+              <span class="key">Selling Price: </span>₹{{ recipe.sellingPrice }}
+            </p>
+          </div>
+          <p id="description">
+            {{ recipe.description }}
+          </p>
+          <div id="badges">
+            <div class="badge" *ngIf="recipe.bestSeasonFrom && recipe.bestSeasonTo">
+              <span class="key">Best Season: </span>{{ recipe.bestSeasonFrom }} to
+              {{ recipe.bestSeasonTo }}
+            </div>
+            <div class="badge" *ngIf="recipe.preparationTimeValue > 0 && recipe.preparationTimeUnit">
+              <span class="key">Preparation Time: </span>{{ recipe.preparationTimeValue }} {{ recipe.preparationTimeUnit
+              }}
+            </div>
+            <div class="badge" *ngIf="recipe.cookingTimeValue > 0 && recipe.cookingTimeUnit">
+              <span class="key">Cooking Time: </span>{{ recipe.cookingTimeValue }}
+              {{ recipe.cookingTimeUnit }}
+            </div>
+            <div class="badge" *ngIf="recipe.servingTimeValue > 0 && recipe.servingTimeUnit">
+              <span class="key">Serving Time: </span>{{ recipe.servingTimeValue }}
+              {{ recipe.servingTimeUnit }}
+            </div>
+            <div class="badge" *ngIf="recipe.shelfLifeValue > 0 && recipe.shelfLifeUnit">
+              <span class="key">Shelf Life: </span>{{ recipe.shelfLifeValue }}
+              {{ recipe.shelfLifeUnit }}
+            </div>
+            <div class="badge" *ngIf="recipe.energyConsumptionPerPreparation">
+              <span class="key">Energy Consumption Per Preparation: </span>{{ recipe.energyConsumptionPerPreparation }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="ingredients-and-instructions">
+        <div id="ingredients">
+          <h3>Ingredients</h3>
+          <ul>
+            <li *ngFor="let ingredient of recipe.ingredients">
+              <span class="key">{{ ingredient.id }}: </span>{{ ingredient.quantity }} {{ ingredient.unit }}
+            </li>
+          </ul>
+        </div>
+        <div id="instructions">
+          <div *ngIf="
+              recipe.cookingInstructions && recipe.cookingInstructions.length > 0
+            " class="instructions-box">
+            <h3>Cooking Instructions</h3>
+            <ul>
+              <li *ngFor="let instruction of recipe.cookingInstructions">
+                {{ instruction }}
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="
+              recipe.servingInstructions && recipe.servingInstructions.length > 0
+            " class="instructions-box">
+            <h3>Serving Instructions</h3>
+            <ul>
+              <li *ngFor="let instruction of recipe.servingInstructions">
+                {{ instruction }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button  id="go-back" class="primary-btn" mat-dialog-close>Cancel</button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

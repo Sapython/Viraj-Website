@@ -1,0 +1,62 @@
+<section>
+  <button id="go-back" class="primary-btn" routerLink="..">
+    <i class="fa-solid fa-arrow-left"></i> All Employees
+  </button>
+  <div id="photo">
+    <img
+      [src]="employee?.image || 'assets/img/circle-user-solid.svg'"
+      referrerpolicy="no-referrer"
+    />
+  </div>
+  <div id="details-container">
+    <h3>{{ employee?.name }}</h3>
+    <div id="details">
+      <p class="detail">
+        <span class="key">Job Title: </span>
+        <span class="value">{{ employee?.post || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Date of Birth: </span>
+        <span class="value">{{
+          dateService.getDateName(employee?.dob) || "-"
+        }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Year Started Work: </span>
+        <span class="value">{{ employee?.yearStartedWork || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Phone Number: </span>
+        <span class="value">{{ employee?.phoneNumber || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Aadhar Number: </span>
+        <span class="value">{{ employee?.aadharNumber || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Address: </span>
+        <span class="value">{{ employee?.address || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Payment Method: </span>
+        <span class="value">{{ employee?.paymentMethod || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Account Holder Name: </span>
+        <span class="value">{{ employee?.accountHolderName || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Account Number: </span>
+        <span class="value">{{ employee?.accountNumber || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">IFSC Code: </span>
+        <span class="value">{{ employee?.ifscCode || "-" }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">PAN Card No.: </span>
+        <span class="value">{{ employee?.panNo || "-" }}</span>
+      </p>
+    </div>
+  </div>
+</section>

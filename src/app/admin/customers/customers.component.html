@@ -1,0 +1,168 @@
+<section>
+  <div *ngIf="!filteredCustomers" uk-spinner="ratio: 3" id="loading"></div>
+  <ng-container *ngIf="filteredCustomers">
+    <div *ngIf="customers.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th width="10%"></th>
+            <th width="30%">Customer Name</th>
+            <th width="15%">Age</th>
+            <th width="15%">Gross Purchase</th>
+            <th width="30%"></th>
+          </tr>
+        </thead>
+        <tbody id="customer-rows">
+          <tr *ngFor="let customer of filteredCustomers" class="customer-row">
+            <td>
+              <img
+                [src]="customer.image || 'assets/img/circle-user-solid.svg'"
+              />
+            </td>
+            <td>{{ customer.name }}</td>
+            <td>{{ dateService.getAge(customer.dob) || '-' }}</td>
+            <td>{{ customer.grossPurchase ? '₹' + customer.grossPurchase : '-' }}</td>
+            <td>
+              <div class="buttons">
+                <button class="primary-btn" [routerLink]="customer.id">
+                  <i class="fa-solid fa-eye"></i>View
+                </button>
+                <button class="primary-btn" (click)="editCustomer(customer)">
+                  <i class="fa-solid fa-pen-to-square"></i>Edit
+                </button>
+                <button
+                  class="primary-btn"
+                  uk-toggle="target: #confirm-delete-modal"
+                  (click)="currentDeleteId = customer.id"
+                >
+                  <i class="fa-solid fa-trash"></i>Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p *ngIf="filteredCustomers.length == 0">No Customers :(</p>
+  </ng-container>
+</section>
+
+<div id="customer-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add Customer</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Customer</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="customerForm" (ngSubmit)="submit()">
+      <div class="customer-form-box">
+        <label for="photo-input" class="admin-label">Photo</label>
+        <input
+          type="file"
+          id="photo-input"
+          class="admin-input"
+          accept="image/png, image/jpeg, image/jpg"
+          (change)="validatePhoto($event)"
+        />
+      </div>
+      <div class="customer-form-box">
+        <label for="name-input" class="admin-label">Name *</label>
+        <input
+          type="text"
+          id="name-input"
+          formControlName="name"
+          class="admin-input"
+        />
+      </div>
+      <div class="customer-form-box">
+        <label for="phone-number-input" class="admin-label"
+          >Phone Number *</label
+        >
+        <input
+          type="tel"
+          id="phone-number-input"
+          formControlName="phoneNumber"
+          class="admin-input"
+        />
+      </div>
+      <div class="customer-form-box">
+        <label for="email-input" class="admin-label">Email</label>
+        <input
+          type="email"
+          id="email-input"
+          formControlName="email"
+          class="admin-input"
+        />
+      </div>
+      <div class="customer-form-box">
+        <label for="address-input" class="admin-label">Address</label>
+        <input
+          type="text"
+          id="address-input"
+          formControlName="address"
+          class="admin-input"
+        />
+      </div>
+      <div class="customer-form-box">
+        <label for="dob-input" class="admin-label">Date of Birth</label>
+        <input
+          type="date"
+          id="dob-input"
+          formControlName="dob"
+          class="admin-input"
+        />
+      </div>
+      <div class="customer-form-box">
+        <label class="admin-label">Gender</label>
+        <select class="admin-input" formControlName="gender">
+          <option ngValue="" disabled>Choose gender</option>
+          <option ngValue="male">Male</option>
+          <option ngValue="female">Female</option>
+          <option ngValue="other">Other</option>
+        </select>
+      </div>
+      <div class="customer-form-box">
+        <label for="gross-purchase-input" class="admin-label"
+          >Gross Purchase</label
+        >
+        <div id="gross-purchase-input-container">
+          <span>₹</span>
+          <input
+            type="number"
+            class="admin-input"
+            formControlName="grossPurchase"
+            id="gross-purchase-input"
+          />
+        </div>
+      </div>
+      <div class="customer-form-box">
+        <label for="job-input" class="admin-label">Job</label>
+        <input
+          type="text"
+          id="job-input"
+          formControlName="job"
+          class="admin-input"
+        />
+      </div>
+      <button
+        *ngIf="!editMode"
+        [disabled]="!customerForm.valid"
+        type="submit"
+        class="primary-btn"
+      >
+        Add Customer
+      </button>
+      <button
+        *ngIf="editMode"
+        [disabled]="!customerForm.valid"
+        type="submit"
+        class="primary-btn"
+      >
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal
+  (confirmDelete)="deleteCustomer()"
+  (hidden)="currentDeleteId = ''"
+></app-confirm-delete-modal>

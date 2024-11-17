@@ -1,0 +1,154 @@
+section {
+  padding: 1.5em;
+  max-width: 1000px;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  #go-back {
+    font-size: var(--msmall);
+    margin-bottom: 1em;
+  }
+
+  h2,
+  h3,
+  p,
+  .badge,
+  li {
+    font-family: var(--font-three);
+    margin: 0;
+  }
+
+  h2,
+  h3 {
+    color: var(--secondary);
+    font-weight: 700;
+  }
+
+  p,
+  li {
+    color: var(--primary);
+    font-size: var(--xsmall);
+  }
+
+  #images-and-details {
+    display: flex;
+
+    #images {
+      width: 40%;
+      
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+    }
+
+    #details {
+      width: 60%;
+      margin-left: 1.5em;
+
+      h2 {
+        font-size: var(--xlarge);
+      }
+
+      #type {
+        font-style: italic;
+      }
+
+      #description {
+        margin: 0.5em 0;
+      }
+
+      .key {
+        font-weight: 700;
+      }
+
+      #costs {
+        margin: 0.5em 0;
+
+        p {
+          color: var(--secondary);
+          font-size: var(--small);
+        }
+      }
+
+      #badges {
+        display: flex;
+        flex-wrap: wrap;
+
+        .badge {
+          font-size: var(--xsmall);
+          background-color: var(--secondary);
+          color: var(--secondary-contrast);
+          padding: 0.25em 0.75em;
+          margin: 0.5em 0.5em 0 0;
+          width: fit-content;
+          border-radius: 10px;
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+
+      img,
+      #details {
+        width: 100%;
+      }
+
+      #details {
+        margin-left: 0;
+        margin-top: 1em;
+      }
+    }
+  }
+
+  #ingredients-and-instructions {
+    display: flex;
+    margin-top: 1.5em;
+
+    h3 {
+      font-size: var(--large);
+    }
+
+    ul,
+    ol {
+      list-style-position: inside;
+      margin: 1em 0 0 1em;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.25em;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    #ingredients {
+      width: 40%;
+    }
+
+    #instructions {
+      width: 60%;
+
+      .instructions-box:nth-of-type(2) {
+        margin-top: 1em;
+      }
+    }
+
+    @media (max-width: 600px) {
+      display: block;
+
+      #ingredients,
+      #instructions {
+        width: 100%;
+      }
+
+      #instructions {
+        margin-top: 1em;
+      }
+    }
+  }
+}

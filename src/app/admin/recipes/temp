@@ -1,0 +1,9017 @@
+this.ingredients = {
+      '7-up': {
+        unit: 'bottle',
+        rate: 100,
+        name: '7 Up',
+        id: '7-up',
+        quantity: 2,
+      },
+      'achar-pani': {
+        rate: 100,
+        name: 'Achar Pani',
+        quantity: 0,
+        unit: 'kg',
+      },
+      ajwain: {
+        rate: 100,
+        id: 'ajwain',
+        name: 'Ajwain',
+        quantity: 1,
+        unit: 'kg',
+      },
+      'almond-whole': {
+        name: 'Almond (whole)',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'almond-powder': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Almond Powder',
+        rate: 100,
+      },
+      'amchur-masala': {
+        quantity: 0,
+        unit: 'g',
+        rate: 100,
+        name: 'Amchur Masala',
+      },
+      'american-corn': {
+        quantity: 0,
+        name: 'American Corn',
+        unit: 'kg',
+        rate: 100,
+      },
+      'amul-cheese': {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Amul Cheese',
+      },
+      'amul-fresh-cream': {
+        unit: 'kg',
+        name: 'Amul Fresh Cream',
+        quantity: 0,
+        rate: 100,
+      },
+      anar: {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Anar',
+        rate: 100,
+      },
+      'anardana-chutney': {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Anardana chutney',
+      },
+      anjeer: {
+        name: 'Anjeer',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      apple: {
+        name: 'Apple',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      'apple-himchal': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Apple (Himachal)',
+      },
+      'apple-imported': {
+        name: 'Apple (Imported)',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      apricot: {
+        name: 'Apricot',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      arbi: {
+        rate: 100,
+        name: 'Arbi',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'arhar-dal': {
+        name: 'Arhar Dal',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'aromatic-powder': {
+        name: 'Aromatic Powder',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      asparagus: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Asparagus',
+      },
+      atta: {
+        unit: 'kg',
+        rate: 100,
+        name: 'Atta',
+        quantity: 0,
+      },
+      avocado: {
+        unit: 'kg',
+        name: 'Avocado',
+        rate: 100,
+        quantity: 0,
+      },
+      bbq: {
+        rate: 100,
+        name: 'BBQ',
+        unit: 'bottle',
+        quantity: 0,
+      },
+      'baby-carrot': {
+        name: 'Baby Carrot',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'baby-corn': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Baby Corn',
+      },
+      'baby-onion': {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Baby Onion',
+      },
+      'baby-potato': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Baby Potato',
+      },
+      'bajra-atta': {
+        name: 'Bajra Atta',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'baked-beans': {
+        rate: 100,
+        name: 'Baked Beans',
+        quantity: 0,
+        unit: 'kg',
+      },
+      'baking-powder': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Baking Powder',
+        quantity: 0,
+      },
+      'baking-soda': {
+        rate: 100,
+        quantity: 0,
+        name: 'Baking Soda',
+        unit: 'kg',
+      },
+      'balsamic-vinegar': {
+        rate: 100,
+        name: 'Balsamic Vinegar',
+        quantity: 0,
+        unit: 'kg',
+      },
+      banana: {
+        quantity: 0,
+        name: 'Banana',
+        unit: 'kg',
+        rate: 100,
+      },
+      'banana-leaves': {
+        unit: 'kg',
+        name: 'Banana Leaves',
+        rate: 100,
+        quantity: 0,
+      },
+      'barik-besan': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Barik Besan',
+        quantity: 0,
+      },
+      'basa-fish': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Basa Fish',
+      },
+      basil: {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Basil',
+      },
+      'bay-leaf': {
+        rate: 100,
+        name: 'Bay Leaf',
+        quantity: 0,
+        unit: 'kg',
+      },
+      beetroot: {
+        unit: 'kg',
+        rate: 100,
+        name: 'Beetroot',
+        quantity: 0,
+      },
+      'bell-pepper': {
+        name: 'Bell Pepper',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'bengal-gram': {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Bengal Gram',
+      },
+      'bengali-dal': {
+        name: 'Bengali Dal',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      besan: {
+        unit: 'kg',
+        name: 'Besan',
+        quantity: 0,
+        rate: 100,
+      },
+      'black-cardamom': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Black Cardamom',
+        quantity: 0,
+      },
+      'black-channa': {
+        quantity: 0,
+        rate: 100,
+        name: 'Black Channa',
+        unit: 'kg',
+      },
+      'black-grapes': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Black Grapes',
+        quantity: 0,
+      },
+      'black-lentil-flour': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Black Lentil Flour',
+        rate: 100,
+      },
+      'black-mushroom': {
+        rate: 100,
+        name: 'Black Mushroom',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'black-olives-pitted': {
+        unit: 'bottle',
+        quantity: 0,
+        rate: 100,
+        name: 'Black Olives (Pitted)',
+      },
+      'black-pepper-whole': {
+        name: 'Black Pepper Whole',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'black-salt': {
+        rate: 100,
+        name: 'Black Salt',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'bok-choy': {
+        rate: 100,
+        name: 'Bok Choy',
+        quantity: 0,
+        unit: 'kg',
+      },
+      boondi: {
+        quantity: 0,
+        rate: 100,
+        name: 'Boondi',
+        unit: 'kg',
+      },
+      bread: {
+        name: 'Bread',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      'bread-jumbo': {
+        rate: 100,
+        quantity: 0,
+        name: 'Bread (Jumbo)',
+        unit: 'kg',
+      },
+      'bread-croutons': {
+        name: 'Bread Croutons',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      brinjal: {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Brinjal',
+      },
+      'broccoli-imported': {
+        quantity: 0,
+        name: 'Broccoli (Imported)',
+        unit: 'no',
+        rate: 100,
+      },
+      'broccoli-local': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Broccoli (Local)',
+        rate: 100,
+      },
+      'brown-rice-basmati': {
+        name: 'Brown Rice Basmati',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'brown-sugar': {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Brown Sugar',
+      },
+      'butter-amul': {
+        unit: 'kg',
+        name: 'Butter Amul',
+        quantity: 0,
+        rate: 100,
+      },
+      'butter-nutrella-marg': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Butter Nutrella Marg',
+      },
+      'button-mushroom': {
+        name: 'Button Mushroom',
+        quantity: 0,
+        rate: 100,
+        unit: 'tin',
+      },
+      co2: {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'CO2',
+      },
+      cabagge: {
+        quantity: 0,
+        rate: 100,
+        name: 'Cabbage',
+        unit: 'kg',
+      },
+      cabbage: {
+        name: 'Cabbage',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      capperi: {
+        name: 'Capperi',
+        quantity: 0,
+        rate: 100,
+        unit: 'bottle',
+      },
+      capsicum: {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Capsicum',
+      },
+      carrot: {
+        quantity: 0,
+        rate: 100,
+        name: 'Carrot',
+        unit: 'kg',
+      },
+      cashewnut: {
+        unit: 'kg',
+        name: 'Cashewnut',
+        rate: 100,
+        quantity: 0,
+      },
+      cauliflower: {
+        name: 'Cauliflower',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      celery: {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Celery',
+      },
+      'channa-dal': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Channa Dal',
+        quantity: 0,
+      },
+      'channa-kabuli': {
+        name: 'Channa Kabuli',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'channa-roasted': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Channa Roasted',
+        rate: 100,
+      },
+      'chat-masala': {
+        name: 'Chat Masala',
+        unit: 'g',
+        rate: 100,
+        quantity: 0,
+      },
+      'cheese-slice': {
+        quantity: 0,
+        name: 'Cheese Slice',
+        rate: 100,
+        unit: 'g',
+      },
+      cherry: {
+        unit: 'kg',
+        name: 'Cherry',
+        rate: 100,
+        quantity: 0,
+      },
+      'cherry-tomato': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Cherry Tomato',
+      },
+      'chia-seeds': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Chia Seeds',
+        rate: 100,
+      },
+      'chicken-breast': {
+        quantity: 0,
+        name: 'Chicken Breast',
+        unit: 'kg',
+        rate: 100,
+      },
+      'chicken-sausage': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Chicken Sausage',
+        quantity: 0,
+      },
+      'chicken-tandoori': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Chicken Tandoori',
+        rate: 100,
+      },
+      'chicken-tangri': {
+        unit: 'kg',
+        name: 'Chicken Tangri',
+        quantity: 0,
+        rate: 100,
+      },
+      'chicken-thigh': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Chicken Thigh',
+      },
+      'chicken-whole': {
+        name: 'Chicken Whole',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'chicken-wings': {
+        name: 'Chicken Wings',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      chikku: {
+        name: 'Chikku',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      'chilli-paste': {
+        name: 'Chilli Paste',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'chilli-sauce': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Chilli Sauce',
+        quantity: 0,
+      },
+      'chilly-flakes': {
+        name: 'Chilly Flakes',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'chinese-cabbage': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Chinese Cabbage',
+      },
+      'chocolate-syrup': {
+        quantity: 0,
+        rate: 100,
+        unit: 'bottle',
+        name: 'Chocolate Syrup',
+      },
+      'chocolate-white': {
+        name: 'Chocolate White',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'cinnamon-stick': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Cinnamon Stick',
+        rate: 100,
+      },
+      clongi: {
+        name: 'Clongi',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      'clove-whole': {
+        rate: 100,
+        quantity: 0,
+        name: 'Clove Whole',
+        unit: 'kg',
+      },
+      'cocoa-powder': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Cocoa Powder',
+      },
+      coconut: {
+        name: 'Coconut',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'coconut-milk': {
+        rate: 100,
+        quantity: 0,
+        unit: 'tin',
+        name: 'Coconut Milk',
+      },
+      'coconut-powder': {
+        quantity: 0,
+        name: 'Coconut Powder',
+        unit: 'kg',
+        rate: 100,
+      },
+      'coffee-powder': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Coffee Powder',
+        rate: 100,
+      },
+      'coriander-powder': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Coriander Powder',
+      },
+      'coriander-whole': {
+        rate: 100,
+        quantity: 0,
+        name: 'Coriander Whole',
+        unit: 'kg',
+      },
+      corn: {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Corn',
+      },
+      'corn-flour': {
+        name: 'Corn Flour',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      cornflakes: {
+        name: 'Cornflakes',
+        quantity: 0,
+        unit: 'pkt',
+        rate: 100,
+      },
+      cucumber: {
+        name: 'Cucumber',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'cumin-seeds': {
+        rate: 100,
+        name: 'Cumin Seeds',
+        quantity: 0,
+        unit: 'kg',
+      },
+      curd: {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Curd',
+      },
+      'custard-powder': {
+        rate: 100,
+        unit: 'pkt',
+        quantity: 0,
+        name: 'Custard Powder',
+      },
+      'dalchini-powder': {
+        rate: 100,
+        name: 'Dalchini Powder',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'dark-compound': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Dark Compound',
+      },
+      dav: {
+        quantity: 0,
+        unit: 'no',
+        name: 'Dav',
+        rate: 100,
+      },
+      'degi-mirch-masala': {
+        quantity: 0,
+        name: 'Degi Mirch Masala',
+        rate: 100,
+        unit: 'g',
+      },
+      'desi-ghee': {
+        name: 'Desi Ghee',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      dhaliya: {
+        quantity: 0,
+        rate: 100,
+        unit: 'pkt',
+        name: 'Dhaliya',
+      },
+      'dijon-mustard': {
+        rate: 100,
+        quantity: 0,
+        name: 'Dijon Mustard',
+        unit: 'bottle',
+      },
+      drumsticks: {
+        rate: 100,
+        name: 'Drumsticks',
+        quantity: 0,
+        unit: 'kg',
+      },
+      'dry-fruits': {
+        name: 'Dry Fruits',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      eno: {
+        name: 'ENO',
+        quantity: 0,
+        unit: 'pkt',
+        rate: 100,
+      },
+      eggs: {
+        unit: 'no',
+        name: 'Eggs',
+        rate: 100,
+        quantity: 0,
+      },
+      'english-mustard': {
+        name: 'English Mustard',
+        rate: 100,
+        quantity: 0,
+        unit: 'g',
+      },
+      'feta-cheese': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Feta Cheese',
+        rate: 100,
+      },
+      'finger-chip': {
+        name: 'Finger Chip',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'french-beans': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'French Beans',
+      },
+      'french-fry': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'French Fry',
+        rate: 100,
+      },
+      'fresh-yeast': {
+        unit: 'kg',
+        name: 'Fresh Yeast',
+        quantity: 0,
+        rate: 100,
+      },
+      'fruit-cocktail': {
+        quantity: 0,
+        rate: 100,
+        unit: 'tin',
+        name: 'Fruit Cocktail',
+      },
+      'garam-masala': {
+        quantity: 0,
+        rate: 100,
+        unit: 'g',
+        name: 'Garam Masala',
+      },
+      garlic: {
+        quantity: 0,
+        unit: 'no',
+        rate: 100,
+        name: 'Garlic',
+      },
+      'garlic-bread': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Garlic Bread',
+        rate: 100,
+      },
+      'garlic-paste': {
+        quantity: 0,
+        rate: 100,
+        name: 'Garlic Paste',
+        unit: 'kg',
+      },
+      ghee: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Ghee',
+      },
+      gherkins: {
+        quantity: 0,
+        unit: 'bottle',
+        rate: 100,
+        name: 'Gherkins',
+      },
+      ginger: {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Ginger',
+      },
+      'ginger-garlic-paste': {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Ginger garlic paste',
+      },
+      gluten: {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Gluten',
+      },
+      'go-mozzarella-cheese': {
+        rate: 100,
+        name: 'Go Mozzarella Cheese',
+        unit: 'doz',
+        quantity: 0,
+      },
+      'gram-flour': {
+        name: 'Gram Flour',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'grapes-imported': {
+        rate: 100,
+        name: 'Grapes (Imported)',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'green-apple-syrup': {
+        unit: 'L',
+        name: 'Green Apple Syrup',
+        rate: 100,
+        quantity: 0,
+      },
+      'green-cardamom': {
+        name: 'Green Cardamom',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'green-channa': {
+        rate: 100,
+        name: 'Green Channa',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'green-chilli': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Green Chilli',
+      },
+      'green-chilli-sauce': {
+        unit: 'kg',
+        name: 'Green Chilli Sauce',
+        quantity: 0,
+        rate: 100,
+      },
+      'green-chutney': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Green Chutney',
+      },
+      'green-coconut': {
+        rate: 100,
+        quantity: 0,
+        unit: 'doz',
+        name: 'Green Coconut',
+      },
+      'green-coriander': {
+        unit: 'kg',
+        name: 'Green Coriander',
+        quantity: 0,
+        rate: 100,
+      },
+      'green-grapes': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Green Grapes',
+        quantity: 0,
+      },
+      'green-jugni': {
+        name: 'Green Jugni',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      'green-peas': {
+        name: 'Green Peas',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'green-peas-fresh': {
+        quantity: 0,
+        name: 'Green Peas (Fresh)',
+        unit: 'kg',
+        rate: 100,
+      },
+      'green-peas-frozen': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Green Peas (Frozen)',
+      },
+      'green-zucchini': {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Green Zucchini',
+      },
+      'grenadine-syrup': {
+        quantity: 0,
+        unit: 'L',
+        name: 'Grenadine Syrup',
+        rate: 100,
+      },
+      guava: {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Guava',
+      },
+      gud: {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Gud',
+      },
+      hing: {
+        rate: 100,
+        unit: 'no',
+        quantity: 0,
+        name: 'Hing',
+      },
+      honey: {
+        quantity: 0,
+        unit: 'bottle',
+        name: 'Honey',
+        rate: 100,
+      },
+      'hot-garlic-sauce': {
+        unit: 'kg',
+        name: 'Hot Garlic Sauce',
+        quantity: 0,
+        rate: 100,
+      },
+      'ice-cream': {
+        name: 'Ice Cream',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      'iceberg-lettuce': {
+        name: 'Iceberg Lettuce',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      imli: {
+        name: 'Imli',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      jaggery: {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Jaggery',
+        rate: 100,
+      },
+      'jaifal-whole': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Jaifal Whole',
+        rate: 100,
+      },
+      jalapeno: {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Jalapeno',
+      },
+      'jaljeera-powder': {
+        name: 'Jaljeera powder',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      jam: {
+        quantity: 0,
+        name: 'Jam',
+        rate: 100,
+        unit: 'kg',
+      },
+      'javtri-whole': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Javtri Whole',
+        quantity: 0,
+      },
+      'jeera-whole': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Jeera (Whole)',
+        rate: 100,
+      },
+      'jeera-powder': {
+        quantity: 0,
+        name: 'Jeera Powder',
+        rate: 100,
+        unit: 'kg',
+      },
+      'kadi-patta': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Kadi Patta',
+      },
+      kamalkakdi: {
+        name: 'Kamalkakdi',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      karela: {
+        unit: 'no',
+        quantity: 0,
+        name: 'Karela',
+        rate: 100,
+      },
+      'kashmeri-nug': {
+        rate: 100,
+        name: 'Kashmeri Nug',
+        quantity: 0,
+        unit: 'kg',
+      },
+      'kasoori-methi': {
+        unit: 'pkt',
+        rate: 100,
+        name: 'Kasoori Methi',
+        quantity: 0,
+      },
+      kathal: {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Kathal',
+      },
+      ker: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Ker',
+      },
+      kerry: {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Kerry',
+      },
+      'kesar-pista-ice-cream': {
+        rate: 100,
+        quantity: 0,
+        name: 'Kesar Pista Ice Cream',
+        unit: 'kg',
+      },
+      'kewra-water': {
+        name: 'Kewra Water',
+        rate: 100,
+        unit: 'bottle',
+        quantity: 0,
+      },
+      khoya: {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Khoya',
+        rate: 100,
+      },
+      'khus-syrup': {
+        quantity: 0,
+        name: 'Khus Syrup',
+        unit: 'L',
+        rate: 100,
+      },
+      'kidney-beans': {
+        quantity: 0,
+        name: 'Kidney Beans',
+        rate: 100,
+        unit: 'kg',
+      },
+      kinoo: {
+        quantity: 0,
+        rate: 100,
+        name: 'Kinoo',
+        unit: 'kg',
+      },
+      kishmish: {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Kishmish',
+        rate: 100,
+      },
+      'kitchen-king': {
+        unit: 'g',
+        rate: 100,
+        quantity: 0,
+        name: 'Kitchen King',
+      },
+      kiwi: {
+        unit: 'kg',
+        rate: 100,
+        name: 'Kiwi',
+        quantity: 0,
+      },
+      'kong-rice': {
+        rate: 100,
+        name: 'Kong Rice',
+        quantity: 0,
+        unit: 'kg',
+      },
+      ladyfinger: {
+        quantity: 0,
+        rate: 100,
+        name: 'Ladyfinger',
+        unit: 'kg',
+      },
+      lauki: {
+        name: 'Lauki',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      leeks: {
+        unit: 'kg',
+        name: 'Leeks',
+        rate: 100,
+        quantity: 0,
+      },
+      lemon: {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Lemon',
+        rate: 100,
+      },
+      'lemon-juice': {
+        name: 'Lemon Juice',
+        quantity: 0,
+        rate: 100,
+        unit: 'L',
+      },
+      'lemon-leaf': {
+        rate: 100,
+        name: 'Lemon Leaf',
+        quantity: 0,
+        unit: 'kg',
+      },
+      'lemon-rice': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Lemon Rice',
+        quantity: 0,
+      },
+      'lemon-seasoning': {
+        name: 'Lemon Seasoning',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      lemongrass: {
+        quantity: 0,
+        name: 'Lemongrass',
+        unit: 'kg',
+        rate: 100,
+      },
+      lettuce: {
+        rate: 100,
+        quantity: 0,
+        name: 'Lettuce',
+        unit: 'kg',
+      },
+      litchi: {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Litchi',
+      },
+      'lobster-sauce': {
+        name: 'Lobster Sauce',
+        rate: 100,
+        unit: 'bottle',
+        quantity: 0,
+      },
+      'lolo-rose': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Lolo Rose',
+      },
+      magaj: {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Magaj',
+        rate: 100,
+      },
+      maida: {
+        rate: 100,
+        name: 'Maida',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'makka-atta': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Makka Atta',
+      },
+      'malka-red-dal': {
+        quantity: 0,
+        name: 'Malka Red Dal',
+        unit: 'kg',
+        rate: 100,
+      },
+      mango: {
+        quantity: 0,
+        name: 'Mango',
+        unit: 'kg',
+        rate: 100,
+      },
+      'mango-crush': {
+        rate: 100,
+        name: 'Mango Crush',
+        quantity: 0,
+        unit: 'kg',
+      },
+      'masoor-dal': {
+        rate: 100,
+        name: 'Masoor Dal',
+        quantity: 0,
+        unit: 'kg',
+      },
+      mawa: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Mawa',
+      },
+      mayonnaise: {
+        name: 'Mayonnaise',
+        rate: 100,
+        unit: 'pkt',
+        quantity: 0,
+      },
+      methi: {
+        rate: 100,
+        unit: 'kg',
+        name: 'Methi',
+        quantity: 0,
+      },
+      'methi-dana': {
+        name: 'Methi Dana',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'milk-powder': {
+        rate: 100,
+        quantity: 0,
+        unit: 'pkt',
+        name: 'Milk Powder',
+      },
+      'milk-saras': {
+        quantity: 0,
+        name: 'Milk Saras',
+        rate: 100,
+        unit: 'kg',
+      },
+      mint: {
+        rate: 100,
+        quantity: 0,
+        name: 'Mint',
+        unit: 'kg',
+      },
+      'mint-mojito': {
+        name: 'Mint Mojito',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'mix-grain': {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Mix Grain',
+      },
+      'mix-pickle': {
+        name: 'Mix Pickle',
+        rate: 100,
+        unit: 'tin',
+        quantity: 0,
+      },
+      'mix-vegetables': {
+        name: 'Mix Vegetables',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      mogri: {
+        name: 'Mogri',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'moong-dal': {
+        name: 'Moong Dal',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      'mota-atta': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Mota Atta',
+      },
+      'mota-besan': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Mota Besan',
+      },
+      'moti-mirch': {
+        name: 'Moti Mirch',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'mushroom-fresh': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Mushroom (Fresh)',
+        quantity: 0,
+      },
+      muskmelon: {
+        unit: 'kg',
+        name: 'Muskmelon',
+        rate: 100,
+        quantity: 0,
+      },
+      'mustard-seed-yellow': {
+        quantity: 0,
+        name: 'Mustard Seed Yellow',
+        rate: 100,
+        unit: 'kg',
+      },
+      'mustard-oil': {
+        quantity: 0,
+        rate: 100,
+        name: 'Mustard oil',
+        unit: 'kg',
+      },
+      'mutton-bhaga': {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Mutton Bhaga',
+      },
+      'mutton-boneless': {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Mutton Boneless',
+      },
+      'mutton-curry-cut': {
+        rate: 100,
+        name: 'Mutton Curry Cut',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'mutton-fat': {
+        name: 'Mutton Fat',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      'nescafe-coffee': {
+        rate: 100,
+        quantity: 0,
+        name: 'Nescafe Coffee',
+        unit: 'kg',
+      },
+      noodles: {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Noodles',
+      },
+      'olive-oil': {
+        quantity: 0,
+        name: 'Olive Oil',
+        unit: 'L',
+        rate: 100,
+      },
+      onion: {
+        name: 'Onion',
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+      },
+      orange: {
+        rate: 100,
+        name: 'Orange',
+        quantity: 0,
+        unit: 'kg',
+      },
+      'orange-imported': {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Orange (Imported)',
+      },
+      'orange-marmalade': {
+        name: 'Orange Marmalade',
+        rate: 100,
+        unit: 'tin',
+        quantity: 0,
+      },
+      oregano: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Oregano',
+      },
+      paneer: {
+        name: 'Paneer',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      papad: {
+        rate: 100,
+        name: 'Papad',
+        unit: 'kg',
+        quantity: 0,
+      },
+      papaya: {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Papaya',
+      },
+      'parmesan-cheese': {
+        name: 'Parmesan Cheese',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      parsley: {
+        rate: 100,
+        name: 'Parsley',
+        unit: 'kg',
+        quantity: 0,
+      },
+      parval: {
+        unit: 'kg',
+        name: 'Parval',
+        quantity: 0,
+        rate: 100,
+      },
+      'pasta-farfalle': {
+        rate: 100,
+        quantity: 0,
+        name: 'Pasta Farfalle',
+        unit: 'g',
+      },
+      'pasta-fusilli': {
+        quantity: 0,
+        unit: 'g',
+        rate: 100,
+        name: 'Pasta Fusilli',
+      },
+      'pasta-lagane': {
+        unit: 'g',
+        rate: 100,
+        quantity: 0,
+        name: 'Pasta Lagane',
+      },
+      'pasta-spaghetti': {
+        rate: 100,
+        unit: 'g',
+        quantity: 0,
+        name: 'Pasta Spaghetti',
+      },
+      pav: {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Pav',
+      },
+      pears: {
+        quantity: 0,
+        rate: 100,
+        name: 'Pears',
+        unit: 'kg',
+      },
+      'penne-pasta': {
+        name: 'Penne Pasta',
+        unit: 'g',
+        quantity: 0,
+        rate: 100,
+      },
+      pepsi: {
+        quantity: 0,
+        unit: 'bottle',
+        name: 'Pepsi',
+        rate: 100,
+      },
+      'phool-makhana': {
+        unit: 'pkt',
+        rate: 100,
+        quantity: 0,
+        name: 'Phool Makhana',
+      },
+      pineapple: {
+        rate: 100,
+        quantity: 0,
+        name: 'Pineapple',
+        unit: 'kg',
+      },
+      'pineapple-crush': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Pineapple Crush',
+      },
+      'pineapple-slice': {
+        rate: 100,
+        quantity: 0,
+        name: 'Pineapple Slice',
+        unit: 'tin',
+      },
+      'pineapple-slice-tin': {
+        name: 'Pineapple Slice Tin',
+        rate: 100,
+        unit: 'tin',
+        quantity: 0,
+      },
+      'pista-whole': {
+        rate: 100,
+        name: 'Pista Whole',
+        quantity: 0,
+        unit: 'kg',
+      },
+      plum: {
+        name: 'Plum',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      poha: {
+        unit: 'pkt',
+        quantity: 0,
+        name: 'Poha',
+        rate: 100,
+      },
+      potato: {
+        unit: 'kg',
+        rate: 100,
+        name: 'Potato',
+        quantity: 0,
+      },
+      'potato-fingers': {
+        quantity: 0,
+        name: 'Potato Fingers',
+        rate: 100,
+        unit: 'kg',
+      },
+      'processed-cheese': {
+        name: 'Processed Cheese',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      pumpkin: {
+        unit: 'kg',
+        name: 'Pumpkin',
+        rate: 100,
+        quantity: 0,
+      },
+      'quaker-oats': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Quaker Oats',
+        rate: 100,
+      },
+      radish: {
+        quantity: 0,
+        rate: 100,
+        name: 'Radish',
+        unit: 'kg',
+      },
+      rai: {
+        name: 'Rai',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'rajma-chitra': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Rajma Chitra',
+        rate: 100,
+      },
+      'rasam-powder': {
+        quantity: 0,
+        rate: 100,
+        name: 'Rasam Powder',
+        unit: 'kg',
+      },
+      'raw-banana': {
+        name: 'Raw Banana',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'raw-papaya': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Raw Papaya',
+        rate: 100,
+      },
+      'red-cabbage': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Red Cabbage',
+      },
+      'red-capsicum': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Red Capsicum',
+        quantity: 0,
+      },
+      'red-cherry': {
+        unit: 'tin',
+        name: 'Red Cherry',
+        rate: 100,
+        quantity: 0,
+      },
+      'red-chilli-dry': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Red Chilli (Dry)',
+        quantity: 0,
+      },
+      'red-chilli-powder': {
+        rate: 100,
+        name: 'Red Chilli Powder',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'red-chilli-whole': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Red Chilli Whole',
+        rate: 100,
+      },
+      'red-colour': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Red Colour',
+        quantity: 0,
+      },
+      'red-gravy': {
+        name: 'Red Gravy',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'red-chilli-sauce': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Red chilli sauce',
+        quantity: 0,
+      },
+      'refined-oil': {
+        rate: 100,
+        name: 'Refined Oil',
+        unit: 'L',
+        quantity: 0,
+      },
+      'rice-india-gate': {
+        name: 'Rice India Gate',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'rich-cream': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Rich Cream',
+      },
+      'roasted-peanut': {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Roasted Peanut',
+      },
+      'rooh-afza': {
+        rate: 100,
+        name: 'Rooh Afza',
+        quantity: 0,
+        unit: 'L',
+      },
+      'rose-leaves': {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Rose Leaves',
+      },
+      'rose-water': {
+        rate: 100,
+        name: 'Rose Water',
+        unit: 'bottle',
+        quantity: 0,
+      },
+      rosemary: {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Rosemary',
+      },
+      saffron: {
+        rate: 100,
+        name: 'Saffron',
+        unit: 'g',
+        quantity: 0,
+      },
+      'salt-tata': {
+        name: 'Salt Tata',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      'sambar-masala': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Sambar Masala',
+        quantity: 0,
+      },
+      sangri: {
+        unit: 'kg',
+        name: 'Sangri',
+        quantity: 0,
+        rate: 100,
+      },
+      sarso: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Sarso',
+      },
+      'sarson-ka-saag': {
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+        name: 'Sarson Ka Saag',
+      },
+      'saunf-green-whole': {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Saunf Green Whole',
+        rate: 100,
+      },
+      'sem-fali': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Sem Fali',
+      },
+      semolina: {
+        quantity: 0,
+        rate: 100,
+        name: 'Semolina',
+        unit: 'kg',
+      },
+      'sesame-seed': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Sesame seed',
+        rate: 100,
+      },
+      'snow-peas': {
+        rate: 100,
+        name: 'Snow Peas',
+        quantity: 0,
+        unit: 'no',
+      },
+      soda: {
+        rate: 100,
+        name: 'Soda',
+        quantity: 0,
+        unit: 'L',
+      },
+      sooji: {
+        quantity: 0,
+        name: 'Sooji',
+        unit: 'kg',
+        rate: 100,
+      },
+      'soya-sauce': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Soya Sauce',
+        quantity: 0,
+      },
+      soyabean: {
+        quantity: 0,
+        name: 'Soyabean',
+        unit: 'kg',
+        rate: 100,
+      },
+      spinach: {
+        name: 'Spinach',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'split-moong-lentil': {
+        name: 'Split Moong (Lentil)',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      'spring-onion': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Spring Onion',
+        quantity: 0,
+      },
+      'spring-roll-sheet': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Spring Roll Sheet',
+        rate: 100,
+      },
+      'staff-rice': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Staff Rice',
+        quantity: 0,
+      },
+      'staff-tea': {
+        name: 'Staff Tea',
+        rate: 100,
+        unit: 'g',
+        quantity: 0,
+      },
+      strawberry: {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Strawberry',
+      },
+      'strawberry-crush': {
+        name: 'Strawberry Crush',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'sugar-powder': {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Sugar (powder)',
+      },
+      'sugar-syrup': {
+        name: 'Sugar Syrup',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      sugi: {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Sugi',
+      },
+      'sweet-chilli-sauce': {
+        unit: 'bottle',
+        name: 'Sweet Chilli Sauce',
+        rate: 100,
+        quantity: 0,
+      },
+      'sweet-corn-carnal-golden': {
+        unit: 'tin',
+        quantity: 0,
+        name: 'Sweet Corn Carnal Golden',
+        rate: 100,
+      },
+      'sweet-lime': {
+        name: 'Sweet Lime',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      'sweet-potato': {
+        quantity: 0,
+        unit: 'kg',
+        rate: 100,
+        name: 'Sweet Potato',
+      },
+      'tabasco-sauce': {
+        rate: 100,
+        name: 'Tabasco Sauce',
+        unit: 'bottle',
+        quantity: 0,
+      },
+      'tahini--pasta': {
+        rate: 100,
+        quantity: 0,
+        unit: 'bottle',
+        name: 'Tahini  Pasta',
+      },
+      tea: {
+        name: 'Tea',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      'tez-patta': {
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+        name: 'Tez Patta',
+      },
+      'thai-ginger': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Thai Ginger',
+      },
+      thyme: {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'Thyme',
+      },
+      tinda: {
+        rate: 100,
+        name: 'Tinda',
+        quantity: 0,
+        unit: 'no',
+      },
+      'tofu-paneer': {
+        rate: 100,
+        unit: 'g',
+        name: 'Tofu Paneer',
+        quantity: 0,
+      },
+      tomato: {
+        quantity: 0,
+        unit: 'kg',
+        name: 'Tomato',
+        rate: 100,
+      },
+      'tomato-ketchup-kissan': {
+        name: 'Tomato Ketchup Kissan',
+        unit: 'bottle',
+        rate: 100,
+        quantity: 0,
+      },
+      'tomato-puree': {
+        rate: 100,
+        unit: 'tin',
+        quantity: 0,
+        name: 'Tomato Puree',
+      },
+      'toor-dal': {
+        name: 'Toor Dal',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'tortilla-wrap': {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Tortilla Wrap',
+        rate: 100,
+      },
+      turai: {
+        quantity: 0,
+        name: 'Turai',
+        unit: 'kg',
+        rate: 100,
+      },
+      'turmeric-powder': {
+        name: 'Turmeric Powder',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      turnip: {
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+        name: 'Turnip',
+      },
+      'urad-dal-black': {
+        name: 'Urad Dal Black',
+        unit: 'kg',
+        quantity: 0,
+        rate: 100,
+      },
+      'urad-dal-chilka': {
+        rate: 100,
+        name: 'Urad Dal Chilka',
+        unit: 'kg',
+        quantity: 0,
+      },
+      'vanilla-ice-cream': {
+        name: 'Vanilla Ice Cream',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      vermicelli: {
+        name: 'Vermicelli',
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+      },
+      vinegar: {
+        unit: 'kg',
+        quantity: 0,
+        name: 'Vinegar',
+        rate: 100,
+      },
+      walnut: {
+        name: 'Walnut',
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+      },
+      water: {
+        rate: 100,
+        name: 'Water',
+        quantity: 0,
+        unit: 'L',
+      },
+      watermelon: {
+        name: 'Watermelon',
+        unit: 'kg',
+        rate: 100,
+        quantity: 0,
+      },
+      'white-dal': {
+        quantity: 0,
+        name: 'White Dal',
+        rate: 100,
+        unit: 'kg',
+      },
+      'white-gravy': {
+        rate: 100,
+        unit: 'kg',
+        name: 'White Gravy',
+        quantity: 0,
+      },
+      'white-paper': {
+        rate: 100,
+        quantity: 0,
+        unit: 'kg',
+        name: 'White Paper',
+      },
+      'white-pepper': {
+        rate: 100,
+        name: 'White Pepper',
+        unit: 'g',
+        quantity: 0,
+      },
+      'white-vinegar': {
+        rate: 100,
+        quantity: 0,
+        unit: 'bottle',
+        name: 'White Vinegar',
+      },
+      'whole-coriander': {
+        quantity: 0,
+        rate: 100,
+        name: 'Whole Coriander',
+        unit: 'kg',
+      },
+      'yellow-capsicum': {
+        unit: 'kg',
+        rate: 100,
+        name: 'Yellow Capsicum',
+        quantity: 0,
+      },
+      'yellow-colour': {
+        name: 'Yellow Colour',
+        quantity: 0,
+        rate: 100,
+        unit: 'kg',
+      },
+      'yellow-jugni': {
+        quantity: 0,
+        name: 'Yellow Jugni',
+        rate: 100,
+        unit: 'kg',
+      },
+      'yellow-mirch-powder': {
+        rate: 100,
+        unit: 'kg',
+        name: 'Yellow Mirch Powder',
+        quantity: 0,
+      },
+      'yellow-zucchini': {
+        rate: 100,
+        unit: 'kg',
+        quantity: 0,
+        name: 'Yellow Zucchini',
+      },
+      sugar: {
+        quantity: 0,
+        name: 'sugar',
+        unit: 'kg',
+        rate: 100,
+      },
+    };
+    this.recipeTypes = [
+      {
+        id: 'ABjGnggJuec2ADpFUZrH',
+        name: 'Beverages',
+      },
+      {
+        id: 'is2Mhy9kZm4p85PlXMlp',
+        name: 'Chinese Cuisine',
+      },
+      {
+        id: 'qOSFB7xWqjQXvUUYMILO',
+        name: 'Dessert',
+      },
+      {
+        id: 'DNWcNlYvOyLtUHx1AMD4',
+        name: 'Italian Cuisine',
+      },
+      {
+        id: 'AWVc0PLIiEXqTj7Iv67N',
+        name: 'South Indian Cuisine',
+      },
+    ];
+    this.recipes = [
+      {
+        id: 'jnbleEGhvrMm40nybJUE',
+        cookingPrice: 100,
+        sellingPrice: '333.33',
+        flavourPalette: '',
+        cookingTimeValue: 0,
+        name: '4 right',
+        ingredients: [
+          {
+            id: '7-up',
+            quantity: '1',
+          },
+        ],
+        preparationTimeUnit: 'minutes',
+        shelfLifeUnit: 'minutes',
+        servingInstructions: [],
+        bestSeasonFrom: '',
+        cookingInstructions: [],
+        description: '',
+        shelfLifeValue: 0,
+        bestSeasonTo: '',
+        servingTimeValue: 0,
+        preparationTimeValue: 0,
+        type: '',
+        cookingTimeUnit: 'minutes',
+        photos: [],
+        energyConsumptionPerPreparation: '',
+        servingTimeUnit: 'minutes',
+      },
+      {
+        id: 'gxoSIMw5kHXsysC96MIO',
+        cookingPrice: 100,
+        sellingPrice: '333.33',
+        bestSeasonFrom: '',
+        preparationTimeUnit: 'minutes',
+        preparationTimeValue: 0,
+        description: '',
+        bestSeasonTo: '',
+        shelfLifeValue: 0,
+        servingTimeUnit: 'minutes',
+        servingTimeValue: 0,
+        energyConsumptionPerPreparation: '',
+        name: '5 left',
+        cookingInstructions: [],
+        photos: [],
+        ingredients: [
+          {
+            quantity: '1',
+            id: 'apple-imported',
+          },
+        ],
+        shelfLifeUnit: 'minutes',
+        type: '',
+        flavourPalette: '',
+        cookingTimeValue: 0,
+        servingInstructions: [],
+        cookingTimeUnit: 'minutes',
+      },
+      {
+        id: 'f3B0GmYvL8tiw0SIv9Ge',
+        cookingPrice: 100,
+        sellingPrice: '333.33',
+        servingTimeValue: 0,
+        photos: [],
+        energyConsumptionPerPreparation: '',
+        flavourPalette: '',
+        preparationTimeValue: 0,
+        description: '',
+        preparationTimeUnit: 'minutes',
+        servingTimeUnit: 'minutes',
+        type: '',
+        cookingInstructions: [],
+        cookingTimeValue: 0,
+        bestSeasonFrom: '',
+        bestSeasonTo: '',
+        servingInstructions: [],
+        cookingTimeUnit: 'minutes',
+        shelfLifeValue: 0,
+        shelfLifeUnit: 'minutes',
+        ingredients: [
+          {
+            id: 'apple-imported',
+            quantity: '1',
+          },
+        ],
+        name: '6 Down',
+      },
+      {
+        id: '7-up',
+        cookingPrice: 45.3,
+        sellingPrice: '151.00',
+        ingredients: [
+          {
+            quantity: 0.3,
+            id: '7-up',
+          },
+          {
+            quantity: 0.1,
+            id: 'anar',
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.05,
+          },
+          {
+            id: 'mint',
+            quantity: 0.003,
+          },
+        ],
+        name: '7 Up',
+      },
+      {
+        id: 'aloo-anari-salad',
+        cookingPrice: 35,
+        sellingPrice: '116.67',
+        ingredients: [
+          {
+            id: 'potato',
+            quantity: 0.15,
+          },
+          {
+            quantity: 0.01,
+            id: 'onion',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'bell-pepper',
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'green-coriander',
+          },
+          {
+            quantity: 0.01,
+            id: 'lemon-juice',
+          },
+          {
+            quantity: 0.01,
+            id: 'chat-masala',
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato-ketchup-kissan',
+          },
+          {
+            id: 'anar',
+            quantity: 0.05,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Aloo Anari Salad',
+      },
+      {
+        id: 'aloo-gobhi-adraki',
+        cookingPrice: 41.5,
+        sellingPrice: '138.33',
+        ingredients: [
+          {
+            quantity: 0.1,
+            id: 'potato',
+          },
+          {
+            quantity: 0.1,
+            id: 'cauliflower',
+          },
+          {
+            quantity: 0.04,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.04,
+            id: 'onion',
+          },
+          {
+            quantity: 0.04,
+            id: 'curd',
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'cumin-seeds',
+          },
+          {
+            quantity: 0.005,
+            id: 'turmeric-powder',
+          },
+          {
+            id: 'coriander-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            quantity: 0.005,
+            id: 'kitchen-king',
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.005,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.015,
+            id: 'olive-oil',
+          },
+          {
+            quantity: 0.02,
+            id: 'lemon',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+        ],
+        name: 'Aloo Gobhi Adraki',
+      },
+      {
+        id: 'aloo-jeera',
+        cookingPrice: 24.5,
+        sellingPrice: '81.67',
+        name: 'Aloo Jeera',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'potato',
+          },
+          {
+            quantity: 0.005,
+            id: 'jeera-whole',
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'turmeric-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'garam-masala',
+          },
+          {
+            quantity: 0.005,
+            id: 'lemon-juice',
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+        ],
+      },
+      {
+        id: 'aloo-paratha',
+        cookingPrice: 22,
+        sellingPrice: '73.33',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'potato',
+          },
+          {
+            quantity: 0.01,
+            id: 'onion',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            quantity: 0.02,
+            id: 'olive-oil',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Aloo Paratha',
+      },
+      {
+        id: 'aloo-pyaaz',
+        cookingPrice: 31.5,
+        sellingPrice: '105.00',
+        name: 'Aloo Pyaaz',
+        ingredients: [
+          {
+            id: 'potato',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'onion',
+          },
+          {
+            quantity: 0.02,
+            id: 'tomato',
+          },
+          {
+            id: 'curd',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'refined-oil',
+          },
+          {
+            id: 'coriander-whole',
+            quantity: 0.2,
+          },
+          {
+            quantity: 0.03,
+            id: 'saunf-green-whole',
+          },
+          {
+            id: 'cashewnut',
+            quantity: 0.03,
+          },
+        ],
+      },
+      {
+        id: 'baked-spinach-corn',
+        cookingPrice: 36.2,
+        sellingPrice: '120.67',
+        name: 'Baked Spinach Corn',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'spinach',
+          },
+          {
+            id: 'corn',
+            quantity: 0.07,
+          },
+          {
+            id: 'oregano',
+            quantity: 0.005,
+          },
+          {
+            id: 'onion',
+            quantity: 0.03,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.05,
+            id: 'go-mozzarella-cheese',
+          },
+          {
+            quantity: 0.03,
+            id: 'butter-amul',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.015,
+          },
+        ],
+      },
+      {
+        id: 'baked-vegetables',
+        cookingPrice: 50.7,
+        sellingPrice: '169.00',
+        name: 'Baked Vegetables',
+        ingredients: [
+          {
+            quantity: 0.03,
+            id: 'green-jugni',
+          },
+          {
+            quantity: 0.03,
+            id: 'yellow-jugni',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.005,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.03,
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.03,
+            id: 'red-capsicum',
+          },
+          {
+            quantity: 0.03,
+            id: 'yellow-capsicum',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.03,
+            id: 'mushroom-fresh',
+          },
+          {
+            quantity: 0.05,
+            id: 'maida',
+          },
+          {
+            id: 'go-mozzarella-cheese',
+            quantity: 0.05,
+          },
+        ],
+      },
+      {
+        id: 'basil-tandoori-mushroom',
+        cookingPrice: 31.599999999999998,
+        sellingPrice: '105.33',
+        name: 'Basil Tandoori Mushroom',
+        ingredients: [
+          {
+            id: 'black-mushroom',
+            quantity: 0.2,
+          },
+          {
+            quantity: 0.025,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.025,
+            id: 'amul-cheese',
+          },
+          {
+            quantity: 0.003,
+            id: 'green-chilli',
+          },
+          {
+            id: 'ginger',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.002,
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.002,
+          },
+          {
+            id: 'basil',
+            quantity: 0.005,
+          },
+          {
+            id: 'curd',
+            quantity: 0.03,
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.002,
+          },
+        ],
+      },
+      {
+        id: 'beetroot-halwa',
+        cookingPrice: 40.3,
+        sellingPrice: '134.33',
+        name: 'Beetroot Halwa',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'beetroot',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'desi-ghee',
+          },
+          {
+            id: 'dry-fruits',
+            quantity: 0.05,
+          },
+          {
+            id: 'mawa',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.003,
+            id: 'green-cardamom',
+          },
+        ],
+      },
+      {
+        id: 'berry-vanilla-shake',
+        cookingPrice: 25.5,
+        sellingPrice: '85.00',
+        ingredients: [
+          {
+            quantity: 0.05,
+            id: 'strawberry-crush',
+          },
+          {
+            quantity: 0.1,
+            id: 'vanilla-ice-cream',
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.1,
+            id: 'milk-saras',
+          },
+        ],
+        name: 'Berry Vanilla Shake',
+      },
+      {
+        id: 'black-coffee',
+        cookingPrice: 16,
+        sellingPrice: '53.33',
+        name: 'Black Coffee',
+        ingredients: [
+          {
+            id: 'coffee-powder',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.15,
+            id: 'water',
+          },
+        ],
+      },
+      {
+        id: 'black-tea',
+        cookingPrice: 16,
+        sellingPrice: '53.33',
+        name: 'Black Tea',
+        ingredients: [
+          {
+            id: 'tea',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.15,
+            id: 'water',
+          },
+        ],
+      },
+      {
+        id: 'bombay-grilled-sandwich',
+        cookingPrice: 54.5,
+        sellingPrice: '181.67',
+        ingredients: [
+          {
+            quantity: 0.3,
+            id: 'bread',
+          },
+          {
+            quantity: 0.1,
+            id: 'potato',
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+          {
+            id: 'cheese-slice',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.025,
+            id: 'mayonnaise',
+          },
+          {
+            id: 'french-fry',
+            quantity: 0.03,
+          },
+          {
+            id: 'cabagge',
+            quantity: 0.01,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'mint',
+          },
+          {
+            id: 'chat-masala',
+            quantity: 0.005,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Bombay Grilled Sandwich',
+      },
+      {
+        id: 'boondi-raita',
+        cookingPrice: 55.5,
+        sellingPrice: '185.00',
+        name: 'Boondi Raita',
+        ingredients: [
+          {
+            quantity: 0.5,
+            id: 'curd',
+          },
+          {
+            quantity: 0.04,
+            id: 'boondi',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'red-chilli-whole',
+            quantity: 0.005,
+          },
+          {
+            id: 'jeera-powder',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'butter-milk',
+        cookingPrice: 17.7,
+        sellingPrice: '59.00',
+        ingredients: [
+          {
+            id: 'curd',
+            quantity: 0.15,
+          },
+          {
+            quantity: 0.005,
+            id: 'jeera-powder',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'chat-masala',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.01,
+            id: 'water',
+          },
+          {
+            quantity: 0.005,
+            id: 'mint',
+          },
+        ],
+        name: 'Butter Milk',
+      },
+      {
+        id: 'caesar-salad-veg',
+        cookingPrice: 25.4,
+        sellingPrice: '84.67',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'iceberg-lettuce',
+          },
+          {
+            quantity: 0.01,
+            id: 'bread-croutons',
+          },
+          {
+            id: 'parmesan-cheese',
+            quantity: 0.02,
+          },
+          {
+            id: 'mayonnaise',
+            quantity: 0.05,
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'lemon-juice',
+            quantity: 0.01,
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.002,
+          },
+        ],
+        name: 'Caesar Salad Veg',
+      },
+      {
+        id: 'cheese-chilli-toast',
+        cookingPrice: 37.5,
+        sellingPrice: '125.00',
+        ingredients: [
+          {
+            id: 'bread',
+            quantity: 0.3,
+          },
+          {
+            id: 'cheese-slice',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.01,
+            id: 'jalapeno',
+          },
+          {
+            quantity: 0.005,
+            id: 'garlic-paste',
+          },
+          {
+            quantity: 0.01,
+            id: 'black-olives-pitted',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Cheese Chilli Toast',
+      },
+      {
+        id: 'churma-besan',
+        cookingPrice: 24.5,
+        sellingPrice: '81.67',
+        ingredients: [
+          {
+            quantity: 0.06,
+            id: 'mota-atta',
+          },
+          {
+            quantity: 0.03,
+            id: 'desi-ghee',
+          },
+          {
+            quantity: 0.02,
+            id: 'mawa',
+          },
+          {
+            id: 'mota-besan',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.06,
+            id: 'sugar-powder',
+          },
+          {
+            id: 'eno',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.05,
+            id: 'almond-whole',
+          },
+        ],
+        name: 'Churma Besan',
+      },
+      {
+        id: 'churma-gulab',
+        cookingPrice: 26.5,
+        sellingPrice: '88.33',
+        ingredients: [
+          {
+            quantity: 0.06,
+            id: 'mota-atta',
+          },
+          {
+            id: 'desi-ghee',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.02,
+            id: 'mawa',
+          },
+          {
+            quantity: 0.02,
+            id: 'rose-leaves',
+          },
+          {
+            quantity: 0.06,
+            id: 'sugar-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'eno',
+          },
+          {
+            id: 'rose-leaves',
+            quantity: 0.02,
+          },
+          {
+            id: 'almond-whole',
+            quantity: 0.05,
+          },
+        ],
+        name: 'Churma Gulab',
+      },
+      {
+        id: 'cigar-roll',
+        cookingPrice: 49.8,
+        sellingPrice: '166.00',
+        name: 'Cigar Roll',
+        ingredients: [
+          {
+            id: 'spring-roll-sheet',
+            quantity: 0.1,
+          },
+          {
+            id: 'potato',
+            quantity: 0.2,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            id: 'oregano',
+            quantity: 0.005,
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.003,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'chat-masala',
+          },
+          {
+            quantity: 0.02,
+            id: 'capsicum',
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.02,
+          },
+          {
+            id: 'red-capsicum',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.005,
+            id: 'green-coriander',
+          },
+          {
+            id: 'sweet-chilli-sauce',
+            quantity: 0.05,
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.005,
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+        ],
+      },
+      {
+        id: 'corn-fritters',
+        cookingPrice: 35.2,
+        sellingPrice: '117.33',
+        name: 'Corn Fritters',
+        ingredients: [
+          {
+            id: 'corn',
+            quantity: 0.2,
+          },
+          {
+            quantity: 0.05,
+            id: 'maida',
+          },
+          {
+            id: 'corn-flour',
+            quantity: 0.05,
+          },
+          {
+            id: 'soya-sauce',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.005,
+            id: 'aromatic-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'baking-powder',
+          },
+          {
+            id: 'refined-oil',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.015,
+            id: 'chilli-sauce',
+          },
+        ],
+      },
+      {
+        id: 'cream-of-broccoli',
+        cookingPrice: 11.7,
+        sellingPrice: '39.00',
+        name: 'Cream Of Broccoli',
+        ingredients: [
+          {
+            quantity: 0.05,
+            id: 'broccoli-local',
+          },
+          {
+            quantity: 0.015,
+            id: 'onion',
+          },
+          {
+            id: 'celery',
+            quantity: 0.015,
+          },
+          {
+            id: 'atta',
+            quantity: 0.005,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.01,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'cream-of-mushroom',
+        cookingPrice: 11.7,
+        sellingPrice: '39.00',
+        name: 'Cream Of Mushroom',
+        ingredients: [
+          {
+            id: 'mushroom-fresh',
+            quantity: 0.05,
+          },
+          {
+            id: 'onion',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.015,
+            id: 'celery',
+          },
+          {
+            quantity: 0.005,
+            id: 'atta',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.01,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'cream-of-tomato',
+        cookingPrice: 46.5,
+        sellingPrice: '155.00',
+        ingredients: [
+          {
+            quantity: 0.25,
+            id: 'tomato',
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.015,
+          },
+          {
+            id: 'leeks',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.025,
+            id: 'celery',
+          },
+          {
+            quantity: 0.025,
+            id: 'carrot',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.03,
+            id: 'butter-amul',
+          },
+          {
+            quantity: 0.03,
+            id: 'amul-fresh-cream',
+          },
+          {
+            quantity: 0.01,
+            id: 'black-pepper-whole',
+          },
+        ],
+        name: 'Cream Of Tomato',
+      },
+      {
+        id: 'crispy-fried-vegetables',
+        cookingPrice: 29.6,
+        sellingPrice: '98.67',
+        ingredients: [
+          {
+            quantity: 0.1,
+            id: 'french-beans',
+          },
+          {
+            id: 'ginger',
+            quantity: 0.01,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.045,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.02,
+            id: 'aromatic-powder',
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.03,
+          },
+          {
+            id: 'spring-onion',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'green-chilli-sauce',
+            quantity: 0.05,
+          },
+          {
+            id: 'red-chilli-sauce',
+            quantity: 0.006,
+          },
+        ],
+        name: 'Crispy Fried Vegetables',
+      },
+      {
+        id: 'dahi-ke-kabab',
+        cookingPrice: 58.6,
+        sellingPrice: '195.33',
+        ingredients: [
+          {
+            quantity: 0.5,
+            id: 'curd',
+          },
+          {
+            quantity: 0.02,
+            id: 'walnut',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'black-pepper-whole',
+          },
+          {
+            id: 'channa-roasted',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.005,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+          {
+            id: 'sugar-powder',
+            quantity: 0.004,
+          },
+          {
+            id: 'kishmish',
+            quantity: 0.02,
+          },
+        ],
+        name: 'Dahi Ke Kabab',
+      },
+      {
+        id: 'dahi-vada',
+        cookingPrice: 11.5,
+        sellingPrice: '38.33',
+        name: 'Dahi Vada',
+        ingredients: [
+          {
+            quantity: 0.01,
+            id: 'white-dal',
+          },
+          {
+            quantity: 0.005,
+            id: 'jeera-whole',
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'imli',
+          },
+          {
+            id: 'curd',
+            quantity: 0.01,
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.005,
+          },
+          {
+            id: 'sugar',
+            quantity: 0.01,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+        ],
+      },
+      {
+        id: 'dal-makhani',
+        cookingPrice: 31.5,
+        sellingPrice: '105.00',
+        ingredients: [
+          {
+            quantity: 0.1,
+            id: 'bengal-gram',
+          },
+          {
+            id: 'kidney-beans',
+            quantity: 0.02,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.05,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'tomato-puree',
+            quantity: 0.05,
+          },
+          {
+            id: 'cumin-seeds',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'vinegar',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.002,
+            id: 'kasoori-methi',
+          },
+        ],
+        name: 'Dal Makhani',
+      },
+      {
+        id: 'dal-tadka',
+        cookingPrice: 15.200000000000001,
+        sellingPrice: '50.67',
+        name: 'Dal Tadka',
+        ingredients: [
+          {
+            quantity: 0.05,
+            id: 'toor-dal',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.02,
+            id: 'onion',
+          },
+          {
+            quantity: 0.02,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.004,
+            id: 'red-chilli-dry',
+          },
+          {
+            quantity: 0.003,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.02,
+            id: 'ghee',
+          },
+          {
+            quantity: 0.002,
+            id: 'turmeric-powder',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'hing',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-coriander',
+          },
+          {
+            quantity: 0.003,
+            id: 'cumin-seeds',
+          },
+        ],
+      },
+      {
+        id: 'daniwall-soup',
+        cookingPrice: 18.5,
+        sellingPrice: '61.67',
+        ingredients: [
+          {
+            quantity: 0.05,
+            id: 'lemon',
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.03,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.03,
+            id: 'cabbage',
+          },
+          {
+            id: 'carrot',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.03,
+            id: 'french-beans',
+          },
+          {
+            quantity: 0.002,
+            id: 'white-pepper',
+          },
+          {
+            quantity: 0.01,
+            id: 'corn-flour',
+          },
+          {
+            quantity: 0.001,
+            id: 'saffron',
+          },
+        ],
+        name: 'Daniwall Soup',
+      },
+      {
+        id: 'dry-chilli-paneer',
+        cookingPrice: 49.5,
+        sellingPrice: '165.00',
+        name: 'Dry Chilli Paneer',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+          {
+            quantity: 0.03,
+            id: 'capsicum',
+          },
+          {
+            quantity: 0.03,
+            id: 'chilli-sauce',
+          },
+          {
+            quantity: 0.015,
+            id: 'soya-sauce',
+          },
+          {
+            quantity: 0.005,
+            id: 'white-pepper',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.05,
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.03,
+            id: 'tomato-ketchup-kissan',
+          },
+          {
+            quantity: 0.05,
+            id: 'corn-flour',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.01,
+            id: 'spring-onion',
+          },
+          {
+            id: 'white-vinegar',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'ginger',
+          },
+        ],
+      },
+      {
+        id: 'exotic-garlic-bread',
+        cookingPrice: 45.5,
+        sellingPrice: '151.67',
+        name: 'Exotic Garlic Bread',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'garlic-bread',
+          },
+          {
+            quantity: 0.04,
+            id: 'capsicum',
+          },
+          {
+            quantity: 0.04,
+            id: 'yellow-capsicum',
+          },
+          {
+            quantity: 0.04,
+            id: 'red-capsicum',
+          },
+          {
+            quantity: 0.01,
+            id: 'black-olives-pitted',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.1,
+            id: 'go-mozzarella-cheese',
+          },
+          {
+            quantity: 0.01,
+            id: 'parsley',
+          },
+        ],
+      },
+      {
+        id: 'exotica-pizza',
+        cookingPrice: 60.2,
+        sellingPrice: '200.67',
+        name: 'Exotica Pizza',
+        ingredients: [
+          {
+            id: 'maida',
+            quantity: 0.15,
+          },
+          {
+            id: 'fresh-yeast',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.005,
+          },
+          {
+            id: 'sugar',
+            quantity: 0.002,
+          },
+          {
+            id: 'semolina',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.1,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'oregano',
+          },
+          {
+            id: 'tomato-puree',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.12,
+            id: 'go-mozzarella-cheese',
+          },
+          {
+            id: 'black-olives-pitted',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'basil',
+          },
+          {
+            id: 'green-zucchini',
+            quantity: 0.02,
+          },
+          {
+            id: 'yellow-zucchini',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'red-capsicum',
+          },
+          {
+            quantity: 0.02,
+            id: 'capsicum',
+          },
+          {
+            quantity: 0.005,
+            id: 'chilly-flakes',
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.02,
+          },
+        ],
+      },
+      {
+        id: 'french-fries',
+        cookingPrice: 20,
+        sellingPrice: '66.67',
+        name: 'French Fries',
+        ingredients: [
+          {
+            id: 'finger-chip',
+            quantity: 0.2,
+          },
+        ],
+      },
+      {
+        id: 'fried-papad',
+        cookingPrice: 5,
+        sellingPrice: '16.67',
+        name: 'Fried Papad',
+        ingredients: [
+          {
+            id: 'black-lentil-flour',
+            quantity: 0.02,
+          },
+          {
+            id: 'split-moong-lentil',
+            quantity: 0.005,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'hing',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'black-pepper-whole',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'fruit-raita',
+        cookingPrice: 48,
+        sellingPrice: '160.00',
+        ingredients: [
+          {
+            quantity: 0.4,
+            id: 'curd',
+          },
+          {
+            quantity: 0.02,
+            id: 'pineapple',
+          },
+          {
+            id: 'apple',
+            quantity: 0.02,
+          },
+          {
+            id: 'papaya',
+            quantity: 0.02,
+          },
+          {
+            id: 'anar',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'sugar',
+          },
+          {
+            id: 'cherry',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Fruit Raita',
+      },
+      {
+        id: 'gatta-curry',
+        cookingPrice: 45.3,
+        sellingPrice: '151.00',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'besan',
+          },
+          {
+            quantity: 0.1,
+            id: 'curd',
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'turmeric-powder',
+          },
+          {
+            id: 'soda',
+            quantity: 0.003,
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.05,
+          },
+          {
+            id: 'whole-coriander',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'saunf-green-whole',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-dry',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'onion',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.04,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            id: 'white-gravy',
+            quantity: 0.02,
+          },
+          {
+            id: 'coriander-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'cumin-seeds',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-coriander',
+          },
+        ],
+        name: 'Gatta Curry',
+      },
+      {
+        id: 'ginger-tea',
+        cookingPrice: 17.5,
+        sellingPrice: '58.33',
+        name: 'Ginger Tea',
+        ingredients: [
+          {
+            id: 'tea',
+            quantity: 0.01,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.15,
+            id: 'milk-saras',
+          },
+          {
+            id: 'water',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'govindam-club-sandwich',
+        cookingPrice: 54.5,
+        sellingPrice: '181.67',
+        name: 'Govindam Club Sandwich',
+        ingredients: [
+          {
+            quantity: 0.3,
+            id: 'bread',
+          },
+          {
+            quantity: 0.05,
+            id: 'cucumber',
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato',
+          },
+          {
+            id: 'cheese-slice',
+            quantity: 0.02,
+          },
+          {
+            id: 'mayonnaise',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.03,
+            id: 'french-fry',
+          },
+          {
+            id: 'cabagge',
+            quantity: 0.01,
+          },
+          {
+            id: 'lettuce',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.015,
+            id: 'tomato',
+          },
+          {
+            id: 'black-olives-pitted',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.01,
+            id: 'carrot',
+          },
+        ],
+      },
+      {
+        id: 'govindam-special-paneer',
+        cookingPrice: 40,
+        sellingPrice: '133.33',
+        name: 'Govindam Special Paneer',
+        ingredients: [
+          {
+            id: 'capsicum',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.1,
+            id: 'green-chilli',
+          },
+          {
+            id: 'cashewnut',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+          {
+            quantity: 0.04,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'cumin-seeds',
+            quantity: 0.005,
+          },
+          {
+            id: 'turmeric-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'coriander-powder',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            id: 'kitchen-king',
+            quantity: 0.005,
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.005,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-coriander',
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.015,
+            id: 'olive-oil',
+          },
+          {
+            quantity: 0.005,
+            id: 'amul-fresh-cream',
+          },
+          {
+            quantity: 0.005,
+            id: 'butter-amul',
+          },
+        ],
+      },
+      {
+        id: 'greek-salad',
+        cookingPrice: 41.8,
+        sellingPrice: '139.33',
+        ingredients: [
+          {
+            id: 'tomato',
+            quantity: 0.05,
+          },
+          {
+            id: 'cucumber',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+          {
+            id: 'black-olives-pitted',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.05,
+            id: 'red-capsicum',
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.05,
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.01,
+            id: 'lemon-juice',
+          },
+          {
+            quantity: 0.01,
+            id: 'olive-oil',
+          },
+          {
+            id: 'feta-cheese',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.003,
+          },
+          {
+            id: 'oregano',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.05,
+            id: 'english-mustard',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+        ],
+        name: 'Greek Salad',
+      },
+      {
+        id: 'green-apple-mojito',
+        cookingPrice: 25.5,
+        sellingPrice: '85.00',
+        name: 'Green Apple Mojito',
+        ingredients: [
+          {
+            id: 'green-apple-syrup',
+            quantity: 0.03,
+          },
+          {
+            id: '7-up',
+            quantity: 0.2,
+          },
+          {
+            quantity: 0.02,
+            id: 'mint-mojito',
+          },
+          {
+            quantity: 0.005,
+            id: 'lemon-juice',
+          },
+        ],
+      },
+      {
+        id: 'green-salad',
+        cookingPrice: 22,
+        sellingPrice: '73.33',
+        name: 'Green Salad',
+        ingredients: [
+          {
+            quantity: 0.05,
+            id: 'carrot',
+          },
+          {
+            id: 'cucumber',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato',
+          },
+          {
+            id: 'lemon',
+            quantity: 0.01,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+        ],
+      },
+      {
+        id: 'gulab-jamun',
+        cookingPrice: 6.01,
+        sellingPrice: '20.03',
+        name: 'Gulab Jamun',
+        ingredients: [
+          {
+            quantity: 0.01,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.005,
+            id: 'mawa',
+          },
+          {
+            quantity: 0.01,
+            id: 'desi-ghee',
+          },
+          {
+            quantity: 0.005,
+            id: 'corn-flour',
+          },
+          {
+            quantity: 0.0001,
+            id: 'saffron',
+          },
+          {
+            quantity: 0.02,
+            id: 'sugar',
+          },
+          {
+            id: 'maida',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'hakka-noodles',
+        cookingPrice: 10032.8,
+        sellingPrice: '33442.67',
+        ingredients: [
+          {
+            id: 'noodles',
+            quantity: 100,
+          },
+          {
+            id: 'spring-onion',
+            quantity: 0.1,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.1,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.05,
+            id: 'cabbage',
+          },
+          {
+            quantity: 0.02,
+            id: 'onion',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.003,
+          },
+          {
+            id: 'red-chilli-sauce',
+            quantity: 0.002,
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.02,
+          },
+          {
+            id: 'green-chilli-sauce',
+            quantity: 0.02,
+          },
+        ],
+        name: 'Hakka Noodles',
+      },
+      {
+        id: 'handi-tadka',
+        cookingPrice: 17.7,
+        sellingPrice: '59.00',
+        ingredients: [
+          {
+            quantity: 0.015,
+            id: 'toor-dal',
+          },
+          {
+            quantity: 0.015,
+            id: 'bengali-dal',
+          },
+          {
+            id: 'channa-dal',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.015,
+            id: 'moong-dal',
+          },
+          {
+            quantity: 0.015,
+            id: 'masoor-dal',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            id: 'onion',
+            quantity: 0.02,
+          },
+          {
+            id: 'tomato',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.004,
+            id: 'red-chilli-dry',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.02,
+            id: 'ghee',
+          },
+          {
+            id: 'turmeric-powder',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'hing',
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.005,
+          },
+          {
+            id: 'cumin-seeds',
+            quantity: 0.003,
+          },
+        ],
+        name: 'Handi Tadka',
+      },
+      {
+        id: 'hara-bhara-kebab',
+        cookingPrice: 50.5,
+        sellingPrice: '168.33',
+        ingredients: [
+          {
+            quantity: 0.25,
+            id: 'spinach',
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            quantity: 0.007,
+            id: 'red-chilli-whole',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.025,
+            id: 'channa-roasted',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.025,
+            id: 'green-coriander',
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+          {
+            quantity: 0.025,
+            id: 'olive-oil',
+          },
+          {
+            quantity: 0.003,
+            id: 'chat-masala',
+          },
+          {
+            quantity: 0.05,
+            id: 'mint',
+          },
+          {
+            id: 'paneer',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'potato',
+          },
+        ],
+        name: 'Hara Bhara Kebab',
+      },
+      {
+        id: 'honey-chilli-potato',
+        cookingPrice: 36,
+        sellingPrice: '120.00',
+        ingredients: [
+          {
+            id: 'french-fry',
+            quantity: 0.15,
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+          {
+            id: 'refined-oil',
+            quantity: 0.02,
+          },
+          {
+            id: 'chilli-paste',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.03,
+            id: 'honey',
+          },
+          {
+            id: 'sesame-seed',
+            quantity: 0.01,
+          },
+          {
+            id: 'soya-sauce',
+            quantity: 0.005,
+          },
+          {
+            id: 'tomato-ketchup-kissan',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.01,
+            id: 'white-vinegar',
+          },
+          {
+            quantity: 0.01,
+            id: 'white-pepper',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.01,
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Honey Chilli Potato',
+      },
+      {
+        id: 'hot-and-sour-soup',
+        cookingPrice: 22.5,
+        sellingPrice: '75.00',
+        name: 'Hot And Sour Soup',
+        ingredients: [
+          {
+            id: 'refined-oil',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.03,
+            id: 'garlic',
+          },
+          {
+            id: 'ginger',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.03,
+            id: 'cabbage',
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.03,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.03,
+          },
+          {
+            id: 'red-chilli-sauce',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.03,
+            id: 'spring-onion',
+          },
+          {
+            id: 'soya-sauce',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.015,
+            id: 'corn-flour',
+          },
+          {
+            quantity: 0.002,
+            id: 'white-pepper',
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+        ],
+      },
+      {
+        id: 'hot-coffee',
+        cookingPrice: 16,
+        sellingPrice: '53.33',
+        ingredients: [
+          {
+            id: 'milk-saras',
+            quantity: 0.15,
+          },
+          {
+            id: 'sugar',
+            quantity: 0.005,
+          },
+          {
+            id: 'coffee-powder',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Hot Coffee',
+      },
+      {
+        id: 'ice-cream',
+        cookingPrice: 8.200000000000001,
+        sellingPrice: '27.33',
+        ingredients: [
+          {
+            quantity: 0.082,
+            id: 'ice-cream',
+          },
+        ],
+        name: 'Ice Cream',
+      },
+      {
+        id: 'jeera-pulao',
+        cookingPrice: 12.5,
+        sellingPrice: '41.67',
+        ingredients: [
+          {
+            quantity: 0.08,
+            id: 'brown-rice-basmati',
+          },
+          {
+            id: 'cumin-seeds',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'ghee',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-coriander',
+          },
+        ],
+        name: 'Jeera Pulao',
+      },
+      {
+        id: 'kadai-paneer',
+        cookingPrice: 53.3,
+        sellingPrice: '177.67',
+        name: 'Kadai Paneer',
+        ingredients: [
+          {
+            quantity: 0.09,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.02,
+            id: 'butter-amul',
+          },
+          {
+            quantity: 0.01,
+            id: 'ginger',
+          },
+          {
+            quantity: 0.02,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.1,
+            id: 'cashewnut',
+          },
+          {
+            quantity: 0.01,
+            id: 'salt-tata',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.008,
+            id: 'kasoori-methi',
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.03,
+          },
+          {
+            id: 'onion',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.005,
+            id: 'saunf-green-whole',
+          },
+          {
+            quantity: 0.005,
+            id: 'whole-coriander',
+          },
+          {
+            id: 'jeera-whole',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'kand-sahi',
+        cookingPrice: 36.8,
+        sellingPrice: '122.67',
+        name: 'Kand Sahi',
+        ingredients: [
+          {
+            quantity: 0.08,
+            id: 'bread',
+          },
+          {
+            quantity: 0.1,
+            id: 'sugar',
+          },
+          {
+            quantity: 0.05,
+            id: 'desi-ghee',
+          },
+          {
+            id: 'mawa',
+            quantity: 0.05,
+          },
+          {
+            id: 'milk-saras',
+            quantity: 0.08,
+          },
+          {
+            quantity: 0.005,
+            id: 'green-cardamom',
+          },
+          {
+            quantity: 0.003,
+            id: 'yellow-colour',
+          },
+        ],
+      },
+      {
+        id: 'kashmiri-dum-aloo',
+        cookingPrice: 70.8,
+        sellingPrice: '236.00',
+        ingredients: [
+          {
+            quantity: 0.18,
+            id: 'potato',
+          },
+          {
+            quantity: 0.05,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-cardamom',
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            id: 'cashewnut',
+            quantity: 0.15,
+          },
+          {
+            quantity: 0.015,
+            id: 'olive-oil',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.2,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.008,
+            id: 'kishmish',
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.005,
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.005,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.05,
+            id: 'magaj',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Kashmiri Dum Aloo',
+      },
+      {
+        id: 'kashmiri-pulao',
+        cookingPrice: 33.8,
+        sellingPrice: '112.67',
+        ingredients: [
+          {
+            id: 'brown-rice-basmati',
+            quantity: 0.06,
+          },
+          {
+            quantity: 0.05,
+            id: 'pineapple',
+          },
+          {
+            id: 'papaya',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'kishmish',
+          },
+          {
+            id: 'carrot',
+            quantity: 0.03,
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.01,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.03,
+          },
+          {
+            id: 'sugar',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'rose-water',
+          },
+          {
+            quantity: 0.01,
+            id: 'kewra-water',
+          },
+          {
+            quantity: 0.004,
+            id: 'coconut-powder',
+          },
+          {
+            quantity: 0.002,
+            id: 'red-colour',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-cardamom',
+          },
+          {
+            quantity: 0.003,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.008,
+            id: 'butter-amul',
+          },
+          {
+            id: 'cashewnut',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.001,
+            id: 'mawa',
+          },
+          {
+            quantity: 0.005,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.03,
+            id: 'desi-ghee',
+          },
+        ],
+        name: 'Kashmiri Pulao',
+      },
+      {
+        id: 'ker-sangri',
+        cookingPrice: 25.799999999999997,
+        sellingPrice: '86.00',
+        ingredients: [
+          {
+            id: 'ker',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'sangri',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.05,
+          },
+          {
+            id: 'ajwain',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'mint',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger-garlic-paste',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.002,
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.002,
+          },
+          {
+            id: 'mustard-oil',
+            quantity: 0.01,
+          },
+          {
+            id: 'methi-dana',
+            quantity: 0.008,
+          },
+          {
+            id: 'achar-pani',
+            quantity: 0.015,
+          },
+          {
+            id: 'onion',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'kishmish',
+            quantity: 0.02,
+          },
+          {
+            id: 'tomato',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.002,
+            id: 'chat-masala',
+          },
+        ],
+        name: 'Ker Sangri',
+      },
+      {
+        id: 'kesar-pista-shake',
+        cookingPrice: 25.5,
+        sellingPrice: '85.00',
+        name: 'Kesar Pista Shake',
+        ingredients: [
+          {
+            id: 'kesar-pista-ice-cream',
+            quantity: 0.1,
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.05,
+          },
+          {
+            id: 'milk-saras',
+            quantity: 0.1,
+          },
+          {
+            id: 'pista-whole',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'kichda',
+        cookingPrice: 11.5,
+        sellingPrice: '38.33',
+        name: 'Kichda',
+        ingredients: [
+          {
+            quantity: 0.06,
+            id: 'bajra-atta',
+          },
+          {
+            quantity: 0.03,
+            id: 'desi-ghee',
+          },
+          {
+            id: 'gud',
+            quantity: 0.02,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'kong-kheer',
+        cookingPrice: 39.800000000000004,
+        sellingPrice: '132.67',
+        name: 'Kong Kheer',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'kong-rice',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.02,
+            id: 'cocoa-powder',
+          },
+          {
+            id: 'milk-saras',
+            quantity: 0.15,
+          },
+          {
+            id: 'saffron',
+            quantity: 0.001,
+          },
+          {
+            id: 'yellow-colour',
+            quantity: 0.005,
+          },
+          {
+            id: 'pista-whole',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'rose-water',
+          },
+          {
+            quantity: 0.005,
+            id: 'kishmish',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-cardamom',
+          },
+        ],
+      },
+      {
+        id: 'kumbh-makai-hariyali',
+        cookingPrice: 47.3,
+        sellingPrice: '157.67',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'spinach',
+          },
+          {
+            id: 'american-corn',
+            quantity: 0.05,
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.01,
+            id: 'ginger',
+          },
+          {
+            quantity: 0.015,
+            id: 'olive-oil',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.004,
+          },
+          {
+            quantity: 0.004,
+            id: 'garam-masala',
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'butter-amul',
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.005,
+          },
+          {
+            id: 'kitchen-king',
+            quantity: 0.005,
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.05,
+          },
+        ],
+        name: 'Kumbh Makai Hariyali',
+      },
+      {
+        id: 'lachha-paratha',
+        cookingPrice: 9.5,
+        sellingPrice: '31.67',
+        ingredients: [
+          {
+            id: 'atta',
+            quantity: 0.08,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.005,
+            id: 'ghee',
+          },
+          {
+            quantity: 0.005,
+            id: 'butter-amul',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.003,
+          },
+        ],
+        name: 'Lachha Paratha',
+      },
+      {
+        id: 'lemon-garlic-vegetables',
+        cookingPrice: 50.5,
+        sellingPrice: '168.33',
+        ingredients: [
+          {
+            id: 'french-beans',
+            quantity: 0.02,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'green-peas-fresh',
+          },
+          {
+            quantity: 0.02,
+            id: 'carrot',
+          },
+          {
+            id: 'green-chilli-sauce',
+            quantity: 0.06,
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'red-capsicum',
+          },
+          {
+            quantity: 0.02,
+            id: 'yellow-capsicum',
+          },
+          {
+            id: 'white-vinegar',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.02,
+            id: 'black-pepper-whole',
+          },
+          {
+            id: 'lemon-juice',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.06,
+            id: 'onion',
+          },
+          {
+            id: 'soya-sauce',
+            quantity: 0.005,
+          },
+          {
+            id: 'sweet-chilli-sauce',
+            quantity: 0.005,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.1,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'broccoli-local',
+          },
+          {
+            quantity: 0.005,
+            id: 'mushroom-fresh',
+          },
+          {
+            id: 'hot-garlic-sauce',
+            quantity: 0.005,
+          },
+          {
+            id: 'maida',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            id: 'potato-fingers',
+            quantity: 0.03,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.005,
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.005,
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Lemon Garlic Vegetables',
+      },
+      {
+        id: 'lemon-garlic-vegetables-with-chilli-sauce',
+        cookingPrice: 35.1,
+        sellingPrice: '117.00',
+        name: 'Lemon Garlic Vegetables With Chilli Sauce',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'mushroom-fresh',
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.02,
+            id: 'chilli-paste',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.03,
+            id: 'corn-flour',
+          },
+          {
+            id: 'carrot',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.015,
+            id: 'refined-oil',
+          },
+          {
+            quantity: 0.01,
+            id: 'french-beans',
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.01,
+          },
+          {
+            id: 'lemon-seasoning',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.005,
+            id: 'aromatic-powder',
+          },
+        ],
+      },
+      {
+        id: 'mahabal-ras',
+        cookingPrice: 30.5,
+        sellingPrice: '101.67',
+        name: 'Mahabal Ras',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'khus-syrup',
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.05,
+          },
+          {
+            id: 'soda',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.005,
+            id: 'mint',
+          },
+        ],
+      },
+      {
+        id: 'malai-kofta',
+        cookingPrice: 27,
+        sellingPrice: '90.00',
+        ingredients: [
+          {
+            quantity: 0.025,
+            id: 'mawa',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.025,
+          },
+          {
+            id: 'green-cardamom',
+            quantity: 0.025,
+          },
+          {
+            id: 'dalchini-powder',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.025,
+            id: 'potato',
+          },
+          {
+            quantity: 0.02,
+            id: 'fruit-cocktail',
+          },
+          {
+            quantity: 0.005,
+            id: 'kishmish',
+          },
+          {
+            quantity: 0.05,
+            id: 'cashewnut',
+          },
+          {
+            id: 'white-gravy',
+            quantity: 0.03,
+          },
+          {
+            id: 'green-cardamom',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'white-pepper',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Malai Kofta',
+      },
+      {
+        id: 'mango-lassi',
+        cookingPrice: 17,
+        sellingPrice: '56.67',
+        name: 'Mango Lassi',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'curd',
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            id: 'milk-saras',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'mango-crush',
+          },
+        ],
+      },
+      {
+        id: 'margherita-pizza',
+        cookingPrice: 50.2,
+        sellingPrice: '167.33',
+        name: 'Margherita Pizza',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'maida',
+          },
+          {
+            id: 'fresh-yeast',
+            quantity: 0.001,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.005,
+            id: 'olive-oil',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.002,
+          },
+          {
+            id: 'semolina',
+            quantity: 0.015,
+          },
+          {
+            id: 'tomato',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.005,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.002,
+            id: 'oregano',
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato-puree',
+          },
+          {
+            id: 'go-mozzarella-cheese',
+            quantity: 0.12,
+          },
+          {
+            id: 'black-olives-pitted',
+            quantity: 0.01,
+          },
+          {
+            id: 'onion',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'basil',
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'masala-bati',
+        cookingPrice: 20.8,
+        sellingPrice: '69.33',
+        ingredients: [
+          {
+            quantity: 0.1,
+            id: 'mota-atta',
+          },
+          {
+            quantity: 0.05,
+            id: 'potato',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-peas-fresh',
+          },
+          {
+            quantity: 0.005,
+            id: 'clove-whole',
+          },
+          {
+            quantity: 0.005,
+            id: 'kishmish',
+          },
+          {
+            id: 'saunf-green-whole',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.004,
+            id: 'black-salt',
+          },
+          {
+            id: 'desi-ghee',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.003,
+            id: 'black-pepper-whole',
+          },
+          {
+            quantity: 0.003,
+            id: 'coriander-whole',
+          },
+        ],
+        name: 'Masala Bati',
+      },
+      {
+        id: 'masala-dosa',
+        cookingPrice: 7.5,
+        sellingPrice: '25.00',
+        ingredients: [
+          {
+            quantity: 0.01,
+            id: 'white-dal',
+          },
+          {
+            id: 'channa-dal',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'brown-rice-basmati',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'kadi-patta',
+          },
+          {
+            id: 'rai',
+            quantity: 0.005,
+          },
+          {
+            id: 'potato',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'cabbage',
+          },
+          {
+            id: 'turmeric-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+        ],
+        name: 'Masala Dosa',
+      },
+      {
+        id: 'masala-idli',
+        cookingPrice: 10,
+        sellingPrice: '33.33',
+        ingredients: [
+          {
+            id: 'sooji',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'eno',
+          },
+          {
+            quantity: 0.005,
+            id: 'curd',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.01,
+          },
+          {
+            id: 'mix-vegetables',
+            quantity: 0.02,
+          },
+          {
+            id: 'rai',
+            quantity: 0.005,
+          },
+          {
+            id: 'onion',
+            quantity: 0.02,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Masala Idli',
+      },
+      {
+        id: 'masala-lemonade',
+        cookingPrice: 21.2,
+        sellingPrice: '70.67',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: '7-up',
+          },
+          {
+            quantity: 0.005,
+            id: 'jaljeera-powder',
+          },
+          {
+            id: 'lemon-seasoning',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'jeera-powder',
+          },
+        ],
+        name: 'Masala Lemonade',
+      },
+      {
+        id: 'masala-tea',
+        cookingPrice: 5.5,
+        sellingPrice: '18.33',
+        name: 'Masala Tea',
+        ingredients: [
+          {
+            id: 'milk-saras',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            quantity: 0.01,
+            id: 'tea',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-cardamom',
+          },
+          {
+            quantity: 0.005,
+            id: 'clove-whole',
+          },
+          {
+            id: 'ginger',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'water',
+          },
+        ],
+      },
+      {
+        id: 'mashroob-e-anjeer',
+        cookingPrice: 26,
+        sellingPrice: '86.67',
+        name: 'Mashroob E Anjeer',
+        ingredients: [
+          {
+            id: 'anjeer',
+            quantity: 0.15,
+          },
+          {
+            id: 'milk-saras',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.005,
+            id: 'vanilla-ice-cream',
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'mashroob-e-babri',
+        cookingPrice: 50.3,
+        sellingPrice: '167.67',
+        name: 'Mashroob E Babri',
+        ingredients: [
+          {
+            quantity: 0.3,
+            id: '7-up',
+          },
+          {
+            quantity: 0.1,
+            id: 'anar',
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.05,
+          },
+          {
+            id: 'mint',
+            quantity: 0.003,
+          },
+          {
+            id: 'chia-seeds',
+            quantity: 0.05,
+          },
+        ],
+      },
+      {
+        id: 'mawa-bati',
+        cookingPrice: 20.400000000000002,
+        sellingPrice: '68.00',
+        ingredients: [
+          {
+            id: 'mota-atta',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.05,
+            id: 'mawa',
+          },
+          {
+            quantity: 0.005,
+            id: 'green-cardamom',
+          },
+          {
+            quantity: 0.001,
+            id: 'saffron',
+          },
+          {
+            quantity: 0.005,
+            id: 'kishmish',
+          },
+          {
+            id: 'cashewnut',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.004,
+            id: 'sugar',
+          },
+          {
+            id: 'pista-whole',
+            quantity: 0.003,
+          },
+          {
+            id: 'desi-ghee',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.003,
+            id: 'almond-whole',
+          },
+        ],
+        name: 'Mawa Bati',
+      },
+      {
+        id: 'medu-vada',
+        cookingPrice: 4.5,
+        sellingPrice: '15.00',
+        name: 'Medu Vada',
+        ingredients: [
+          {
+            quantity: 0.02,
+            id: 'white-dal',
+          },
+          {
+            id: 'jeera-whole',
+            quantity: 0.005,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'mexican-baked-enchilada',
+        cookingPrice: 71.6,
+        sellingPrice: '238.67',
+        ingredients: [
+          {
+            id: 'makka-atta',
+            quantity: 0.08,
+          },
+          {
+            id: 'baked-beans',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.005,
+            id: 'tomato-ketchup-kissan',
+          },
+          {
+            quantity: 0.1,
+            id: 'maida',
+          },
+          {
+            id: 'processed-cheese',
+            quantity: 0.006,
+          },
+          {
+            quantity: 0.005,
+            id: 'butter-amul',
+          },
+          {
+            quantity: 0.5,
+            id: 'mix-vegetables',
+          },
+        ],
+        name: 'Mexican Baked Enchilada',
+      },
+      {
+        id: 'mirinda',
+        cookingPrice: 45.3,
+        sellingPrice: '151.00',
+        name: 'Mirinda',
+        ingredients: [
+          {
+            quantity: 0.3,
+            id: '7-up',
+          },
+          {
+            id: 'anar',
+            quantity: 0.1,
+          },
+          {
+            id: 'sugar-syrup',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.003,
+            id: 'mint',
+          },
+        ],
+      },
+      {
+        id: 'missi-roti',
+        cookingPrice: 116.19999999999999,
+        sellingPrice: '387.33',
+        ingredients: [
+          {
+            id: 'gram-flour',
+            quantity: 0.05,
+          },
+          {
+            id: 'atta',
+            quantity: 0.02,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'kasoori-methi',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 1,
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.01,
+            id: 'onion',
+          },
+          {
+            id: 'ajwain',
+            quantity: 0.05,
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.005,
+          },
+          {
+            id: 'whole-coriander',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.003,
+            id: 'saunf-green-whole',
+          },
+          {
+            quantity: 0.003,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.003,
+            id: 'jeera-whole',
+          },
+          {
+            quantity: 0.003,
+            id: 'butter-amul',
+          },
+        ],
+        name: 'Missi Roti',
+      },
+      {
+        id: 'moong-dal-halwa',
+        cookingPrice: 34,
+        sellingPrice: '113.33',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'moong-dal',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.06,
+          },
+          {
+            quantity: 0.06,
+            id: 'desi-ghee',
+          },
+          {
+            quantity: 0.05,
+            id: 'mawa',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-colour',
+          },
+          {
+            id: 'barik-besan',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'green-cardamom',
+          },
+        ],
+        name: 'Moong Dal Halwa',
+      },
+      {
+        id: 'mugal-e-diwane-khaas',
+        cookingPrice: 445.7,
+        sellingPrice: '1485.67',
+        ingredients: [
+          {
+            id: 'paneer',
+            quantity: 0.22,
+          },
+          {
+            quantity: 0.005,
+            id: 'black-pepper-whole',
+          },
+          {
+            id: 'curd',
+            quantity: 0.06,
+          },
+          {
+            id: 'ginger-garlic-paste',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chutney',
+          },
+          {
+            quantity: 0.04,
+            id: 'anardana-chutney',
+          },
+          {
+            quantity: 0.04,
+            id: 'onion',
+          },
+          {
+            quantity: 2,
+            id: 'garam-masala',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.04,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            id: 'chat-masala',
+            quantity: 2,
+          },
+        ],
+        name: 'Mugal E-Diwane Khaas',
+      },
+      {
+        id: 'mushroom-stroganoff',
+        cookingPrice: 39.7,
+        sellingPrice: '132.33',
+        name: 'Mushroom Stroganoff',
+        ingredients: [
+          {
+            id: 'lemon-rice',
+            quantity: 0.07,
+          },
+          {
+            id: 'mushroom-fresh',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.03,
+            id: 'capsicum',
+          },
+          {
+            quantity: 0.03,
+            id: 'red-capsicum',
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.03,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.02,
+            id: 'onion',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.002,
+            id: 'white-pepper',
+          },
+          {
+            quantity: 0.05,
+            id: 'butter-amul',
+          },
+          {
+            id: 'maida',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+        ],
+      },
+      {
+        id: 'naan',
+        cookingPrice: 118.9,
+        sellingPrice: '396.33',
+        name: 'Naan',
+        ingredients: [
+          {
+            id: 'maida',
+            quantity: 0.07,
+          },
+          {
+            quantity: 0.002,
+            id: 'baking-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            id: 'milk-saras',
+            quantity: 0.05,
+          },
+          {
+            quantity: 1,
+            id: 'eggs',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.01,
+            id: 'olive-oil',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.05,
+          },
+        ],
+      },
+      {
+        id: 'namkeen-lassi',
+        cookingPrice: 23,
+        sellingPrice: '76.67',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'curd',
+          },
+          {
+            id: 'jeera-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'black-salt',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'chat-masala',
+          },
+          {
+            id: 'water',
+            quantity: 0.01,
+          },
+          {
+            id: 'mint',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Namkeen Lassi',
+      },
+      {
+        id: 'nargisi-kofta-curry',
+        cookingPrice: 41.9,
+        sellingPrice: '139.67',
+        ingredients: [
+          {
+            id: 'paneer',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.02,
+            id: 'mawa',
+          },
+          {
+            id: 'potato',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'kishmish',
+          },
+          {
+            quantity: 0.15,
+            id: 'cashewnut',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.003,
+          },
+          {
+            id: 'green-cardamom',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.005,
+            id: 'amul-fresh-cream',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-coriander',
+          },
+          {
+            quantity: 0.05,
+            id: 'carrot',
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.005,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Nargisi Kofta Curry',
+      },
+      {
+        id: 'palak-paneer',
+        cookingPrice: 29.8,
+        sellingPrice: '99.33',
+        name: 'Palak Paneer',
+        ingredients: [
+          {
+            quantity: 0.09,
+            id: 'paneer',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.02,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.01,
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.02,
+          },
+          {
+            id: 'tomato',
+            quantity: 0.03,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'salt-tata',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.008,
+            id: 'kasoori-methi',
+          },
+          {
+            id: 'kitchen-king',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.05,
+            id: 'spinach',
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+        ],
+      },
+      {
+        id: 'palak-paneer-pudina',
+        cookingPrice: 38.8,
+        sellingPrice: '129.33',
+        ingredients: [
+          {
+            id: 'paneer',
+            quantity: 0.1,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.01,
+            id: 'ginger',
+          },
+          {
+            quantity: 0.02,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'olive-oil',
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.008,
+          },
+          {
+            id: 'mint',
+            quantity: 0.01,
+          },
+          {
+            id: 'spinach',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-coriander',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+        ],
+        name: 'Palak Paneer Pudina',
+      },
+      {
+        id: 'paneer-dosa',
+        cookingPrice: 8.5,
+        sellingPrice: '28.33',
+        name: 'Paneer Dosa',
+        ingredients: [
+          {
+            id: 'white-dal',
+            quantity: 0.01,
+          },
+          {
+            id: 'channa-dal',
+            quantity: 0.005,
+          },
+          {
+            id: 'brown-rice-basmati',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'kadi-patta',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'rai',
+          },
+          {
+            quantity: 0.01,
+            id: 'potato',
+          },
+          {
+            id: 'cabbage',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'turmeric-powder',
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.005,
+          },
+          {
+            id: 'paneer',
+            quantity: 0.01,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'paneer-lababdar',
+        cookingPrice: 41.8,
+        sellingPrice: '139.33',
+        ingredients: [
+          {
+            quantity: 0.09,
+            id: 'paneer',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.07,
+          },
+          {
+            id: 'cashewnut',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.015,
+            id: 'ginger',
+          },
+          {
+            id: 'red-gravy',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.01,
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.01,
+          },
+          {
+            id: 'onion',
+            quantity: 0.1,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.015,
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.015,
+          },
+          {
+            id: 'coriander-powder',
+            quantity: 0.008,
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.005,
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.02,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.02,
+          },
+        ],
+        name: 'Paneer Lababdar',
+      },
+      {
+        id: 'paneer-tikka-pizza',
+        cookingPrice: 56.2,
+        sellingPrice: '187.33',
+        name: 'Paneer Tikka Pizza',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'maida',
+          },
+          {
+            quantity: 0.001,
+            id: 'fresh-yeast',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'olive-oil',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.015,
+            id: 'paneer',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'oregano',
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato-puree',
+          },
+          {
+            id: 'go-mozzarella-cheese',
+            quantity: 0.12,
+          },
+          {
+            quantity: 0.05,
+            id: 'mushroom-fresh',
+          },
+          {
+            id: 'red-capsicum',
+            quantity: 0.02,
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'pasta-mint-salad',
+        cookingPrice: 33,
+        sellingPrice: '110.00',
+        ingredients: [
+          {
+            id: 'penne-pasta',
+            quantity: 0.1,
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.03,
+          },
+          {
+            id: 'red-capsicum',
+            quantity: 0.04,
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.02,
+            id: 'mint',
+          },
+          {
+            quantity: 0.07,
+            id: 'mayonnaise',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'oregano',
+          },
+          {
+            id: 'black-olives-pitted',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Pasta Mint Salad',
+      },
+      {
+        id: 'peas-pulao',
+        cookingPrice: 11.5,
+        sellingPrice: '38.33',
+        name: 'Peas Pulao',
+        ingredients: [
+          {
+            quantity: 0.04,
+            id: 'brown-rice-basmati',
+          },
+          {
+            id: 'green-peas-fresh',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.02,
+            id: 'ghee',
+          },
+        ],
+      },
+      {
+        id: 'penne-arrabbiata-pasta',
+        cookingPrice: 29.799999999999997,
+        sellingPrice: '99.33',
+        name: 'Penne Arrabbiata Pasta',
+        ingredients: [
+          {
+            id: 'penne-pasta',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.01,
+            id: 'onion',
+          },
+          {
+            quantity: 0.015,
+            id: 'olive-oil',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.002,
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.02,
+            id: 'maida',
+          },
+          {
+            quantity: 0.02,
+            id: 'butter-amul',
+          },
+          {
+            quantity: 0.04,
+            id: 'milk-saras',
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.005,
+            id: 'parmesan-cheese',
+          },
+          {
+            id: 'oregano',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.002,
+            id: 'white-pepper',
+          },
+        ],
+      },
+      {
+        id: 'pepsi',
+        cookingPrice: 9.3,
+        sellingPrice: '31.00',
+        ingredients: [
+          {
+            id: 'pepsi',
+            quantity: 0.06,
+          },
+          {
+            quantity: 0.033,
+            id: 'co2',
+          },
+        ],
+        name: 'Pepsi',
+      },
+      {
+        id: 'pineapple-lassi',
+        cookingPrice: 16.5,
+        sellingPrice: '55.00',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'curd',
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            quantity: 0.005,
+            id: 'milk-saras',
+          },
+          {
+            id: 'pineapple-crush',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Pineapple Lassi',
+      },
+      {
+        id: 'pineapple-raita',
+        cookingPrice: 45.5,
+        sellingPrice: '151.67',
+        name: 'Pineapple Raita',
+        ingredients: [
+          {
+            quantity: 0.4,
+            id: 'curd',
+          },
+          {
+            quantity: 0.04,
+            id: 'pineapple',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'cherry',
+          },
+        ],
+      },
+      {
+        id: 'pineapple-sweet-&-sour-vegetable',
+        cookingPrice: 14.7,
+        sellingPrice: '49.00',
+        ingredients: [
+          {
+            quantity: 0.07,
+            id: 'pineapple-slice',
+          },
+          {
+            id: 'onion',
+            quantity: 0.015,
+          },
+          {
+            id: 'sweet-chilli-sauce',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.005,
+            id: 'corn-flour',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            id: 'bell-pepper',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Pineapple Sweet & Sour Vegetable',
+      },
+      {
+        id: 'plain-curd',
+        cookingPrice: 12,
+        sellingPrice: '40.00',
+        name: 'Plain Curd',
+        ingredients: [
+          {
+            quantity: 0.12,
+            id: 'curd',
+          },
+        ],
+      },
+      {
+        id: 'plain-idli',
+        cookingPrice: 4.5,
+        sellingPrice: '15.00',
+        ingredients: [
+          {
+            id: 'sooji',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'eno',
+          },
+          {
+            id: 'curd',
+            quantity: 0.005,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Plain Idli',
+      },
+      {
+        id: 'plain-rice',
+        cookingPrice: 15,
+        sellingPrice: '50.00',
+        name: 'Plain Rice',
+        ingredients: [
+          {
+            quantity: 0.1,
+            id: 'brown-rice-basmati',
+          },
+          {
+            id: 'ghee',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.02,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.02,
+            id: 'lemon',
+          },
+        ],
+      },
+      {
+        id: 'potato-rosti',
+        cookingPrice: 31.7,
+        sellingPrice: '105.67',
+        name: 'Potato Rosti',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'potato',
+          },
+          {
+            id: 'maida',
+            quantity: 0.05,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'butter-amul',
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.03,
+          },
+          {
+            id: 'processed-cheese',
+            quantity: 0.005,
+          },
+          {
+            id: 'sugar',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'oregano',
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'pudina-paneer-masala',
+        cookingPrice: 448.6,
+        sellingPrice: '1495.33',
+        name: 'Pudina Paneer Masala',
+        ingredients: [
+          {
+            quantity: 0.22,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.012,
+            id: 'mint',
+          },
+          {
+            quantity: 0.06,
+            id: 'curd',
+          },
+          {
+            id: 'ginger-garlic-paste',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.015,
+            id: 'mustard-oil',
+          },
+          {
+            id: 'coriander-powder',
+            quantity: 0.01,
+          },
+          {
+            id: 'jeera-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.002,
+          },
+          {
+            id: 'tomato',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.04,
+            id: 'onion',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 2,
+          },
+          {
+            quantity: 0.04,
+            id: 'capsicum',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 2,
+            id: 'chat-masala',
+          },
+        ],
+      },
+      {
+        id: 'rajwadi-handi',
+        cookingPrice: 448.6,
+        sellingPrice: '1495.33',
+        ingredients: [
+          {
+            quantity: 0.22,
+            id: 'kathal',
+          },
+          {
+            quantity: 0.012,
+            id: 'saunf-green-whole',
+          },
+          {
+            id: 'curd',
+            quantity: 0.06,
+          },
+          {
+            id: 'ginger-garlic-paste',
+            quantity: 0.04,
+          },
+          {
+            id: 'mustard-oil',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.01,
+            id: 'coriander-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'jeera-powder',
+          },
+          {
+            quantity: 0.002,
+            id: 'red-chilli-powder',
+          },
+          {
+            quantity: 0.04,
+            id: 'red-chilli-whole',
+          },
+          {
+            quantity: 0.04,
+            id: 'onion',
+          },
+          {
+            quantity: 2,
+            id: 'garam-masala',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.04,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 2,
+            id: 'chat-masala',
+          },
+        ],
+        name: 'Rajwadi Handi',
+      },
+      {
+        id: 'rawa-dosa',
+        cookingPrice: 5.5,
+        sellingPrice: '18.33',
+        name: 'Rawa Dosa',
+        ingredients: [
+          {
+            id: 'white-dal',
+            quantity: 0.02,
+          },
+          {
+            id: 'jeera-whole',
+            quantity: 0.005,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'sooji',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+        ],
+      },
+      {
+        id: 'roasted-papad',
+        cookingPrice: 4,
+        sellingPrice: '13.33',
+        ingredients: [
+          {
+            id: 'black-lentil-flour',
+            quantity: 0.02,
+          },
+          {
+            id: 'split-moong-lentil',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'hing',
+          },
+          {
+            quantity: 0.005,
+            id: 'black-pepper-whole',
+          },
+        ],
+        name: 'Roasted Papad',
+      },
+      {
+        id: 'salt-and-pepper-corn-mushroom',
+        cookingPrice: 35.2,
+        sellingPrice: '117.33',
+        ingredients: [
+          {
+            id: 'mushroom-fresh',
+            quantity: 0.04,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.04,
+            id: 'french-beans',
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.04,
+          },
+          {
+            id: 'baby-corn',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.02,
+            id: 'soya-sauce',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.02,
+          },
+          {
+            id: 'onion',
+            quantity: 0.02,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.003,
+            id: 'aromatic-powder',
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.02,
+            id: 'chilli-sauce',
+          },
+          {
+            quantity: 0.03,
+            id: 'bell-pepper',
+          },
+          {
+            quantity: 0.005,
+            id: 'black-pepper-whole',
+          },
+          {
+            quantity: 0.03,
+            id: 'refined-oil',
+          },
+        ],
+        name: 'Salt And Pepper Corn Mushroom',
+      },
+      {
+        id: 'sambar',
+        cookingPrice: 8,
+        sellingPrice: '26.67',
+        name: 'Sambar',
+        ingredients: [
+          {
+            id: 'arhar-dal',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'channa-dal',
+          },
+          {
+            id: 'kadi-patta',
+            quantity: 0.005,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'lauki',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'rai',
+          },
+          {
+            quantity: 0.01,
+            id: 'pumpkin',
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.01,
+          },
+          {
+            id: 'drumsticks',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'carrot',
+          },
+          {
+            id: 'sambar-masala',
+            quantity: 0.01,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'sarso-ka-saag',
+        cookingPrice: 39.3,
+        sellingPrice: '131.00',
+        name: 'Sarso Ka Saag',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'sarso',
+          },
+          {
+            quantity: 0.07,
+            id: 'mustard-oil',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.01,
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.005,
+          },
+          {
+            id: 'red-chilli-whole',
+            quantity: 0.003,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.025,
+            id: 'onion',
+          },
+          {
+            quantity: 0.01,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.03,
+            id: 'ginger',
+          },
+          {
+            id: 'spinach',
+            quantity: 0.03,
+          },
+        ],
+      },
+      {
+        id: 'sesame-toast',
+        cookingPrice: 157.5,
+        sellingPrice: '525.00',
+        name: 'Sesame Toast',
+        ingredients: [
+          {
+            id: 'bread-jumbo',
+            quantity: 0.2,
+          },
+          {
+            id: 'potato',
+            quantity: 0.2,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.02,
+            id: 'onion',
+          },
+          {
+            quantity: 1,
+            id: 'eggs',
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            id: 'kitchen-king',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'chat-masala',
+          },
+          {
+            id: 'sesame-seed',
+            quantity: 0.01,
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.1,
+          },
+        ],
+      },
+      {
+        id: 'shahi-paneer',
+        cookingPrice: 22.5,
+        sellingPrice: '75.00',
+        ingredients: [
+          {
+            quantity: 0.03,
+            id: 'cashewnut',
+          },
+          {
+            quantity: 0.02,
+            id: 'green-cardamom',
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.03,
+            id: 'magaj',
+          },
+          {
+            quantity: 0.03,
+            id: 'salt-tata',
+          },
+          {
+            id: 'sugar',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.1,
+            id: 'paneer',
+          },
+        ],
+        name: 'Shahi Paneer',
+      },
+      {
+        id: 'spaghetti-bolognese',
+        cookingPrice: 27.7,
+        sellingPrice: '92.33',
+        ingredients: [
+          {
+            id: 'pasta-spaghetti',
+            quantity: 0.15,
+          },
+          {
+            id: 'oregano',
+            quantity: 0.03,
+          },
+          {
+            id: 'thyme',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.005,
+            id: 'bell-pepper',
+          },
+          {
+            id: 'tomato-puree',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'amul-fresh-cream',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.003,
+            id: 'chilly-flakes',
+          },
+          {
+            id: 'tomato-ketchup-kissan',
+            quantity: 0.03,
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.02,
+          },
+        ],
+        name: 'Spaghetti Bolognese',
+      },
+      {
+        id: 'spring-roll',
+        cookingPrice: 44.00000000000001,
+        sellingPrice: '146.67',
+        name: 'Spring Roll',
+        ingredients: [
+          {
+            id: 'spring-roll-sheet',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.15,
+            id: 'cabbage',
+          },
+          {
+            id: 'carrot',
+            quantity: 0.05,
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.05,
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.015,
+            id: 'garlic',
+          },
+          {
+            id: 'white-vinegar',
+            quantity: 0.005,
+          },
+          {
+            id: 'red-chilli-sauce',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.015,
+            id: 'soya-sauce',
+          },
+          {
+            quantity: 0.015,
+            id: 'chilli-sauce',
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.002,
+          },
+          {
+            id: 'white-paper',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.03,
+            id: 'refined-oil',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+        ],
+      },
+      {
+        id: 'stuffed-kulcha',
+        cookingPrice: 119.7,
+        sellingPrice: '399.00',
+        name: 'Stuffed Kulcha',
+        ingredients: [
+          {
+            quantity: 0.07,
+            id: 'maida',
+          },
+          {
+            quantity: 0.002,
+            id: 'baking-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            quantity: 0.05,
+            id: 'milk-saras',
+          },
+          {
+            id: 'eggs',
+            quantity: 1,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.01,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.005,
+            id: 'go-mozzarella-cheese',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.003,
+          },
+        ],
+      },
+      {
+        id: 'stuffed-paratha',
+        cookingPrice: 28.5,
+        sellingPrice: '95.00',
+        ingredients: [
+          {
+            id: 'potato',
+            quantity: 0.2,
+          },
+          {
+            id: 'jeera-whole',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'paneer',
+          },
+          {
+            id: 'garam-masala',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-coriander',
+          },
+          {
+            quantity: 0.005,
+            id: 'chat-masala',
+          },
+          {
+            quantity: 0.02,
+            id: 'olive-oil',
+          },
+          {
+            quantity: 0.01,
+            id: 'butter-amul',
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+        ],
+        name: 'Stuffed Paratha',
+      },
+      {
+        id: 'subjh-sair-kofta',
+        cookingPrice: 38.7,
+        sellingPrice: '129.00',
+        ingredients: [
+          {
+            id: 'carrot',
+            quantity: 0.05,
+          },
+          {
+            id: 'corn-flour',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.002,
+            id: 'french-beans',
+          },
+          {
+            quantity: 0.005,
+            id: 'apricot',
+          },
+          {
+            id: 'coconut-powder',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'refined-oil',
+          },
+          {
+            id: 'curd',
+            quantity: 0.15,
+          },
+          {
+            id: 'sugar',
+            quantity: 0.1,
+          },
+          {
+            id: 'chat-masala',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Subjh Sair Kofta',
+      },
+      {
+        id: 'subji-miloni',
+        cookingPrice: 28,
+        sellingPrice: '93.33',
+        name: 'Subji Miloni',
+        ingredients: [
+          {
+            id: 'french-beans',
+            quantity: 0.02,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.02,
+          },
+          {
+            id: 'green-peas-fresh',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'carrot',
+          },
+          {
+            quantity: 0.04,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.04,
+            id: 'onion',
+          },
+          {
+            quantity: 0.005,
+            id: 'cumin-seeds',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'coriander-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'turmeric-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'kitchen-king',
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.02,
+            id: 'spinach',
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            id: 'tomato-puree',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'butter-amul',
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'olive-oil',
+          },
+        ],
+      },
+      {
+        id: 'sweet-lassi',
+        cookingPrice: 17.5,
+        sellingPrice: '58.33',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'curd',
+          },
+          {
+            quantity: 0.01,
+            id: 'sugar',
+          },
+          {
+            quantity: 0.01,
+            id: 'milk-saras',
+          },
+          {
+            id: 'rooh-afza',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Sweet Lassi',
+      },
+      {
+        id: 'tandoori-roti',
+        cookingPrice: 15008,
+        sellingPrice: '50026.67',
+        ingredients: [
+          {
+            id: 'atta',
+            quantity: 0.06,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'olive-oil',
+          },
+          {
+            id: 'water',
+            quantity: 150,
+          },
+          {
+            quantity: 0.01,
+            id: 'butter-amul',
+          },
+        ],
+        name: 'Tandoori Roti',
+      },
+      {
+        id: 'tawa-roti',
+        cookingPrice: 112.7,
+        sellingPrice: '375.67',
+        name: 'Tawa Roti',
+        ingredients: [
+          {
+            id: 'maida',
+            quantity: 0.07,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.005,
+            id: 'ghee',
+          },
+          {
+            quantity: 0.05,
+            id: 'milk-saras',
+          },
+          {
+            id: 'eggs',
+            quantity: 1,
+          },
+        ],
+      },
+      {
+        id: 'tea',
+        cookingPrice: 3.5,
+        sellingPrice: '11.67',
+        name: 'Tea',
+        ingredients: [
+          {
+            id: 'milk-saras',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'sugar',
+          },
+          {
+            id: 'tea',
+            quantity: 0.01,
+          },
+          {
+            id: 'water',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'tofu-kimchi',
+        cookingPrice: 34,
+        sellingPrice: '113.33',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'tofu-paneer',
+          },
+          {
+            id: 'chilli-paste',
+            quantity: 0.02,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.02,
+            id: 'tomato-ketchup-kissan',
+          },
+          {
+            quantity: 0.05,
+            id: 'maida',
+          },
+          {
+            id: 'corn-flour',
+            quantity: 0.04,
+          },
+          {
+            id: 'spring-onion',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'lemon',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'baking-powder',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Tofu Kimchi',
+      },
+      {
+        id: 'tomato-corn-cheese-bruschetta',
+        cookingPrice: 43.8,
+        sellingPrice: '146.00',
+        name: 'Tomato Corn Cheese Bruschetta',
+        ingredients: [
+          {
+            quantity: 0.2,
+            id: 'garlic-bread',
+          },
+          {
+            quantity: 0.05,
+            id: 'corn',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.1,
+          },
+          {
+            id: 'oregano',
+            quantity: 0.005,
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.005,
+            id: 'garlic',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.01,
+            id: 'butter-amul',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            id: 'go-mozzarella-cheese',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'basil',
+          },
+        ],
+      },
+      {
+        id: 'tomato-rasam',
+        cookingPrice: 5.5,
+        sellingPrice: '18.33',
+        ingredients: [
+          {
+            id: 'tomato',
+            quantity: 0.02,
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.005,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'black-pepper-whole',
+          },
+          {
+            quantity: 0.005,
+            id: 'rasam-powder',
+          },
+          {
+            id: 'jeera-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.005,
+          },
+        ],
+        name: 'Tomato Rasam',
+      },
+      {
+        id: 'tomato-shorba',
+        cookingPrice: 46.5,
+        sellingPrice: '155.00',
+        name: 'Tomato Shorba',
+        ingredients: [
+          {
+            id: 'tomato',
+            quantity: 0.25,
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.01,
+            id: 'bay-leaf',
+          },
+          {
+            quantity: 0.025,
+            id: 'celery',
+          },
+          {
+            id: 'carrot',
+            quantity: 0.025,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.03,
+            id: 'butter-amul',
+          },
+          {
+            id: 'whole-coriander',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'cumin-seeds',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-powder',
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.03,
+          },
+        ],
+      },
+      {
+        id: 'tortilla-veg-potato-finger',
+        cookingPrice: 30.6,
+        sellingPrice: '102.00',
+        ingredients: [
+          {
+            quantity: 0.03,
+            id: 'tortilla-wrap',
+          },
+          {
+            id: 'onion',
+            quantity: 0.05,
+          },
+          {
+            id: 'tomato',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.03,
+            id: 'capsicum',
+          },
+          {
+            quantity: 0.03,
+            id: 'red-capsicum',
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-coriander',
+          },
+          {
+            id: 'baked-beans',
+            quantity: 0.05,
+          },
+          {
+            id: 'white-vinegar',
+            quantity: 0.01,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.003,
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.003,
+          },
+        ],
+        name: 'Tortilla Veg Potato Finger',
+      },
+      {
+        id: 'vada-pav',
+        cookingPrice: 30.900000000000002,
+        sellingPrice: '103.00',
+        name: 'Vada Pav',
+        ingredients: [
+          {
+            id: 'pav',
+            quantity: 0.15,
+          },
+          {
+            id: 'potato',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.002,
+            id: 'mustard-seed-yellow',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.005,
+            id: 'turmeric-powder',
+          },
+          {
+            id: 'kadi-patta',
+            quantity: 0.001,
+          },
+          {
+            id: 'red-chilli-whole',
+            quantity: 0.002,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+          {
+            quantity: 0.05,
+            id: 'gram-flour',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.001,
+            id: 'hing',
+          },
+          {
+            id: 'lemon',
+            quantity: 0.02,
+          },
+          {
+            id: 'iceberg-lettuce',
+            quantity: 0.01,
+          },
+        ],
+      },
+      {
+        id: 'veg-alfredo-pasta',
+        cookingPrice: 59.2,
+        sellingPrice: '197.33',
+        name: 'Veg Alfredo Pasta',
+        ingredients: [
+          {
+            quantity: 0.03,
+            id: 'green-jugni',
+          },
+          {
+            quantity: 0.03,
+            id: 'yellow-jugni',
+          },
+          {
+            id: 'oregano',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.03,
+            id: 'thyme',
+          },
+          {
+            id: 'amul-fresh-cream',
+            quantity: 0.09,
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.03,
+            id: 'red-capsicum',
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.03,
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.05,
+            id: 'atta',
+          },
+          {
+            id: 'penne-pasta',
+            quantity: 0.1,
+          },
+          {
+            quantity: 0.05,
+            id: 'go-mozzarella-cheese',
+          },
+        ],
+      },
+      {
+        id: 'veg-biryani',
+        cookingPrice: 47.8,
+        sellingPrice: '159.33',
+        name: 'Veg Biryani',
+        ingredients: [
+          {
+            quantity: 0.06,
+            id: 'brown-rice-basmati',
+          },
+          {
+            quantity: 0.1,
+            id: 'onion',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.05,
+            id: 'ginger-garlic-paste',
+          },
+          {
+            quantity: 0.03,
+            id: 'carrot',
+          },
+          {
+            quantity: 0.03,
+            id: 'french-beans',
+          },
+          {
+            quantity: 0.03,
+            id: 'cauliflower',
+          },
+          {
+            quantity: 0.01,
+            id: 'mint',
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.04,
+          },
+          {
+            id: 'kewra-water',
+            quantity: 0.01,
+          },
+          {
+            id: 'lemon-juice',
+            quantity: 0.004,
+          },
+          {
+            quantity: 0.002,
+            id: 'turmeric-powder',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-whole',
+          },
+          {
+            quantity: 0.003,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.008,
+            id: 'garam-masala',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.05,
+          },
+          {
+            quantity: 0.001,
+            id: 'saffron',
+          },
+          {
+            quantity: 0.005,
+            id: 'cashewnut',
+          },
+          {
+            quantity: 0.03,
+            id: 'olive-oil',
+          },
+        ],
+      },
+      {
+        id: 'veg-chopsuey',
+        cookingPrice: 33.5,
+        sellingPrice: '111.67',
+        ingredients: [
+          {
+            quantity: 0.1,
+            id: 'noodles',
+          },
+          {
+            id: 'spring-onion',
+            quantity: 0.01,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'cabbage',
+          },
+          {
+            quantity: 0.07,
+            id: 'green-chilli-sauce',
+          },
+          {
+            quantity: 0.01,
+            id: 'garlic',
+          },
+          {
+            quantity: 0.03,
+            id: 'red-chilli-sauce',
+          },
+          {
+            quantity: 0.003,
+            id: 'black-pepper-whole',
+          },
+          {
+            id: 'aromatic-powder',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.03,
+            id: 'butter-amul',
+          },
+          {
+            id: 'bbq',
+            quantity: 0.05,
+          },
+          {
+            id: 'corn-flour',
+            quantity: 0.01,
+          },
+        ],
+        name: 'Veg Chopsuey',
+      },
+      {
+        id: 'veg-fried-rice',
+        cookingPrice: 89.6,
+        sellingPrice: '298.67',
+        ingredients: [
+          {
+            quantity: 0.5,
+            id: 'rice-india-gate',
+          },
+          {
+            id: 'cabbage',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.04,
+            id: 'carrot',
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.04,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.2,
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            quantity: 0.001,
+            id: 'white-pepper',
+          },
+          {
+            quantity: 0.015,
+            id: 'soya-sauce',
+          },
+          {
+            quantity: 0.015,
+            id: 'chilli-sauce',
+          },
+          {
+            quantity: 0.02,
+            id: 'spring-onion',
+          },
+          {
+            quantity: 0.005,
+            id: 'aromatic-powder',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.015,
+          },
+        ],
+        name: 'Veg Fried Rice',
+      },
+      {
+        id: 'veg-manchow',
+        cookingPrice: 40.50000000000001,
+        sellingPrice: '135.00',
+        ingredients: [
+          {
+            quantity: 0.01,
+            id: 'refined-oil',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.03,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.02,
+          },
+          {
+            id: 'green-chilli',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.03,
+            id: 'cabbage',
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.03,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.03,
+          },
+          {
+            id: 'chilli-sauce',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'spring-onion',
+          },
+          {
+            quantity: 0.03,
+            id: 'soya-sauce',
+          },
+          {
+            id: 'water',
+            quantity: 0.12,
+          },
+          {
+            id: 'corn-flour',
+            quantity: 0.015,
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.03,
+            id: 'paneer',
+          },
+          {
+            id: 'noodles',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.001,
+            id: 'aromatic-powder',
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+        ],
+        name: 'Veg Manchow',
+      },
+      {
+        id: 'veg-manchurian',
+        cookingPrice: 37.9,
+        sellingPrice: '126.33',
+        name: 'Veg Manchurian',
+        ingredients: [
+          {
+            id: 'cabbage',
+            quantity: 0.04,
+          },
+          {
+            id: 'carrot',
+            quantity: 0.04,
+          },
+          {
+            id: 'french-beans',
+            quantity: 0.04,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.03,
+            id: 'corn-flour',
+          },
+          {
+            id: 'white-vinegar',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.03,
+            id: 'tomato-ketchup-kissan',
+          },
+          {
+            id: 'soya-sauce',
+            quantity: 0.02,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'onion',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.003,
+            id: 'aromatic-powder',
+          },
+          {
+            id: 'white-pepper',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.02,
+            id: 'chilli-sauce',
+          },
+          {
+            id: 'black-pepper-whole',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.03,
+            id: 'refined-oil',
+          },
+        ],
+      },
+      {
+        id: 'veg-raita',
+        cookingPrice: 47.5,
+        sellingPrice: '158.33',
+        name: 'Veg Raita',
+        ingredients: [
+          {
+            id: 'curd',
+            quantity: 0.4,
+          },
+          {
+            quantity: 0.02,
+            id: 'cucumber',
+          },
+          {
+            quantity: 0.02,
+            id: 'onion',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.02,
+          },
+          {
+            id: 'jeera-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'vegetable-jalfrezi',
+        cookingPrice: 37.3,
+        sellingPrice: '124.33',
+        name: 'Vegetable Jalfrezi',
+        ingredients: [
+          {
+            id: 'red-capsicum',
+            quantity: 0.02,
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.02,
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'french-beans',
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'carrot',
+          },
+          {
+            id: 'lemon',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.005,
+            id: 'saunf-green-whole',
+          },
+          {
+            id: 'sarso',
+            quantity: 0.003,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-peas',
+          },
+          {
+            quantity: 0.01,
+            id: 'cabbage',
+          },
+          {
+            quantity: 0.005,
+            id: 'red-chilli-whole',
+          },
+          {
+            quantity: 0.05,
+            id: 'onion',
+          },
+          {
+            id: 'tomato',
+            quantity: 0.06,
+          },
+          {
+            id: 'red-chilli-powder',
+            quantity: 0.005,
+          },
+          {
+            id: 'cumin-seeds',
+            quantity: 0.005,
+          },
+          {
+            id: 'turmeric-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'coriander-powder',
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'garam-masala',
+          },
+          {
+            id: 'kitchen-king',
+            quantity: 0.005,
+          },
+          {
+            id: 'kasoori-methi',
+            quantity: 0.005,
+          },
+          {
+            id: 'ginger',
+            quantity: 0.005,
+          },
+          {
+            id: 'garlic',
+            quantity: 0.01,
+          },
+          {
+            id: 'green-coriander',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.005,
+            id: 'green-chilli',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.015,
+          },
+          {
+            quantity: 0.005,
+            id: 'amul-fresh-cream',
+          },
+          {
+            id: 'butter-amul',
+            quantity: 0.005,
+          },
+        ],
+      },
+      {
+        id: 'veggie-lover-pizza',
+        cookingPrice: 58.2,
+        sellingPrice: '194.00',
+        ingredients: [
+          {
+            quantity: 0.15,
+            id: 'maida',
+          },
+          {
+            id: 'fresh-yeast',
+            quantity: 0.001,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'olive-oil',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'sugar',
+          },
+          {
+            quantity: 0.015,
+            id: 'semolina',
+          },
+          {
+            quantity: 0.1,
+            id: 'tomato',
+          },
+          {
+            quantity: 0.03,
+            id: 'onion',
+          },
+          {
+            id: 'garlic',
+            quantity: 0.005,
+          },
+          {
+            id: 'oregano',
+            quantity: 0.002,
+          },
+          {
+            quantity: 0.05,
+            id: 'tomato-puree',
+          },
+          {
+            id: 'go-mozzarella-cheese',
+            quantity: 0.12,
+          },
+          {
+            id: 'black-olives-pitted',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'basil',
+          },
+          {
+            id: 'feta-cheese',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'red-capsicum',
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.02,
+          },
+          {
+            id: 'chilly-flakes',
+            quantity: 0.005,
+          },
+          {
+            id: 'yellow-capsicum',
+            quantity: 0.02,
+          },
+        ],
+        name: 'Veggie Lover Pizza',
+      },
+      {
+        id: 'vermicelli-upma',
+        cookingPrice: 8.5,
+        sellingPrice: '28.33',
+        ingredients: [
+          {
+            id: 'vermicelli',
+            quantity: 0.03,
+          },
+          {
+            quantity: 0.005,
+            id: 'jeera-whole',
+          },
+          {
+            quantity: 0.01,
+            id: 'green-chilli',
+          },
+          {
+            quantity: 0.005,
+            id: 'salt-tata',
+          },
+          {
+            id: 'mix-vegetables',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.01,
+            id: 'potato',
+          },
+          {
+            id: 'green-peas-fresh',
+            quantity: 0.01,
+          },
+          {
+            quantity: 0.005,
+            id: 'ginger',
+          },
+        ],
+        name: 'Vermicelli Upma',
+      },
+      {
+        id: 'wazul-ras',
+        cookingPrice: 35,
+        sellingPrice: '116.67',
+        name: 'Wazul Ras',
+        ingredients: [
+          {
+            id: 'grenadine-syrup',
+            quantity: 0.15,
+          },
+          {
+            quantity: 0.1,
+            id: 'sugar-syrup',
+          },
+          {
+            id: 'soda',
+            quantity: 0.1,
+          },
+        ],
+      },
+      {
+        id: 'zafrani-paneer-tikka',
+        cookingPrice: 447.4,
+        sellingPrice: '1491.33',
+        ingredients: [
+          {
+            quantity: 0.22,
+            id: 'paneer',
+          },
+          {
+            quantity: 0.06,
+            id: 'curd',
+          },
+          {
+            quantity: 0.04,
+            id: 'ginger-garlic-paste',
+          },
+          {
+            id: 'mustard-oil',
+            quantity: 0.015,
+          },
+          {
+            id: 'coriander-powder',
+            quantity: 0.01,
+          },
+          {
+            id: 'jeera-powder',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.002,
+            id: 'red-chilli-powder',
+          },
+          {
+            quantity: 0.04,
+            id: 'tomato',
+          },
+          {
+            id: 'onion',
+            quantity: 0.04,
+          },
+          {
+            id: 'garam-masala',
+            quantity: 2,
+          },
+          {
+            id: 'capsicum',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.002,
+            id: 'salt-tata',
+          },
+          {
+            id: 'chat-masala',
+            quantity: 2,
+          },
+        ],
+        name: 'Zafrani Paneer Tikka',
+      },
+      {
+        id: 'zafrani-pulao',
+        cookingPrice: 12.7,
+        sellingPrice: '42.33',
+        name: 'Zafrani Pulao',
+        ingredients: [
+          {
+            id: 'brown-rice-basmati',
+            quantity: 0.04,
+          },
+          {
+            quantity: 0.01,
+            id: 'green-peas-fresh',
+          },
+          {
+            id: 'carrot',
+            quantity: 0.02,
+          },
+          {
+            id: 'cauliflower',
+            quantity: 0.02,
+          },
+          {
+            quantity: 0.02,
+            id: 'french-beans',
+          },
+          {
+            id: 'saffron',
+            quantity: 0.002,
+          },
+          {
+            id: 'salt-tata',
+            quantity: 0.005,
+          },
+          {
+            quantity: 0.01,
+            id: 'ghee',
+          },
+        ],
+      },
+    ];

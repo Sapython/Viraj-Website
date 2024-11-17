@@ -1,0 +1,29 @@
+#confirm-delete-modal {
+  text-align: center;
+
+  h3 {
+    color: var(--primary);
+    font-family: var(--font-three);
+    font-size: var(--small);
+    margin: 0;
+  }
+
+  i {
+    color: var(--secondary);
+    font-size: 3rem;
+    margin: 0.5em 0;
+  }
+
+  #buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 30%;
+      margin: 0 0.25em;
+      padding: 0.5em 1em;
+      font-size: var(--xsmall);
+      margin-top: 1em;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<section>
+  <h3>
+    Welcome back{{
+      dataProvider.userData?.displayName
+        ? ", " + dataProvider.userData!.displayName
+        : ""
+    }}!
+  </h3>
+  <div id="quick-links">
+    <h4>Quick Links</h4>
+    <div id="buttons">
+      <button routerLink="../stock">Stock</button>
+      <button routerLink="../utilities">Utilities</button>
+      <button routerLink="../tasks">Tasks</button>
+      <button routerLink="../recipes">Recipes</button>
+      <button routerLink="../employees">Employees</button>
+      <button routerLink="../customers">Customers</button>
+    </div>
+    <button id="logout">Logout</button>
+  </div>
+  <div id="charts">
+    <canvas id="recipe-graph"></canvas>
+    <canvas id="stock-pie"></canvas>
+  </div>
+  <div id="panels">
+    <div class="panel">
+      <h4>Stock</h4>
+      <p>Edit or view stock</p>
+      <button class="primary-btn" routerLink="/admin/stock">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h4>Tasks</h4>
+      <p>Edit or view tasks</p>
+      <button class="primary-btn" routerLink="/admin/tasks">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h4>Recipes</h4>
+      <p>Edit or view recipes</p>
+      <button class="primary-btn" routerLink="/admin/recipes">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h4>Employees</h4>
+      <p>Edit or view employees</p>
+      <button class="primary-btn" routerLink="/admin/employees">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+    <div class="panel">
+      <h4>Customers</h4>
+      <p>Edit or view customers</p>
+      <button class="primary-btn" routerLink="/admin/customers">
+        <i class="fa-solid fa-eye"></i>View
+      </button>
+    </div>
+  </div>
+</section>

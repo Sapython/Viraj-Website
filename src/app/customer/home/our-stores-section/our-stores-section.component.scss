@@ -1,0 +1,71 @@
+#our-stores {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--normal-shadow);
+  width: 95%;
+  margin: 2em auto;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+iframe,
+#stores-content {
+  width: 50%;
+}
+
+iframe {
+  border-radius: 15px;
+  height: 400px;
+}
+
+#stores-content {
+  padding: 2em;
+}
+
+#locations {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.location {
+  width: 45%;
+  margin-bottom: 2em;
+}
+
+.location-heading,
+address {
+  font-family: var(--font-two);
+  color: var(--primary);
+}
+
+address {
+  margin: 0;
+}
+
+@media (max-width: 950px) {
+  #our-stores {
+    flex-direction: column;
+  }
+
+  iframe,
+  #stores-content {
+    width: 100%;
+  }
+
+  #stores-content {
+      padding: 0;
+      padding-top: 1.5em;
+  }
+}
+
+@media (max-width: 550px) {
+  .location {
+    width: 100%;
+  }
+
+  .location:last-of-type {
+      margin-bottom: 0;
+  }
+}

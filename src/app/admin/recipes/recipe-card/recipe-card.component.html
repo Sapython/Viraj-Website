@@ -1,0 +1,17 @@
+<div id="card">
+  <img [src]="recipe.photos ? recipe.photos[0] : 'assets/img/pexels-photo-1640777.jpeg'" loading="lazy" />
+  <div id="card-content">
+    <div>
+      <h3 [attr.uk-tooltip]="recipe.name">{{serialNumber}}.&nbsp;&nbsp;&nbsp;{{ recipe.name }}</h3>
+      <p>{{ recipe.id }}</p>
+    </div>
+    <div id="price">₹{{ recipe.sellingPrice }}</div>
+    <div id="buttons">
+      <button class="primary-btn" (click)="viewRecipe.emit()">View</button>
+      <button class="primary-btn" (click)="requestEdit.emit()">Edit</button>
+      <button class="primary-btn" (click)="requestDelete.emit(recipe.id)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

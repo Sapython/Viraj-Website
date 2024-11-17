@@ -1,0 +1,181 @@
+<section>
+  <div class="topBar">
+    <div class="search-box">
+      <input type="text" class="admin-search" placeholder="Search..." (input)="searchUtilities()" #utilitySearchInput />
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <button (click)="
+        updateUtilityEnabled ? updateUtility() : (updateUtilityEnabled = true)
+      ">
+      {{ updateUtilityEnabled ? "Save" : "Update" }} Utility
+    </button>
+    <div>
+      <mat-paginator *ngIf="utilityLength > 0" [length]="utilityLength" [pageSize]="10"
+        [pageSizeOptions]="[10, 20, 30, 40, 50, 100, 500]" (page)="getNextUtilities($event)" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
+  <div *ngIf="!utilities" uk-spinner="ratio: 3" id="loading"></div>
+  <ng-container *ngIf="utilities">
+    <div *ngIf="utilities.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Total Items</th>
+            <th>Rate</th>
+            <th *ngIf="updateUtilityEnabled">Quantity</th>
+            <th *ngIf="updateUtilityEnabled">Rate</th>
+            <th *ngIf="updateUtilityEnabled">Mic Update</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="
+              let utility of utilitySearchInput.value == ''
+                ? utilities
+                : filteredUtilities;
+              let i = index
+            ">
+            <td>{{ i + 1 + serialNumberAdditionalCounter }}.</td>
+            <td>{{ utility.name }} ({{ utility.type }})</td>
+            <td>{{ utility.quantityPerItem }}</td>
+            <td>₹{{ utility.totalPrice }}</td>
+            <td>{{ utility.totalQuantity }}-{{ utility.unit }}</td>
+            <td>₹{{ utility.rate }}/{{ utility.unit }}</td>
+            <td *ngIf="updateUtilityEnabled">
+              <input min="0" [value]="utility.quantity" type="number" name="utility"
+                (change)="changeUtility(utility, $event)" />
+              <input min="0" [value]="utility.rate" type="number" name="rate" (change)="changeRate(utility, $event)" />
+              <button id="mic-button">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </td>
+            <td>
+              <div class="buttons">
+                <button class="primary-btn" (click)="editUtility(utility)">
+                  <i class="fa-solid fa-pen-to-square"></i>Edit
+                </button>
+                <button class="primary-btn" uk-toggle="target: #confirm-delete-modal"
+                  (click)="currentDeleteId = utility.id">
+                  <i class="fa-solid fa-trash"></i>Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p *ngIf="utilities.length == 0">No Utilities :(</p>
+  </ng-container>
+</section>
+
+<div id="utility-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add New Utility</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Utility</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="utilityForm" (ngSubmit)="submit()">
+      <div id="utility-inputs">
+        <div class="utility-form-box">
+          <label class="admin-label" for="name-input">Name *</label>
+          <input type="text" class="admin-input" formControlName="name" id="name-input" />
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label" for="type-input">Type *</label>
+          <input type="text" class="admin-input" formControlName="type" id="type-input" />
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label">Unit *</label>
+          <select class="admin-input" formControlName="unit" #unitInput>
+            <option ngValue="" disabled>Choose unit</option>
+            <option *ngFor="let unit of units" [ngValue]="unit.name">
+              {{ unit.description }} ({{ unit.name }})
+            </option>
+          </select>
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label" for="quantity-input">Total Items *</label>
+          <input type="number" min="0" class="admin-input" formControlName="totalItems" id="quantity-input"
+            (input)="calculateCurrentValue()" />
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label" for="quantity-input">Quantity of 1 Item *</label>
+          <div id="rate-input-container">
+            <input type="number" min="0" class="admin-input" formControlName="quantityPerItem" id="quantity-input"
+              (input)="calculateCurrentValue()" />
+            <span id="per-unit">{{
+              unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||
+              "unit"
+              }}</span>
+          </div>
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label" for="rate-input">Price Of 1 Item *</label>
+          <div id="rate-input-container">
+            <span id="currency-symbol">₹</span>
+            <input type="number" class="admin-input" formControlName="rate" id="rate-input"
+              (input)="calculateCurrentValue()" />
+          </div>
+        </div>
+        <div class="utility-form-box totalQuantity">
+          <label class="admin-label">Total Quantity (Calculated)</label>
+          <div>
+            <span class="admin-input"><span style="color: var(--color-two)"></span>{{ currentValue }}</span>
+            <p>
+              {{
+              unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||
+              "unit"
+              }}
+            </p>
+          </div>
+        </div>
+        <div class="utility-form-box">
+          <label class="admin-label">Total Price (Calculated)</label>
+          <span class="admin-input"><span style="color: var(--color-two)">₹</span>
+            {{ totalPrice }}</span>
+        </div>
+      </div>
+      <button *ngIf="!editMode" [disabled]="!utilityForm.valid" type="submit" class="primary-btn">
+        Add Utility
+      </button>
+      <button *ngIf="editMode" [disabled]="!utilityForm.valid" type="submit" class="primary-btn">
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<div id="update-utility-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 class="uk-modal-title">Update Utilities</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div id="search-and-mic">
+      <div class="search-box">
+        <input type="text" class="admin-search" (input)="searchUtilities()" />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <button id="mic-button"><i class="fa-solid fa-microphone"></i></button>
+    </div>
+    <form [formGroup]="updateUtilityForm" (ngSubmit)="updateUtility()">
+      <div id="utility-containers">
+        <div class="utility-container" *ngFor="let utility of filteredUtilities">
+          <div class="flex-subcontainer">
+            <!-- <img [src]="utility.image" /> -->
+            <p>{{ utility.name }}</p>
+          </div>
+          <div class="flex-subcontainer">
+            <input type="number" [formControlName]="utility.id" min="0" />
+            <p class="utility-unit">{{ utility.unit }}</p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="primary-btn">Update Utility</button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal (confirmDelete)="deleteUtility()" (hidden)="currentDeleteId = ''"></app-confirm-delete-modal>

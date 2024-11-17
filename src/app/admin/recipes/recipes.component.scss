@@ -1,0 +1,185 @@
+section {
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  div.topBar {
+    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      row-gap: 10px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      .admin-search {
+        border: 2px solid var(--secondary);
+      }
+    }
+    button {
+      padding: 10px;
+      border: none;
+      background: var(--secondary);
+      color: white;
+      font-size: 1.2em;
+      margin-left: 10px;
+      border-radius: 7px;
+      @media (max-width: 600px) {
+        font-size: 0.7em; 
+      }
+    }
+  }
+  #recipe-cards {
+    display: flex;
+    flex-wrap: wrap;
+
+    app-recipe-card {
+      width: 23%;
+      margin: 1em;
+
+      @media (max-width: 2000px) {
+        width: 30%;
+      }
+      @media (max-width: 1200px) {
+        width: 45%;
+      }
+      @media (max-width: 640px) {
+        width: 100%;
+      }
+    }
+  }
+  div { 
+    button{
+      font-family: var(--font-three);
+        font-size: var(--xsmall);
+        font-weight: 500;
+        padding: 0.25em 0.5em;
+        background-color: var(--secondary-contrast);
+        color: var(--secondary);
+        border: none;
+        transition: all 0.5s;
+        border-radius: 7px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        width: fit-content;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:last-of-type {
+          margin-left: 1em;
+        }
+
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: 720px) {
+          font-size: var(--xxsmall);
+        }
+    }
+  }
+}
+
+.uk-modal-dialog {
+  form {
+    .recipe-form-box {
+      margin-top: 1em;
+
+      label {
+        color: var(--secondary);
+        font-weight: 500;
+        padding-left: 0.5em;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      select {
+        width: 100%;
+      }
+
+      #season-box {
+        display: flex;
+        align-items: center;
+
+        .from-to {
+          color: #000;
+          font-family: var(--font-two);
+          font-size: var(--small);
+          margin: 0 0.5em;
+        }
+      }
+
+      ::ng-deep {
+        .ingredient-input-container {
+          display: flex;
+          justify-content: center;
+          color: var(--secondary);
+          font-size: var(--small);
+          font-family: var(--font-three);
+
+          .ingredient-select {
+            width: 70%;
+          }
+
+          .ingredient-quantity {
+            margin: 0 0.5em;
+            width: 20%;
+          }
+
+          .ingredient-unit {
+            width: 10%;
+            align-self: center;
+          }
+
+          i {
+            margin-left: 1em;
+            cursor: pointer;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            align-self: center;
+          }
+        }
+      }
+
+      #add-ingredient,
+      .add-instruction {
+        font-size: var(--xsmall);
+        background: transparent;
+        color: var(--secondary);
+        width: fit-content;
+        font-family: var(--font-three);
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: none;
+          opacity: 0.7;
+        }
+      }
+
+      .time-input-box {
+        display: flex;
+
+        input {
+          margin-right: 0.5em;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.5em 1em;
+      font-size: var(--small);
+      margin-top: 1em;
+    }
+  }
+}

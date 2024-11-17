@@ -1,0 +1,41 @@
+<section>
+  <button id="go-back" class="primary-btn" routerLink="..">
+    <i class="fa-solid fa-arrow-left"></i> All Customers
+  </button>
+  <div id="photo">
+    <img [src]="customer?.image || 'assets/img/circle-user-solid.svg'" referrerpolicy="no-referrer" />
+  </div>
+  <div id="details-container">
+    <h3>{{ customer?.name }}</h3>
+    <div id="details">
+      <p class="detail">
+        <span class="key">Date of Birth: </span>
+        <span class="value">{{ dateService.getDateName(customer?.dob) || '-' }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Gender: </span>
+        <span class="value">{{ (customer?.gender.charAt(0).toUpperCase() + customer?.gender.substring(1)) || '-' }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Gross Purchase: </span>
+        <span class="value">{{ customer?.grossPurchase || '-' }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Phone Number: </span>
+        <span class="value">{{ customer?.phoneNumber || '-'  }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Email: </span>
+        <span class="value">{{ customer?.email || '-'  }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Address: </span>
+        <span class="value">{{ customer?.address || '-'  }}</span>
+      </p>
+      <p class="detail">
+        <span class="key">Job: </span>
+        <span class="value">{{ customer?.job || '-'  }}</span>
+      </p>
+    </div>
+  </div>
+</section>

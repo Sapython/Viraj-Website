@@ -1,0 +1,142 @@
+<section>
+  <div *ngIf="!filteredEmployees" uk-spinner="ratio: 3" id="loading"></div>
+  <ng-container *ngIf="filteredEmployees">
+    <div *ngIf="employees.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th width="10%"></th>
+            <th width="20%">Employee Name</th>
+            <th width="20%">Job Title</th>
+            <th width="10%">Age</th>
+            <th width="10%">Experience</th>
+            <th width="30%"></th>
+          </tr>
+        </thead>
+        <tbody id="employee-rows">
+          <tr *ngFor="let employee of filteredEmployees" class="employee-row">
+            <td>
+              <img [src]="employee.image || 'assets/img/circle-user-solid.svg'" />
+            </td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.post || "-" }}</td>
+            <td>{{ dateService.getAge(employee.dob) || "-" }}</td>
+            <td>{{ getExperience(employee.yearStartedWork) || "-" }}</td>
+            <td>
+              <div class="buttons">
+                <button class="primary-btn" [routerLink]="employee.id">
+                  <i class="fa-solid fa-eye"></i>View
+                </button>
+                <button class="primary-btn" (click)="editEmployee(employee)">
+                  <i class="fa-solid fa-pen-to-square"></i>Edit
+                </button>
+                <button class="primary-btn" uk-toggle="target: #confirm-delete-modal"
+                  (click)="currentDeleteId = employee.id">
+                  <i class="fa-solid fa-trash"></i>Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p *ngIf="filteredEmployees.length == 0">No Employees :(</p>
+  </ng-container>
+</section>
+
+<div id="employee-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add Employee</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Employee</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="employeeForm" (ngSubmit)="submit()">
+      <div class="employee-form-box">
+        <label for="photo-input" class="admin-label">Photo</label>
+        <input type="file" id="photo-input" class="admin-input" accept="image/png, image/jpeg, image/jpg"
+          (change)="validatePhoto($event)" />
+      </div>
+      <div class="employee-form-box">
+        <label for="name-input" class="admin-label">Name *</label>
+        <input type="text" id="name-input" formControlName="name" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="post-input" class="admin-label">Job Title</label>
+        <input type="text" id="post-input" formControlName="post" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="dob-input" class="admin-label">Date of Birth</label>
+        <input type="date" id="dob-input" formControlName="dob" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="year-started-work-input" class="admin-label">Year Started Work</label>
+        <input type="number" id="year-started-work-input" formControlName="yearStartedWork" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="phone-number-input" class="admin-label">Phone Number</label>
+        <input type="tel" id="phone-number-input" formControlName="phoneNumber" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="aadhar-number-input" class="admin-label">Aadhar Number</label>
+        <input type="text" id="aadhar-number-input" formControlName="aadharNumber" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="address-input" class="admin-label">Address</label>
+        <input type="text" id="address-input" formControlName="address" class="admin-input" />
+      </div>
+      <div class="employee-form-box">
+        <label for="payment-method-select" class="admin-label">Payment Method</label>
+        <select id="payment-method-select" formControlName="paymentMethod" class="admin-input" (change)="log(paymentType)" #paymentType>
+          <option value="" disabled>Choose payment method</option>
+          <option value="bank_account">Bank Account</option>
+          <option value="UPI">UPI Account</option>
+          <!-- <option ngValue="cards">Bank Card</option> -->
+          <!-- <option ngValue="wallet">Wallet</option> -->
+        </select>
+      </div>
+      <ng-container *ngIf="paymentType.value === 'cards'">
+        <div class="employee-form-box">
+          <label for="account-holder-name-input" class="admin-label">Bank Card</label>
+          <input type="text" id="account-holder-name-input" formControlName="upiAddress" class="admin-input" />
+        </div>
+      </ng-container>
+      <ng-container *ngIf="paymentType.value === 'wallet'">
+        <div class="employee-form-box">
+          <label for="account-holder-name-input" class="admin-label">Wallet</label>
+          <input type="text" id="account-holder-name-input" formControlName="upiAddress" class="admin-input" />
+        </div>
+      </ng-container>
+      <ng-container *ngIf="paymentType.value === 'UPI'">
+        <div class="employee-form-box">
+          <label for="account-holder-name-input" class="admin-label">UPI Address</label>
+          <input type="text" id="account-holder-name-input" formControlName="upiAddress" class="admin-input" />
+        </div>
+      </ng-container>
+      <ng-container *ngIf="paymentType.value === 'bank_account'">
+        <div class="employee-form-box">
+          <label for="account-holder-name-input" class="admin-label">Account Holder Name</label>
+          <input type="text" id="account-holder-name-input" formControlName="accountHolderName" class="admin-input" />
+        </div>
+        <div class="employee-form-box">
+          <label for="account-number-input" class="admin-label">Account Number</label>
+          <input type="text" id="account-number-input" formControlName="accountNumber" class="admin-input" />
+        </div>
+        <div class="employee-form-box">
+          <label for="ifsc-code-input" class="admin-label">IFSC Code</label>
+          <input type="text" id="ifsc-code-input" formControlName="ifscCode" class="admin-input" />
+        </div>
+      </ng-container>
+      <div class="employee-form-box">
+        <label for="pan-no-input" class="admin-label">PAN Card No.</label>
+        <input type="text" id="pan-no-input" formControlName="panNo" class="admin-input" />
+      </div>
+      <button *ngIf="!editMode" [disabled]="!employeeForm.valid" type="submit" class="primary-btn">
+        Add Employee
+      </button>
+      <button *ngIf="editMode" [disabled]="!employeeForm.valid" type="submit" class="primary-btn">
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal (confirmDelete)="deleteEmployee()" (hidden)="currentDeleteId = ''"></app-confirm-delete-modal>

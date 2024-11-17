@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "virajhomes-96e2d": {
+      "hosting": {
+        "Viraj-Website": [
+          "virajhomes-96e2d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "virajhomes-96e2d"
+  }
+}

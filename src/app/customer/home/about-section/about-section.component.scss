@@ -1,0 +1,160 @@
+.heading-part-underlined {
+  margin-right: 0.25em;
+}
+
+.heading-part {
+  margin-right: 0.5em;
+}
+
+#about-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-content-box {
+  width: 30%;
+}
+
+.about-image {
+  width: 100%;
+  height: 240px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.about-heading,
+.about-paragraph {
+  color: var(--primary);
+}
+
+.about-heading {
+  margin: 1em 0 0.5em 0;
+  text-transform: uppercase;
+  font-size: var(--small);
+  font-weight: 700;
+  font-family: var(--font-two);
+}
+
+.about-paragraph {
+  margin: 0 0 1em 0;
+  font-size: var(--xsmall);
+  font-family: var(--font-three);
+}
+
+.about-paragraph:last-of-type {
+  margin: 0;
+}
+
+.about-link {
+  display: block;
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  padding: .5em 1em;
+  background-color: var(--primary);
+  color: var(--primary-contrast);
+  font-family: var(--font-two);
+  font-size: var(--msmall);
+  transition: all .5s;
+}
+
+.about-link:hover, .about-link:focus {
+  text-decoration: none;
+  box-shadow: var(--normal-shadow);
+}
+
+#services {
+  background-color: var(--primary);
+  background-image: url("../../../../assets/img/services-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.service {
+  width: 25%;
+  text-align: center;
+}
+
+.service-image {
+  width: 80px;
+}
+
+.service-heading,
+.service-paragraph {
+  font-family: var(--font-three);
+  color: var(--primary-contrast);
+}
+
+.service-heading {
+  font-size: var(--small);
+  font-weight: 700;
+  margin: 1em 0;
+}
+
+.service-paragraph {
+  font-size: var(--xsmall);
+  margin: 0;
+}
+
+@media (max-width: 950px) {
+  #about-content {
+    flex-wrap: wrap;
+  }
+
+  .about-content-box:first-of-type {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .about-content-box:not(:first-of-type) {
+    width: 48%;
+  }
+
+  #services {
+    flex-direction: column;
+  }
+
+  .service {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    margin: 1em 0;
+  }
+  
+  .service-image {
+    margin-right: 2em;
+  }
+
+  .service-heading {
+    margin-bottom: .5em;
+  }
+
+  .service-paragraph {
+    margin: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  #about-content {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .about-content-box {
+    width: 100% !important;
+    margin-bottom: 2em;
+  }
+
+  .service {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .service-image {
+    margin: 0;
+  }
+}

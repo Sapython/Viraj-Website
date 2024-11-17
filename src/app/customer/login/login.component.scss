@@ -1,0 +1,102 @@
+section {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../../assets/img/first-section-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 90%);
+    // background: radial-gradient(#e66465, #9198e5);
+    z-index: 1;
+  }
+  #container {
+    z-index: 2;
+    padding: 1.5em;
+    min-width: 300px;
+    width: 50%;
+    max-width: 700px;
+    background-color: rgba($color: #000, $alpha: 0.5);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-family: var(--font-three);
+      color: var(--secondary);
+      font-weight: 700;
+      width: 100%;
+      margin: 0;
+      margin-bottom: 1em;
+      font-size: var(--small);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      input {
+        margin-bottom: 0.5em;
+        font-family: var(--font-three);
+        font-size: var(--xsmall);
+        outline: none;
+        padding: 0.25em 0.5em;
+      }
+    }
+
+    button {
+      margin-bottom: 0.5em;
+      font-family: var(--font-three);
+      font-size: var(--xsmall);
+      display: block;
+      padding: 0.25em 0.5em;
+      background-color: var(--secondary);
+      color: var(--secondary-contrast);
+      border: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:not(:disabled):hover,
+    button:not(:disabled):focus {
+      box-shadow: var(--normal-shadow);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: no-drop;
+    }
+
+    i {
+      margin-right: 0.5em;
+    }
+
+    #sign-in-with-google {
+      margin-top: 1em;
+    }
+
+    h3 {
+      color: white;
+      text-transform: capitalize;
+      font-family: var(--font-three);
+      font-size: var(--xsmall);
+      text-align: center;
+
+      a {
+        color: var(--secondary);
+      }
+    }
+  }
+}

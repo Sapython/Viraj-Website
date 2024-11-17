@@ -1,0 +1,218 @@
+<section>
+  <div class="topBar">
+    <div class="actions">
+      <div class="search-box">
+        <input type="text" class="admin-search" placeholder="Search..." (input)="searchItems()" #itemSearchInput />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <button (click)="updateStockEnabled ? updateStock() : (updateStockEnabled = true)">
+        {{ updateStockEnabled ? "Save" : "Update" }} Stock
+      </button>
+    </div>
+    <div>
+      <mat-paginator *ngIf="stockLength > 0" [length]="stockLength" [pageSize]="10"
+        [pageSizeOptions]="[10, 20, 30, 40, 50, 100, 500]" (page)="getNextStocks($event)" aria-label="Select page">
+      </mat-paginator>
+    </div> 
+  </div>
+  <div *ngIf="!items" uk-spinner="ratio: 3" id="loading"></div>
+  <ng-container *ngIf="items">
+    <div *ngIf="items.length > 0" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Rate</th>
+            <th>Total Price</th>
+            <th *ngIf="updateStockEnabled">Quantity</th>
+            <th *ngIf="updateStockEnabled">Rate</th>
+            <th *ngIf="updateStockEnabled">Mic Update</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let item of itemSearchInput.value == '' ? items : filteredItems;
+              let i = index
+            "
+          >
+            <td>{{ i + 1 + serialNumberAdditionalCounter }}.</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.unit }}</td>
+            <td>₹{{ item.rate }}/{{ item.unit }}</td>
+            <th>₹{{item.rate * item.quantity}}/{{ item.unit }}</th>
+            <td *ngIf="updateStockEnabled">
+              <input
+                min="0"
+                [value]="item.quantity"
+                type="number"
+                name="stock"
+                (change)="changeStock(item, $event)"
+              />
+            </td>
+            <td *ngIf="updateStockEnabled">
+              <input
+                min="0"
+                [value]="item.rate"
+                type="number"
+                name="rate"
+                (change)="changeRate(item, $event)"
+              />
+            </td>
+            <td *ngIf="updateStockEnabled">
+              <button id="mic-button" (click)="startRecognition(item.id)"><i
+                  class="fa-solid fa-microphone"></i></button>
+            </td>
+            <td>
+              <div class="buttons">
+                <button class="primary-btn" (click)="editItem(item)">
+                  <i class="fa-solid fa-pen-to-square"></i>Edit
+                </button>
+                <button
+                  class="primary-btn"
+                  uk-toggle="target: #confirm-delete-modal"
+                  (click)="currentDeleteId = item.id"
+                >
+                  <i class="fa-solid fa-trash"></i>Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p *ngIf="items.length == 0">No Stock Items :(</p>
+  </ng-container>
+</section>
+
+<div id="item-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 *ngIf="!editMode" class="uk-modal-title">Add New Item</h2>
+    <h2 *ngIf="editMode" class="uk-modal-title">Edit Item</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <form [formGroup]="itemForm" (ngSubmit)="submit()">
+      <div id="item-inputs">
+        <div class="item-form-box">
+          <label class="admin-label" for="name-input">Name *</label>
+          <input
+            type="text"
+            class="admin-input"
+            formControlName="name"
+            id="name-input"
+          />
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label">Unit *</label>
+          <select class="admin-input" formControlName="unit" #unitInput>
+            <option disabled>Choose unit</option>
+            <option *ngFor="let unit of units" [ngValue]="unit.name">
+              {{ unit.description }} ( {{ unit.name }} )
+            </option>
+          </select>
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label" for="quantity-input">Quantity *</label>
+          <input
+            type="number"
+            min="0"
+            class="admin-input"
+            formControlName="quantity"
+            id="quantity-input"
+            (input)="calculateCurrentValue()"
+          />
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label" for="rate-input">Rate *</label>
+          <div id="rate-input-container">
+            <span id="currency-symbol">₹</span>
+            <input
+              type="text"
+              class="admin-input"
+              formControlName="rate"
+              id="rate-input"
+              (input)="calculateCurrentValue()"
+            />
+            <span id="per-unit"
+              >/{{
+                unitInput.value.substring(unitInput.value.indexOf(" ") + 1) ||
+                  "unit"
+              }}</span
+            >
+          </div>
+        </div>
+        <div class="item-form-box">
+          <label class="admin-label">Current Value (Calculated)</label>
+          <span class="admin-input"
+            ><span style="color: var(--secondary)">₹</span>
+            {{ currentValue }}</span
+          >
+        </div>
+      </div>
+      <button
+        *ngIf="!editMode"
+        [disabled]="!itemForm.valid"
+        type="submit"
+        class="primary-btn"
+      >
+        Add Item
+      </button>
+      <button
+        *ngIf="editMode"
+        [disabled]="!itemForm.valid"
+        type="submit"
+        class="primary-btn"
+      >
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>
+
+<div id="update-stock-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 class="uk-modal-title">Update Stock</h2>
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div id="search-and-mic">
+      <div class="search-box">
+        <input
+          type="text"
+          class="admin-search"
+          (input)="searchItems()"
+          #itemSearchInput
+        />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <button id="mic-button"><i class="fa-solid fa-microphone"></i></button>
+    </div>
+    <form [formGroup]="updateStockForm" (ngSubmit)="updateStock()">
+      <div id="stock-items">
+        <div class="stock-item" *ngFor="let item of filteredItems">
+          <div class="flex-subcontainer">
+            <p>{{ item.name }}</p>
+          </div>
+          <div class="flex-subcontainer">
+            <input type="number" [formControlName]="item.id" min="0" />
+            <p class="stock-item-unit">{{ item.unit }}</p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="primary-btn">Update Stock</button>
+    </form>
+  </div>
+</div>
+
+<app-confirm-delete-modal
+  (confirmDelete)="deleteItem()"
+  (hidden)="currentDeleteId = ''"
+></app-confirm-delete-modal>
+
+<div id="speechRecognizer" *ngIf="recognitionActive">
+  <app-recognizer @fadeSlideInOut *ngIf="recognitionActive" [recognizedText]="recognizedText"
+    (stopRecognition)="stopRecognition()"></app-recognizer>
+</div>

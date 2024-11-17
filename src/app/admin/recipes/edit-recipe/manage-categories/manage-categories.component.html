@@ -1,0 +1,19 @@
+<div>
+    <p class="admin-label">Type</p>
+    <ng-container *ngFor="let category of categories">
+        <mat-checkbox class="example-margin" [checked]="isComplete(category.id)"
+            [indeterminate]="isSomeComplete(category.id)" (change)="setAllComplete(category.id,$event.checked)">
+            {{category.title}}
+        </mat-checkbox>
+        <ol>
+            <li *ngFor="let subCategory of category.subcategories">
+                <mat-checkbox [(ngModel)]="subCategory.completed" (ngModelChange)="updateAllComplete(category.id)">
+                    {{subCategory.title}}
+                </mat-checkbox>
+            </li>
+        </ol>
+    </ng-container>
+    <mat-dialog-actions>
+        <button id="go-back" class="primary-btn" [mat-dialog-close]="categories">Save</button>
+    </mat-dialog-actions>
+</div>

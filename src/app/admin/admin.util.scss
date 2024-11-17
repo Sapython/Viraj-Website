@@ -1,0 +1,123 @@
+::ng-deep {
+  .admin-label {
+    font-family: var(--font-three);
+    font-size: var(--small);
+    color: var(--primary);
+  }
+
+  .admin-input {
+    display: block;
+    background-color: transparent;
+    color: #000;
+    font-family: var(--font-two);
+    font-size: var(--small);
+    padding: 0.5em;
+    border: none;
+    border-bottom: 2px solid var(--secondary);
+    outline: none;
+    resize: none;
+  }
+
+  .search-box {
+    position: relative;
+    max-width: 250px;
+
+    .admin-search {
+      border: none;
+      font-family: var(--font-three);
+      font-size: var(--xsmall);
+      padding: 0.25em 1em;
+      border-radius: 20px;
+      outline: none;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    i {
+      position: absolute;
+      top: 50%;
+      right: 1em;
+      color: var(--secondary);
+      transform: translateY(-50%);
+    }
+  }
+
+  .uk-modal-title {
+    font-family: var(--font-three);
+    font-size: var(--medium);
+    color: var(--secondary);
+    margin: 0;
+    margin-bottom: 1em;
+    padding-bottom: 0.25em;
+    border-bottom: 3px solid var(--secondary);
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+
+  table {
+    font-family: var(--font-three);
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 820px;
+
+    td,
+    th {
+      text-align: left;
+      padding: 8px;
+    }
+
+    td {
+      color: var(--primary);
+      font-size: var(--xxsmall);
+
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+
+        button {
+          margin-right: 0.5em;
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--secondary-lighter);
+    }
+
+    thead {
+      tr {
+        background-color: var(--secondary);
+      }
+
+      th {
+        font-size: var(--xsmall);
+        font-weight: 650;
+        text-align: left;
+        color: var(--secondary-contrast);
+      }
+    }
+
+    tbody {
+      tr {
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: var(--secondary-light);
+        }
+      }
+    }
+  }
+}

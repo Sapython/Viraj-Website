@@ -1,0 +1,30 @@
+<div>
+    <h2>Manage Categories</h2>
+    <div class="add"><input type="text" #input><button (click)="addCategory(input.value)"><i class="fa-solid fa-plus"></i></button></div>
+    <li class="li" *ngFor="let category of categories">
+        <input type="checkbox" name="" hidden id="" #checkbox>
+        <p class="title">
+            {{category.title | titlecase}}
+            <span>
+                <i (click)="removeCategory(category.id)" class="fa-solid fa-trash-can"></i>
+                <i class="fa-solid fa-chevron-down" *ngIf="checkbox.value == 'off'" (click)="checkbox.value = 'on' "></i>
+                <i class="fa-solid fa-chevron-up" *ngIf="checkbox.value == 'on'" (click)="checkbox.value = 'off'"></i>
+            </span>
+        </p>
+        <div class="container" *ngIf="checkbox.value == 'on'">
+            <p>Subcategories of {{category.title}}</p>
+            <div>
+                <div class="add">
+                    <input type="text" #subInput>
+                    <button (click)="addSubCategory(subInput.value,category.id)"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+            <ng-container *ngIf="category.subcategories">
+                <li *ngFor="let subCategory of category.subcategories;let i = index;">
+                    <p>{{i}}. {{subCategory}}</p>
+                    <i class="fa-solid fa-trash-can" (click)="removeSubCategory(subCategory,category.id)"></i>
+                </li>
+            </ng-container>
+        </div>
+    </li>
+</div>

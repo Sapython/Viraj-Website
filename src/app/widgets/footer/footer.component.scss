@@ -1,0 +1,115 @@
+footer {
+  display: flex;
+  background-color: var(--primary);
+  // background-image: url("../../../assets/img/footer-background.png");
+  background-image: linear-gradient(120deg, #161616,#080808);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#footer-left,
+#footer-center,
+#footer-right {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  color: var(--secondary);
+  font-size: var(--xxsmall);
+  font-family: var(--font-two);
+}
+
+#footer-left {
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+#social-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.social-link {
+  color: var(--primary-contrast);
+  font-size: var(--small);
+  display: block;
+  margin-right: 1em;
+  transition: all 0.5s;
+}
+
+.social-link-li:last-of-type .social-link {
+  margin-right: 0;
+}
+
+.social-link:hover,
+.social-link:focus {
+  color: var(--secondary);
+}
+
+#footer-center-and-right {
+  width: 70%;
+  display: flex;
+  align-items: flex-start;
+}
+
+#footer-center {
+  width: 40%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#miscellaneous-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.miscellaneous-link,
+.footer-contact-box {
+  margin-bottom: 0.5em;
+}
+
+.miscellaneous-link,
+.footer-contact {
+  transition: all 0.5s;
+  display: block;
+  color: var(--primary-contrast);
+}
+
+.miscellaneous-link-li:last-of-type .miscellaneous-link,
+.footer-contact-box:last-of-type .footer-contact {
+  margin-bottom: 0;
+}
+
+.miscellaneous-link:hover,
+.miscellaneous-link:focus,
+.footer-contact:not(address):hover,
+.footer-contact:not(address):focus {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+#footer-right {
+  width: 60%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (max-width: 650px) {
+  footer {
+    flex-direction: column-reverse;
+  }
+
+  #footer-left,
+  #footer-center-and-right {
+    width: 100%;
+  }
+
+  #footer-left,
+  #footer-center,
+  #footer-right {
+    padding: 1.5em;
+  }
+}

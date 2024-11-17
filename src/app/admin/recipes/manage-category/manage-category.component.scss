@@ -1,0 +1,137 @@
+div {
+  p{
+      margin: 0px;
+  }
+// height: 400px;
+overflow-y: auto;
+width: auto;
+padding-right:20px;
+overflow-x: hidden;
+max-height:500px;
+.add{
+  // margin:10px;
+  padding:10px;
+  display:flex;
+  // justify-content:space-between;
+  align-items:center;
+  width: 100%;
+  input{
+      border:none;
+      border-bottom: 2px solid var(--secondary);
+      background: transparent;
+      &:focus{
+        outline:none;
+      }
+  }
+  button{
+      background: var(--secondary);
+      border: none;
+      color:white;
+      padding:5px;
+      border-radius: 5px;
+      margin-left: 20px;
+  }
+}
+}
+li{
+  list-style: none;
+}
+.li {
+//   border: 2px solid grey;
+border-radius: 7px;
+padding: 10px;
+background: rgb(249, 240, 235);
+//   box-shadow: 2px 1px 20px rgba(0, 0, 0, 0.1);
+margin-bottom: 10px;
+p.title {
+  margin: 0;
+  font-size: 17px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color:black;
+  font-size: 20px;
+  span{
+      .fa-trash-can{
+          color:tomato;
+      }
+      i[class^="fa-solid fa-chevron"]{
+          color: var(--secondary);
+          cursor: pointer;
+          margin-left: 20px;
+      }
+  }
+}
+li {
+    display: flex;
+    justify-content: space-between;
+    list-style: decimal;
+    p {
+      margin: 0;
+      font-size: 17px;
+      text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    i {
+      color: tomato;
+      transition: all 0.3s ease;
+      &:hover {
+        scale: 1.1;
+      }
+    }
+    i.fa-plus{
+      color:white;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+.add{
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  input{
+      width: 80%;
+  }
+  button{
+    margin-top: 20px;
+    width: auto;
+  }
+}
+.li {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .container{
+    overflow-y: hidden;
+  }
+  p {
+    margin: 0;
+    font-size: 17px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  div{
+    margin: 0px;
+    padding:0px;
+    margin-bottom: 10px;
+  }
+  i {
+    color: tomato;
+    transition: all 0.3s ease;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+  i.fa-plus{
+    color:white;
+  }
+}
+}

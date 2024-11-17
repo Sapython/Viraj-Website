@@ -1,0 +1,102 @@
+<header
+  uk-scrollspy="target: .logo-image, li, #toggle-button; cls: uk-animation-fade; delay: 100"
+>
+  <img
+    src="../../../assets/img/viraj-white.svg"
+    alt="Viraj Logo"
+    class="logo-image uk-animation-fade"
+  />
+  <nav>
+    <ul id="horizontal-ul">
+      <li>
+        <a href="#home" class="active">Home</a>
+      </li>
+      <li>
+        <a href="#about">About</a>
+      </li>
+      <li>
+        <a href="#our-outlets">Our Outlets</a>
+      </li>
+      <li>
+        <a href="#gallery">Gallery</a>
+      </li>
+      <li>
+        <a href="#our-stores">Our Stores</a>
+      </li>
+      <li>
+        <a href="#contact-us">Contact Us</a>
+      </li>
+      <li *ngIf="!dataProvider.loggedIn">
+        <button [routerLink]="['/login']" class="login-button">Login</button>
+      </li>
+      <li *ngIf="dataProvider.loggedIn">
+        <button (click)="authService.logout()" class="login-button">
+          Logout
+        </button>
+      </li>
+      <li
+        *ngIf="
+          dataProvider.loggedIn &&
+          dataProvider.userData?.access?.access === 'admin'
+        "
+      >
+        <button [routerLink]="['/admin']" class="login-button">Admin</button>
+      </li>
+    </ul>
+    <div id="toggle-button">
+      <a
+        href="#offcanvas-nav"
+        class="uk-navbar-toggle"
+        uk-navbar-toggle-icon
+        uk-toggle="target: #offcanvas-nav"
+      ></a>
+    </div>
+  </nav>
+  <div id="offcanvas-nav" uk-offcanvas="overlay: true; flip: true; ">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <nav>
+        <ul id="vertical-ul">
+          <li>
+            <a href="#home" class="active">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#our-outlets">Our Outlets</a>
+          </li>
+          <li>
+            <a href="#gallery">Gallery</a>
+          </li>
+          <li>
+            <a href="#our-stores">Our Stores</a>
+          </li>
+          <li>
+            <a href="#contact-us">Contact Us</a>
+          </li>
+          <li *ngIf="!dataProvider.loggedIn">
+            <button [routerLink]="['/login']" class="login-button">
+              Login
+            </button>
+          </li>
+          <li *ngIf="dataProvider.loggedIn">
+            <button (click)="authService.logout()" class="login-button">
+              Logout
+            </button>
+          </li>
+          <li
+            *ngIf="
+              dataProvider.loggedIn &&
+              dataProvider.userData?.access?.access === 'admin'
+            "
+          >
+            <button [routerLink]="['/admin']" class="login-button">
+              Admin
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
